@@ -41,6 +41,9 @@ Route::middleware([
 //route du dashboard de l'admin
 Route::prefix('admin')->group(function()
 {
+
+    Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+
     //Route de client
     Route::get('client/liste', [App\Http\Controllers\ClientController::class, 'index']);
     Route::get('client/create', [App\Http\Controllers\ClientController::class, 'create']);

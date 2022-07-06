@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Panne;
 
 class Produitinstalle extends Model
 {
@@ -13,5 +14,6 @@ class Produitinstalle extends Model
     {
         return $this->hasMany(Panne::class);
     }
+  
     
 }

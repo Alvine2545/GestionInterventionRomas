@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Produitinstalle;
+use App\Models\Planning;
+use App\Models\Client;
 
 class Panne extends Model
 {
