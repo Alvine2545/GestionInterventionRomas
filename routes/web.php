@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PanneController;
+use App\Http\Controllers\TypeinverventionController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\Type_devisController;
+use App\Http\Controllers\ProduitController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,6 +71,15 @@ Route::middleware([
     Route::get('typeintervention/{id}/edit', 'App\Http\Controllers\TypeinverventionController@edit');
     Route::put('typeintervention/update/{id}', 'App\Http\Controllers\TypeinverventionController@update');
     Route::delete('typeintervention/destroy/{id}', 'App\Http\Controllers\TypeinverventionController@destroy');
+
+    //Route de panne
+Route::get('pannes/liste', [App\Http\Controllers\PanneController::class, 'index']);
+Route::get('pannes/create', [App\Http\Controllers\PanneController::class, 'create']);
+Route::get('pannes/show/{id}', [App\Http\Controllers\PanneController::class, 'show']);
+Route::get('pannes/store', [App\Http\Controllers\PanneController::class, 'store']);
+Route::get('pannes/{id}/edit', [App\Http\Controllers\PanneController::class, 'edit']);
+Route::get('pannes/update/{id}', [App\Http\Controllers\PanneController::class, 'update']);
+Route::get('pannes/destroy/{id}', [App\Http\Controllers\PanneController::class, 'destroy']);
 });
 
 

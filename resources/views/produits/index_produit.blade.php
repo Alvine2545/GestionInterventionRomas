@@ -1437,12 +1437,12 @@
                         @csrf
                         @method('DELETE')
                         
-                        <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" ><i class="icofont icofont-trash" color="red"></i></button>
+                        <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" >Supprimer<i class="icofont icofont-trash" color="red"></i></button>
                         </span>
                     </form>
                     <form method="post" action="{{url('admin/produit/edit',$value->id)}}">
                         @method('GET')
-                        <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" ><i class="feather icon-edit-1"></i></button>
+                        <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" >Modifier<i class="feather icon-edit-1"></i></button>
                         </span>
                     </form>
                     
