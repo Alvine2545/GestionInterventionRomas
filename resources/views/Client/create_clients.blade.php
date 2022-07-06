@@ -4,8 +4,7 @@
     <div class="col-lg-8">
         <div class="page-header-title">
             <div class="d-inline">
-                <h4>Booking Multi Steps</h4>
-                <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                <h4>Créer un utilisateur</h4>
             </div>
         </div>
     </div>
@@ -15,9 +14,9 @@
                 <li class="breadcrumb-item">
                     <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
                 </li>
-                <li class="breadcrumb-item"><a href="#!">Ready To Use</a>
+                <li class="breadcrumb-item"><a href="#!">Utilisateurs</a>
                 </li>
-                <li class="breadcrumb-item"><a href="#!">Booking Multi Steps</a>
+                <li class="breadcrumb-item"><a href="#!">Créer un utilisateur</a>
                 </li>
             </ul>
         </div>
@@ -26,32 +25,27 @@
 @endsection
 @section('menu')
 <div class="pcoded-inner-navbar main-menu">
-    <div class="pcoded-navigatio-lavel">Dashboard</div>
+    <div class="pcoded-navigatio-lavel">Navigation</div>
     <ul class="pcoded-item pcoded-left-item">
         <li class="pcoded-hasmenu">
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                <span class="pcoded-mtext">Utilisateur</span>
+                <span class="pcoded-mtext">Dashboard</span>
             </a>
             <ul class="pcoded-submenu">
                 <li class="">
-                    <a href="{{url('admin/client/create')}}">
-                        <span class="pcoded-mtext">Ajouter un utilisateur</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="{{url('admin/client/index')}}">
-                        <span class="pcoded-mtext">Liste des utilisateus</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="{{url('admin/client/index')}}">
-                        <span class="pcoded-mtext">Mes clients</span>
+                    <a href="index-1.htm">
+                        <span class="pcoded-mtext">Utilisateurs</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="dashboard-crm.htm">
-                        <span class="pcoded-mtext">Les techniciens</span>
+                        <span class="pcoded-mtext">Les utilisateurs</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{{url('client/create')}}">
+                        <span class="pcoded-mtext">Ajouter utilisateur</span>
                     </a>
                 </li>
             </ul>
@@ -59,54 +53,75 @@
         <li class="pcoded-hasmenu">
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
-                <span class="pcoded-mtext">Gestion des interventions</span>
+                <span class="pcoded-mtext">Gestion des clients</span>
             </a>
             <ul class="pcoded-submenu">
-                <li class="">
-                    <a href="index-1.htm">
-                        <span class="pcoded-mtext">Les interventions</span>
+                <li class=" pcoded-hasmenu">
+                    <a href="javascript:void(0)">
+                        <span class="pcoded-mtext">Clients</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class=" ">
+                            <a href="menu-static.htm">
+                                <span class="pcoded-mtext">Les clients</span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="{{url('client/create')}}">
+                                <span class="pcoded-mtext">Ajouter client</span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="menu-header-fixed.htm">
+                                <span class="pcoded-mtext">Ajouter pannes</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" ">
+                    <a href="menu-bottom.htm">
+                        <span class="pcoded-mtext">Techniciens</span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="dashboard-crm.htm">
-                        <span class="pcoded-mtext">Ajouter une intervention</span>
+                <li class=" ">
+                    <a href="box-layout.htm" target="_blank">
+                        <span class="pcoded-mtext">Les techniciens</span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="{{url('admin/typeintervention/create')}}">
-                        <span class="pcoded-mtext">Ajouter un type intervention</span>
+                <li class=" ">
+                    <a href="menu-rtl.htm" target="_blank">
+                        <span class="pcoded-mtext">Ajouter technicien</span>
                     </a>
                 </li>
             </ul>
         </li>
-        <li class="">
-            <a href="navbar-light.htm">
-                <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
-                <span class="pcoded-mtext">Pannes</span>
-            </a>
-        </li>
     </ul>
-    <div class="pcoded-navigatio-lavel">Clients</div>
+    <div class="pcoded-navigatio-lavel">Nos installations</div>
     <ul class="pcoded-item pcoded-left-item">
         <li class="pcoded-hasmenu">
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-box"></i></span>
-                <span class="pcoded-mtext">Installations</span>
+                <span class="pcoded-mtext">Gestion produits</span>
             </a>
             <ul class="pcoded-submenu">
                 <li class=" ">
                     <a href="alert.htm">
-                        <span class="pcoded-mtext">Ajouter une installation</span>
+                        <span class="pcoded-mtext">Créer produit</span>
                     </a>
                 </li>
                 <li class=" ">
                     <a href="breadcrumb.htm">
-                        <span class="pcoded-mtext">Mes installations</span>
+                        <span class="pcoded-mtext">Les produits</span>
                     </a>
                 </li>
                 <li class=" ">
                     <a href="button.htm">
-                        <span class="pcoded-mtext">Créer un reçu</span>
+                        <span class="pcoded-mtext">Créer installations</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="box-shadow.htm">
+                        <span class="pcoded-mtext">Intallations</span>
                     </a>
                 </li>
             </ul>
@@ -114,104 +129,228 @@
         <li class="pcoded-hasmenu">
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-gitlab"></i></span>
-                <span class="pcoded-mtext">Paiement</span>
+                <span class="pcoded-mtext">Advance Components</span>
             </a>
             <ul class="pcoded-submenu">
                 <li class=" ">
                     <a href="draggable.htm">
-                        <span class="pcoded-mtext">Etat financier des clients</span>
+                        <span class="pcoded-mtext">Draggable</span>
                     </a>
                 </li>
                 <li class=" ">
                     <a href="bs-grid.htm">
-                        <span class="pcoded-mtext">Créer un reçu</span>
+                        <span class="pcoded-mtext">Grid Stack</span>
                     </a>
                 </li>
+                <li class=" ">
+                    <a href="light-box.htm">
+                        <span class="pcoded-mtext">Light Box</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="modal.htm">
+                        <span class="pcoded-mtext">Modal</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="notification.htm">
+                        <span class="pcoded-mtext">Notifications</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="notify.htm">
+                        <span class="pcoded-mtext">PNOTIFY</span>
+                        <span class="pcoded-badge label label-info">NEW</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="rating.htm">
+                        <span class="pcoded-mtext">Rating</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="range-slider.htm">
+                        <span class="pcoded-mtext">Range Slider</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="slider.htm">
+                        <span class="pcoded-mtext">Slider</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="syntax-highlighter.htm">
+                        <span class="pcoded-mtext">Syntax Highlighter</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="tour.htm">
+                        <span class="pcoded-mtext">Tour</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="treeview.htm">
+                        <span class="pcoded-mtext">Tree View</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="nestable.htm">
+                        <span class="pcoded-mtext">Nestable</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="toolbar.htm">
+                        <span class="pcoded-mtext">Toolbar</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="x-editable.htm">
+                        <span class="pcoded-mtext">X-Editable</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="pcoded-hasmenu">
+            <a href="javascript:void(0)">
+                <span class="pcoded-micon"><i class="feather icon-package"></i></span>
+                <span class="pcoded-mtext">Extra Components</span>
+            </a>
+            <ul class="pcoded-submenu">
+                <li class=" ">
+                    <a href="session-timeout.htm">
+                        <span class="pcoded-mtext">Session Timeout</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="session-idle-timeout.htm">
+                        <span class="pcoded-mtext">Session Idle Timeout</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="offline.htm">
+                        <span class="pcoded-mtext">Offline</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="pcoded-hasmenu">
+            <a href="javascript:void(0)">
+                <span class="pcoded-micon"><i class="feather icon-command"></i></span>
+                <span class="pcoded-mtext">Icons</span>
+            </a>
+            <ul class="pcoded-submenu">
+                <li class=" ">
+                    <a href="icon-font-awesome.htm">
+                        <span class="pcoded-mtext">Font Awesome</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="icon-themify.htm">
+                        <span class="pcoded-mtext">Themify</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="icon-simple-line.htm">
+                        <span class="pcoded-mtext">Simple Line Icon</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="icon-ion.htm">
+                        <span class="pcoded-mtext">Ion Icon</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="icon-material-design.htm">
+                        <span class="pcoded-mtext">Material Design</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="icon-icofonts.htm">
+                        <span class="pcoded-mtext">Ico Fonts</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="icon-weather.htm">
+                        <span class="pcoded-mtext">Weather Icon</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="icon-typicons.htm">
+                        <span class="pcoded-mtext">Typicons</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="icon-flags.htm">
+                        <span class="pcoded-mtext">Flags</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
-    <div class="pcoded-navigatio-lavel">Gestion des produits</div>
+    <div class="pcoded-navigatio-lavel">Pannes</div>
+    <ul class="pcoded-item pcoded-left-item">
+        <li class="pcoded-hasmenu">
+            <a href="javascript:void(0)">
+                <span class="pcoded-micon"><i class="feather icon-clipboard"></i></span>
+                <span class="pcoded-mtext">Enregister</span>
+            </a>
+            <ul class="pcoded-submenu">
+                <li class=" ">
+                    <a href="form-elements-component.htm">
+                        <span class="pcoded-mtext">Enregistrer panne</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="form-elements-add-on.htm">
+                        <span class="pcoded-mtext">Liste des pannes</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="pcoded-navigatio-lavel">Plannings</div>
     <ul class="pcoded-item pcoded-left-item">
         <li class="pcoded-hasmenu">
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                <span class="pcoded-mtext"> Produits</span>
+                <span class="pcoded-mtext">Planning</span>
             </a>
             <ul class="pcoded-submenu">
                 <li class=" ">
                     <a href="bs-basic-table.htm">
-                        <span class="pcoded-mtext">Les produits</span>
+                        <span class="pcoded-mtext">Nos planning</span>
                     </a>
                 </li>
                 <li class=" ">
                     <a href="bs-table-sizing.htm">
-                        <span class="pcoded-mtext"> Créer un produit</span>
+                        <span class="pcoded-mtext">Faire planning</span>
+                    </a>
+                </li>
+                <li class=" ">
+                    <a href="bs-table-border.htm">
+                        <span class="pcoded-mtext">Interventions</span>
                     </a>
                 </li>
             </ul>
         </li>
     </ul>
-    <div class="pcoded-navigatio-lavel">Gestion des devis</div>
-    <ul class="pcoded-item pcoded-left-item">
-        <li class="pcoded-hasmenu ">
-            <a href="javascript:void(0)">
-                <span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span>
-                <span class="pcoded-mtext">Devis</span>
-            </a>
-            <ul class="pcoded-submenu">
-                <li class="">
-                    <a href="chart-google.htm">
-                        <span class="pcoded-mtext">Les devis</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="chart-echart.htm">
-                        <span class="pcoded-mtext">Créer un devis</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="{{url('admin/typedevis/create')}}">
-                        <span class="pcoded-mtext">Créer un type de devis</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="">
-            <a href="..\files\extra-pages\landingpage\index.htm" target="_blank">
-                <span class="pcoded-micon"><i class="feather icon-navigation-2"></i></span>
-                <span class="pcoded-mtext">Landing Page</span>
-            </a>
-        </li>
-    </ul>
-    <div class="pcoded-navigatio-lavel">Rapport</div>
+    <div class="pcoded-navigatio-lavel">Reçus</div>
     <ul class="pcoded-item pcoded-left-item">
         <li class="pcoded-hasmenu ">
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
-                <span class="pcoded-mtext">Authentication</span>
+                <span class="pcoded-mtext">Les reçus</span>
             </a>
             <ul class="pcoded-submenu">
                 <li class="">
                     <a href="auth-normal-sign-in.htm" target="_blank">
-                        <span class="pcoded-mtext">Login With BG Image</span>
+                        <span class="pcoded-mtext">Editer reçu</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="auth-sign-in-social.htm" target="_blank">
-                        <span class="pcoded-mtext">Login With Social Icon</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="auth-sign-in-social-header-footer.htm" target="_blank">
-                        <span class="pcoded-mtext">Login Social With Header And Footer</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="auth-normal-sign-in-header-footer.htm" target="_blank">
-                        <span class="pcoded-mtext">Login With Header And Footer</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="auth-sign-up.htm" target="_blank">
-                        <span class="pcoded-mtext">Registration BG Image</span>
+                        <span class="pcoded-mtext">Liste des devis</span>
                     </a>
                 </li>
                 <li class="">
@@ -219,57 +358,27 @@
                         <span class="pcoded-mtext">Registration Social Icon</span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="auth-sign-up-social-header-footer.htm" target="_blank">
-                        <span class="pcoded-mtext">Registration Social With Header And Footer</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="auth-sign-up-header-footer.htm" target="_blank">
-                        <span class="pcoded-mtext">Registration With Header And Footer</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="auth-multi-step-sign-up.htm" target="_blank">
-                        <span class="pcoded-mtext">Multi Step Registration</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="auth-reset-password.htm" target="_blank">
-                        <span class="pcoded-mtext">Forgot Password</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="auth-lock-screen.htm" target="_blank">
-                        <span class="pcoded-mtext">Lock Screen</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="auth-modal.htm" target="_blank">
-                        <span class="pcoded-mtext">Modal</span>
-                    </a>
-                </li>
             </ul>
         </li>
         <li class="pcoded-hasmenu ">
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-sliders"></i></span>
-                <span class="pcoded-mtext">Maintenance</span>
+                <span class="pcoded-mtext">Devis</span>
             </a>
             <ul class="pcoded-submenu">
                 <li class="">
                     <a href="error.htm">
-                        <span class="pcoded-mtext">Error</span>
+                        <span class="pcoded-mtext">Créer un devis</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="comming-soon.htm">
-                        <span class="pcoded-mtext">Comming Soon</span>
+                        <span class="pcoded-mtext">Lies des sevoir</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="offline-ui.htm">
-                        <span class="pcoded-mtext">Offline UI</span>
+                        <span class="pcoded-mtext"> UI</span>
                     </a>
                 </li>
             </ul>
@@ -277,27 +386,17 @@
         <li class="pcoded-hasmenu ">
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                <span class="pcoded-mtext">User Profile</span>
+                <span class="pcoded-mtext">Rapporte</span>
             </a>
             <ul class="pcoded-submenu">
                 <li class="">
                     <a href="timeline.htm">
-                        <span class="pcoded-mtext">Timeline</span>
+                        <span class="pcoded-mtext">Créer un rapport</span>
                     </a>
                 </li>
                 <li class="">
                     <a href="timeline-social.htm">
-                        <span class="pcoded-mtext">Timeline Social</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="user-profile.htm">
-                        <span class="pcoded-mtext">User Profile</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="user-card.htm">
-                        <span class="pcoded-mtext">User Card</span>
+                        <span class="pcoded-mtext">Liste rapport</span>
                     </a>
                 </li>
             </ul>
@@ -345,59 +444,10 @@
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-mail"></i></span>
                 <span class="pcoded-mtext">Email</span>
-            </a>
-            <ul class="pcoded-submenu">
-                <li class="">
-                    <a href="email-compose.htm">
-                        <span class="pcoded-mtext">Compose Email</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="email-inbox.htm">
-                        <span class="pcoded-mtext">Inbox</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="email-read.htm">
-                        <span class="pcoded-mtext">Read Mail</span>
-                    </a>
-                </li>
-                <li class="pcoded-hasmenu ">
-                    <a href="javascript:void(0)">
-                        <span class="pcoded-mtext">Email Template</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="">
-                            <a href="..\files\extra-pages\email-templates\email-welcome.htm">
-                                <span class="pcoded-mtext">Welcome Email</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="..\files\extra-pages\email-templates\email-password.htm">
-                                <span class="pcoded-mtext">Reset Password</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="..\files\extra-pages\email-templates\email-newsletter.htm">
-                                <span class="pcoded-mtext">Newsletter Email</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="..\files\extra-pages\email-templates\email-launch.htm">
-                                <span class="pcoded-mtext">App Launch</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="..\files\extra-pages\email-templates\email-activation.htm">
-                                <span class="pcoded-mtext">Activation Code</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            </a>>
         </li>
     </ul>
-    <div class="pcoded-navigatio-lavel"></div>
+    <div class="pcoded-navigatio-lavel">Devis</div>
     <ul class="pcoded-item pcoded-left-item">
         <li class=" ">
             <a href="chat.htm">
@@ -540,145 +590,7 @@
             </ul>
         </li>
     </ul>
-    <div class="pcoded-navigatio-lavel">Extension</div>
-    <ul class="pcoded-item pcoded-left-item">
-        <li class="pcoded-hasmenu ">
-            <a href="javascript:void(0)">
-                <span class="pcoded-micon"><i class="feather icon-file-plus"></i></span>
-                <span class="pcoded-mtext">Editor</span>
-            </a>
-            <ul class="pcoded-submenu">
-                <li class="">
-                    <a href="ck-editor.htm">
-                        <span class="pcoded-mtext">CK-Editor</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="wysiwyg-editor.htm">
-                        <span class="pcoded-mtext">WYSIWYG Editor</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="ace-editor.htm">
-                        <span class="pcoded-mtext">Ace Editor</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="long-press-editor.htm">
-                        <span class="pcoded-mtext">Long Press Editor</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <ul class="pcoded-item pcoded-left-item">
-        <li class="pcoded-hasmenu ">
-            <a href="javascript:void(0)">
-                <span class="pcoded-micon"><i class="feather icon-file-minus"></i></span>
-                <span class="pcoded-mtext">Invoice</span>
-            </a>
-            <ul class="pcoded-submenu">
-                <li class="">
-                    <a href="invoice.htm">
-                        <span class="pcoded-mtext">Invoice</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="invoice-summary.htm">
-                        <span class="pcoded-mtext">Invoice Summary</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="invoice-list.htm">
-                        <span class="pcoded-mtext">Invoice List</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="pcoded-hasmenu ">
-            <a href="javascript:void(0)">
-                <span class="pcoded-micon"><i class="feather icon-calendar"></i></span>
-                <span class="pcoded-mtext">Event Calendar</span>
-            </a>
-            <ul class="pcoded-submenu">
-                <li class="">
-                    <a href="event-full-calender.htm">
-                        <span class="pcoded-mtext">Full Calendar</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="event-clndr.htm">
-                        <span class="pcoded-mtext">CLNDER</span>
-                        <span class="pcoded-badge label label-info">NEW</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="">
-            <a href="image-crop.htm">
-                <span class="pcoded-micon"><i class="feather icon-scissors"></i></span>
-                <span class="pcoded-mtext">Image Cropper</span>
-            </a>
-        </li>
-        <li class="">
-            <a href="file-upload.htm">
-                <span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span>
-                <span class="pcoded-mtext">File Upload</span>
-            </a>
-        </li>
-        <li class="">
-            <a href="change-loges.htm">
-                <span class="pcoded-micon"><i class="feather icon-briefcase"></i><b>CL</b></span>
-                <span class="pcoded-mtext">Change Loges</span>
-            </a>
-        </li>
-    </ul>
     <div class="pcoded-navigatio-lavel">Other</div>
-    <ul class="pcoded-item pcoded-left-item">
-        <li class="pcoded-hasmenu ">
-            <a href="javascript:void(0)">
-                <span class="pcoded-micon"><i class="feather icon-list"></i></span>
-                <span class="pcoded-mtext">Menu Levels</span>
-            </a>
-            <ul class="pcoded-submenu">
-                <li class="">
-                    <a href="javascript:void(0)">
-                        <span class="pcoded-mtext">Menu Level 2.1</span>
-                    </a>
-                </li>
-                <li class="pcoded-hasmenu ">
-                    <a href="javascript:void(0)">
-                        <span class="pcoded-mtext">Menu Level 2.2</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="">
-                            <a href="javascript:void(0)">
-                                <span class="pcoded-mtext">Menu Level 3.1</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="javascript:void(0)">
-                        <span class="pcoded-mtext">Menu Level 2.3</span>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
-        <li class="">
-            <a href="javascript:void(0)" class="disabled">
-                <span class="pcoded-micon"><i class="feather icon-power"></i></span>
-                <span class="pcoded-mtext">Disabled Menu</span>
-            </a>
-        </li>
-        <li class="">
-            <a href="sample-page.htm">
-                <span class="pcoded-micon"><i class="feather icon-watch"></i></span>
-                <span class="pcoded-mtext">Sample Page</span>
-            </a>
-        </li>
-    </ul>
     <div class="pcoded-navigatio-lavel">Demandes</div>
     <ul class="pcoded-item pcoded-left-item">
         <li class="">
@@ -697,38 +609,47 @@
 </div>
 @endsection
 @section('content')
+
 <div class="card-header">
     <h5>Book Now</h5>
     <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
 </div>
 <div class="card-block">
     <div class="j-wrapper j-wrapper-640">
-        <form action="j-pro/php/action.php" method="post" class="j-pro j-multistep" id="j-pro" novalidate="">
+        <form action="{{url('client/store')}}" method="post" class="j-pro j-multistep" id="j-pro" novalidate="">
+            @method('POST')
             <!-- end /.header-->
             <div class="j-content">
                 <fieldset>
                     <div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
-                        <span>Step 1/3 - Personal info</span>
+                        <span>Step 1/2 - Type d'utilisateur</span>
                     </div>
                     <!-- start name -->
                     <div class="j-unit">
-                        <label class="j-label">Your name</label>
-                        <div class="j-input">
-                            <label class="j-icon-right" for="name">
-        <i class="icofont icofont-ui-user"></i>
-    </label>
-                            <input type="text" id="name" name="name">
+                        <label class="j-label text-center">Choix du rôles de l'utilisaeur</label>
+                        @foreach ($roles as $role)
+                        <div class="j-unit checkbox-fade fade-in-primary">
+                            <label>
+                                <input type="checkbox" id="{{$role->id}}" name="role[]" value="{{$role->nom}}" required>
+                                <span class="cr">
+                                    <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                </span>
+                                <span>{{$role->nom}}</span>
+                            </label>
                         </div>
+                        @endforeach
+                        
                     </div>
+                    
                     <!-- end name -->
-                    <!-- start email phone -->
+                    <!-- start email phone ->
                     <div class="j-row">
                         <div class="j-span6 j-unit">
                             <label class="j-label">Your email</label>
                             <div class="j-input">
                                 <label class="j-icon-right" for="email">
-            <i class="icofont icofont-envelope"></i>
-        </label>
+                                    <i class="icofont icofont-envelope"></i>
+                                </label>
                                 <input type="email" id="email" name="email">
                             </div>
                         </div>
@@ -736,26 +657,91 @@
                             <label class="j-label">Phone/Mobile</label>
                             <div class="j-input">
                                 <label class="j-icon-right" for="phone">
-            <i class="icofont icofont-phone"></i>
-        </label>
+                                    <i class="icofont icofont-phone"></i>
+                                </label>
+                                <input type="text" id="phone" name="phone">
+                            </div>
+                        </div>
+                    </div-->
+                    <!-- end email phone -->
+                </fieldset>
+                <fieldset>
+                    <div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
+                        <span>Step 2/2 - Informations personnelles</span>
+                    </div>
+                    <div id="userrole">
+                        
+                    <!-- start name -->
+                    <div class="j-unit">
+                        <label class="j-label">Nom de l'entreprise</label>
+                        <div class="j-input">
+                            <label class="j-icon-right" for="name">
+                                <i class="icofont icofont-ui-user"></i>
+                            </label>
+                            <input type="text" id="name" name="name">
+                        </div>
+                    </div>
+                    <div class="j-row">
+                        <div class="j-span6 j-unit">
+                            <label class="j-label">Numero IFU</label>
+                            <div class="j-input">
+                                <label class="j-icon-right" for="email">
+                                    <i class="icofont icofont-envelope"></i>
+                                </label>
+                                <input type="text" id="identifiant" name="identifiant">
+                            </div>
+                        </div>
+                        <div class="j-span6 j-unit">
+                            <label class="j-label">Raison sociale</label>
+                            <div class="j-input">
+                                <label class="j-icon-right" for="phone">
+                                    <i class="icofont icofont-phone"></i>
+                                </label>
+                                <input type="text" id="raisonsociale" name="raisonsocialr">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end name -->
+                    <!-- start email phone -->
+                    <div class="j-row">
+                        <div class="j-span6 j-unit">
+                            <label class="j-label">Adresse Email</label>
+                            <div class="j-input">
+                                <label class="j-icon-right" for="email">
+                                    <i class="icofont icofont-envelope"></i>
+                                </label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                        </div>
+                        <div class="j-span6 j-unit">
+                            <label class="j-label">Adresse téléphonique</label>
+                            <div class="j-input">
+                                <label class="j-icon-right" for="phone">
+                                    <i class="icofont icofont-phone"></i>
+                                </label>
                                 <input type="text" id="phone" name="phone">
                             </div>
                         </div>
                     </div>
                     <!-- end email phone -->
-                </fieldset>
-                <fieldset>
-                    <div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
-                        <span>Step 2/3 - Booking details</span>
+                    
+                    <div class="j-unit">
+                        <label class="j-label">Siège</label>
+                        <div class="j-input">
+                            <label class="j-icon-right" for="name">
+                                <i class="icofont icofont-ui-user"></i>
+                            </label>
+                            <input type="text" id="siege" name="siege">
+                        </div>
                     </div>
-                    <!-- start guests -->
-                    <div class="j-row">
+                        <!-- start guests -->
+                    <!--div class="j-row">
                         <div class="j-span6 j-unit">
                             <label class="j-label">Adult guests</label>
                             <div class="j-input">
                                 <label class="j-icon-right" for="adults">
-            <i class="icofont icofont-waiter"></i>
-        </label>
+                                    <i class="icofont icofont-waiter"></i>
+                                </label>
                                 <input type="text" id="adults" name="adults">
                                 <span class="j-tooltip j-tooltip-right-top">Number of adult guests</span>
                             </div>
@@ -764,8 +750,8 @@
                             <label class="j-label">Children guests</label>
                             <div class="j-input">
                                 <label class="j-icon-right" for="children">
-            <i class="icofont icofont-woman-in-glasses"></i>
-        </label>
+                                    <i class="icofont icofont-woman-in-glasses"></i>
+                                </label>
                                 <input type="text" id="children" name="children">
                                 <span class="j-tooltip j-tooltip-right-top">Number of children</span>
                             </div>
@@ -773,13 +759,13 @@
                     </div>
                     <!-- end guests -->
                     <!-- start date -->
-                    <div class="j-row">
+                    <!--div class="j-row">
                         <div class="j-span6 j-unit">
                             <label class="j-label">Check-in date</label>
                             <div class="j-input">
                                 <label class="j-icon-right" for="date_from">
-            <i class="icofont icofont-ui-calendar"></i>
-        </label>
+                                    <i class="icofont icofont-ui-calendar"></i>
+                                </label>
                                 <input type="text" id="date_from" name="date_from" readonly="">
                             </div>
                         </div>
@@ -787,26 +773,14 @@
                             <label class="j-label">Check-out date</label>
                             <div class="j-input">
                                 <label class="j-icon-right" for="date_to">
-            <i class="icofont icofont-ui-calendar"></i>
-        </label>
+                                    <i class="icofont icofont-ui-calendar"></i>
+                                </label>
                                 <input type="text" id="date_to" name="date_to" readonly="">
                             </div>
                         </div>
-                    </div>
+                    </div-->
                     <!-- end date -->
-                </fieldset>
-                <fieldset>
-                    <div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
-                        <span>Step 3/3 - Comments</span>
                     </div>
-                    <!-- start message -->
-                    <div class="j-unit">
-                        <label class="j-label">Comments/Message</label>
-                        <div class="j-input">
-                            <textarea spellcheck="false" name="message"></textarea>
-                        </div>
-                    </div>
-                    <!-- end message -->
                 </fieldset>
                 <!-- start response from server -->
                 <div class="j-response"></div>
@@ -823,3 +797,11 @@
     </div>
 </div>
 @endsection
+<script>
+    function check(){
+        var id = document.getElementById();
+        if(){
+
+        }
+    }
+</script>

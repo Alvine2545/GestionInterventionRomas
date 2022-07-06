@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class ClientRoute
+class TechnicienRoute
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,9 @@ class ClientRoute
      */
     public function handle(Request $request, Closure $next)
     {
-
-        if ($request->user()->roles->nom == 'Client') {
-            return redirect('client');
+        if ($request->user()->roles->nom == 'Technicien') {
+            return redirect('technicien');
         }
- 
         return $next($request);
     }
 }

@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Roles;
 use App\Models\User;
 use App\Models\Utilisateur;
+use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
     public function home()
     {
         dd('You are active');
+    
     }
     /**
      * Display a listing of the resource.
@@ -37,8 +40,8 @@ class ClientController extends Controller
     public function create()
     {
         //Insertion dans la table
-      
-        return view('client.create_clients');
+        $roles = Roles::all();
+        return view('client.create_clients', compact('roles'));
     }
 
     /**
@@ -148,5 +151,32 @@ class ClientController extends Controller
         return redirect('/')->with('success', 'Delete Successfully');
         
 
+    }
+    public function verifyclient(Request $request)
+    {
+        $user = User::where('ifu', $request->ifu)->get();
+        if($user)
+        {
+            $user->demande = 1;
+            $user->password = $request->password;
+            $user->save();
+            //Alert::success('Success Title', 'Success Message');
+        }
+        return view('homeClient');
+        
+    }
+    public function connexion(Request $request)
+    {
+        $users = User::all();
+        foreach($users as $user)
+        {
+            if($user->ifu = $request->identifiant && Hash::check($request->password, $user->password))
+            {
+                return view('client/dashboard');
+            }
+        }
+        //Alert::success('Success Title', 'Success Message');
+        return view('homeClient');
+        
     }
 }

@@ -22,6 +22,8 @@ Route::get('/', function () {
 Route::get('connexion', function () {
     return view('connexion');
 });
+Route::get('client/register', [App\Http\Controllers\ClientController::class, 'verifyclient']);
+Route::get('client/login', [App\Http\Controllers\ClientController::class, 'connexion']);
 
 Route::middleware([
     'auth:sanctum',
@@ -32,6 +34,13 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    });
+
+
+
+//route du dashboard de l'admin
+Route::prefix('admin')->group(function()
+{
     //Route de client
     Route::get('client/liste', [App\Http\Controllers\ClientController::class, 'index']);
     Route::get('client/create', [App\Http\Controllers\ClientController::class, 'create']);
@@ -67,7 +76,5 @@ Route::middleware([
     Route::get('typeintervention/{id}/edit', 'App\Http\Controllers\TypeinverventionController@edit');
     Route::put('typeintervention/update/{id}', 'App\Http\Controllers\TypeinverventionController@update');
     Route::delete('typeintervention/destroy/{id}', 'App\Http\Controllers\TypeinverventionController@destroy');
+
 });
-
-
-

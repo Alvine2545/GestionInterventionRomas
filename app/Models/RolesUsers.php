@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class RolesUsers extends Model
 {
     use HasFactory;
+    
 }

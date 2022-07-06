@@ -76,49 +76,204 @@
         <div class="modal-content card">
             <div class="modal-body card-block">
                 <div class="login-card-modal">
-                    <form class="md-float-material">
+
                         <div class="tabbed-modal">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-justified" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#sign_in" role="tab">
-                                        <h6>Sign in</h6>
+                                        <h6>Se connecter</h6>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#regi" role="tab">
-                                        <h6>Register</h6>
+                                        <h6>S'authentifier</h6>
                                     </a>
                                 </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane active" id="sign_in" role="tabpanel">
-                                    <div class="auth-box">
-                                        <div class="row m-b-20">
-                                            <div class="col-md-3">
-                                                <h3 class="text-center txt-primary">Sign In</h3>
+                                        <div class="auth-box">
+                                            <div class="row m-b-20">
+                                                <div class="col-md-12">
+                                                    <h3 class="text-center txt-primary">Se connecter</h3>
+                                                </div>
                                             </div>
-                                            <div class="col-md-9">
-                                                <p class="text-inverse m-t-25 text-left">Don't have an account? <a href=""> Register </a> here for free!</p>
+                                            <hr>
+                                            <p class="text-inverse m-t-25">C'est votre première fois ? <a href="#regi"> S'authentifier </a> ici </p> 
+                                            <form method="post" action="{{url('client/login')}}">
+                                                @csrf
+                                            <div class="input-group row" style="margin-bottom: 8%">
+                                                <label for="number" class="col-md-4 col-md-offset-2">Numero IFU</label>
+                                                <input id = "number" type="number" required name="identifiant" class="form-control col-md-6" placeholder="IFU" required autofocus>
+                                                <span class="md-line"></span>
                                             </div>
-                                        </div>
-                                        <p class="text-inverse b-b-default text-left p-b-5">Sign in easily with your social account:</p>
-                                        <div class="row m-b-20">
-                                            <div class="col-md-6">
-                                                <button class="btn btn-facebook m-b-20"><i class="icofont icofont-social-facebook"></i>Sign in with facebook</button>
+                                            <div class="input-group row" style="margin-bottom: 8%">
+                                                <label class="col-md-4 col-md-offset-2">Mot de passe</label>
+                                                <input type="password" name="password" required class="form-control col-md-6" placeholder="Mot de passe" required autocomplete="current-password">
+                                                <span class="md-line"></span>
                                             </div>
-                                            <div class="col-md-6">
-                                                <button class="btn btn-twitter m-b-20"><i class="icofont icofont-social-twitter"></i>Sign in with twitter</button>
+                                            <div class="row m-t-25 text-left">
+                                                <div class="col-sm-6 col-xs-12">
+                                                    <div class="checkbox-fade fade-in-primary">
+                                                        <label>
+                                                            <input type="checkbox" value="" id="remember_me" name="remember" >
+                                                            <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                            <span class="text-inverse">Se souvenir de moi</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-xs-12 forgot-phone text-right">
+                                                    @if (Route::has('password.request'))
+                                                        <a href="{{ route('password.request') }}" class="text-right f-w-600 text-inverse"> Mot de passe oublié?</a>
+                                                    @endif
+                                                </div>
                                             </div>
+                                            <div class="row m-t-15">
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center">Envoyer</button>
+                                                </div>
+                                            </div>
+                                            </form>
                                         </div>
-                                        <p class="text-inverse b-b-default text-left p-b-5">Sign in with your regular account</p>
-                                        <div class="input-group">
-                                            <input type="email" class="form-control" placeholder="Username">
-                                            <span class="md-line"></span>
+                                </div>
+                                    <div class="tab-pane" id="regi" role="tabpanel">
+                                        <div class="auth-box">
+                                            <div class="row m-b-20">
+                                                <div class="col-md-12">
+                                                    <h3 class="text-center txt-primary">Authentification</h3>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <form method="post" action="{{url('client/register')}}">
+                                                @csrf
+                                            <div class="input-group row" style="margin-bottom: 8%">
+                                                <label for="number" class="col-md-4 col-md-offset-2">Numero IFU</label>
+                                                <input id = "number" type="number" name="identifiant" class="col-md-6 form-control" placeholder="IFU" required autofocus>
+                                                <span class="md-line"></span>
+                                            </div>
+                                            <div class="input-group row" style="margin-bottom: 8%">
+                                                <label class="col-md-4 col-md-offset-2">Mot de passe</label>
+                                                <input type="password" class="col-md-6 form-control" placeholder="Choose Password" name="password" required autocomplete="new-password">
+                                                <span class="md-line"></span>
+                                            </div>
+                                            <div class="input-group row" style="margin-bottom: 8%">
+                                                <label class="col-md-4 col-md-offset-2">Comfirmer mot de passe</label>
+                                                <input type="password" class="col-md-6 form-control" placeholder="Confirm Password" name="password_confirmation" required autocomplete="new-password">
+                                                <span class="md-line"></span>
+                                            </div>
+                                            <div class="row m-t-15">
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center">Enregistrer</button>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <img src="..\files\assets\images\auth\Logo-small-bottom.png" alt="small-logo.png">
+                                                </div>
+                                            </div>
+                                        </form>
                                         </div>
-                                        <div class="input-group">
-                                            <input type="password" class="form-control" placeholder="password">
-                                            <span class="md-line"></span>
-                                        </div>
-                               
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- tabbed form modal end -->
+    <!--footer-->
+
+    <footer class="bg-dark text-white p-4 po">
+        <div class="container">
+            <div class="row text-center text-md-left">
+
+                <div class="col-md-12 col-lg-3 col-xl-3">
+                    <h4 class="text-uppercase" style="color: #ECBD00">GestIntervention</h4>
+                    <p>Adipisci quasi modi tempore facere illum suscipit.</p>
+                </div>
+
+                <div class="col-md-12 col-lg-3 col-xl-3">
+                    <h4 class="text-uppercase" style="color: #ECBD00"> Devloppeurs </h4>
+                    <p>
+                        <a href="#" class="text-decoration-none text-white">
+                            Eunice ALLADAKAN
+                        </a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-decoration-none text-white">
+                            Floriane ANATO
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-md-12 col-lg-3 col-xl-3">
+                    <h4 class="text-uppercase" style="color: #ECBD00">
+                        Liens
+                    </h4>
+
+                    <p>
+                        <a href="#" class="text-decoration-none text-white">
+                            A propos
+                        </a>
+                    </p>
+
+                    <p>
+                        <a href="#" class="text-decoration-none text-white">
+                            Devenir un partenaire
+                        </a>
+                    </p>
+
+                    <p>
+                        <a href="#" class="text-decoration-none text-white">
+                            Aide
+                        </a>
+                    </p>
+
+                </div>
+
+                <div class="col-md-12 col-lg-3 col-xl-3">
+                    <h4 class="text-upeercase" style="color: #ECBD00">
+                        Contacts
+                    </h4>
+
+                    <p>
+                        <i class="fas fa-home mr-3"></i>
+                        Cotonou, Benin
+                    </p>
+
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i>
+                        <a href="#" class="text-decoration-none text-white">
+                            ecadmin@gmail.com
+                        </a>
+                    </p>
+
+                    <p>
+                        <i class="fas fa-phone mr-3"></i>
+                        +229 66534045
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!--footer-->
+
+    <!-- js bootstrap -->
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script>
+
+</body>
+
+</html>
