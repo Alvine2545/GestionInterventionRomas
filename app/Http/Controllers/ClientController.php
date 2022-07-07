@@ -57,7 +57,7 @@ class ClientController extends Controller
         $users_role = new Roles();
         $users_role->nom = $request->role;
         $users_role->save();
-        if($request->role = 'client')
+        if($request->role = 'Client')
         {
             $users->nom = $request->nom;
             $users->email = $request->email;
@@ -67,7 +67,7 @@ class ClientController extends Controller
             $users->username = $request->username;
             $users->mdp = $request->password;
         }
-        if($request->role = 'responsable')
+        if($request->role = 'Responsable')
         {
             $users->nom = $request->nom;
             $users->prenom = $request->prenom;
@@ -76,7 +76,7 @@ class ClientController extends Controller
             $users->username = $request->username;
             $users->mdp = $request->password;
         }
-        if($request->role = 'technicien')
+        if($request->role = 'Technicien')
         {
             $users->nom = $request->nom;
             $users->prenom = $request->prenom;
@@ -89,7 +89,7 @@ class ClientController extends Controller
             $users->mdp = $request->password;
         }
         $users->save();
-        //$users->roles()->attach($users_role->id);
+        $users->roles()->attach($users_role->id);
         return view('Client.index_clients');
         //return redirect('/')->with('success', 'Create Successfully');
         //return view('store_clients', compact('clients'));

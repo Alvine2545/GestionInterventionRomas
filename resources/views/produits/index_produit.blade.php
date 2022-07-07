@@ -1406,11 +1406,7 @@
 </div>
 @endsection
 @section('content')
-<div class="card-header">
-    <h5>Filtering</h5>
-    <span>Include filtering in your FooTable.</span>
 
-</div>
 <div class="card-block">
     <table id="demo-foo-filtering" class="table table-striped">
         <thead>
@@ -1433,14 +1429,14 @@
                     <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                 </td> 
                 <td class="">
-                    <form method="POST" action="{{url('admin/produit/destroy', $value->id)}}">
+                    <form method="POST" action="{{url('produit/destroy', $value->id)}}">
                         @csrf
                         @method('DELETE')
                         
                         <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" >Supprimer<i class="icofont icofont-trash" color="red"></i></button>
                         </span>
                     </form>
-                    <form method="post" action="{{url('admin/produit/edit',$value->id)}}">
+                    <form method="post" action="{{url('produit/edit',$value->id)}}">
                         @method('GET')
                         <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" >Modifier<i class="feather icon-edit-1"></i></button>
                         </span>

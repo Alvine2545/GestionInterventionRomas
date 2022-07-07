@@ -616,7 +616,7 @@
 </div>
 <div class="card-block">
     <div class="j-wrapper j-wrapper-640">
-        <form action="{{url('client/store')}}" method="post" class="j-pro j-multistep" id="j-pro" novalidate="">
+        <form action="{{url('client/store')}}" method="post" class="j-pro j-multistep" id="j-pro" >
             @method('POST')
             <!-- end /.header-->
             <div class="j-content">
@@ -630,7 +630,7 @@
                         @foreach ($roles as $role)
                         <div class="j-unit checkbox-fade fade-in-primary">
                             <label>
-                                <input type="checkbox" id="{{$role->id}}" name="role[]" value="{{$role->nom}}" required>
+                                <input type="checkbox" id="{{$role->id}}" name="role" value="{{$role->nom}}">
                                 <span class="cr">
                                     <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
                                 </span>
@@ -672,68 +672,7 @@
                     <div id="userrole">
                         
                     <!-- start name -->
-                    <div class="j-unit">
-                        <label class="j-label">Nom de l'entreprise</label>
-                        <div class="j-input">
-                            <label class="j-icon-right" for="name">
-                                <i class="icofont icofont-ui-user"></i>
-                            </label>
-                            <input type="text" id="name" name="name">
-                        </div>
-                    </div>
-                    <div class="j-row">
-                        <div class="j-span6 j-unit">
-                            <label class="j-label">Numero IFU</label>
-                            <div class="j-input">
-                                <label class="j-icon-right" for="email">
-                                    <i class="icofont icofont-envelope"></i>
-                                </label>
-                                <input type="text" id="identifiant" name="identifiant">
-                            </div>
-                        </div>
-                        <div class="j-span6 j-unit">
-                            <label class="j-label">Raison sociale</label>
-                            <div class="j-input">
-                                <label class="j-icon-right" for="phone">
-                                    <i class="icofont icofont-phone"></i>
-                                </label>
-                                <input type="text" id="raisonsociale" name="raisonsocialr">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end name -->
-                    <!-- start email phone -->
-                    <div class="j-row">
-                        <div class="j-span6 j-unit">
-                            <label class="j-label">Adresse Email</label>
-                            <div class="j-input">
-                                <label class="j-icon-right" for="email">
-                                    <i class="icofont icofont-envelope"></i>
-                                </label>
-                                <input type="email" id="email" name="email">
-                            </div>
-                        </div>
-                        <div class="j-span6 j-unit">
-                            <label class="j-label">Adresse téléphonique</label>
-                            <div class="j-input">
-                                <label class="j-icon-right" for="phone">
-                                    <i class="icofont icofont-phone"></i>
-                                </label>
-                                <input type="text" id="phone" name="phone">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end email phone -->
                     
-                    <div class="j-unit">
-                        <label class="j-label">Siège</label>
-                        <div class="j-input">
-                            <label class="j-icon-right" for="name">
-                                <i class="icofont icofont-ui-user"></i>
-                            </label>
-                            <input type="text" id="siege" name="siege">
-                        </div>
-                    </div>
                         <!-- start guests -->
                     <!--div class="j-row">
                         <div class="j-span6 j-unit">
@@ -757,7 +696,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end guests -->
+                    <!- end guests -->
                     <!-- start date -->
                     <!--div class="j-row">
                         <div class="j-span6 j-unit">
@@ -788,8 +727,8 @@
             </div>
             <!-- end /.content -->
             <div class="j-footer">
-                <button type="submit" class="btn btn-primary j-multi-submit-btn">Booking</button>
-                <button type="button" class="btn btn-primary j-multi-next-btn">Next</button>
+                <button type="submit" class="btn btn-primary j-multi-submit-btn" id="envoi">Booking</button>
+                <button type="button" class="btn btn-primary j-multi-next-btn" id = "next">Next</button>
                 <button type="button" class="btn btn-default m-r-20 j-multi-prev-btn">Back</button>
             </div>
             <!-- end /.footer -->
@@ -797,11 +736,36 @@
     </div>
 </div>
 @endsection
-<script>
-    function check(){
-        var id = document.getElementById();
-        if(){
+<script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('files\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
 
-        }
-    }
+<script>
+    $(document).ready(function() {
+        $('#next').click(function(){ 
+        var cases = document.getElementById("j-pro").role;
+        for(var i=0; i<cases.length; i++){
+            if(cases[i].checked){
+                if(cases[i].value == "Client"){
+                    console.log(cases[i].value);
+                    $('#userrole').html('<div class="j-unit"><label class="j-label">Nom de l\'entreprise *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Numero IFU *</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Raison sociale</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
+                }else if(cases[i].value == "Technicien"){
+                    console.log(cases[i].value);
+                    $('#userrole').html('<div class="j-unit"><label class="j-label">Nom *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Prénom *</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Email *</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
+                 
+                }else if(cases[i].value == "Responsable"){
+                    console.log(cases[i].value);
+                    $('#userrole').html('<div class="j-unit"><label class="j-label">Nom *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Numero IFU</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Raison sociale</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
+                 
+                }
+            }
+        }        
+    });
+
+    $('#envoi').click(function(){ 
+        $('#j-pro').submit();
+        console.log("gfds");
+    });
+    
+});
+    
 </script>

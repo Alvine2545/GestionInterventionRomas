@@ -47,7 +47,7 @@ class ProduitController extends Controller
     
         $produit = Produit::create($validatedData);
     
-        return redirect('Admin/produit/liste')->with('Super', 'Produit créer avec succès');
+        return redirect('produit/liste')->with('Super', 'Produit créer avec succès');
     }
 
     /**

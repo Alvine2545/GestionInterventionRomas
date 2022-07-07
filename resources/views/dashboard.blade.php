@@ -81,12 +81,12 @@
             </a>
             <ul class="pcoded-submenu">
                 <li class=" ">
-                    <a href="alert.htm">
+                    <a href="{{url('produit/create')}}">
                         <span class="pcoded-mtext">Créer produit</span>
                     </a>
                 </li>
                 <li class=" ">
-                    <a href="breadcrumb.htm">
+                    <a href="{{url('produit/index')}}">
                         <span class="pcoded-mtext">Les produits</span>
                     </a>
                 </li>
