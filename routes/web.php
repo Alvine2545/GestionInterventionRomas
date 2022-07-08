@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PanneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +43,7 @@ Route::middleware([
 Route::prefix('admin')->group(function()
 {
 
-    Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+    //Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
     //Route de client
     Route::get('client/liste', [App\Http\Controllers\ClientController::class, 'index']);
@@ -80,4 +81,13 @@ Route::prefix('admin')->group(function()
     Route::put('typeintervention/update/{id}', 'App\Http\Controllers\TypeinverventionController@update');
     Route::delete('typeintervention/destroy/{id}', 'App\Http\Controllers\TypeinverventionController@destroy');
 
+
 });
+
+Route::get('pannes/liste', [App\Http\Controllers\PanneController::class, 'index']);
+Route::get('pannes/create', [App\Http\Controllers\PanneController::class, 'create']);
+Route::get('pannes/show/{id}', 'App\Http\Controllers\PanneController@show');
+Route::post('pannes/store', [App\Http\Controllers\PanneController::class, 'store']);
+Route::get('pannes/{id}/edit', 'App\Http\Controllers\PanneController@edit');
+Route::put('pannes/update/{id}', 'App\Http\Controllers\PanneController@update');
+Route::delete('pannes/destroy/{id}', 'App\Http\Controllers\PanneController@destroy');

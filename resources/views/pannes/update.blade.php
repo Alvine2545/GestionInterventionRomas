@@ -20,7 +20,7 @@
   
         <form method="post" action="{{ route('pannes/update', $pannes->id)}}">
           @csrf
-          @method('GET')
+          @method('PUT')
           <div class="card">
             <div class="card-header">
                 <h5>Modifier la panne</h5>
