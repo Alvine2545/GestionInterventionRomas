@@ -44,7 +44,7 @@ class Type_devisController extends Controller
         $typedevis->nom = $request->nom;
         $typedevis->save();
         //$task = Task::create($request->all());
-        return redirect('Admin/typedevis/liste')->with('success', 'Create Successfully');
+        return redirect('admin/typedevis/liste')->with('success', 'Create Successfully');
     }
 
     /**
@@ -87,7 +87,7 @@ class Type_devisController extends Controller
         $typedevis->update([
             "nom"=>$request->nom
         ]);
-        return redirect(route("Admin/typedevis/liste"));
+        return redirect(route("admin/typedevis/liste"));
         //return redirect('typedevis')->with('success', 'Create Successfully');
     }
 
@@ -101,8 +101,8 @@ class Type_devisController extends Controller
     {
         //
         $idClient = TypeDevis::find($id);
-        $idClient->truncate();
-        return redirect('Admin/typedevis/liste')->with('success', 'Delete Successfully');
+        $idClient->destroy();
+        return redirect('admin/typedevis/liste')->with('success', 'Delete Successfully');
         
     }
 }

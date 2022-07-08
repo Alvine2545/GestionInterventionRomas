@@ -1270,7 +1270,6 @@
         <div class="page-header-title">
             <div class="d-inline">
                 <h4>Liste des utilisateurs</h4>
-                <span>Lorem ipsum dolor sit <code>amet</code>, consectetur adipisicing elit</span>
             </div>
         </div>
     </div>
@@ -1309,7 +1308,6 @@
             
             <tr>
                 @foreach ($clients as $client)
-                {{dd($client->raisonSocial)}}
                 <th scope="row">{{$client->id}}</th>
                 <td class=""><span class="">{{$client->raisonSocial}}</span>
                     <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->

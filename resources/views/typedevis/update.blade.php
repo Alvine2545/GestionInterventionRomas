@@ -1385,7 +1385,6 @@
         <div class="page-header-title">
             <div class="d-inline">
                 <h4>Modifier un type de devis</h4>
-                <span>Lorem ipsum dolor sit <code>amet</code>, consectetur adipisicing elit</span>
             </div>
         </div>
     </div>
@@ -1409,7 +1408,7 @@
 @section('content')
 <div class="card-block">
                                    
-    <form id="main" method="GET" action="{{route('typedevis/update', $typedevis->id)}}" novalidate="">
+    <form id="main" method="GET" action="{{url('admin/typedevis/update', $typedevis->id)}}" novalidate="">
         @method('GET')
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Nom du devis</label>

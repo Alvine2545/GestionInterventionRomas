@@ -15,12 +15,12 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="dashboard-crm.htm">
+                    <a href="{{url('admin/client/liste')}}">
                         <span class="pcoded-mtext">Les utilisateurs</span>
                     </a>
                 </li>
                 <li class="">
-                    <a href="{{url('client/create')}}">
+                    <a href="{{url('admin/client/create')}}">
                         <span class="pcoded-mtext">Ajouter utilisateur</span>
                     </a>
                 </li>
@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class=" ">
-                            <a href="{{url('client/create')}}">
+                            <a href="{{url('admin/client/create')}}">
                                 <span class="pcoded-mtext">Ajouter client</span>
                             </a>
                         </li>
@@ -81,12 +81,12 @@
             </a>
             <ul class="pcoded-submenu">
                 <li class=" ">
-                    <a href="{{url('produit/create')}}">
+                    <a href="{{url('admin/produit/create')}}">
                         <span class="pcoded-mtext">Créer produit</span>
                     </a>
                 </li>
                 <li class=" ">
-                    <a href="{{url('produit/index')}}">
+                    <a href="{{url('admin/produit/index')}}">
                         <span class="pcoded-mtext">Les produits</span>
                     </a>
                 </li>
@@ -136,7 +136,6 @@
                 <li class=" ">
                     <a href="notify.htm">
                         <span class="pcoded-mtext">PNOTIFY</span>
-                        <span class="pcoded-badge label label-info">NEW</span>
                     </a>
                 </li>
                 <li class=" ">
@@ -304,6 +303,11 @@
                     </a>
                 </li>
                 <li class=" ">
+                    <a href="{{('admin/typeintervention/create')}}">
+                        <span class="pcoded-mtext">Type interventions</span>
+                    </a>
+                </li>
+                <li class=" ">
                     <a href="bs-table-border.htm">
                         <span class="pcoded-mtext">Interventions</span>
                     </a>
@@ -343,13 +347,13 @@
             </a>
             <ul class="pcoded-submenu">
                 <li class="">
-                    <a href="error.htm">
-                        <span class="pcoded-mtext">Créer un devis</span>
+                    <a href="{{('admin/typedevis/create')}}">
+                        <span class="pcoded-mtext">Créer un type de devis</span>
                     </a>
                 </li>
                 <li class="">
-                    <a href="comming-soon.htm">
-                        <span class="pcoded-mtext">Lies des sevoir</span>
+                    <a href="{{('admin/typedevis/liste')}}">
+                        <span class="pcoded-mtext">Liste des devis</span>
                     </a>
                 </li>
                 <li class="">
@@ -362,7 +366,7 @@
         <li class="pcoded-hasmenu ">
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                <span class="pcoded-mtext">Rapporte</span>
+                <span class="pcoded-mtext">Rapport</span>
             </a>
             <ul class="pcoded-submenu">
                 <li class="">
@@ -540,7 +544,6 @@
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-award"></i></span>
                 <span class="pcoded-mtext">Job Search</span>
-                <span class="pcoded-badge label label-danger">NEW</span>
             </a>
             <ul class="pcoded-submenu">
                 <li class="">

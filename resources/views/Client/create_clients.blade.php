@@ -761,10 +761,7 @@
         }        
     });
 
-    $('#envoi').click(function(){ 
-        $('#j-pro').submit();
-        console.log("gfds");
-    });
+    
     
 });
     

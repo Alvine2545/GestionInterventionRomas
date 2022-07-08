@@ -628,7 +628,7 @@
       </div><br />
     @endif
 
-      <form method="post" action="{{ url('produit/store') }}">
+      <form method="post" action="{{ url('admin/produit/store') }}">
         @csrf
         @method('POST')
           <div class="card-block">

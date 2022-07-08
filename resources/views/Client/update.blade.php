@@ -41,7 +41,7 @@
                                 
                                 <div class="card-block">
                                    
-                                    <form id="main" method="GET" action="{{route('client.edit', $client->id)}}" novalidate="">
+                                    <form id="main" method="GET" action="{{url('admin/client/edit', $client->id)}}" novalidate="">
                                         @csrf
                                         @method('GET')
                                         <input type="hidden" name="_method" value="GET">

@@ -1407,14 +1407,14 @@
 @endsection
 @section('content')
 
-<div class="card-block">
-    <table id="demo-foo-filtering" class="table table-striped">
+<div class="card-block" style="width: 80%; margin-left: 10%">
+    <table id="demo-foo-filtering" class="table table-striped text-align-center" >
         <thead>
             <tr>
                 <th>#</th>
                 <th data-breakpoints="xs">Nom</th>
                 <th data-breakpoints="xs">Type</th>
-                <th data-breakpoints="xs">Action</th>
+                <th data-breakpoints="xs">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -1428,17 +1428,17 @@
                 <td class=""><span class="">{{$value->type}}</span>
                     <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                 </td> 
-                <td class="">
-                    <form method="POST" action="{{url('produit/destroy', $value->id)}}">
+                <td class="row">
+                    <form method="POST" action="{{url('admin/produit/destroy', $value->id)}}">
                         @csrf
                         @method('DELETE')
                         
-                        <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" >Supprimer<i class="icofont icofont-trash" color="red"></i></button>
+                        <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" class="btn btn-primary" >Supprimer<i class="icofont icofont-trash" color="red"></i></button>
                         </span>
                     </form>
-                    <form method="post" action="{{url('produit/edit',$value->id)}}">
+                    <form method="post" action="{{url('admin/produit/edit',$value->id)}}" >
                         @method('GET')
-                        <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" >Modifier<i class="feather icon-edit-1"></i></button>
+                        <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" class="btn btn-danger" >Modifier<i class="feather icon-edit-1"></i></button>
                         </span>
                     </form>
                     

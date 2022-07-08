@@ -47,7 +47,7 @@ class ProduitController extends Controller
     
         $produit = Produit::create($validatedData);
     
-        return redirect('produit/liste')->with('Super', 'Produit créer avec succès');
+        return redirect('admin/produit/liste')->with('Super', 'Produit créer avec succès');
     }
 
     /**
@@ -73,7 +73,7 @@ class ProduitController extends Controller
     {
         //
         $produit = Produit::find($id);
-        return view('produits.update', compact('produit'));
+        return view('produits/update', compact('produit'));
     }
 
     /**
@@ -86,16 +86,18 @@ class ProduitController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $type_inter = Produit::find($id);
+        //$type_inter = Produit::find($id);
        // $type_inter = TypeIntervention::find($id);
        //$type_inter->update();
-       $validatedData = $request->validate([
+      /* $validatedData = $request->validate([
             'nom' => 'required|max:255',
         ]);
+        
+        Produit::whereId($id)->update($validatedData);*/
+        $client = Produit::find($id);
+        $client->update($request->all());
     
-        Produit::whereId($id)->update($validatedData);
-    
-        return redirect('Admin/produit/liste')->with('Super', 'Produit mise à jour avec succès');
+        return redirect('admin/produit/liste')->with('Super', 'Produit mise à jour avec succès');
     }
 
     /**
@@ -107,9 +109,10 @@ class ProduitController extends Controller
     public function destroy($id)
     {
         //
-        $type_inter = Produit::find($id);
-        $type_inter->truncate();
+        /*$type_inter = Produit::find($id);
+        $type_inter->truncate();*/
+        Produit::destroy($id);
     
-        return redirect('Admin/produit/liste')->with('Super', 'Produit supprimer avec succès');
+        return redirect('admin/produit/liste')->with('Super', 'Produit supprimer avec succès');
     }
 }
