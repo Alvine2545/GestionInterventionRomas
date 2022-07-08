@@ -4,7 +4,17 @@
     .uper {
       margin-top: 40px;
     }
-  </style>
+    html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+footer {position: absolute; bottom: 0; left: 0; right: 0}
+</style>
   
     @if(session()->get('success'))
       <div class="alert alert-success">
@@ -13,28 +23,28 @@
     @endif
   
     <table class="table table-striped">
-      <form action="{{ route('pannes/liste')}}" method="post">
-        @csrf
-        @method('GET')
-      </form>
+     
       <div class="card">
         <div class="card-header">
             <h5>Liste des pannes</h5>
-  
         </div>
-        <div class="card-block">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered" id="example-2">
                     <tbody>
-                      
+                      <?php $i = 1; ?>
                         @foreach($pannes as $value)
-                        
                         <tr>
-                            <td>{{$value->id}}</td>
+                            <td>{{$i++}}</td>
                             <td>{{$value->description}}</td>
-                            <td><a href="{{route('pannes/{id}/edit')}}" class="btn btn-primary">Modifier</a></td>
                             <td>
-                                <form action="{{route('pannes/destroy/{id}')}}" method="post">
+                              <form method="POST" action="{{url('pannes/edit',$value->id)}}">
+                                @csrf
+                                @method('GET')
+                                <button class="btn btn-primary" type="submit">Modifier<i class="icofont icofont-trash" color="red"></i></button>
+                            </form>
+                          </td>
+                            <td>
+                                <form action="{{url('pannes/destroy',$value->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                   <button class="btn btn-danger" type="submit">Supprimer</button>
@@ -45,7 +55,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
     </div>
    
 @endsection

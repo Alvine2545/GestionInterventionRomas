@@ -12,7 +12,7 @@ class Panne extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'description', 
+        'description', 'produit',
     ];
 
     public function client()
