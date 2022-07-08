@@ -116,8 +116,8 @@ Route::prefix('technicien')->group(function()
 
 Route::get('pannes/liste', [App\Http\Controllers\PanneController::class, 'index']);
 Route::get('pannes/create', [App\Http\Controllers\PanneController::class, 'create']);
-Route::get('pannes/show/{id}', 'App\Http\Controllers\PanneController@show');
+Route::get('pannes/show/{id}', [App\Http\Controllers\PanneController::class, 'show']);
 Route::post('pannes/store', [App\Http\Controllers\PanneController::class, 'store']);
-Route::get('pannes/{id}/edit', 'App\Http\Controllers\PanneController@edit');
-Route::put('pannes/update/{id}', 'App\Http\Controllers\PanneController@update');
-Route::delete('pannes/destroy/{id}', 'App\Http\Controllers\PanneController@destroy');
+Route::get('pannes/edit/{id}', [App\Http\Controllers\PanneController::class, 'edit']);
+Route::put('pannes/update/{id}', [App\Http\Controllers\PanneController::class, 'update']);
+Route::delete('pannes/destroy/{id}', [App\Http\Controllers\PanneController::class, 'destroy']);

@@ -97,9 +97,9 @@ dd($book);*/
     public function edit($id)
     {
         $pane = Panne::find($id);
-      
-
-    return view('pannes.edit', compact('pane'));
+        /*$produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')->where('Installations.client_id',$client_id)->select('Produitinstalles.*', 'Produits.nom')->get();
+        $produits = Produit::where(id)*/
+    return view('pannes.update', compact('pane'));
     }
 
     /**
@@ -116,6 +116,7 @@ dd($book);*/
       
        $validatedData = $request->validate([
             'description' => 'required|max:255',
+            
         ]);
     
           Panne::whereId($id)->update($validatedData);
@@ -134,7 +135,7 @@ dd($book);*/
     {
         //
         $pane = Panne::find($id);
-        $pane->destroy();
+        $pane->delete();
     
         return redirect('pannes/liste')->with('Super', 'Panne supprimer avec succès');
     }
