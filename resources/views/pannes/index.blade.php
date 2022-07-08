@@ -36,7 +36,7 @@
                             <td>
                                 <form action="{{route('pannes/destroy/{id}')}}" method="post">
                                   @csrf
-                                  @method('GET')
+                                  @method('DELETE')
                                   <button class="btn btn-danger" type="submit">Supprimer</button>
                                 </form>
                             </td>

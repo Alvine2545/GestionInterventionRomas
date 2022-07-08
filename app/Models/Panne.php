@@ -11,6 +11,9 @@ use App\Models\Client;
 class Panne extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'description', 
+    ];
 
     public function client()
     {

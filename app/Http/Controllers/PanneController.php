@@ -43,7 +43,7 @@ dd($book);*/
         $install= Installation::where('client_id',$client_id)->get();
         $produits = Produit::where('')*/
         //$produits = Produit::where('Produits.id', 'Produitinstalle.produit_id')->where('Installation.id', 'Produitinstalle.installation_id')->where('Installation.client_id', 'Client.id')->where('Client.id', $client_id)->get();
-        $produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installation_id', '=', 'Installations.id')->where('Installations.client_id',$client_id)->select('Produitinstalles.*', 'Produits.nom')->get();
+        $produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')->where('Installations.client_id',$client_id)->select('Produitinstalles.*', 'Produits.nom')->get();
         //$users = DB::table('users')->select('name', 'email as user_email')->get();
         return view('pannes.create',compact('produits'));
     }
@@ -57,11 +57,22 @@ dd($book);*/
     public function store(Request $request)
     {
         //
+        $client_id= Auth::user()->id;
         $validatedData = $request->validate([
             'description' => 'required|max:255',
+            'produit' => 'required',
         ]);
-        
-        $pane = Panne::create($validatedData);
+        $pane = new Panne();
+        $pane->description= $request->description;
+        $pane->produitinstalles_id= $request->produit;
+        $pane->client_id= $client_id;
+        $pane->save();
+        /*$pane = Panne::create([
+            'description' =>$request->description,
+            'produitinstalles_id'=>$request->produit,
+            'client_id' => $request->client,
+        ]); */
+        //$pane = Panne::create($validatedData);
     
         return redirect('pannes/liste')->with('Super', 'Votre panne créer avec succès');
     }
@@ -123,7 +134,7 @@ dd($book);*/
     {
         //
         $pane = Panne::find($id);
-        $pane->delete();
+        $pane->destroy();
     
         return redirect('pannes/liste')->with('Super', 'Panne supprimer avec succès');
     }

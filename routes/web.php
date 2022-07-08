@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\InstallationComponent;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PanneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,3 +110,11 @@ Route::prefix('technicien')->group(function()
     Route::put('client/update/{id}', 'App\Http\Controllers\ClientController@update');
     Route::delete('client/destroy/{id}', 'App\Http\Controllers\ClientController@destroy');*/
 });
+
+Route::get('pannes/liste', [App\Http\Controllers\PanneController::class, 'index']);
+Route::get('pannes/create', [App\Http\Controllers\PanneController::class, 'create']);
+Route::get('pannes/show/{id}', 'App\Http\Controllers\PanneController@show');
+Route::post('pannes/store', [App\Http\Controllers\PanneController::class, 'store']);
+Route::get('pannes/{id}/edit', 'App\Http\Controllers\PanneController@edit');
+Route::put('pannes/update/{id}', 'App\Http\Controllers\PanneController@update');
+Route::delete('pannes/destroy/{id}', 'App\Http\Controllers\PanneController@destroy');
