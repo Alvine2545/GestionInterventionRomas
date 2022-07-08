@@ -616,7 +616,7 @@
 </div>
 <div class="card-block">
     <div class="j-wrapper j-wrapper-640">
-        <form action="{{url('client/store')}}" method="post" class="j-pro j-multistep" id="j-pro" >
+        <form action="{{url('admin/client/store')}}" method="post" class="j-pro j-multistep" id="j-pro" >
             @method('POST')
             <!-- end /.header-->
             <div class="j-content">
@@ -761,6 +761,7 @@
         }        
     });
 
+    
     
     
 });

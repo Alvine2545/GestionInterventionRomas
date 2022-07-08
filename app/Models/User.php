@@ -62,4 +62,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Roles::class, 'roles_users');
     }
+    public function installations()
+    {
+        return $this->hasMany(Installation::class);
+    }
 }

@@ -99,9 +99,8 @@ class Type_devisController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $idClient = TypeDevis::find($id);
-        $idClient->destroy();
+        //Destruction
+        TypeDevis::destroy($id);
         return redirect('admin/typedevis/liste')->with('success', 'Delete Successfully');
         
     }

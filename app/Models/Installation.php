@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\Produit;
 class Installation extends Model
 {
+    
     use HasFactory;
 
     public function client()

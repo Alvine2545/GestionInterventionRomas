@@ -1403,13 +1403,11 @@
     </div>
 </div>
 @endsection
-
-@extends('layout')
 @section('content')
 <div class="card-block">
                                    
-    <form id="main" method="GET" action="{{url('admin/typedevis/update', $typedevis->id)}}" novalidate="">
-        @method('GET')
+    <form id="main" method="PUT" action="{{url('admin/typedevis/update', $typedevis->id)}}" novalidate="">
+        @method('PUT')
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Nom du devis</label>
             <div class="col-sm-10">

@@ -49,7 +49,7 @@ class TypeinverventionController extends Controller
     
         $type_inter = TypeIntervention::create($validatedData);
     
-        return redirect('Admin/typeintervention/liste')->with('Super', 'Votre type intervention créer avec succès');
+        return redirect('admin/typeintervention/liste')->with('Super', 'Votre type intervention créer avec succès');
     }
 
     /**
@@ -97,7 +97,7 @@ class TypeinverventionController extends Controller
         TypeIntervention::whereId($id)->update($validatedData);
         //$type_inter->update($request->all());*/
     
-        return redirect('Admin/typeintervention/liste')->with('Super', 'Type intervention mise à jour avec succès');
+        return redirect('admin/typeintervention/liste')->with('Super', 'Type intervention mise à jour avec succès');
     }
 
     /**
@@ -112,6 +112,6 @@ class TypeinverventionController extends Controller
         $type_inter = TypeIntervention::find($id);
         $type_inter->truncate();
     
-        return redirect('Admin/typeintervention/liste')->with('Super', 'Type intervention supprimer avec succès');
+        return redirect('admin/typeintervention/liste')->with('Super', 'Type intervention supprimer avec succès');
     }
 }

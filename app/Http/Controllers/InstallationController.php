@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Installation;
+use App\Models\Produitinstalle;
 
 class InstallationController extends Controller
 {
@@ -37,6 +38,15 @@ class InstallationController extends Controller
     public function store(Request $request)
     {
         //
+        $installation = new Installation();
+        $produitinstalle = Produitinstalle::all();
+        $installation->description = $request->description;
+        $installation->client_id = $request->client;
+        $installation->save();
+        $installation->produits()->attach($request->produit);
+        $produitinstalle->version = $request->version;
+        $produitinstalle->save();
+        return redirect()->route('admin/installation/liste');
     }
 
     /**

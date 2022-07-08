@@ -2,10 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Client;
 use App\Models\Installation;
 use App\Models\Produit;
 use App\Models\Produitinstalle;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class InstallationComponent extends Component
@@ -14,28 +17,27 @@ class InstallationComponent extends Component
     public $version;
     public $client;
     public $produit;
- 
-    /*protected $rules = [
-        'description' => 'required',
+    public $data;
+    protected $rules = [
         'version' => 'required',
-        'client' => 'required',
-        'produit' => 'required',
-    ];*/
+
+    ];
  
     public function store()
     {
-        //$this->validate();
+        $this->validate();
  
         // Execution doesn't reach here if validation fails.
-        dd('vbn,');
         $installation = new Installation();
         $produitinstalle = new Produitinstalle();
         $installation->description = $this->description;
         $installation->client_id = $this->client;
-        $installation->save();
+        $produitinstalle = new Produitinstalle();
         $produitinstalle->version = $this->version;
-        $installation->produits()->attach($this->produit);
-        return redirect()->route('admin/produit/liste');
+        $produitinstalle->installation_id = $installation->id;
+        $produitinstalle->produit_id = $this->produit;
+        $produitinstalle->save();
+        $installation->save();
         /*Installation::create([
             'description' => $this->description,
             'client_id' => $this->client,
@@ -49,9 +51,15 @@ class InstallationComponent extends Component
     }
     public function render()
     {
-        $data = array();   
-        $users = User::all();
-        $produits = Produit::all();        
-        return view('livewire.installation-component', compact('users','produits'));
+       // $this->data = DB::table('Produitinstalles')->join('Produits','Produitinstalles.produit_id','=','Produits.id')->join('Installations','Produitinstalles.installation_id','=','Installations.id')->join('Client','Installations.client_id','=','Client.id')->select('Client.*','Installations.*','Produits.*','Produitinstalles.version')->get();
+       $this->data = User::all() ; 
+       return view('livewire.installation-component')->layout('livewire.installation');
+    }
+    public function index()
+    {
+        
+        return view('livewire.installation-component', compact('users','produits'))->layout('livewire.installation');
+        
+        
     }
 }

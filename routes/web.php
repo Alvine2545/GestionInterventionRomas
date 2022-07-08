@@ -3,6 +3,7 @@
 use App\Http\Livewire\InstallationComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PanneController;
+use App\Http\Livewire\CreateClient;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,9 @@ Route::get('client', function () {
 Route::get('in', function () {
     return view('Installation/create_installations');
 });
-
+Route::get('/', function () {
+    return view('welcome');
+});
 //Route::get('/in', InstallationComponent::class);
 Route::get('connexion', function () {
     return view('connexion');
@@ -88,13 +91,13 @@ Route::prefix('admin')->group(function()
     Route::get('installation/liste', [App\Http\Controllers\Type_devisController::class, 'index']);
     Route::get('installation/create', [App\Http\Controllers\Type_devisController::class, 'create']);
     Route::get('installation/show/{id}', 'App\Http\Controllers\Type_devisController@show');
-    Route::post('installation/store', [App\Http\Controllers\Type_devisController::class, 'store']);
+    Route::post('installation/store', [App\Http\Controllers\InstallationController::class, 'store']);
     Route::get('installation/{id}/edit', 'App\Http\Controllers\Type_devisController@edit');
     Route::put('installation/update/{id}', 'App\Http\Controllers\Type_devisController@update');
     Route::delete('installation/destroy/{id}', 'App\Http\Controllers\Type_devisController@destroy');
 
 });
-
+Route::get('/instore', CreateClient::class);
 //route du dashboard de l'admin
 Route::prefix('technicien')->group(function()
 {

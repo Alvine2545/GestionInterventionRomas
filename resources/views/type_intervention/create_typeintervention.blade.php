@@ -642,12 +642,10 @@
                       </div>
                   </div>
                   <div class="row">
-                      <label class="col-sm-2"></label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-4 col-sm-offset-4">
                           <button type="submit" class="btn btn-primary m-b-0">Enregistrer</button>
                       </div>
-                      <label class="col-sm-2"></label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-4">
                           <button type="reset" class="btn btn-danger m-b-0">Annuker</button>
                       </div>
                   </div>
