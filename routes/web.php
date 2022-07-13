@@ -4,7 +4,7 @@ use App\Http\Livewire\InstallationComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PanneController;
 use App\Http\Livewire\CreateClient;
-
+use App\Http\Livewire\Adminpanne;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,7 +48,8 @@ Route::middleware([
 //route du dashboard de l'admin
 Route::prefix('admin')->group(function()
 {
-
+    //Route de l'admin pour signaler une panne
+    Route::get('/panne', Adminpanne::class);
     //Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
     //Route de client
