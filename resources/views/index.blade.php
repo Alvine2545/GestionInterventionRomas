@@ -43,8 +43,8 @@
     <nav class="navbar navbar-expand navbar-light bg-white py-0 fixed-top">
         <div class="container row">
             <!--navbar brand-->
-            <a href="" class="navbar-brand d-flex  align-items-center col-md-2 col-md-offset-6">
-                <span class="" style="color: #ECBD00">Romas Interventions</span>
+            <a href="#" class="navbar-brand d-flex  align-items-center col-md-2 col-md-offset-6">
+                <span class="" style="color: #ECBD00">ROMAS Interventions</span>
             </a>
             <!--navbar tooggler-->
             <!--button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">

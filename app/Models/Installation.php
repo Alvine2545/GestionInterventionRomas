@@ -11,9 +11,9 @@ class Installation extends Model
     
     use HasFactory;
 
-    public function client()
+    public function user()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(User::class);
     }
 
     public function produits()

@@ -8,7 +8,9 @@ use Livewire\Component;
 
 class CreateClient extends Component
 {
-    public $role;
+    public $choix = "";
+    public $role = [];
+    public $prenom;
     public $name;
     public $identifiant;
     public $raisonsociale;
@@ -16,27 +18,35 @@ class CreateClient extends Component
     public $phone;
     public $siege;
     public $data;
+    
     protected $rules = [
         'name' => 'required',
+        'role' => 'required',
 
     ];
     public function store()
     {
         //Enregistrement dans la base
         $users = new User();
+        dd($this->name);
         if($this->role = 3)
         {
-            $users->nom = $this->name;
+            dd($this->name);
+            $users->name = $this->name;
             $users->email = $this->email;
-            $users->adresse = $this->siege;
+            $users->siege = $this->siege;
             $users->tel = $this->phone;
             $users->raisonSocial = $this->raisonsociale;
-            $users->mdp = $this->identifiant;
+            $users->password = $this->identifiant;
             $users->ifu = $this->identifiant;
+            $users->save();
+            return view('livewire.create-client');
+        }else{ 
+
         }
-        if($this->role =1)
+        /*if($this->role =1)
         {
-            $users->nom = $this->nom;
+            $users->name = $this->name;
             $users->prenom = $this->prenom;
             $users->email = $this->email;
             $users->tel = $this->tel;
@@ -45,7 +55,7 @@ class CreateClient extends Component
         }
         if($this->role = 2)
         {
-            $users->nom = $this->nom;
+            $users->name = $this->name;
             $users->prenom = $this->prenom;
             $users->email = $this->email;
             $users->adresse = $this->siege;
@@ -54,14 +64,15 @@ class CreateClient extends Component
             $users->poste = $this->poste;
             $users->username = $this->username;
             $users->mdp = $this->password;
-        }
-        $users->save();
+        }*/
+        
       
-        return view('livewire.create-client');
+        
     }
     public function render()
     {
         $this->role = Roles::all();
         return view('livewire.create-client')->layout('livewire.client');
     }
+   
 }

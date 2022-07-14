@@ -727,9 +727,9 @@
             </div>
             <!-- end /.content -->
             <div class="j-footer">
-                <button type="submit" class="btn btn-primary j-multi-submit-btn" id="envoi">Booking</button>
-                <button type="button" class="btn btn-primary j-multi-next-btn" id = "next">Next</button>
-                <button type="button" class="btn btn-default m-r-20 j-multi-prev-btn">Back</button>
+                <button type="submit" class="btn btn-primary j-multi-submit-btn" id="envoi">Enregistrer</button>
+                <button type="button" class="btn btn-primary j-multi-next-btn" id = "next">Suivant</button>
+                <button type="button" class="btn btn-default m-r-20 j-multi-prev-btn">Précédent</button>
             </div>
             <!-- end /.footer -->
         </form>

@@ -17,12 +17,16 @@ class InstallationComponent extends Component
     public $version;
     public $client;
     public $produit;
+    public $produits;
     public $data;
+    public $updateMode;
+    public $createMode;
+    public $installation;
+    public $nouveau;
     protected $rules = [
         'version' => 'required',
 
     ];
- 
     public function store()
     {
         $this->validate();
@@ -52,14 +56,47 @@ class InstallationComponent extends Component
     public function render()
     {
        // $this->data = DB::table('Produitinstalles')->join('Produits','Produitinstalles.produit_id','=','Produits.id')->join('Installations','Produitinstalles.installation_id','=','Installations.id')->join('Client','Installations.client_id','=','Client.id')->select('Client.*','Installations.*','Produits.*','Produitinstalles.version')->get();
-       $this->data = User::all() ; 
-       return view('livewire.installation-component')->layout('livewire.installation');
+       //Liste des installations
+       $this->data = User::all() ;
+       $this->produits = Produit::all();
+       $this->installation = DB::table('Produitinstalles')
+       ->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')
+       ->join('Installations', 'Produitinstalles.installation_id', '=', 'Installations.id')
+       ->join('Users', 'Installations.client_id', '=', 'Users.id')
+       ->select(['Produitinstalles.id As id', 'Installations.id As installation_id', 'Produits.nom As produits', 'Produits.type As type', 'Produitinstalles.version As version', 'Users.name As nom', 'Installations.description As description'])
+       ->get();
+        
+       return view('livewire.installation-component')->layout('livewire.installation'); 
     }
-    public function index()
+    public function nouveau()
     {
+        $this->createMode = "oui";
         
-        return view('livewire.installation-component', compact('users','produits'))->layout('livewire.installation');
+          
+      // return view('livewire.create_Installation')->layout('livewire.installation');        
         
-        
+    }
+    public function destroy($first, $second)
+    { 
+        if ($first && $second)
+        {
+            
+            $idInstallation = Produitinstalle::where('id', $second);
+            dd($idInstallation);
+            $idInstallation->delete();
+            $idProduitinstalle = Produitinstalle::where('id', $first);
+            $idProduitinstalle->delete(); 
+        }
+    }
+    public function edit($first, $second)
+    { 
+        $idProduitinstalle = Produitinstalle::findOrFail($first)->join('Installations','Produitinstalle.installation_id', '=', 'Installations.id');
+        dd($idProduitinstalle);
+        /*$this->selected_id = $id;
+        $this->produits = $record->name;
+        $this->nom = $record->phone;
+        $this->version = $record->version;
+        $this->client = $record->phone;
+        $this->updateMode = true;*/
     }
 }

@@ -32,6 +32,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\icon\feather\css\feather.css')}}">
     <!--forms-wizard css-->
     <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\jquery.steps\css\jquery.steps.css')}}">
+    <!-- Calender css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\fullcalendar\css\fullcalendar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\fullcalendar\css\fullcalendar.print.css')}}" media='print'>
+    
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\jquery.mCustomScrollbar.css')}}">
@@ -398,7 +402,11 @@
 <![endif]-->
     <!-- Warning Section Ends -->
     <!-- Required Jquery -->
+
+    
+    <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.ui.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
+
     <!-- jquery slimscroll js -->
     <script type="text/javascript" src="{{asset('files\bower_components\jquery-slimscroll\js\jquery.slimscroll.js')}}"></script>
     
@@ -433,7 +441,6 @@
     <script src="{{asset('files\bower_components\jquery.steps\js\jquery.steps.js')}}"></script>
     <script src="{{asset('files\bower_components\jquery-validation\js\jquery.validate.js')}}"></script>
     <!-- j-pro js -->
-    <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.ui.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.maskedinput.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.j-pro.js')}}"></script>
     <!-- Validation js -->
@@ -441,6 +448,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script type="text/javascript" src="{{asset('files\assets\pages\form-validation\validate.js')}}"></script>
     <!-- Custom js -->
+    <script type="text/javascript" src="{{asset('files\assets\pages\full-calender\calendar.js')}}"></script>
+    <!--classic JS-->
+    <script type="text/javascript" src="{{asset('files\assets\js\classie.js')}}"></script>
+    <!-- calender js -->
+    <script type="text/javascript" src="{{asset('files\bower_components\moment\js\moment.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('files\bower_components\fullcalendar\js\fullcalendar.min.js')}}"></script>
+    
     <script src="{{asset('files\assets\pages\forms-wizard-validation\form-wizard.js')}}"></script>
     <script src="{{asset('files\assets\js\pcoded.min.js')}}"></script>
     <script src="{{asset('files\assets\js\vartical-layout.min.js')}}"></script>

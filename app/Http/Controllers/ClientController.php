@@ -59,13 +59,15 @@ class ClientController extends Controller
         $users_role->save();
         if($request->role = 'Client')
         {
-            $users->nom = $request->nom;
+            $users->name = $request->name;
             $users->email = $request->email;
-            $users->adresse = $request->siege;
-            $users->tel = $request->tel;
+            $users->siege = $request->siege;
+            $users->tel = $request->phone;
             $users->raisonSocial = $request->raisonsociale;
-            $users->username = $request->username;
-            $users->mdp = $request->password;
+            //$users->username = $request->username;
+           // $users->mdp = $request->password;
+            $users->password = $this->identifiant;
+            $users->ifu = $this->identifiant;
         }
         if($request->role = 'Responsable')
         {

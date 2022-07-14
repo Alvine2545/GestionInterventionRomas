@@ -4,6 +4,9 @@ use App\Http\Livewire\InstallationComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PanneController;
 use App\Http\Livewire\CreateClient;
+use App\Http\Livewire\Planification\PlanningComponent as PlanificationPlanningComponent;
+use App\Http\Livewire\PlanningComponent;
+use Livewire\Livewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,14 +43,15 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    
 
     });
-
-
 
 //route du dashboard de l'admin
 Route::prefix('admin')->group(function()
 {
+    //Plannification
+    Route::get('/planning', PlanificationPlanningComponent::class);
 
     //Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
@@ -78,6 +82,8 @@ Route::prefix('admin')->group(function()
     Route::put('typedevis/update/{id}', 'App\Http\Controllers\Type_devisController@update');
     Route::delete('typedevis/destroy/{id}', 'App\Http\Controllers\Type_devisController@destroy');
 
+//Plannification
+
     //Route de type intervention
     Route::get('typeintervention/liste', [App\Http\Controllers\TypeinverventionController::class, 'index']);
     Route::get('typeintervention/create', [App\Http\Controllers\TypeinverventionController::class, 'create']);
@@ -88,13 +94,13 @@ Route::prefix('admin')->group(function()
     Route::delete('typeintervention/destroy/{id}', 'App\Http\Controllers\TypeinverventionController@destroy');
 
     //Routes des installations
-    Route::get('installation/liste', [App\Http\Controllers\Type_devisController::class, 'index']);
-    Route::get('installation/create', [App\Http\Controllers\Type_devisController::class, 'create']);
-    Route::get('installation/show/{id}', 'App\Http\Controllers\Type_devisController@show');
+    Route::get('installation/liste', [App\Http\Controllers\InstallationController::class, 'index']);
+    Route::get('installation/create', [App\Http\Controllers\InstallationController::class, 'create']);
+    Route::get('installation/show/{id}', 'App\Http\Controllers\InstallationController@show');
     Route::post('installation/store', [App\Http\Controllers\InstallationController::class, 'store']);
-    Route::get('installation/{id}/edit', 'App\Http\Controllers\Type_devisController@edit');
-    Route::put('installation/update/{id}', 'App\Http\Controllers\Type_devisController@update');
-    Route::delete('installation/destroy/{id}', 'App\Http\Controllers\Type_devisController@destroy');
+    Route::get('installation/{id}/edit', 'App\Http\Controllers\InstallationController@edit');
+    Route::put('installation/update/{id}', 'App\Http\Controllers\InstallationController@update');
+    Route::delete('installation/destroy/{id}', 'App\Http\Controllers\InstallationController@destroy');
 
 });
 Route::get('/instore', CreateClient::class);
@@ -121,3 +127,7 @@ Route::post('pannes/store', [App\Http\Controllers\PanneController::class, 'store
 Route::get('pannes/edit/{id}', [App\Http\Controllers\PanneController::class, 'edit']);
 Route::put('pannes/update/{id}', [App\Http\Controllers\PanneController::class, 'update']);
 Route::delete('pannes/destroy/{id}', [App\Http\Controllers\PanneController::class, 'destroy']);
+
+
+//Livewire::component('planning-component', PlanningComponent::class);
+Route::get('/plan', PlanningComponent::class);

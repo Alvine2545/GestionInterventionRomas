@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('plannings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('priorite');
+            $table->string('debut');
+            $table->string('fin');
+            $table->date('date');
             $table->foreignId('typeinterventions_id')->constrained('type_interventions');
             $table->foreignId('responsables_id')->constrained('responsables');
             $table->foreignId('pannes_id')->constrained('pannes');
