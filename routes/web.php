@@ -8,6 +8,7 @@ use App\Http\Livewire\Planification\PlanningComponent as PlanificationPlanningCo
 use App\Http\Livewire\PlanningComponent;
 use Livewire\Livewire;
 
+use App\Http\Livewire\Adminpanne;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,6 +54,8 @@ Route::prefix('admin')->group(function()
     //Plannification
     Route::get('/planning', PlanificationPlanningComponent::class);
 
+    //Route de l'admin pour signaler une panne
+    Route::get('/panne', Adminpanne::class);
     //Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
     //Route de client
