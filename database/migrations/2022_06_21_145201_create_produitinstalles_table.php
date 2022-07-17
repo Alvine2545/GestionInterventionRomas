@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('produitinstalles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('version');
-            $table->foreignId('produit_id')->constrained('produits');
-            $table->foreignId('installation_id')->constrained('installations');
+            $table->foreignId('produits_id')->constrained('produits');
+            $table->foreignId('installations_id')->constrained('installations');
             $table->timestamps();
         });
     }

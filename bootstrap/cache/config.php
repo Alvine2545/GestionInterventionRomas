@@ -47,6 +47,7 @@
       26 => 'App\\Providers\\RouteServiceProvider',
       27 => 'App\\Providers\\FortifyServiceProvider',
       28 => 'App\\Providers\\JetstreamServiceProvider',
+      29 => 'Barryvdh\\DomPDF\\ServiceProvider',
     ),
     'aliases' => 
     array (
@@ -88,6 +89,7 @@
       'URL' => 'Illuminate\\Support\\Facades\\URL',
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
+      'PDF' => 'Barryvdh\\DomPDF\\Facade',
     ),
     'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
   ),
@@ -832,6 +834,53 @@
       0 => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\resources\\views',
     ),
     'compiled' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\framework\\views',
+  ),
+  'dompdf' => 
+  array (
+    'show_warnings' => false,
+    'public_path' => NULL,
+    'convert_entities' => true,
+    'options' => 
+    array (
+      'font_dir' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\fonts',
+      'font_cache' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\fonts',
+      'temp_dir' => 'C:\\Users\\Omar\\AppData\\Local\\Temp',
+      'chroot' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas',
+      'allowed_protocols' => 
+      array (
+        'file://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+        'http://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+        'https://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'log_output_file' => NULL,
+      'enable_font_subsetting' => false,
+      'pdf_backend' => 'CPDF',
+      'default_media_type' => 'screen',
+      'default_paper_size' => 'a4',
+      'default_paper_orientation' => 'portrait',
+      'default_font' => 'serif',
+      'dpi' => 96,
+      'enable_php' => false,
+      'enable_javascript' => true,
+      'enable_remote' => true,
+      'font_height_ratio' => 1.1,
+      'enable_html5_parser' => true,
+    ),
   ),
   'flare' => 
   array (
