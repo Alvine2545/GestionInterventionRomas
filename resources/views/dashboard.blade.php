@@ -1,5 +1,6 @@
 @extends('layout1')
 @section('menu')
+    
 <div class="pcoded-inner-navbar main-menu">
     <div class="pcoded-navigatio-lavel">Navigation</div>
     <ul class="pcoded-item pcoded-left-item">
@@ -303,11 +304,6 @@
                     </a>
                 </li>
                 <li class=" ">
-                    <a href="{{('admin/typeintervention/create')}}">
-                        <span class="pcoded-mtext">Type interventions</span>
-                    </a>
-                </li>
-                <li class=" ">
                     <a href="bs-table-border.htm">
                         <span class="pcoded-mtext">Interventions</span>
                     </a>
@@ -366,7 +362,7 @@
         <li class="pcoded-hasmenu ">
             <a href="javascript:void(0)">
                 <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                <span class="pcoded-mtext">Rapport</span>
+                <span class="pcoded-mtext">Rapporte</span>
             </a>
             <ul class="pcoded-submenu">
                 <li class="">
@@ -588,8 +584,34 @@
 </div>
 @endsection
 @section('dashbord')
-    
+<div class="row align-items-end">
+    <div class="col-lg-8">
+        <div class="page-header-title">
+            <div class="d-inline">
+                <h4>Table des types de deviss</h4>
+                <span>Liste des types de devis</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="page-header-breadcrumb">
+            <ul class="breadcrumb-title">
+                <li class="breadcrumb-item">
+                    <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
+                </li>
+                <li class="breadcrumb-item"><a href="#!">Devis</a>
+                </li>
+                <li class="breadcrumb-item"><a href="#!">Types de devis</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 @endsection
 @section('content')
-    
-@endsection
+<div class="card-header">
+    <h5>Filtering</h5>
+
+</div>
+
+ @endsection

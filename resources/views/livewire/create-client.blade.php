@@ -1,5 +1,6 @@
 
-        <form wire:submit.prevent="store" class="j-pro j-multistep" id="j-pro" >
+        
+        <form wire:submit.prevent="store" class="j-pro j-multistep" id="j-pro">
             <!-- end /.header-->
             <div class="j-content">
                 <fieldset>
@@ -12,7 +13,7 @@
                         @foreach ($role as $value)
                         <div class="j-unit checkbox-fade fade-in-primary">
                             <label>
-                                <input type="checkbox" id="{{$value->id}}" name="role" value="{{$value->id}}">
+                                <input type="checkbox" id="{{$value->id}}" name = "role" value="{{$value->id}}" >
                                 <span class="cr">
                                     <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
                                 </span>
@@ -27,7 +28,8 @@
                     <div class="j-divider-text j-gap-top-20 j-gap-bottom-45">
                         <span>Step 2/2 - Informations personnelles</span>
                     </div>
-                    <div id="userrole">
+                    <div id="userrole" >
+                        
                     </div>
                 </fieldset>
                 <!-- start response from server -->
@@ -36,9 +38,9 @@
             </div>
             <!-- end /.content -->
             <div class="j-footer">
-                <button type="submit" class="btn btn-primary j-multi-submit-btn" id="envoi">Booking</button>
-                <button type="button" class="btn btn-primary j-multi-next-btn" id = "next">Next</button>
-                <button type="button" class="btn btn-default m-r-20 j-multi-prev-btn">Back</button>
+                <button type="submit" class="btn btn-primary " id="envoi" >Enregistrer</button>
+                <button type="button" class="btn btn-primary j-multi-next-btn" id = "next">Suivant</button>
+                <button type="button" class="btn btn-default m-r-20 j-multi-prev-btn">Précedent</button>
             </div>
             <!-- end /.footer -->
         </form>
