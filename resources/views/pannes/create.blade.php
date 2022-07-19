@@ -1,12 +1,20 @@
 @extends('index')
 
+<style>
+    body
+    {
+        background-color: brown;
+        /* background-image: url("res/imgs/bgW1.jpeg"); */
+    }
+
+</style>
 @section('contenu')
 <div class="pcoded-content">
   <div class="pcoded-inner-content">
       <!-- Main-body start -->
       <div class="main-body">
           <div class="page-wrapper">
-              <!-- Page-header start -->
+              <!--Page-header start -->
               <div class="page-header">
                   <div class="row align-items-end">
                       <div class="col-lg-8">
@@ -57,7 +65,8 @@
                                         @csrf
                                         @method('POST')
                                         <div class="row" style="margin-left: 10%; margin-bottom:3%" >
-                                          <select name="produit" style="width: 50%">
+                                            <label for="produit" class="col-md-4 col-md-offset-2">Produit installés</label>
+                                          <select name="produit" style="width: 50%" class="col-md-6">
                                             @foreach ($produits as $produit) {
                                               <option value="{{$produit->id}}">{{$produit->nom}} </option> 
                                           }
@@ -65,8 +74,10 @@
                                             
                                           </select>
                                         </div>
-                                          <div class="form-group row">
-                                            <div class="col-sm-6" style="margin-left: 10%">
+                                          <div class="form-group row" style="margin-left: 10%">
+                                            <label for="description" class="col-md-4 col-md-offset-2">Description de la panne</label>
+                                            <div class="col-sm-6" >
+                    
                                               <textarea type="textarea" rows="4" class="form-control" name="description" placeholder="Veuillez nous renseigner sur votre panne"></textarea>
                                               <span class="messages popover-valid"></span>
                                             </div>
@@ -75,7 +86,7 @@
                                             
                                           <div class="row">
                                             <div class="col-sm-4" style="margin-left: 10%">
-                                                <button type="submit" class="btn btn-primary m-b-0">Enregistrer</button>
+                                                <button type="submit" class="btn btn-primary m-b-0">Envoyer</button>
                                             </div>
                                             <div class="col-sm-4">
                                                 <button type="reset" class="btn btn-danger m-b-0">Annuler</button>

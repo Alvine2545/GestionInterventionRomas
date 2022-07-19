@@ -128,7 +128,7 @@
                                 <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                     <li>
                                         <h6>Notifications</h6>
-                                        <label class="label label-danger">New</label>
+                                        <label class="label label-danger">Nouvelle</label>
                                     </li>
                                     <li>
                                         <div class="media">

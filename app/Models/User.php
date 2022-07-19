@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+//use App\Notifications\Panneadmin;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +19,17 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+
+    /*$data['demande']= true; 
+    $user->notify(new Panneadmin($data));
+    //Voir les notifications
+    $user->notifications;
+    //Recevoir les notifications non lues
+    $user->unreadNotifications;
+    //Mettre à jour le statut Notification non lue
+    $user->notifications->where('id', $id)->markAsUnread();
+    //Mettre à jour le statut toutes les notifications non lues
+    $user->notifications->markAsUnread();*/
 
     /**
      * The attributes that are mass assignable.
@@ -62,7 +74,7 @@ class User extends Authenticatable
     
     public function roles()
     {
-        return $this->belongsToMany(Roles::class,'lesroles', 'users_id','roles_id');
+        return $this->belongsToMany(Roles::class,'roles_users', 'user_id','roles_id');
     }
 
     public function installations()

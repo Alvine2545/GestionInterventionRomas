@@ -69,6 +69,54 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="" for="">Adresse Email *</label>
+                                    <div class="">
+                                        <label class="j-icon-right" for="name">
+                                            <i class="icofont icofont-envelope"></i>
+                                        </label>
+                                        <input type="email" id="email"  name="email" wire:model='email'>
+                                        <span class="text-danger">@error('email'){{$message}}@enderror</span>                                  
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="" for="">Adresse téléphonique *</label>
+                                    <div class="">
+                                        <label class="j-icon-right" for="phone">
+                                            <i class="icofont icofont-phone"></i>
+                                        </label>
+                                        <input type="text" id="phone" name="phone" wire:model='phone'>
+                                        <span class="text-danger">@error('phone'){{$message}}@enderror</span>                                  
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="" for="">Siège *</label>
+                                    <div class="">
+                                        <label class="j-icon-right" for="">
+                                            <i class="icofont icofont-ui-user"></i>
+                                        </label>
+                                        <input type="text" id="siege" name="siege" wire:model='siege'>
+                                        <span class="text-danger">@error('siege'){{$message}}@enderror</span>                                  
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

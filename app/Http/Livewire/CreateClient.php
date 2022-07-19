@@ -8,30 +8,47 @@ use Livewire\Component;
 
 class CreateClient extends Component
 {
-    public $choix = "";
-    public $role = [];
+    public $choix;
+    public $role;
+    public $touslesroles;
     public $prenom;
+    public $etat;
+    public $nom;
     public $name;
     public $identifiant;
     public $raisonsociale;
     public $email;
-    public $phone;
+    public $phone; 
     public $siege;
     public $data;
+    public $update = false;
     
     protected $rules = [
-        'name' => 'required',
         'role' => 'required',
-
+        'identifiant' => 'required|max:255',
+            'phone' => 'required',
+            'email' => 'required',
+            'nom' => 'required',
+            'raisonsociale' => 'required',
+            'siege' => 'required',
     ];
     public function store()
     {
+        $this->validate([
+            'identifiant' => 'required|max:255',
+            'phone' => 'required',
+            'email' => 'required',
+            'nom' => 'required',
+            'raisonsociale' => 'required',
+            'siege' => 'required',
+        ]);
+        dd($this->nom);
         //Enregistrement dans la base
         $users = new User();
-        dd($this->name);
+        
         if($this->role = 3)
         {
-            dd($this->name);
+            dd($this->role);
             $users->name = $this->name;
             $users->email = $this->email;
             $users->siege = $this->siege;
@@ -40,7 +57,8 @@ class CreateClient extends Component
             $users->password = $this->identifiant;
             $users->ifu = $this->identifiant;
             $users->save();
-            return view('livewire.create-client');
+            
+            return view('livewire.create-client')->layout('livewire.base');
         }else{ 
 
         }
@@ -71,8 +89,18 @@ class CreateClient extends Component
     }
     public function render()
     {
-        $this->role = Roles::all();
-        return view('livewire.create-client')->layout('livewire.client');
+        //$this->validate(); 
+        // $this->validate([
+        //     'identifiant' => 'required|max:255',
+        //     'phone' => 'required',
+        //     'email' => 'required',
+        //     'nom' => 'required',
+        //     'raisonsociale' => 'required',
+        //     'siege' => 'required',
+        // ]);
+        $touslesroles = Roles::all();
+        $etat = $this->role;
+        return view('livewire.create-client', ['roles'=>$touslesroles, 'etat'=>$etat])->layout('livewire.base');
     }
    
 }
