@@ -13,6 +13,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\Type_devisController;
 use App\Http\Controllers\TypeinverventionController;
+use App\Http\Livewire\ClientComponent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,7 +72,7 @@ Route::prefix('admin')->middleware([
       Route::get('produit/edit/{id}', 'App\Http\Controllers\ProduitController@edit');
       Route::put('produit/update/{id}', 'App\Http\Controllers\ProduitController@update');
       Route::delete('produit/destroy/{id}', 'App\Http\Controllers\ProduitController@destroy');
-  
+
       //Routes de type devis
       Route::get('typedevis/liste', [App\Http\Controllers\Type_devisController::class, 'index']);
       Route::get('typedevis/create', [App\Http\Controllers\Type_devisController::class, 'create']);
