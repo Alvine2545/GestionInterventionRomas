@@ -123,7 +123,7 @@
 <!--section models-->
 
 <!--section Services-->
-<section id="models" class="py-5">
+<section id="services" class="py-5">
     <div class="container">
 
         <div class="title text-center">
@@ -174,7 +174,7 @@
 <!--section Services-->
 
 <!--section contacts-->
-<section id="models" class="py-5">
+<section id="contact" class="py-5">
     <div class="container">
         <div class="title text-center">
             <h2 class="position-relative d-inline-block">Nous ecrire</h2>

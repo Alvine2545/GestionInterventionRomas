@@ -41,7 +41,7 @@ class ClientController extends Controller
     {
         //Insertion dans la table
         $roles = Roles::all();
-        return view('client.create_clients', compact('roles'));
+        return view('Client.create_clients', compact('roles'));
     }
 
     /**
@@ -66,8 +66,8 @@ class ClientController extends Controller
             $users->raisonSocial = $request->raisonsociale;
             //$users->username = $request->username;
            // $users->mdp = $request->password;
-            $users->password = $this->identifiant;
-            $users->ifu = $this->identifiant;
+            $users->password = $request->identifiant;
+            $users->ifu = $request->identifiant;
         }
         if($request->role = 'Responsable')
         {
@@ -119,7 +119,7 @@ class ClientController extends Controller
     public function edit($id)
     {
         //
-        $client = Client::find($id);
+        $client = User::find($id);
         return view('client.update', compact('client'));
       
     }
@@ -133,7 +133,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $client = Client::find($id);
+        $client = User::find($id);
         $client->update($request->all());
         
         //$task = Task::create($request->all());
@@ -149,7 +149,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
         //
-        Client::find($id)->truncate();
+        User::find($id)->delete();
         return redirect('/')->with('success', 'Delete Successfully');
         
 
@@ -162,8 +162,10 @@ class ClientController extends Controller
             $user->demande = 1;
             $user->password = $request->password;
             $user->save();
-            //Alert::success('Success Title', 'Success Message');
+            Alert::success('Success Title', 'Success Message');
+            return view('homeClient');
         }
+        Alert::success('Success Title', 'Non');
         return view('homeClient');
         
     }
@@ -174,10 +176,12 @@ class ClientController extends Controller
         {
             if($user->ifu = $request->identifiant && Hash::check($request->password, $user->password))
             {
+               
+                Alert::success('Success Title', 'Success Message');
                 return view('client/dashboard');
             }
         }
-        //Alert::success('Success Title', 'Success Message');
+        Alert::success('Success Title', 'non');
         return view('homeClient');
         
     }

@@ -10,7 +10,7 @@
                     <div class="col-lg-8">
                         <div class="page-header-title">
                             <div class="d-inline">
-                                <h4>Enregistrer client</h4>
+                                <h4>Mise à jour des informations d'un client</h4>
                                 <span>Lorem ipsum dolor sit <code>amet</code>, consectetur adipisicing elit</span>
                             </div>
                         </div>

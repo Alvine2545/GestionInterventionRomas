@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\bootstrap\css\bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('app.css')}}">
 
-
     <link rel="stylesheet" href="{{asset('files\bower_components\select2\css\select2.min.css')}}">
 
     <!-- Favicon icon -->
@@ -59,7 +58,7 @@
                         </a>
                     </li>
                     <li class="nav-item px-3 py-3" style="margin-left: -5%">
-                        <a href="services" class="nav-link text-uppercase text-dark connexion-anim">
+                        <a href="#services" class="nav-link text-uppercase text-dark connexion-anim">
                             Services
                         </a>
                     </li>
@@ -74,7 +73,7 @@
                         </a>
                     </li-->
                     <li class="nav-item px-3 py-3" style="margin-left: -5%">
-                        <a href="contact" class="nav-link text-uppercase text-dark connexion-anim">
+                        <a href="#contact" class="nav-link text-uppercase text-dark connexion-anim">
                             Contacts
                         </a>
                     </li>
@@ -135,16 +134,17 @@
                                             </div>
                                             <hr>
                                             <p class="text-inverse m-t-25">C'est votre première fois ? <a href="#regi"> S'authentifier </a> ici </p> 
-                                            <form method="post" action="{{url('client/login')}}">
+                                            <form method="post" action="{{url('client/login')}}" novalidate>
+                                                @method('GET')
                                                 @csrf
                                             <div class="input-group row" style="margin-bottom: 8%">
                                                 <label for="number" class="col-md-4 col-md-offset-2">Numero IFU</label>
-                                                <input id = "number" type="number" required name="identifiant" class="form-control col-md-6" placeholder="IFU" required autofocus>
+                                                <input id = "identifiant" type="number" required name="identifiant" class="form-control col-md-6" placeholder="IFU" required autofocus>
                                                 <span class="md-line"></span>
                                             </div>
                                             <div class="input-group row" style="margin-bottom: 8%">
                                                 <label class="col-md-4 col-md-offset-2">Mot de passe</label>
-                                                <input type="password" name="password" required class="form-control col-md-6" placeholder="Mot de passe" required autocomplete="current-password">
+                                                <input type="password" name="password" id="password" required class="form-control col-md-6" placeholder="Mot de passe" required autocomplete="current-password">
                                                 <span class="md-line"></span>
                                             </div>
                                             <div class="row m-t-25 text-left">
@@ -181,9 +181,10 @@
                                             <hr>
                                             <form method="post" action="{{url('client/register')}}">
                                                 @csrf
+                                                @method('GET')
                                             <div class="input-group row" style="margin-bottom: 8%">
                                                 <label for="number" class="col-md-4 col-md-offset-2">Numero IFU</label>
-                                                <input id = "number" type="number" name="identifiant" class="col-md-6 form-control" placeholder="IFU" required autofocus>
+                                                <input id = "identifiantR" type="number" name="identifiant" class="col-md-6 form-control" placeholder="IFU" required autofocus>
                                                 <span class="md-line"></span>
                                             </div>
                                             <div class="input-group row" style="margin-bottom: 8%">
@@ -206,7 +207,7 @@
                                                 <div class="col-md-10">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <img src="..\files\assets\images\auth\Logo-small-bottom.png" alt="small-logo.png">
+                                                    <img src="{{asset('files\assets\images\auth\Logo-small-bottom.png')}}" alt="small-logo.png">
                                                 </div>
                                             </div>
                                         </form>
@@ -227,7 +228,7 @@
             <div class="row text-center text-md-left">
 
                 <div class="col-md-12 col-lg-3 col-xl-3">
-                    <h4 class="text-uppercase" style="color: #ECBD00">GestIntervention</h4>
+                    <h4 class="text-uppercase" style="color: #ECBD00">Romas Interventions</h4>
                     <p>Adipisci quasi modi tempore facere illum suscipit.</p>
                 </div>
 
@@ -320,13 +321,11 @@
     <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\modernizr.js')}}"></script>
 
     <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\css-scrollbars.js')}}"></script>
-    <script type="text/javascript" src="{{asset('files\bower_components\select2\js\select2.full.min.js')}}"></script>
 
     <script type="text/javascript" src="{{asset('files\bower_components\multiselect\js\jquery.multi-select.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\assets\js\jquery.quicksearch.js')}}"></script>
     <!-- Custom js -->
     <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script>
-    <script type="text/javascript" src="{{asset('files\assets\pages\advance-elements\select2-custom.js')}}"></script>
     <!-- i18next.min.js -->
     <script type="text/javascript" src="{{asset('files\bower_components\i18next\js\i18next.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\bower_components\i18next-xhr-backend\js\i18nextXHRBackend.min.js')}}"></script>
@@ -366,6 +365,12 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-23581568-13');
+
+</script>
+<script>
+    $(document).ready(function()){
+        $('#')
+    }
 </script>
 </body>
 
