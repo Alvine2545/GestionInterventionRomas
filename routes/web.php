@@ -9,6 +9,8 @@ use App\Http\Livewire\PlanningComponent;
 use Livewire\Livewire;
 
 use App\Http\Livewire\Adminpanne;
+use App\Http\Livewire\ClientComponent;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,7 @@ use App\Http\Livewire\Adminpanne;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/new', ClientComponent::class);
 //Route cliente
 Route::get('client', function () {
     return view('homeClient');
