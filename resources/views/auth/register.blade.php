@@ -8,50 +8,50 @@
 
 <script>
         $(document).ready(function() {
-            alert("gfvc");
-  $("#j-pro").validate({
-    rules: {
-      name : {
-        required: true,
-        minlength: 3
-      },
-      password: {
-        required: true,
-        min: 8
-      },
-      email: {
-        required: true,
-        email: true
-      },
-      password_confirmation: {
-        required: true,
-        min: 8,
-        min: 0
-      }
-    },
-    messages : {
-      name: {
-        minlength: "Minimum 3 caractères",
-        required: "Veuillez renseignez votre nom",
-      },
-      password: {
-        required: "Please enter your age",
-        min: "You must be at least 8 years old",
-      },
-      email: {
-        email: "The email should be in the format: abc@domain.tld",
-      },
-      password_confirmation: {
-        required: "People with age over 50 have to enter their weight",
-      }
-    }
-  });
+//             alert("gfvc");
+//   $("#j-pro").validate({
+//     rules: {
+//       name : {
+//         required: true,
+//         minlength: 3
+//       },
+//       password: {
+//         required: true,
+//         min: 8
+//       },
+//       email: {
+//         required: true,
+//         email: true
+//       },
+//       password_confirmation: {
+//         required: true,
+//         min: 8,
+//         min: 0
+//       }
+//     },
+//     messages : {
+//       name: {
+//         minlength: "Minimum 3 caractères",
+//         required: "Veuillez renseignez votre nom",
+//       },
+//       password: {
+//         required: "Please enter your age",
+//         min: "You must be at least 8 years old",
+//       },
+//       email: {
+//         email: "The email should be in the format: abc@domain.tld",
+//       },
+//       password_confirmation: {
+//         required: "People with age over 50 have to enter their weight",
+//       }
+//     }
+//   });
 });
 </script>
 @section('content')
 
     <div class="j-wrapper j-wrapper-450" style="width: 40%">
-        
+
         <form method="POST" action="{{ route('register') }}" class="j-pro" id="j-pro" novalidate="">
             <h4 class="text-center" style="margin-top: 5%">Inscription</h4>
             @csrf

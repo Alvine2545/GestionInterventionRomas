@@ -14,6 +14,8 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\Type_devisController;
 use App\Http\Controllers\TypeinverventionController;
 use App\Http\Livewire\ClientComponent;
+use App\Http\Livewire\DevisComponent;
+use App\Http\Middleware\ClientRoute;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,10 +42,30 @@ Route::get('connexion', function () {
     return view('connexion');
 });
 Route::get('client/register', [App\Http\Controllers\ClientController::class, 'verifyclient']);
-Route::get('client/login', [App\Http\Controllers\ClientController::class, 'connexion']);
 
+// // Route :: middleware (['ClientRoute']) -> group (function () {
 
+//     Route::get('pannes/liste', [App\Http\Controllers\PanneController::class, 'index'])->middleware('ClientRoute');
 
+//     // });
+
+Route::prefix('client')->group(function () {
+//Signaler une panne
+    Route::get('pannes/liste', [App\Http\Controllers\PanneController::class, 'index']);
+    Route::get('pannes/create', [App\Http\Controllers\PanneController::class, 'create']);
+    Route::get('pannes/show/{id}', [App\Http\Controllers\PanneController::class, 'show']);
+    Route::post('pannes/store', [App\Http\Controllers\PanneController::class, 'store']);
+    Route::get('pannes/edit/{id}', [App\Http\Controllers\PanneController::class, 'edit']);
+    Route::put('pannes/update/{id}', [App\Http\Controllers\PanneController::class, 'update']);
+    Route::delete('pannes/destroy/{id}', [App\Http\Controllers\PanneController::class, 'destroy']);
+    //ancres interne
+    Route::get('services', function () {
+        // return view('connexion');
+    });
+    //Connexion
+    Route::get('login', [App\Http\Controllers\ClientController::class, 'connexion']);
+
+});
 Route::prefix('admin')->middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -88,6 +110,9 @@ Route::prefix('admin')->middleware([
     //Route de l'admin pour signaler une panne
     Route::get('/panne', Adminpanne::class);
 
+    //Route de l'admin pour gérer le devis
+    Route::get('/devis', DevisComponent::class);
+
     //Route de type intervention
     Route::get('typeintervention/liste', [App\Http\Controllers\TypeinverventionController::class, 'index']);
     Route::get('typeintervention/create', [App\Http\Controllers\TypeinverventionController::class, 'create']);
@@ -105,15 +130,6 @@ Route::prefix('admin')->middleware([
     Route::get('installation/{id}/edit', 'App\Http\Controllers\InstallationController@edit');
     Route::put('installation/update/{id}', 'App\Http\Controllers\InstallationController@update');
     Route::delete('installation/destroy/{id}', 'App\Http\Controllers\InstallationController@destroy');
-
-    Route::get('pannes/liste', [App\Http\Controllers\PanneController::class, 'index']);
-Route::get('pannes/create', [App\Http\Controllers\PanneController::class, 'create']);
-Route::get('pannes/show/{id}', [App\Http\Controllers\PanneController::class, 'show']);
-Route::post('pannes/store', [App\Http\Controllers\PanneController::class, 'store']);
-Route::get('pannes/edit/{id}', [App\Http\Controllers\PanneController::class, 'edit']);
-Route::put('pannes/update/{id}', [App\Http\Controllers\PanneController::class, 'update']);
-Route::delete('pannes/destroy/{id}', [App\Http\Controllers\PanneController::class, 'destroy']);
-
 
 //Livewire::component('planning-component', PlanningComponent::class);
 Route::get('/plan', PlanningComponent::class);

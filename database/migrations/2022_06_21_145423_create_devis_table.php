@@ -19,7 +19,7 @@ return new class extends Migration
             $table->boolean('payer');
             $table->foreignId('client_id')->constrained('client');
             $table->foreignId('type_devis_id')->constrained('type_devis');
-            $table->foreignId('interventions_id')->constrained('interventions');
+            $table->foreignId('pannes_id')->constrained('pannes');
             $table->timestamps();
         });
     }

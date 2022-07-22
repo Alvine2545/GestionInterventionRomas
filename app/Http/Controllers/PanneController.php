@@ -34,7 +34,7 @@ class PanneController extends Controller
     public function create()
     {
         //
-    
+
         $client_id= Auth::user()->id;
         /*$book = DB::table('Produitinstalle')->join('Installation', 'Produitinstalle.installation_id', '=', 'Installation.id')->join('Installation', 'Produitinstalle.installation_id', '=', 'Installation.id')->first();
 dd($book);*/
@@ -73,8 +73,8 @@ dd($book);*/
             'client_id' => $request->client,
         ]); */
         //$pane = Panne::create($validatedData);
-        Notification::route('mail' , ['alladakaneunice@gmail.com'])->notify( new Panneadmin($signpan));
-    
+        //Notification::route('mail' , ['alladakaneunice@gmail.com'])->notify( new Panneadmin($signpan));
+
         return redirect('pannes/liste')->with('Super', 'Votre panne créer avec succès');
     }
 
@@ -114,15 +114,15 @@ dd($book);*/
     {
         //
         $pane = Panne::find($id);
-      
+
        $validatedData = $request->validate([
             'description' => 'required|max:255',
-            
+
         ]);
-    
+
           Panne::whereId($id)->update($validatedData);
-        
-    
+
+
         return redirect('pannes/liste')->with('Super', 'Panne mise à jour avec succès');
     }
 
@@ -137,7 +137,7 @@ dd($book);*/
         //
         $pane = Panne::find($id);
         $pane->delete();
-    
+
         return redirect('pannes/liste')->with('Super', 'Panne supprimer avec succès');
     }
 }

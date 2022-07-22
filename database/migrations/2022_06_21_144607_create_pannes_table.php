@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pannes', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description');
-            $table->text('traite')->default('non');
+            $table->text('traite')->nullable();
             $table->foreignId('produitinstalles_id')->constrained('produitinstalles');
             $table->foreignId('client_id')->constrained('client');
             $table->timestamps();

@@ -4,16 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Client;
+use App\Models\TypeDevis;
+use App\Models\Panne;
+use App\Models\Paiement;
 
 class Devis extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'prix', 'payer',
+    ];
+
     public function client()
     {
         return $this->belongsTo(Client::class);
     }
-    
+
     public function type_devis()
     {
         return $this->belongsTo(TypeDevis::class);
@@ -24,9 +32,9 @@ class Devis extends Model
         return $this->belongsTo(Paiement::class);
     }
 
-    public function intervention()
+    public function panne()
     {
-        return $this->belongsTo(Intervention::class);
+        return $this->belongsTo(Panne::class);
     }
 
 }

@@ -1,7 +1,7 @@
 @extends('index')
 
 @section('contenu')
-    
+
     <!--header-->
     <header id="header" class="h-max w-max">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -50,7 +50,7 @@
                     <h2 class="">Nom</h2>
                     <p class="text-justity">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non quisquam odio laborum assumenda perspiciatis ipsum laudantium quia error quidem, quis nostrum iste! Odit adipisci magnam doloribus amet quibusdam molestias.</p>
                 </div>
-            
+
             </div>
 
             <div class="models col-md-5 col-lg-4 col-xl-3" style="height: 30%">
@@ -65,7 +65,7 @@
                     <h2 class="">Nom</h2>
                     <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non quisquam odio laborum assumenda perspiciatis ipsum laudantium quia error quidem, quis nostrum iste! Odit adipisci magnam doloribus amet quibusdam molestias.</p>
                 </div>
-            
+
             </div>
 
             <div class="models col-md-5 col-lg-4 col-xl-3" style="height: 30%">
@@ -80,37 +80,7 @@
                     <h2 class="">Nom</h2>
                     <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non quisquam odio laborum assumenda perspiciatis ipsum laudantium quia error quidem, quis nostrum iste! Odit adipisci magnam doloribus amet quibusdam molestias.</p>
                 </div>
-            
-            </div>
 
-            <div class="models col-md-5 col-lg-4 col-xl-3" style="height: 30%">
-
-                <div class="modelImg position-relative">
-                    <a href="">
-                        <img src="res/imgs/model3.jpg" alt="" class="w-100">
-                    </a>
-                </div>
-
-                <div class="modelDescription p-2">
-                    <h2 class="">Title</h2>
-                    <p class="text-justity">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non quisquam odio laborum assumenda perspiciatis ipsum laudantium quia error quidem, quis nostrum iste! Odit adipisci magnam doloribus amet quibusdam molestias.</p>
-                </div>
-            
-            </div>
-
-            <div class="models col-md-5 col-lg-4 col-xl-3" style="height: 30%">
-
-                <div class="modelImg position-relative">
-                    <a href="">
-                        <img src="res/imgs/model4.jpg" alt="" class="w-100">
-                    </a>
-                </div>
-
-                <div class="modelDescription p-2">
-                    <h2 class="">Title</h2>
-                    <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex non quisquam odio laborum assumenda perspiciatis ipsum laudantium quia error quidem, quis nostrum iste! Odit adipisci magnam doloribus amet quibusdam molestias.</p>
-                </div>
-            
             </div>
 
             <!--models lists-->
@@ -142,7 +112,7 @@
             </div>
 
         </div>
-        
+
 
         <div class="row mt-5">
 
@@ -179,15 +149,15 @@
         <div class="title text-center">
             <h2 class="position-relative d-inline-block">Nous ecrire</h2>
         </div>
-        
+
         <!--contact form-->
 
         <div class="col-md-12 col-lg-6 col-xl-6">
-                
+
         </div>
 
         <div class="col-md-12 col-lg-6 col-xl-6">
-                
+
         </div>
 
         <!--contact form-->

@@ -17,10 +17,10 @@ class ClientRoute
     public function handle(Request $request, Closure $next)
     {
 
-        if ($request->user()->roles->nom == 'Client') {
+        if ( Auth::check() && $request->user()->roles->nom == 'Client') {
             return redirect('client');
         }
- 
+
         return $next($request);
     }
 }

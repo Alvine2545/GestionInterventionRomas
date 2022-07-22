@@ -15,7 +15,7 @@ class ClientController extends Controller
     public function home()
     {
         dd('You are active');
-    
+
     }
     /**
      * Display a listing of the resource.
@@ -29,7 +29,7 @@ class ClientController extends Controller
         $users = User::all();
         $clients = Client::all();
         return view('client/index_clients', compact('clients'));
-        
+
     }
 
     /**
@@ -121,7 +121,7 @@ class ClientController extends Controller
         //
         $client = User::find($id);
         return view('client.update', compact('client'));
-      
+
     }
 
     /**
@@ -135,7 +135,7 @@ class ClientController extends Controller
     {
         $client = User::find($id);
         $client->update($request->all());
-        
+
         //$task = Task::create($request->all());
         return redirect('client')->with('success', 'Create Successfully');
     }
@@ -151,13 +151,13 @@ class ClientController extends Controller
         //
         User::find($id)->delete();
         return redirect('/')->with('success', 'Delete Successfully');
-        
+
 
     }
     public function verifyclient(Request $request)
     {
-        $user = User::where('ifu', $request->ifu)->get();
-        if($user)
+        $user = User::where('ifu', '=', $request->identifiant)->get();
+        if(collect[''])
         {
             $user->demande = 1;
             $user->password = $request->password;
@@ -166,8 +166,8 @@ class ClientController extends Controller
             return view('homeClient');
         }
         Alert::success('Success Title', 'Non');
-        return view('homeClient');
-        
+        dd('dfghj');
+
     }
     public function connexion(Request $request)
     {
@@ -176,13 +176,13 @@ class ClientController extends Controller
         {
             if($user->ifu = $request->identifiant && Hash::check($request->password, $user->password))
             {
-               
+
                 Alert::success('Success Title', 'Success Message');
                 return view('client/dashboard');
             }
         }
         Alert::success('Success Title', 'non');
         return view('homeClient');
-        
+
     }
 }

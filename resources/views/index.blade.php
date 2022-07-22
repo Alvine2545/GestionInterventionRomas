@@ -31,7 +31,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\demo.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\font-awesome.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\j-pro-modern.css')}}">
-    
+
 
     <title>Acceuil</title>
 </head>
@@ -81,18 +81,18 @@
                                 <a href="{{url('client/login')}}" class="nav-link text-uppercase text-dark connexion-anim">
                                     Connexion
                                 </a>
-                            </li--> 
+                            </li-->
                         <li class="nav-item px-3 py-3" style="margin-left: -5%">
-                            @if (Route::has('client/login'))
-                                <a class="nav-link text-uppercase text-dark connexion-anim">
-                                    Authentification
-                                </a>                                    
+                            @if (Auth::check())
+                                <a class="nav-link text-uppercase text-dark connexion-anim" href="{{url('client/pannes/create')}}">
+                                    Signaler une panne
+                                </a>
                             @else
                             <a  class="nav-link text-uppercase text-dark connexion-anim" data-toggle="modal" data-target="#tabbed-form">
                                 Authentification
-                            </a>      
+                            </a>
                             @endif
-                        </li>                     
+                        </li>
                 </ul>
             </div>
         </div>
@@ -133,7 +133,7 @@
                                                 </div>
                                             </div>
                                             <hr>
-                                            <p class="text-inverse m-t-25">C'est votre première fois ? <a href="#regi"> S'authentifier </a> ici </p> 
+                                            <p class="text-inverse m-t-25">C'est votre première fois ? <a href="#regi"> S'authentifier </a> ici </p>
                                             <form method="post" action="{{url('client/login')}}" novalidate>
                                                 @method('GET')
                                                 @csrf
@@ -233,7 +233,7 @@
                 </div>
 
                 <div class="col-md-12 col-lg-3 col-xl-3">
-                    <h4 class="text-uppercase" style="color: #ECBD00"> Devloppeurs </h4>
+                    <h4 class="text-uppercase" style="color: #ECBD00"> Developpeurs </h4>
                     <p>
                         <a href="#" class="text-decoration-none text-white">
                             Eunice ALLADAKAN
@@ -306,7 +306,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
+
 
 
     <!-- Required Jquery -->
@@ -314,7 +314,7 @@
     <script type="text/javascript" src="{{asset('files\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
     <!-- jquery slimscroll js -->
     <script type="text/javascript" src="{{asset('files\bower_components\jquery-slimscroll\js\jquery.slimscroll.js')}}"></script>
-    
+
     <script type="text/javascript" src="{{asset('files\bower_components\popper.js\js\popper.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\bower_components\bootstrap\js\bootstrap.min.js')}}"></script>
     <!-- modernizr js -->
@@ -337,7 +337,7 @@
      <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\css-scrollbars.js')}}"></script>
 
      <!-- Custom js -->
-     <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script> 
+     <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script>
 
     <!--Forms - Wizard js-->
     <script src="{{asset('files\bower_components\jquery.cookie\js\jquery.cookie.js')}}"></script>
@@ -346,7 +346,6 @@
     <!-- j-pro js -->
     <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.ui.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.maskedinput.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.j-pro.js')}}"></script>
     <!-- Validation js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
@@ -366,11 +365,6 @@
 
   gtag('config', 'UA-23581568-13');
 
-</script>
-<script>
-    $(document).ready(function()){
-        $('#')
-    }
 </script>
 </body>
 

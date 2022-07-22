@@ -22,7 +22,7 @@ class PlanningComponent extends Component
     public $start;
     public $end;
     public $date;
-    
+
     public function render()
     {
         $pannes = Panne::all();
@@ -40,7 +40,7 @@ class PlanningComponent extends Component
     }
     public function eventAdd()
     {
-        
+
         $planification = new Planning();
         $planification->typeinterventions_id = $this->typeintervention;
         $planification->responsables_id = Auth::user()->id;
