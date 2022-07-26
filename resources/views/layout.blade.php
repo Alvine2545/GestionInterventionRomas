@@ -37,6 +37,9 @@
             .error {
                 color: #ff0000;
             }
+            .messages{
+                color: red;
+            }
         </style>
     <!-- Favicon icon -->
     <link rel="icon" href="..\files\assets\images\favicon.ico" type="image/x-icon">
@@ -47,9 +50,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\icon\themify-icons\themify-icons.css')}}">
     <!-- ico font -->
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\icon\icofont\css\icofont.css')}}">
-    <script src="{{asset('files\bower_components\jquery-validation\js\jquery.validate.js')}}"></script>
-    <script type="text/javascript" src="{{asset('files\assets\pages\form-validation\validate.js')}}"></script>
-
+   
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\style.css')}}">
 </head>
@@ -87,6 +88,9 @@
     <script type="text/javascript" src="{{asset('files\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\bower_components\popper.js\js\popper.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\bower_components\bootstrap\js\bootstrap.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\jquery-validation\js\jquery.validate.js')}}"></script>
+    <script type="text/javascript" src="{{asset('files\assets\pages\form-validation\validate.js')}}"></script>
+
     <!-- jquery slimscroll js -->
     <script type="text/javascript" src="{{asset('files\bower_components\jquery-slimscroll\js\jquery.slimscroll.js')}}"></script>
     <!-- modernizr js -->

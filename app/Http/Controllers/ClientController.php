@@ -8,12 +8,14 @@ use App\Models\Client;
 use App\Models\Roles;
 use App\Models\User;
 use App\Models\Utilisateur;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
     public function home()
     {
+        
         dd('You are active');
 
     }
@@ -26,9 +28,13 @@ class ClientController extends Controller
     {
         //Récupération des éléments de la table
         //$clients = User::where();
+        $users = DB::table('users')
+                ->where('votes', '=', 100)
+                ->where('age', '>', 35)
+                ->get();
         $users = User::all();
         $clients = Client::all();
-        return view('client/index_clients', compact('clients'));
+        return view('client/index_clients', compact('users'));
 
     }
 

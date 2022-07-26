@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Roles;
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ClientComponent extends Component
 {
@@ -32,15 +33,20 @@ class ClientComponent extends Component
     }
     public function render()
     {
+        // $users = User::all();
         $this->role = Roles::all();
-        return view('livewire.client-component', ['role' => $this->role])->layout('livewire.base');
+        return view('livewire.client-component', ['role' => $this->role, 'users' => User::all()])->layout('livewire.base');
+        
     }
     public function validateData()
     {
         if($this->currentSteep == 1){
-            $this->validate([
-                'roles'=>'required'
-            ]);
+            $this->validate(
+                ['roles' => 'required'],
+                [
+                    'roles.required' => 'Choisissez au moins un rôle',
+                ]
+            );
         }
         // }elseif($this->currentSteep == 2){
         //     $this->validate([
@@ -55,6 +61,7 @@ class ClientComponent extends Component
         if($this->currentSteep == 2){
 
             //Validation
+            
             $user = new User();
         $user->name = $this->name;
         $user->email = $this->email;
@@ -64,15 +71,91 @@ class ClientComponent extends Component
         $user->poste = $this->poste;
         $user->nom = $this->nom;
         $user->prenom = $this->prenom;
-        $user->ifu = $this->ifu;
+        $user->ifu = $this->identifiant;
         $user->disponibilite = true;
         $user->status = 0;
         $user->demande  = 0;
         if($this->choix == 1){
-            $user->password = $this->ifu;
+            $this->validate(
+                ['email' => 'required|email'],
+                [
+                    'email.required' => 'Champ requis.',
+                    'email.email' => 'Email non valide.',
+                ],
+                ['email' => 'Email Address'],
+                ['name' => 'required'],
+                [
+                    'name.required' => 'Champ requis.',
+                ],
+                ['raisonsociale' => 'required'],
+                [
+                    'raisonsociale.required' => 'Champ requis.',
+                ],
+                ['phone' => 'required|min:8'],
+                [
+                    'phone.required' => 'Champ requis.',
+                ],
+                ['identifiant' => 'required'],
+                [
+                    'identifiant.required' => 'Champ requis.',
+                ],
+                ['siege' => 'required'],
+                [
+                    'siege.required' => 'Champ requis.',
+                ]
+            );
+            $user->password = Hash::make($this->identifiant);
         }elseif($this->choix == 2){
+            $this->validate(
+                ['email' => 'required|email'],
+                [
+                    'email.required' => 'Champ requis.',
+                    'email.email' => 'Email non valide.',
+                ],
+                ['email' => 'Email Address'],
+                ['name' => 'required'],
+                [
+                    'name.required' => 'Champ requis.',
+                ],
+                ['phone' => 'required|min:8'],
+                [
+                    'phone.required' => 'Champ requis.',
+                ],
+                ['surname' => 'required'],
+                [
+                    'surname.required' => 'Champ requis.',
+                ],
+                ['poste' => 'required'],
+                [
+                    'surname.required' => 'Champ requis.',
+                ],
+                ['siege' => 'required'],
+                [
+                    'siege.required' => 'Champ requis.',
+                ]
+            );
             $user->password = $this->email;
         }elseif ($this->choix == 4) {
+            $this->validate(
+                ['email' => 'required|email'],
+                [
+                    'email.required' => 'Champ requis.',
+                    'email.email' => 'Email non valide.',
+                ],
+                ['email' => 'Email Address'],
+                ['name' => 'required'],
+                [
+                    'name.required' => 'Champ requis.',
+                ],
+                ['phone' => 'required|min:8'],
+                [
+                    'phone.required' => 'Champ requis.',
+                ],
+                ['surname' => 'required'],
+                [
+                    'surname.required' => 'Champ requis.',
+                ]
+            );
             $user->password = $this->email;
         }
         $user->save();

@@ -1,44 +1,4 @@
 @extends('layout')
-<script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
-
-<script>
-function validerCode() {
-if (!$('#password').val()) {
-    $('#message').text("Vous devez entrer un mot de passe valide");
-    return false;
-}
-else {
-    $('#message').text("");
-    return true;
-}
-}
-function validerEmail() {
-    var regex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-if (!$('#email').val()) {
-    $('#messages').text("Vous devez entrer un email valide.");
-    return false;
-}
-else {
-    $('#messages').text("");
-    return true;
-}
-}
-
-$(function() {
-
-// validation du code aussitôt qu'on quitte le contrôle de saisie
-
-//$('#email').blur(validerCode);
-// validation lors de la soumission
-
-$('#soumettre').click(function (event) {
-    if (!validerCode() || !validerEmail()) {
-        event.preventDefault();
-    }
-});
-
-});
-</script>
 @section('content')
 
     @if (session('status'))
@@ -59,7 +19,7 @@ $('#soumettre').click(function (event) {
                             <i class="icofont icofont-ui-user"></i>
                         </label>
                         <x-jet-input id="email" class="form-control block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-                        <span class="messages" id="messages" style="color: red"></span>
+                        <span class="messages" style="color: red"></span>
                     </div>
                 </div>
                 <div class="j-unit">
@@ -69,7 +29,7 @@ $('#soumettre').click(function (event) {
                             <i class="icofont icofont-lock"></i>
                         </label>
                         <x-jet-input id="password" class="form-control block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-                        <span class="message" id="message" style="color: red"></span>
+                        <span class="messages" style="color: red"></span>
                     </div>
                 </div>
     
@@ -97,3 +57,35 @@ $('#soumettre').click(function (event) {
         </form>
     </div>
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $("#j-pro").validate({
+    errorClass: "error fail-alert",
+    validClass: "valid success-alert",
+    rules: {
+      password: {
+        required: true,
+        min: 9
+      },
+      email: {
+        required: true,
+        email: true
+      }
+    },
+    messages : {
+      password: {
+        required: "Veuillez entrer un mot de passe",
+        min: "9 caractères requis"
+      },
+      email: {
+        email: "Veuillez entrer une adresse email valide"
+      }
+    },
+    submitHandler: function(form)
+    {
+        form.submit();
+    }
+  });
+});
+</script>
