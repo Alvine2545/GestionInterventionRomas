@@ -285,28 +285,23 @@
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
-                                        <a href="{{url('produit/create')}}">
+                                        <a href="{{url('admin/produit/create')}}">
                                             <span class="pcoded-mtext">Créer produit</span>
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="{{url('produit/index')}}">
+                                        <a href="{{url('admin/produit/index')}}">
                                             <span class="pcoded-mtext">Les produits</span>
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="form-elements-component.htm">
+                                        <a href="{{url('admin/panne')}}">
                                             <span class="pcoded-mtext">Enregistrer panne</span>
                                         </a>
                                     </li>
                                     <li class=" ">
                                         <a href="form-elements-add-on.htm">
                                             <span class="pcoded-mtext">Liste des pannes</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="form-elements-add-on.htm">
-                                            <span class="pcoded-mtext">Type installation</span>
                                         </a>
                                     </li>
                                     <li class=" ">
@@ -333,6 +328,11 @@
                                     <li class=" ">
                                         <a href="bs-table-sizing.htm">
                                             <span class="pcoded-mtext">Faire planning</span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="{{url('admin/typeintervention/liste')}}">
+                                            <span class="pcoded-mtext">Type interventions</span>
                                         </a>
                                     </li>
                                     <li class=" ">
@@ -375,7 +375,7 @@
                                         </a>
                                     </li>
                                     <li class="">
-                                        <a href="comming-soon.htm">
+                                        <a href="{{url('admin/typedevis/liste')}}">
                                             <span class="pcoded-mtext">Type devis</span>
                                         </a>
                                     </li>

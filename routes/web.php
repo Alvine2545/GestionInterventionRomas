@@ -66,6 +66,8 @@ Route::prefix('client')->group(function () {
     Route::get('login', [App\Http\Controllers\ClientController::class, 'connexion']);
 
 });
+
+//Administrateur
 Route::prefix('admin')->middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -75,6 +77,7 @@ Route::prefix('admin')->middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    
     //Client avec livewire
     Route::get('/client', CreateClient::class);
     Route::get('/users', ClientComponent::class);
@@ -101,7 +104,7 @@ Route::prefix('admin')->middleware([
       Route::get('typedevis/create', [App\Http\Controllers\Type_devisController::class, 'create']);
       Route::get('typedevis/show/{id}', 'App\Http\Controllers\Type_devisController@show');
       Route::post('typedevis/store', [App\Http\Controllers\Type_devisController::class, 'store']);
-      Route::get('typedevis/edit/{id}', 'App\Http\Controllers\Type_devisController@edit');
+      Route::put('typedevis/edit/{id}', 'App\Http\Controllers\Type_devisController@edit');
       Route::put('typedevis/update/{id}', 'App\Http\Controllers\Type_devisController@update');
       Route::delete('typedevis/destroy/{id}', 'App\Http\Controllers\Type_devisController@destroy');
 

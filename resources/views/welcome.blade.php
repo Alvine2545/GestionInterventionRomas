@@ -20,7 +20,7 @@
                                 <div class="py-4 sm:block">
                                 @auth
                                 <div class="col-md-12">
-                                    <a href="{{ url('/dashboard') }}" class="text-sm">
+                                    <a href="{{ url('/admin/dashboard') }}" class="text-sm">
                                         <button type="button" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">
                                         Dashboard
                                         </button>
