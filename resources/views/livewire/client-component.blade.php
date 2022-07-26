@@ -322,16 +322,23 @@
                                             </div>
                                         </form>
                                     @else
-                                        {{-- <table id="demo-foo-filtering" class="table table-striped">
+                                    {{dd($users->roles())}}
+                                    <table id="demo-foo-filtering" class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th data-breakpoints="xs">Nom</th>
+                                                <th data-breakpoints="xs">Prénom</th>
+                                                <th data-breakpoints="xs">Name</th>
+                                                <th data-breakpoints="xs">Siège</th>
+                                                <th data-breakpoints="xs">Raison Sociale</th>
+                                                <th data-breakpoints="xs">Email</th>
+                                                <th data-breakpoints="xs">Telephone</th>
                                                 <th data-breakpoints="xs">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($typedevis as $value)
+                                            @foreach ($users as $value)
                                             <tr>
                                                
                                                 <th scope="row">{{$value->id}}</th>
@@ -358,7 +365,7 @@
                                             </tr>
                                            
                                         </tbody>
-                                    </table> --}}
+                                    </table>
                                     @endif
                                 {{-- </div> --}}
                             </div>
