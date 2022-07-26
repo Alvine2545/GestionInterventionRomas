@@ -67,6 +67,8 @@ dd($book);*/
         $pane->produitinstalles_id= $request->produit;
         $pane->client_id= $client_id;
         $pane->save();
+
+
         /*$pane = Panne::create([
             'description' =>$request->description,
             'produitinstalles_id'=>$request->produit,
