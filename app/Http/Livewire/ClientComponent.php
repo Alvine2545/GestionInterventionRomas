@@ -23,6 +23,7 @@ class ClientComponent extends Component
     public $siege;
     public $ifu;
     public $data;
+    public $nouveau;
 
 
     public $totalSteep = 2;
@@ -33,10 +34,15 @@ class ClientComponent extends Component
     }
     public function render()
     {
+        
         // $users = User::all();
         $this->role = Roles::all();
         return view('livewire.client-component', ['role' => $this->role, 'users' => User::all()])->layout('livewire.base');
         
+    }
+    public function new()
+    {
+        $this->nouveau = true;
     }
     public function validateData()
     {
@@ -57,6 +63,7 @@ class ClientComponent extends Component
     }
     public function store()
     {
+        $this->nouveau = false;
         $this->resetErrorBag();
         if($this->currentSteep == 2){
 

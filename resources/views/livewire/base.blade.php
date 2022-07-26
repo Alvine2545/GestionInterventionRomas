@@ -375,7 +375,7 @@
                                         </a>
                                     </li>
                                     <li class="">
-                                        <a href="comming-soon.htm">
+                                        <a href="{{url('admin/typedevis/liste')}}">
                                             <span class="pcoded-mtext">Type devis</span>
                                         </a>
                                     </li>
