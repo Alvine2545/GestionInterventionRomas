@@ -3,7 +3,7 @@
         <form wire:submit.prevent="store()" novalidate="">
             @csrf
             <div class="row" style="margin-left: 10%; margin-bottom:3%" >
-                 <select class="form-control form-control-primary" name="client_id" wire:click="changeEvent($event.target.value)" style="width: 50%" >
+                 <select class="form-control form-control-primary" name="client_id" wire:model="client_id" wire:change="$emit('changeEvent', $event.target.value)" style="width: 50%" >
                     <option value="">Selectionner le client</option>
                     @foreach ($users as $value)
                         <option value="{{$value->id}}" >{{$value->nom}} </option>
@@ -16,7 +16,7 @@
                 <select class="form-control form-control-primary" name="pane_id" wire:model="pane_id" style="width: 50%" >
                     <option value="">Sélectionnez la panne du client</option>
                    @foreach ($pannes as $value)
-                        <option value="{{$value->id}}">{{$value->description}} </option>
+                        <option value= "{{$value->id}}"> PA-{{ $value->id }}-{{ $client }}</option>
                     @endforeach
                  </select>
              </div>
@@ -25,7 +25,7 @@
                <div class="row" style="margin-left: 10%; margin-bottom:3%" >
                   <select class="form-control form-control-primary" name="type_devis_id" wire:model="type_devis_id" style="width: 50%" >
                       <option value="">Sélectionnez le type de devis</option>
-                          @foreach ($types as $value)
+                          @foreach ($typedevis as $value)
                        <option value="{{$value->id}}">{{$value->nom}} </option>
                      @endforeach
 

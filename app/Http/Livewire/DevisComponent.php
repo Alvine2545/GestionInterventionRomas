@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Roles;
 use App\Models\User;
 use App\Models\Devis;
+use App\Models\Panne;
 use App\Models\TypeDevis;
 
 class DevisComponent extends Component
@@ -21,7 +22,11 @@ class DevisComponent extends Component
     public $updateMode = false;
     public $devis;
     public $users ;
-    public $types;
+    public $typedevis;
+    protected $listeners = [
+        'changeEvent'
+     ];
+      public $clients;
 
     public function render()
     {
@@ -32,24 +37,31 @@ class DevisComponent extends Component
 
         //$this->pannes = DB::table('Devis')->join('Pannes', 'Devis.pannes_id', '=', 'Pannes.id')->where('Devis.pannes_id',$this->pane_id)->select('Pannes.*')->get();
         //dd($this->produits );
-        $this->types = TypeDevis::all();
+
+        $clients = DB::table('users')->join('Pannes', 'users.id', '=', 'Pannes.client_id')->where('client_id', '=', $this->users)->select('nom')->get();
+        //$this->client = DB::table('users')->select("nom", DB::raw("CONCAT(users.nom)" , 'PA' ))->get();
+
+        $this->typedevis = TypeDevis::all();
         //$this->types = DB::table('Devis')->join('Type_devis', 'Devis.type_devis_id', '=', 'Type_devis.id')->where('Devis.type_devis_id',$this->type_devis_id)->select('Type_devis.*')->get();
         return view('livewire.devis-component', [
         'users' => $this->users,
         'pannes'=> $this->pannes,
-        'types'=> $this->types,
+        'typedevis'=> $this->typedevis,
         'devis' => $this->devis,
+
         ])->layout('livewire.base');
 
     }
     public function changeEvent($value)
     {
+        //dd($value);
         $this->pannes = DB::table('Pannes')->where('client_id', '=', $value)->select('id', 'description')->get();
-        // dd($this->pannes);
+        //dd($this->pannes);
     }
     public function open(){
-        dd($this->client_id);
-        $this->pannes = DB::table('Pannes')->where('client_id', '=', $this->users)->get();
+
+        //dd($this->client_id);
+        //$this->pannes = DB::table('Pannes')->where('client_id', '=', $this->users)->get();
     }
     private function resetInput()
     {

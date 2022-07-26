@@ -102,6 +102,6 @@ class Type_devisController extends Controller
         //Destruction
         TypeDevis::destroy($id);
         return redirect('admin/typedevis/liste')->with('success', 'Delete Successfully');
-        
+
     }
 }

@@ -1,42 +1,31 @@
 @extends('layout')
-<script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
-
 <script>
-function validerCode() {
-if (!$('#password').val()) {
-    $('#message').text("Vous devez entrer un mot de passe valide");
-    return false;
-}
-else {
-    $('#message').text("");
-    return true;
-}
-}
-function validerEmail() {
-    var regex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-if (!$('#email').val()) {
-    $('#messages').text("Vous devez entrer un email valide.");
-    return false;
-}
-else {
-    $('#messages').text("");
-    return true;
-}
-}
-
-$(function() {
-
-// validation du code aussitôt qu'on quitte le contrôle de saisie
-
-//$('#email').blur(validerCode);
-// validation lors de la soumission
-
-$('#soumettre').click(function (event) {
-    if (!validerCode() || !validerEmail()) {
-        event.preventDefault();
+    $(document).ready(function() {
+    $("#j-pro").validate({
+    rules: {
+      password: {
+        required: true,
+        min: 9
+      },
+      email: {
+        required: true,
+        email: true
+      }
+    },
+    messages : {
+      password: {
+        required: "Please enter your age",
+        min: "You must be at least 9"
+      },
+      email: {
+        email: "The email should be in the format: abc@domain.tld"
+      }
+    },
+    submitHandler: function(form)
+    {
+        form.submit();
     }
-});
-
+  });
 });
 </script>
 @section('content')
@@ -47,7 +36,7 @@ $('#soumettre').click(function (event) {
         </div>
     @endif
     <div class="j-wrapper j-wrapper-400" style="width: 50%">
-        
+
         <form method="POST" action="{{ route('login') }}" class="j-pro" id="j-pro" name="j-pro" novalidate="">
             <h4 class="text-center" style="margin-top: 5%">Authentification</h4>
             @csrf
@@ -72,13 +61,13 @@ $('#soumettre').click(function (event) {
                         <span class="message" id="message" style="color: red"></span>
                     </div>
                 </div>
-    
+
                 <div class="block mt-4">
                     <label for="remember_me" class="flex items-center">
                         <x-jet-checkbox id="remember_me" name="remember" />
                         <span class="ml-2 text-sm text-gray-600">{{ __('Se souvenir de moi') }}</span>
                     </label>
-                    
+
                 </div>
                 <div class="text-right">
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
@@ -97,3 +86,7 @@ $('#soumettre').click(function (event) {
         </form>
     </div>
 @endsection
+<script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="{{asset('files\bower_components\jquery-validation\js\jquery.validate.js')}}"></script>
+<script type="text/javascript" src="{{asset('files\assets\pages\form-validation\validate.js')}}"></script>
