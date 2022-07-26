@@ -26,7 +26,7 @@ use App\Http\Middleware\ClientRoute;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/new', ClientComponent::class);
+
 //Route cliente
 Route::get('client', function () {
     return view('homeClient');
@@ -76,7 +76,8 @@ Route::prefix('admin')->middleware([
         return view('dashboard');
     })->name('dashboard');
     //Client avec livewire
-    Route::get('/instore', CreateClient::class);
+    Route::get('/client', CreateClient::class);
+    Route::get('/users', ClientComponent::class);
     //Route de client
     Route::get('client/liste', [App\Http\Controllers\ClientController::class, 'index']);
     Route::get('client/create', [App\Http\Controllers\ClientController::class, 'create']);

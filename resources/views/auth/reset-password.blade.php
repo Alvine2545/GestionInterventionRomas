@@ -45,3 +45,45 @@
         </form>
     </div>
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+<script>
+        $(document).ready(function() 
+        {
+          $("#j-pro").validate({
+            rules: 
+            {
+                password: 
+                {
+                    required: true,
+                    min: 9
+                },
+                email: 
+                {
+                    required: true,
+                    email: true
+                },
+                password_confirmation: 
+                {
+                    required: true,
+                    equalTo: "#password",
+                    min: 9
+                }
+            },
+     messages : {
+       password: {
+         required: "Veuillez entrer un mot de passe",
+         min: "Minimum 9 caractères",
+       },
+       email: {
+         email: "Veuillez renseigner un mot de passe valide",
+       },
+       password_confirmation: {
+         required: "Veuillez comfirmer le mot de passe",
+         equalTo: "Le mot de passe doit être conforme"
+       }
+     }
+   });
+});
+</script>

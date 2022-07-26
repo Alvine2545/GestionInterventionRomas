@@ -1,53 +1,4 @@
 @extends('layout')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-
-<script>
-        $(document).ready(function() {
-//             alert("gfvc");
-//   $("#j-pro").validate({
-//     rules: {
-//       name : {
-//         required: true,
-//         minlength: 3
-//       },
-//       password: {
-//         required: true,
-//         min: 8
-//       },
-//       email: {
-//         required: true,
-//         email: true
-//       },
-//       password_confirmation: {
-//         required: true,
-//         min: 8,
-//         min: 0
-//       }
-//     },
-//     messages : {
-//       name: {
-//         minlength: "Minimum 3 caractères",
-//         required: "Veuillez renseignez votre nom",
-//       },
-//       password: {
-//         required: "Please enter your age",
-//         min: "You must be at least 8 years old",
-//       },
-//       email: {
-//         email: "The email should be in the format: abc@domain.tld",
-//       },
-//       password_confirmation: {
-//         required: "People with age over 50 have to enter their weight",
-//       }
-//     }
-//   });
-});
-</script>
 @section('content')
 
     <div class="j-wrapper j-wrapper-450" style="width: 40%">
@@ -105,3 +56,55 @@
         </form>
     </div>
 @endsection
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+<script>
+        $(document).ready(function() 
+        {
+          $("#j-pro").validate({
+            rules: 
+            {
+                name : 
+                {
+                    required: true,
+                    minlength: 3
+                },
+                password: 
+                {
+                    required: true,
+                    min: 9
+                },
+                email: 
+                {
+                    required: true,
+                    email: true
+                },
+                password_confirmation: 
+                {
+                    required: true,
+                    equalTo: "#password",
+                    min: 9
+                }
+            },
+     messages : {
+       name: {
+         minlength: "Minimum 3 caractères",
+         required: "Veuillez renseignez votre nom",
+       },
+       password: {
+         required: "Veuillez entrer un mot de passe",
+         min: "Minimum 9 caractères",
+       },
+       email: {
+         email: "Veuillez renseigner un mot de passe valide",
+       },
+       password_confirmation: {
+         required: "Veuillez comfirmer le mot de passe",
+         equalTo: "Le mot de passe doit être conforme"
+       }
+     }
+   });
+});
+</script>
