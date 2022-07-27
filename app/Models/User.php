@@ -81,4 +81,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Installation::class);
     }
+    public function devis()
+    {
+        return $this->hasMany(Devis::class);
+    }
 }

@@ -7,7 +7,7 @@
         </div>
     @endif
     <div class="j-wrapper j-wrapper-400" style="width: 50%">
-        
+
         <form method="POST" action="{{ route('login') }}" class="j-pro" id="j-pro" name="j-pro" novalidate="">
             <h4 class="text-center" style="margin-top: 5%">Authentification</h4>
             @csrf
@@ -32,13 +32,13 @@
                         <span class="messages" style="color: red"></span>
                     </div>
                 </div>
-    
+
                 <div class="block mt-4">
                     <label for="remember_me" class="flex items-center">
                         <x-jet-checkbox id="remember_me" name="remember" />
                         <span class="ml-2 text-sm text-gray-600">{{ __('Se souvenir de moi') }}</span>
                     </label>
-                    
+
                 </div>
                 <div class="text-right">
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">

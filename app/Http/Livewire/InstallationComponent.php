@@ -30,7 +30,7 @@ class InstallationComponent extends Component
     public function store()
     {
         $this->validate();
- 
+
         // Execution doesn't reach here if validation fails.
         $installation = new Installation();
         $produitinstalle = new Produitinstalle();
@@ -46,7 +46,7 @@ class InstallationComponent extends Component
             'description' => $this->description,
             'client_id' => $this->client,
         ]);
-        
+
         Produitinstalle::create([
             'version' => $this->version,
             'installation_id' => $this->,
@@ -65,31 +65,31 @@ class InstallationComponent extends Component
        ->join('Users', 'Installations.client_id', '=', 'Users.id')
        ->select(['Produitinstalles.id As id', 'Installations.id As installation_id', 'Produits.nom As produits', 'Produits.type As type', 'Produitinstalles.version As version', 'Users.name As nom', 'Installations.description As description'])
        ->get();
-        
-       return view('livewire.installation-component')->layout('livewire.installation'); 
+
+       return view('livewire.installation-component')->layout('livewire.installation');
     }
     public function nouveau()
     {
         $this->createMode = "oui";
-        
-          
-      // return view('livewire.create_Installation')->layout('livewire.installation');        
-        
+
+
+      // return view('livewire.create_Installation')->layout('livewire.installation');
+
     }
     public function destroy($first, $second)
-    { 
+    {
         if ($first && $second)
         {
-            
+
             $idInstallation = Produitinstalle::where('id', $second);
             dd($idInstallation);
             $idInstallation->delete();
             $idProduitinstalle = Produitinstalle::where('id', $first);
-            $idProduitinstalle->delete(); 
+            $idProduitinstalle->delete();
         }
     }
     public function edit($first, $second)
-    { 
+    {
         $idProduitinstalle = Produitinstalle::findOrFail($first)->join('Installations','Produitinstalle.installation_id', '=', 'Installations.id');
         dd($idProduitinstalle);
         /*$this->selected_id = $id;

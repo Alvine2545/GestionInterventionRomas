@@ -38,7 +38,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\demo.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\font-awesome.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\j-pro-modern.css')}}">
-       
+
         @livewireStyles
     </head>
     <body>
@@ -172,7 +172,7 @@
                                             <i class="feather icon-log-out"></i> <button type="submit" style="border: none"> Déconnecter</button>
 
                                         </form>
-                                        
+
                                     </li>
                                 </ul>
 
@@ -290,7 +290,7 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="{{url('admin/produit/index')}}">
+                                        <a href="{{url('admin/produit/liste')}}">
                                             <span class="pcoded-mtext">Les produits</span>
                                         </a>
                                     </li>
@@ -305,7 +305,7 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="form-elements-add-on.htm">
+                                        <a href="{{url('admin/installation/create')}}">
                                             <span class="pcoded-mtext">Installations</span>
                                         </a>
                                     </li>
@@ -409,21 +409,21 @@
                             @yield('content')
                         </div>
                     </div>
-                </div>                            
+                </div>
 
         <script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
         <!-- jquery slimscroll js -->
         <script type="text/javascript" src="{{asset('files\bower_components\jquery-slimscroll\js\jquery.slimscroll.js')}}"></script>
-        
+
         <script type="text/javascript" src="{{asset('files\bower_components\popper.js\js\popper.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\bootstrap\js\bootstrap.min.js')}}"></script>
         <!-- modernizr js -->
         <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\modernizr.js')}}"></script>
-    
+
         <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\css-scrollbars.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\select2\js\select2.full.min.js')}}"></script>
-    
+
         <script type="text/javascript" src="{{asset('files\bower_components\multiselect\js\jquery.multi-select.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\assets\js\jquery.quicksearch.js')}}"></script>
         <!-- Custom js -->
@@ -435,13 +435,13 @@
         <script type="text/javascript" src="{{asset('files\bower_components\i18next-browser-languagedetector\js\i18nextBrowserLanguageDetector.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\jquery-i18next\js\jquery-i18next.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking-multistep.js')}}"></script>
-    
+
          <!-- modernizr js -->
          <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\css-scrollbars.js')}}"></script>
-    
+
          <!-- Custom js -->
-         <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script> 
-    
+         <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script>
+
         <!--Forms - Wizard js-->
         <script src="{{asset('files\bower_components\jquery.cookie\js\jquery.cookie.js')}}"></script>
         <script src="{{asset('files\bower_components\jquery.steps\js\jquery.steps.js')}}"></script>
@@ -466,12 +466,12 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
+
       gtag('config', 'UA-23581568-13');
     </script>
     <!--script>
         $(document).ready(function() {
-            $('#next').click(function(){ 
+            $('#next').click(function(){
             var cases = document.getElementById("j-pro").role;
             for(var i=0; i<cases.length; i++){
                 if(cases[i].checked){
@@ -481,17 +481,17 @@
                     }else if(cases[i].value == 2){
                         console.log(cases[i].value);
                         $('#userrole').html('<div class="j-unit"><label class="j-label">Nom *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Prénom *</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Email *</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
-                     
+
                     }else if(cases[i].value == 1){
                         console.log(cases[i].value);
                         $('#userrole').html('<div class="j-unit"><label class="j-label">Nom *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Numero IFU</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Raison sociale</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
-                     
+
                     }
                 }
-            }        
-        });   
+            }
+        });
     });
-        
+
     </script-->
         @livewireScripts
     </body>

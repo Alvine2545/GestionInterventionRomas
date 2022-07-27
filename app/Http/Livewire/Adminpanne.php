@@ -18,6 +18,7 @@ class Adminpanne extends Component
     public $updateMode = false;
     public $selected_id;
     public $pannes;
+    public $nom;
 
     //public $produit_inst;
 
@@ -57,6 +58,7 @@ class Adminpanne extends Component
         $pane->description= $this->description;
         $pane->produitinstalles_id= $this->produit_id;
         $pane->client_id= $this->client_id;
+        $pane->nom = "PA"+$this->nom;
         $pane->save();
     
     }

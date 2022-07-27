@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('devis', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('prix');
+            $table->text('code');
             $table->boolean('payer');
             $table->foreignId('client_id')->constrained('client');
             $table->foreignId('type_devis_id')->constrained('type_devis');

@@ -25,7 +25,7 @@
                            <div class="row" style="margin-left: 10%; margin-bottom:3%" >
                                <select class="form-control form-control-primary" name="pane_id" wire:model="pane_id" style="width: 50%" >
                                    <option value="">Sélectionnez la panne du client</option>
-                                      @foreach ($panne as $value)
+                                      @foreach ($pannes as $value)
                                           <option value="{{$value->id}}">{{$value->description}} </option>
                                       @endforeach
                               </select>
@@ -35,7 +35,7 @@
                         <div class="row" style="margin-left: 10%; margin-bottom:3%" >
                             <select class="form-control form-control-primary" name="type_devis_id" wire:model="type_devis_id" style="width: 50%" >
                                 <option value="">Sélectionnez le type de devis</option>
-                                  @foreach ($types as $value)
+                                  @foreach ($typedevis as $value)
                                       <option value="{{$value->id}}">{{$value->nom}} </option>
                                  @endforeach
 

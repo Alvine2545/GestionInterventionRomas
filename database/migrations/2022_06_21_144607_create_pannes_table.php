@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->text('description');
             $table->text('traite')->nullable();
+            $table->text('nom')->nullable();
             $table->foreignId('produitinstalles_id')->constrained('produitinstalles');
             $table->foreignId('client_id')->constrained('client');
             $table->timestamps();

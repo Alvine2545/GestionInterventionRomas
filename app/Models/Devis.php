@@ -19,7 +19,7 @@ class Devis extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(User::class);
     }
 
     public function type_devis()
