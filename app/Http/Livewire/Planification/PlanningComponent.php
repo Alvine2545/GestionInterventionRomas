@@ -36,7 +36,7 @@ class PlanningComponent extends Component
         $this->events = json_encode(Planning::all());
         return view('livewire.planification.planning-component',
         ['pannes'=>$pannes, 'techniciens'=>$techniciens, 'typeinterventions'=>$typeinterventions]
-        )->layout('base');
+        )->layout('livewire.base');
     }
     public function eventAdd()
     {
