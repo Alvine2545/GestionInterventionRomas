@@ -4,29 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Planning;
+use App\Models\TypeIntervention;
 
 class Intervention extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'details', 'lieu', 'code', 'plannings_id', 'rapports_id', 'user_id',
+    ];
 
-    public function client()
-    {
-        return $this->belongsTo(Client::class);
-    }
 
-    public function plannings()
+    public function planning()
     {
-        return $this->hasMany(Planning::class);
+        return $this->belongsTo(Planning::class);
     }
 
     public function rapport()
     {
         return $this->belongsTo(Rapport::class);
     }
-     
-    public function devis()
+
+    public function typeintervention()
     {
-        return $this->hasMany(Devis::class);
+        return $this->belongsTo(TypeIntervention::class);
     }
- 
+
+
 }

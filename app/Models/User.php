@@ -11,6 +11,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Devis;
+use App\Models\Panne;
+use App\Models\Installation;
+use App\Models\Roles;
+use App\Models\Planning;
 
 class User extends Authenticatable
 {
@@ -20,7 +25,7 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    /*$data['demande']= true; 
+    /*$data['demande']= true;
     $user->notify(new Panneadmin($data));
     //Voir les notifications
     $user->notifications;
@@ -40,6 +45,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'tel',
+        'siege',
+        'raisonSocial',
+        'poste',
+        'nom',
+        'prenom',
+        'ifu',
+        'disponibilite',
+        'status',
+        'demande',
     ];
 
     /**
@@ -71,14 +86,30 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    
+
     public function roles()
     {
-        return $this->belongsToMany(Roles::class,'roles_users', 'user_id','roles_id');
+        return $this->belongsToMany(Roles::class,'roles_users', 'users_id','roles_id');
     }
 
     public function installations()
     {
         return $this->hasMany(Installation::class);
     }
+
+    public function devis()
+    {
+        return $this->hasMany(Devis::class);
+    }
+
+    public function pannes()
+    {
+        return $this->hasMany(Panne::class);
+    }
+
+    public function plannings()
+    {
+        return $this->belongsToMany(Planning::class, 'equipes', 'users_id','plannings_id');
+    }
+
 }

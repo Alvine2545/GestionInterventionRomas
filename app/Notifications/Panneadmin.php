@@ -11,16 +11,16 @@ use App\Models\Panne;
 class Panneadmin extends Notification
 {
     use Queueable;
-    private Panne $signpan;
+    public $pannes;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Panne $signpan)
+    public function __construct(Panne $pannes)
     {
-        //
-        $this->signpan = $signpan;
+
+        $this->pannes = $pannes;
     }
 
     /**
@@ -31,7 +31,7 @@ class Panneadmin extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -43,11 +43,10 @@ class Panneadmin extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->from('alladakaneunice@gmail.com', 'Eunice ALLADAKAN')
                     ->greeting('Salut!')
                     ->subject('Signalement de panne')
                     ->line($this->signpan->description)
-                    ->action('Retourner sur notre application', url('/'))  
+                    ->action('Retourner sur notre application', url('/'))
                     ->line('Veuillez planifier une intervention pour cette panne!');
     }
 
@@ -60,7 +59,7 @@ class Panneadmin extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'pannes_id'  => $this->pannes->id,
         ];
     }
 }

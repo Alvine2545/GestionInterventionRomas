@@ -4,10 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Panne;
+use App\Models\Intervention;
+use App\Models\Equipe;
+
 
 class Planning extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'priorite', 'debut', 'fin', 'date', 'typeinterventions_id', 'user_id', 'pannes_id',
+    ];
 
     public function panne()
     {
@@ -19,20 +27,16 @@ class Planning extends Model
         return $this->hasMany(Intervention::class);
     }
 
-    public function type_intervention()
+    public function user()
     {
-        return $this->belongsTo(TypeIntervention::class);
-    }
-    
-    public function respnsable()
-    {
-        return $this->belongsTo(Responsable::class);
+        return $this->belongsTo(User::class);
 
     }
 
-    public function techniciens()
+    public function users()
     {
-        return $this->belongsToMany(Technicien::class, 'equipes');
+        return $this->belongsToMany(User::class);
+      // return $this->belongsToMany(User::class)->using(Equipe::class);
     }
 
 

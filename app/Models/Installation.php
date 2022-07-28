@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Client;
 use App\Models\Produit;
+use App\Models\User;
 class Installation extends Model
 {
-    
+
     use HasFactory;
+    protected $fillable = [
+        'description', 'user_id',
+    ];
 
     public function user()
     {

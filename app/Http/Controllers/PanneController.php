@@ -67,7 +67,7 @@ dd($book);*/
         $pane->produitinstalles_id= $request->produit;
         $pane->client_id= $client_id;
         $pane->save();
-
+        $this->pannes->user->notify(new Panneadmin($this->pannes));
 
         /*$pane = Panne::create([
             'description' =>$request->description,

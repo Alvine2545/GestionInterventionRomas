@@ -6,18 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Produitinstalle;
 use App\Models\Planning;
-use App\Models\Client;
+use App\Models\User;
 
 class Panne extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'description', 'produit', 'nom',
-    ];
+        'description', 'traite', 'nom', 'produitinstalles_id', 'user_id' ];
 
-    public function client()
+    public function user()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(User::class);
     }
 
     public function plannings()

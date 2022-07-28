@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('equipes', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreignId('techniciens_id')->constrained('techniciens');
+            $table->foreignId('user_id')->constrained('users')->nullable();
             $table->foreignId('plannings_id')->constrained('plannings');
             $table->timestamps();
         });
