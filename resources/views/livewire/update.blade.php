@@ -1,7 +1,7 @@
 <div class="col-lg-8">
     <div class="page-header-title">
         <div class="d-inline text-center" >
-            <h4 style="margin-top: 10%">Créer une installation</h4>
+            <h4 style="margin-top: 10%">Modifier une installation</h4>
         </div>
     </div>
 </div>
