@@ -290,7 +290,7 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="{{url('admin/produit/index')}}">
+                                        <a href="{{url('admin/produit/liste')}}">
                                             <span class="pcoded-mtext">Les produits</span>
                                         </a>
                                     </li>
@@ -305,7 +305,7 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="form-elements-add-on.htm">
+                                        <a href="{{url('admin/installation/create')}}">
                                             <span class="pcoded-mtext">Installations</span>
                                         </a>
                                     </li>

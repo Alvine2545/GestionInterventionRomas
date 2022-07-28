@@ -96,20 +96,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Installation::class);
     }
-
     public function devis()
     {
         return $this->hasMany(Devis::class);
     }
-
-    public function pannes()
-    {
-        return $this->hasMany(Panne::class);
-    }
-
-    public function plannings()
-    {
-        return $this->belongsToMany(Planning::class, 'equipes', 'users_id','plannings_id');
-    }
-
 }

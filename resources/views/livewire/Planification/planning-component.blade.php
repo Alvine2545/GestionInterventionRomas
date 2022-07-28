@@ -123,7 +123,9 @@
             dateClick: function(info) {
                /* $('#calendar').hide()
                 $('#planing').show()*/
-                console.log(info.dateStr);
+                //@this.eventRemove(info.event.id);
+                $('#exampleModal').modal('show');
+                // console.log(info.dateStr);
                 $("#date").val(info.dateStr);
                // console.log( $("#date").val());
 
@@ -142,7 +144,7 @@
             //Fonction gérant la suppression de l'évènement
             eventClick: info => {
                 @this.eventRemove(info.event.id);
-                $('#modalList').modal('show')
+                $('#exampleModal').modal('show');
 
                 // if (confirm("Voulez-vous vraiment supprimer cet événement ?")) {
                 //     info.event.remove();
@@ -166,7 +168,7 @@
     @endpush
     {{-- @if ($date) --}}
 
-    <div id="planing">
+    {{-- <div id="planing">
         <div class="card-header">
             <h3 class="text-center">Planning</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -231,9 +233,9 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
     {{-- @endif --}}
-    <!--div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -245,16 +247,22 @@
             <div class="modal-body" >
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Pannes </label>
-                    <select class="form-control js-example-placeholder-multiple col-sm-12" multiple >
+                    <select class="form-control col-sm-12" multiple >
                         {{-- @foreach ($pannes as $panne)
                         <option value="{{$panne->id}}">{{$panne->description}}</option>
                         @endforeach --}}
                     </select>
                 </div>
-                
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="appt-time">Date </label>
+                    <div class="col-sm-10 col-md-10">
+                        <input class="form-control" id="date" type="date" name="date" wire:model='date'>
+                    <span class="validity"></span>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Techniciens </label>
-                    <select class="form-control js-example-placeholder-multiple col-sm-12" multiple="multiple" wire:model='techniciens'>
+                    <select class="form-control col-sm-12" multiple="multiple" wire:model='techniciens'>
                         {{-- @foreach ($techniciens as $technicien)
                             <option value="{{$technicien->id}}">{{$technicien->nom+" "+$technicien->prenom}}</option>
                         @endforeach --}}
@@ -262,7 +270,7 @@
                 </div>
                 <div class="form-group" >
                     <label class="control-label" for="appt-time">Type d'intervention </label>
-                    <select class=" form-control js-example-placeholder-multiple col-sm-12" multiple="multiple" wire:model='typeintervention'>
+                    <select class=" form-control col-sm-12" multiple="multiple" wire:model='typeintervention'>
                         @foreach ($typeinterventions as $typeintervention)
                             <option value="{{$typeintervention->id}}">{{$typeintervention->nom}}</option>
                         @endforeach
@@ -291,5 +299,5 @@
             </form>
           </div>
         </div>
-    </div-->
+    </div>
     </div>

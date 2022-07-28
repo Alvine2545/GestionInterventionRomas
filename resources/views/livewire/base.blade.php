@@ -285,17 +285,17 @@
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
-                                        <a href="{{url('produit/create')}}">
+                                        <a href="{{url('admin/produit/create')}}">
                                             <span class="pcoded-mtext">Créer produit</span>
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="{{url('produit/index')}}">
+                                        <a href="{{url('admin/produit/liste')}}">
                                             <span class="pcoded-mtext">Les produits</span>
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="form-elements-component.htm">
+                                        <a href="{{url('admin/panne')}}">
                                             <span class="pcoded-mtext">Enregistrer panne</span>
                                         </a>
                                     </li>
@@ -305,12 +305,12 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="form-elements-add-on.htm">
-                                            <span class="pcoded-mtext">Type installation</span>
+                                        <a href="{{url('admin/installation/create')}}">
+                                            <span class="pcoded-mtext">Créer installation</span>
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="form-elements-add-on.htm">
+                                        <a href="{{url('admin/installation/liste')}}">
                                             <span class="pcoded-mtext">Installations</span>
                                         </a>
                                     </li>
@@ -331,7 +331,7 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="bs-table-sizing.htm">
+                                        <a href="{{url('admin/planning')}} ">
                                             <span class="pcoded-mtext">Faire planning</span>
                                         </a>
                                     </li>

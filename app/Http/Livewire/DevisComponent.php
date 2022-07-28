@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Roles;
 use App\Models\User;
 use App\Models\Devis;
+use App\Models\Installation;
 use App\Models\Panne;
 use App\Models\TypeDevis;
 
@@ -22,29 +23,25 @@ class DevisComponent extends Component
     public $updateMode = false;
     public $devis;
     public $users ;
+    public $clients;
     public $typedevis;
+    public $nouveau;
+    public $interventions;
     protected $listeners = [
         'changeEvent'
      ];
-      public $clients;
 
     public function render()
     {
-        $this->devis = Devis::all();
-        $this->users = DB::table('users')->join('lesroles', 'lesroles.users_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'lesroles.roles_id')->where('roles.nom', 'Client')->select('users.nom as nom', 'roles.nom as role' , 'users.id as id')->get();
-        //$users= Roles::where('nom','client')->users()->get();
-        //dd($this->users);
-
-        //$this->pannes = DB::table('Devis')->join('Pannes', 'Devis.pannes_id', '=', 'Pannes.id')->where('Devis.pannes_id',$this->pane_id)->select('Pannes.*')->get();
-        //dd($this->produits );
-
-        $clients = DB::table('users')->join('Pannes', 'users.id', '=', 'Pannes.client_id')->where('client_id', '=', $this->users)->select('nom')->get();
-        //$this->client = DB::table('users')->select("nom", DB::raw("CONCAT(users.nom)" , 'PA' ))->get();
-
-        $this->typedevis = TypeDevis::all();
+        
+        $this->devis = DB::table('devis')->join('users', 'users.id', '=', 'devis.client_id')->join('type_devis', 'type_devis.id', '=', 'devis.type_devis_id')->select('devis.*', 'users.name as client', 'type_devis.nom as type')->get();
+        $this->clients = DB::table('users')->join('roles_users', 'roles_users.user_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'roles_users.roles_id')->where('roles.nom', 'Client')->select('users.name as nom', 'roles.nom as role' , 'users.id as id')->get();
+        $this->pannes = DB::table('pannes')->where('client_id', '=', $this->client_id)->get();
+        
+        $this->typedevis = TypeDevis::all(); 
         //$this->types = DB::table('Devis')->join('Type_devis', 'Devis.type_devis_id', '=', 'Type_devis.id')->where('Devis.type_devis_id',$this->type_devis_id)->select('Type_devis.*')->get();
         return view('livewire.devis-component', [
-        'users' => $this->users,
+        'users' => $this->clients,
         'pannes'=> $this->pannes,
         'typedevis'=> $this->typedevis,
         'devis' => $this->devis,
@@ -52,16 +49,17 @@ class DevisComponent extends Component
         ])->layout('livewire.base');
 
     }
+    public function new()
+    {
+        $this->nouveau = true;
+    }
     public function changeEvent($value)
     {
-        //dd($value);
-        $this->pannes = DB::table('Pannes')->where('client_id', '=', $value)->select('id', 'description')->get();
-        //dd($this->pannes);
-    }
-    public function open(){
-
-        //dd($this->client_id);
-        //$this->pannes = DB::table('Pannes')->where('client_id', '=', $this->users)->get();
+        if($value = 1){
+            $this->pannes = DB::table('Pannes')->where('client_id', '=', $value)->select('id', 'description')->get();
+        }else {
+            $this->pannes = Installation::all();
+        }
     }
     private function resetInput()
     {
@@ -76,6 +74,7 @@ class DevisComponent extends Component
         //dd("salut");
         //
         //$client_id= Auth::user()->id;
+        
         $this->validate([
             'prix' => 'required|max:20',
             'pane_id' => 'required',
@@ -87,10 +86,12 @@ class DevisComponent extends Component
         $devi->pannes_id= $this->pane_id;
         $devi->type_devis_id= $this->type_devis_id;
         $devi->client_id= $this->client_id;
+        $devi->payer = false;
+        $devi->code = "D_".$this->client_id."_".$this->pane_id;
         $devi->save();
 
         session()->flash('message', 'Devis creer avec succès');
-
+        $this->nouveau = false;
         $this->resetInput();
     }
 
@@ -103,7 +104,7 @@ class DevisComponent extends Component
     public function edit($id)
     {
 
-        $devi = Panne::find($id);
+        $devi = Devis::find($id);
         /*$produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')->where('Installations.client_id',$client_id)->select('Produitinstalles.*', 'Produits.nom')->get();
         $produits = Produit::where(id)*/
         //dd($pane);
@@ -172,6 +173,18 @@ class DevisComponent extends Component
             $devi->delete();
         }
         session()->flash('message', 'Devis supprimer avec succès');
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function view($id)
+    {
+
+       return view('livewire.pdfdevis')->layout('livewire.base');
+
     }
 
 }

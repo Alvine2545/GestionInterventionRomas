@@ -320,35 +320,83 @@
                                                 @endif
                                         
                                             </div>
-                                        </form>
-                                    @else
-                                        {{-- <table id="demo-foo-filtering" class="table table-striped">
+                                        </form><br>
+                                        @endif
+                                    <div class="table-responsive dt-responsive">
+                                    <table id="demo-foo-filtering" class="table table-striped" style="width: 100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th data-breakpoints="xs">Nom</th>
+                                                <th data-breakpoints="xs">Prénom</th>
+                                                <th data-breakpoints="xs">Siège</th>
+                                                <th data-breakpoints="xs">Email</th>
+                                                <th data-breakpoints="xs">Telephone</th>
+                                                
+                                                <th data-breakpoints="xs">Entreprise</th>
+                                                <th data-breakpoints="xs">Raison Sociale</th>
+                                                <th data-breakpoints="xs">Numero Ifu</th>
+                                                <th data-breakpoints="xs">Status</th>
+
+                                                <th data-breakpoints="xs">Poste</th>
+                                                <th data-breakpoints="xs">Disponibilité</th>                                                
+
+                                                <th data-breakpoints="xs">Role</th>                                                                                                
                                                 <th data-breakpoints="xs">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($typedevis as $value)
-                                            <tr>
+                                            @foreach ($users as $value)
+                                            <tr class="text-center">
                                                
                                                 <th scope="row">{{$value->id}}</th>
                                                 <td class=""><span class="">{{$value->nom}}</span>
                                                     <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->prenom}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->siege}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->email}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->tel}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->name}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->raisonSocial}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->ifu}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->status}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->poste}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->disponibilite}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                </td>
+                                                <td class=""><span class="">{{$value->role}}</span>
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                 </td> 
                                                 <td class="row">
-                                                    <form class="" method="POST" action="{{url('admin/typedevis/destroy', $value->id)}}">
+                                                    <form class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis" method="POST" action="{{url('admin/typedevis/destroy', $value->id)}}">
                                                         @csrf
                                                         @method('DELETE')
                                                         
-                                                        <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" class="btn btn-primary"><i class="icofont icofont-trash" color="red"></i></button>
+                                                        <span class=""><button type="submit" class="btn btn-primary"><i class="icofont icofont-trash" color="red"></i></button>
                                                         </span>
                                                     </form>
-                                                    <form method="post" action="{{url('admin/typedevis/edit',$value->id)}}">
+                                                    <form class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis" method="post" action="{{url('admin/typedevis/edit',$value->id)}}">
                                                         @method('GET')
-                                                        <span class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><button type="submit" class="btn btn-danger"><i class="feather icon-edit-1"></i></button>
+                                                        <span class=""><button type="submit" class="btn btn-danger"><i class="feather icon-edit-1"></i></button>
                                                         </span>
                                                     </form>
                                                     
@@ -358,8 +406,12 @@
                                             </tr>
                                            
                                         </tbody>
-                                    </table> --}}
-                                    @endif
+                                    </table>
+                                    </div>
+                                    <div class="row">
+                                        <div></div>
+                                    </div>
+                                    
                                 {{-- </div> --}}
                             </div>
                     </div>

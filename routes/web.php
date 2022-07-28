@@ -116,7 +116,7 @@ Route::prefix('admin')->middleware([
 
     //Route de l'admin pour gérer le devis
     Route::get('/devis', DevisComponent::class);
-
+    
     //Route de type intervention
     Route::get('typeintervention/liste', [App\Http\Controllers\TypeinverventionController::class, 'index']);
     Route::get('typeintervention/create', [App\Http\Controllers\TypeinverventionController::class, 'create']);
