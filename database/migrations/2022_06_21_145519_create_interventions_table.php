@@ -17,9 +17,10 @@ return new class extends Migration
             $table->increments('id');
             $table->text('details');
             $table->string('lieu');
+            $table->string('code');
             $table->foreignId('plannings_id')->constrained('plannings');
             $table->foreignId('rapports_id')->constrained('rapports');
-            $table->foreignId('client_id')->constrained('client');
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 

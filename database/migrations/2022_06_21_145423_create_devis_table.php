@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('prix');
             $table->text('code');
             $table->boolean('payer');
-            $table->foreignId('client_id')->constrained('client');
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('type_devis_id')->constrained('type_devis');
             $table->foreignId('pannes_id')->constrained('pannes');
             $table->timestamps();

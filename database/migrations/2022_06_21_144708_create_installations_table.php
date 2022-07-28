@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('installations', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description');
-            $table->foreignId('client_id')->constrained('client');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

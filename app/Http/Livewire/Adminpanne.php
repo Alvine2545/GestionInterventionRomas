@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Roles;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use App\Notifications\Panneadmin;
 
 class Adminpanne extends Component
 {
@@ -60,9 +61,10 @@ class Adminpanne extends Component
         $pane->client_id= $this->client_id;
         $pane->nom = "PA"+$this->nom;
         $pane->save();
-    
+
+
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -71,7 +73,7 @@ class Adminpanne extends Component
      */
     public function edit($id)
     {
-        
+
         $pane = Panne::find($id);
         /*$produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')->where('Installations.client_id',$client_id)->select('Produitinstalles.*', 'Produits.nom')->get();
         $produits = Produit::where(id)*/
@@ -81,7 +83,7 @@ class Adminpanne extends Component
         $this->produit_id = $pane->produitinstalles_id;
         $this->client_id = $pane->client_id;
         $this->updateMode = true;
-        
+
     }
 
     /**
@@ -93,14 +95,14 @@ class Adminpanne extends Component
      */
     public function update()
     {
-       
+
 
           $this->validate([
             'selected_id' => 'required|numeric',
             'description' => 'required|max:255',
             'client_id' => 'required',
         ]);
-    
+
         if ($this->selected_id) {
             $pane= Panne::find($this->selected_id);
             //dd($pane);
@@ -117,9 +119,9 @@ class Adminpanne extends Component
            // Panne::whereId($this->selected_id)->update($this->validate);
            $this->resetInput();
            $this->updateMode = false;
-        } 
-        
-        
+        }
+
+
     }
 
     /**
@@ -130,7 +132,7 @@ class Adminpanne extends Component
      */
     public function destroy($id)
     {
-        
+
         //$pane = Panne::find($id);
         if ($id) {
             $pane = Panne::where('id', $id);

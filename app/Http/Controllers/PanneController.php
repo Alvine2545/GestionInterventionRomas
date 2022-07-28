@@ -68,7 +68,7 @@ dd($book);*/
         $pane->client_id= $client_id;
         $pane->nom = "PA"+Auth::user()->name;
         $pane->save();
-
+        $this->pannes->user->notify(new Panneadmin($this->pannes));
 
         /*$pane = Panne::create([
             'description' =>$request->description,

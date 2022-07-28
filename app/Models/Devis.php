@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Client;
+use App\Models\User;
 use App\Models\TypeDevis;
 use App\Models\Panne;
 use App\Models\Paiement;
@@ -14,10 +14,10 @@ class Devis extends Model
     use HasFactory;
 
     protected $fillable = [
-        'prix', 'payer',
+        'prix', 'payer', 'user_id', 'type_devis_id', 'pannes_id',
     ];
 
-    public function client()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
