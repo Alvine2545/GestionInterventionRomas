@@ -26,7 +26,9 @@ class ClientComponent extends Component
     public $data;
     public $nouveau;
     public $users;
-
+    public $updateForm;
+    public $usersUpdate;
+public $nameU;
 
     public $totalSteep = 2;
     public $currentSteep = 1;
@@ -54,7 +56,7 @@ class ClientComponent extends Component
     }
     public function validateData()
     {
-        if($this->currentSteep == 1){
+        if($this->currentSteep == 1){ 
             $this->validate(
                 ['roles' => 'required'],
                 [
@@ -197,5 +199,127 @@ class ClientComponent extends Component
         if($this->currentSteep<1){
             $this->currentSteep = 1;
         }
+    }
+    public function destroy($id){
+
+        //$client = DB::table('users')-> 
+    }
+    public function edit($id)
+    {
+        $this->updateForm = true;
+        $this->usersUpdate = User::find($id);
+        // $this->role = Roles::all();
+        // // $this->users = User::all();
+        //  $this->users = DB::table('roles_users')
+        //     ->join('users', 'roles_users.user_id', '=', 'users.id')
+        //     ->join('roles', 'roles_users.roles_id', '=', 'roles.id')
+        //     ->select('users.*', 'roles.nom as role')
+        //     ->get();
+    }
+    public function update($id)
+    {
+        if($this->currentSteep == 2){
+
+            //Validation
+            
+            $user = new User();
+        $user->name = $this->name;
+        $user->email = $this->email;
+        $user->tel = $this->phone;
+        $user->siege = $this->siege;
+        $user->raisonSocial = $this->raisonsociale;
+        $user->poste = $this->poste;
+        $user->nom = $this->nom;
+        $user->prenom = $this->prenom;
+        $user->ifu = $this->identifiant;
+        $user->disponibilite = true;
+        $user->status = 0;
+        $user->demande  = 0;
+        if($this->choix == 1){
+            $this->validate(
+                ['email' => 'required|email'],
+                [
+                    'email.required' => 'Champ requis.',
+                    'email.email' => 'Email non valide.',
+                ],
+                ['email' => 'Email Address'],
+                ['name' => 'required'],
+                [
+                    'name.required' => 'Champ requis.',
+                ],
+                ['raisonsociale' => 'required'],
+                [
+                    'raisonsociale.required' => 'Champ requis.',
+                ],
+                ['phone' => 'required|min:8'],
+                [
+                    'phone.required' => 'Champ requis.',
+                ],
+                ['identifiant' => 'required'],
+                [
+                    'identifiant.required' => 'Champ requis.',
+                ],
+                ['siege' => 'required'],
+                [
+                    'siege.required' => 'Champ requis.',
+                ]
+            );
+            $user->password = Hash::make($this->identifiant);
+        }elseif($this->choix == 2){
+            $this->validate(
+                ['email' => 'required|email'],
+                [
+                    'email.required' => 'Champ requis.',
+                    'email.email' => 'Email non valide.',
+                ],
+                ['email' => 'Email Address'],
+                ['name' => 'required'],
+                [
+                    'name.required' => 'Champ requis.',
+                ],
+                ['phone' => 'required|min:8'],
+                [
+                    'phone.required' => 'Champ requis.',
+                ],
+                ['surname' => 'required'],
+                [
+                    'surname.required' => 'Champ requis.',
+                ],
+                ['poste' => 'required'],
+                [
+                    'surname.required' => 'Champ requis.',
+                ],
+                ['siege' => 'required'],
+                [
+                    'siege.required' => 'Champ requis.',
+                ]
+            );
+            $user->password = $this->email;
+        }elseif ($this->choix == 4) {
+            $this->validate(
+                ['email' => 'required|email'],
+                [
+                    'email.required' => 'Champ requis.',
+                    'email.email' => 'Email non valide.',
+                ],
+                ['email' => 'Email Address'],
+                ['name' => 'required'],
+                [
+                    'name.required' => 'Champ requis.',
+                ],
+                ['phone' => 'required|min:8'],
+                [
+                    'phone.required' => 'Champ requis.',
+                ],
+                ['surname' => 'required'],
+                [
+                    'surname.required' => 'Champ requis.',
+                ]
+            );
+            $user->password = $this->email;
+        }
+        $user->save();
+        $user->roles()->attach($this->choix);
+    }
     }
 }

@@ -89,7 +89,8 @@ Route::prefix('admin')->middleware([
     Route::get('client/{id}/edit', 'App\Http\Controllers\ClientController@edit');
     Route::put('client/update/{id}', 'App\Http\Controllers\ClientController@update');
     Route::delete('client/destroy/{id}', 'App\Http\Controllers\ClientController@destroy');
-
+//Installation
+      Route::get('/insatallations', InstallationComponent::class);
       //Route de produit
       Route::get('produit/liste', [App\Http\Controllers\ProduitController::class, 'index']);
       Route::get('produit/create', [App\Http\Controllers\ProduitController::class, 'create']);

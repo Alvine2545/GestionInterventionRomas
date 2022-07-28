@@ -25,7 +25,7 @@ class Adminpanne extends Component
     public function render()
     {
         $this->pannes = Panne::all();
-        $this->users = DB::table('users')->join('lesroles', 'lesroles.users_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'lesroles.roles_id')->where('roles.nom', 'Client')->select('users.nom as nom', 'roles.nom as role' , 'users.id as id')->get();
+        $this->users = DB::table('users')->join('roles_users', 'roles_users.user_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'roles_users.roles_id')->where('roles.nom', 'Client')->select('users.name as nom', 'roles.nom as role' , 'users.id as id')->get();
         //$users= Roles::where('nom','client')->users()->get();
         //dd($this->users);
         $this->produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')->where('Installations.client_id',$this->client_id)->select('Produits.*')->get();

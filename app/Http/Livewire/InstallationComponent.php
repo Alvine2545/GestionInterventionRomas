@@ -29,19 +29,22 @@ class InstallationComponent extends Component
     ];
     public function store()
     {
-        $this->validate();
+        //$this->validate();
 
         // Execution doesn't reach here if validation fails.
         $installation = new Installation();
         $produitinstalle = new Produitinstalle();
         $installation->description = $this->description;
         $installation->client_id = $this->client;
+        $installation->save();
         $produitinstalle = new Produitinstalle();
         $produitinstalle->version = $this->version;
-        $produitinstalle->installation_id = $installation->id;
-        $produitinstalle->produit_id = $this->produit;
+        //$id = DB::table('Installations')->where();
+        $produitinstalle->installations_id = $installation->id;
+        $produitinstalle->produits_id = $this->produit;
         $produitinstalle->save();
-        $installation->save();
+        
+        $this->createMode = false;
         /*Installation::create([
             'description' => $this->description,
             'client_id' => $this->client,
@@ -60,17 +63,17 @@ class InstallationComponent extends Component
        $this->data = User::all() ;
        $this->produits = Produit::all();
        $this->installation = DB::table('Produitinstalles')
-       ->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')
-       ->join('Installations', 'Produitinstalles.installation_id', '=', 'Installations.id')
+       ->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')
+       ->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')
        ->join('Users', 'Installations.client_id', '=', 'Users.id')
        ->select(['Produitinstalles.id As id', 'Installations.id As installation_id', 'Produits.nom As produits', 'Produits.type As type', 'Produitinstalles.version As version', 'Users.name As nom', 'Installations.description As description'])
        ->get();
-
-       return view('livewire.installation-component')->layout('livewire.installation');
+       $this->updateMode = false;
+       return view('livewire.installation-component')->layout('livewire.base');
     }
     public function nouveau()
     {
-        $this->createMode = "oui";
+        $this->createMode = true;
 
 
       // return view('livewire.create_Installation')->layout('livewire.installation');
@@ -90,6 +93,7 @@ class InstallationComponent extends Component
     }
     public function edit($first, $second)
     {
+        $this->updateMode = true;
         $idProduitinstalle = Produitinstalle::findOrFail($first)->join('Installations','Produitinstalle.installation_id', '=', 'Installations.id');
         dd($idProduitinstalle);
         /*$this->selected_id = $id;

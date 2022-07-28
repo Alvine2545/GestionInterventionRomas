@@ -321,7 +321,99 @@
                                         
                                             </div>
                                         </form><br>
-                                        @endif
+                                    @endif
+                                    
+                                    @if ($updateForm)
+                                    <form action="" wire:submit.prevent="update">
+                                        <div class="card-body">
+                                            <div class="form-group row">
+                                                <div class="j-unit col-md-4 col-md-offset-2">
+                                                    <label class="" for="">Choix du rôles de l'utilisateur <p style="color: red"> *</p></label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select name="" id="" style="width: 60%" wire:modele="roles">
+                                                        @foreach ($role as $value)
+                                                        <option value="{{$value->id}}">{{$value->nom}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>  
+                                                <span class="text-danger">@error('roles'){{$message}}@enderror</span>
+                                            </div>
+                                        <div class="form-group row">
+                                            <div class="j-unit col-md-4 col-md-offset-2">
+                                                <label class="" for="">Nom de l'entreprise <p style="color: red"> *</p></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="j-icon-right" for="name">
+                                                    <i class="icofont icofont-ui-user"></i>
+                                                </label>
+                                                <input type="text" wire:model="nameU" style="width: 60%" value="{{$usersUpdate->name}}">
+                                                <span class="text-danger">@error('name'){{$message}}@enderror</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-4 col-md-offset-2">
+                                                <label class="" for="">Numero IFU <p style="color: red"> *</p></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="j-icon-right" for="name">
+                                                    <i class="icofont icofont-envelope"></i>
+                                                </label>
+                                                <input type="text" id="identifiant" name="identifiant" wire:model="identifiant" style="width: 60%" value="{{$usersUpdate->ifu}}">
+                                                <span class="text-danger">@error('identifiant'){{$message}}@enderror</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-4 col-md-offset-2">
+                                                <label class="" for="">Raison sociale <p style="color: red"> *</p></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="j-icon-right" for="name">
+                                                    <i class="icofont icofont-envelope"></i>
+                                                </label>
+                                                <input type="text" id="raisonsociale" name="raisonsociale" wire:model="raisonsociale" style="width: 60%" value="{{$usersUpdate->raisonSocial}}">
+                                                <span class="text-danger">@error('raisonsociale'){{$message}}@enderror</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-4 col-md-offset-2">
+                                                <label class="" for="">Adresse Email <p style="color: red"> *</p></label>
+                                            </div>
+                                                <div class="col-md-6">
+                                                    <label class="j-icon-right" for="name">
+                                                        <i class="icofont icofont-envelope"></i>
+                                                    </label>
+                                                    <input type="email" id="email"  name="email" wire:model='email' style="width: 60%" value="{{$usersUpdate->email}}">
+                                                    <span class="text-danger">@error('email'){{$message}}@enderror</span>
+                                                </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-4 col-md-offset-2">
+                                                <label class="" for="">Adresse téléphonique <p style="color: red"> *</p></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="j-icon-right" for="phone">
+                                                    <i class="icofont icofont-phone"></i>
+                                                </label>
+                                                <input type="text" id="phone" name="phone" wire:model='phone' style="width: 60%" value="{{$usersUpdate->tel}}">
+                                                <span class="text-danger">@error('phone'){{$message}}@enderror</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-4 col-md-offset-2">
+                                                <label class="" for="">Siège <p style="color: red"> *</p></label>
+                                            </div>
+                                                <div class="col-md-6">
+                                                    <label class="j-icon-right" for="">
+                                                        <i class="icofont icofont-ui-user"></i>
+                                                    </label>
+                                                    <input type="text" id="siege" name="siege" wire:model='siege' style="width: 60%" value="{{$usersUpdate->siege}}">
+                                                    <span class="text-danger">@error('siege'){{$message}}@enderror</span>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    </form>
+                                    @endif
                                     <div class="table-responsive dt-responsive">
                                     <table id="demo-foo-filtering" class="table table-striped" style="width: 100%">
                                         <thead>
@@ -384,21 +476,13 @@
                                                     <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                 </td>
                                                 <td class=""><span class="">{{$value->role}}</span>
-                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"--> 
                                                 </td> 
                                                 <td class="row">
-                                                    <form class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis" method="POST" action="{{url('admin/typedevis/destroy', $value->id)}}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        
-                                                        <span class=""><button type="submit" class="btn btn-primary"><i class="icofont icofont-trash" color="red"></i></button>
-                                                        </span>
-                                                    </form>
-                                                    <form class="col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis" method="post" action="{{url('admin/typedevis/edit',$value->id)}}">
-                                                        @method('GET')
-                                                        <span class=""><button type="submit" class="btn btn-danger"><i class="feather icon-edit-1"></i></button>
-                                                        </span>
-                                                    </form>
+                                                    <button wire:click="edit({{$value->id}})" class="btn btn-primary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
+                                                    <button wire:click="view({{$value->id}})" class="btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
+                                                    <button wire:click="destroy({{$value->id}})" class="btn btn-danger col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
+                                                    
                                                     
                                                 </td>
                                                 @endforeach

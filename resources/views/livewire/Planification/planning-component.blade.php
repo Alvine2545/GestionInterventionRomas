@@ -248,9 +248,9 @@
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Pannes </label>
                     <select class="form-control col-sm-12" multiple >
-                        {{-- @foreach ($pannes as $panne)
+                        @foreach ($pannes as $panne)
                         <option value="{{$panne->id}}">{{$panne->description}}</option>
-                        @endforeach --}}
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group row">
@@ -263,9 +263,9 @@
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Techniciens </label>
                     <select class="form-control col-sm-12" multiple="multiple" wire:model='techniciens'>
-                        {{-- @foreach ($techniciens as $technicien)
-                            <option value="{{$technicien->id}}">{{$technicien->nom+" "+$technicien->prenom}}</option>
-                        @endforeach --}}
+                        @foreach ($techniciens as $technicien)
+                            <option value="{{$technicien->id}}">{{$technicien->nom." ".$technicien->prenom}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group" >
