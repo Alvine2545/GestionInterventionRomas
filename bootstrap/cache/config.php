@@ -4,13 +4,13 @@
     'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://localhost',
+    'url' => 'http://GestIntervention.test',
     'asset_url' => NULL,
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:nYflH0q4bbzT8ECGsZ7bvB27M0LnY1rGTnKmg662ocA=',
+    'key' => 'base64:tP4WBWgm99e3Xs6UCATEZBM93Wzp3gzUYnTKLpTZeLQ=',
     'cipher' => 'AES-256-CBC',
     'maintenance' => 
     array (
@@ -147,7 +147,7 @@
         'options' => 
         array (
           'host' => 'api-mt1.pusher.com',
-          'port' => '443',
+          'port' => 443,
           'scheme' => 'https',
           'encrypted' => true,
           'useTLS' => true,
@@ -200,7 +200,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\framework/cache/data',
+        'path' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -292,7 +292,7 @@
         'driver' => 'mysql',
         'url' => NULL,
         'host' => '127.0.0.1',
-        'port' => '3306',
+        'port' => '3308',
         'database' => 'romas_gestintervention',
         'username' => 'root',
         'password' => '',
@@ -312,7 +312,7 @@
         'driver' => 'pgsql',
         'url' => NULL,
         'host' => '127.0.0.1',
-        'port' => '3306',
+        'port' => '3308',
         'database' => 'romas_gestintervention',
         'username' => 'root',
         'password' => '',
@@ -327,7 +327,7 @@
         'driver' => 'sqlsrv',
         'url' => NULL,
         'host' => '127.0.0.1',
-        'port' => '3306',
+        'port' => '3308',
         'database' => 'romas_gestintervention',
         'username' => 'root',
         'password' => '',
@@ -373,14 +373,14 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\app',
+        'root' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\app/public',
-        'url' => 'http://localhost/storage',
+        'root' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\app/public',
+        'url' => 'http://GestIntervention.test/storage',
         'visibility' => 'public',
         'throw' => false,
       ),
@@ -399,7 +399,7 @@
     ),
     'links' => 
     array (
-      'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\public\\storage' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\app/public',
+      'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\public\\storage' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\app/public',
     ),
   ),
   'fortify-options' => 
@@ -480,7 +480,7 @@
   'livewire' => 
   array (
     'class_namespace' => 'App\\Http\\Livewire',
-    'view_path' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\resources\\views/livewire',
+    'view_path' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\resources\\views/livewire',
     'layout' => 'layouts.app',
     'asset_url' => NULL,
     'app_url' => NULL,
@@ -538,13 +538,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\logs/laravel.log',
+        'path' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\logs/laravel.log',
+        'path' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -596,7 +596,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\logs/laravel.log',
+        'path' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -608,11 +608,11 @@
       'smtp' => 
       array (
         'transport' => 'smtp',
-        'host' => 'mailhog',
-        'port' => '1025',
-        'encryption' => NULL,
-        'username' => NULL,
-        'password' => NULL,
+        'host' => 'smtp.gmail.com',
+        'port' => '465',
+        'encryption' => 'ssl',
+        'username' => 'eunicemankanjoualladakan@gmail.com',
+        'password' => 'nharbgisvtgrbjbu',
         'timeout' => NULL,
         'local_domain' => NULL,
       ),
@@ -654,7 +654,7 @@
     ),
     'from' => 
     array (
-      'address' => 'hello@example.com',
+      'address' => 'alladakaneunice@gmail.com',
       'name' => 'Laravel',
     ),
     'markdown' => 
@@ -662,7 +662,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\resources\\views/vendor/mail',
+        0 => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -729,7 +729,7 @@
       2 => '127.0.0.1',
       3 => '127.0.0.1:8000',
       4 => '::1',
-      5 => 'localhost',
+      5 => 'GestIntervention.test',
     ),
     'guard' => 
     array (
@@ -768,7 +768,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\framework/sessions',
+    'files' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -831,9 +831,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\resources\\views',
+      0 => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\resources\\views',
     ),
-    'compiled' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\framework\\views',
+    'compiled' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\framework\\views',
   ),
   'dompdf' => 
   array (
@@ -842,10 +842,10 @@
     'convert_entities' => true,
     'options' => 
     array (
-      'font_dir' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\fonts',
-      'font_cache' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\fonts',
-      'temp_dir' => 'C:\\Users\\ROMAS\\AppData\\Local\\Temp',
-      'chroot' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas',
+      'font_dir' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\fonts',
+      'font_cache' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas\\storage\\fonts',
+      'temp_dir' => 'C:\\Users\\Omar\\AppData\\Local\\Temp',
+      'chroot' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas',
       'allowed_protocols' => 
       array (
         'file://' => 
@@ -955,7 +955,7 @@
     array (
     ),
     'enable_runnable_solutions' => true,
-    'remote_sites_path' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas',
+    'remote_sites_path' => 'D:\\Floriane\\GestionInterventionRomas\\GestionInterventionRomas',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',

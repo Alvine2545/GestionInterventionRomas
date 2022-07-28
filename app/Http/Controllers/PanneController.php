@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Installation;
 use App\Models\Panne;
+use App\Models\User;
 use App\Models\Produitinstalle;
 use App\Models\Produit;
 use Illuminate\Support\Facades\Auth;
@@ -68,7 +69,7 @@ dd($book);*/
         $pane->client_id= $client_id;
         $pane->nom = "PA"+Auth::user()->name;
         $pane->save();
-        $this->pannes->user->notify(new Panneadmin($this->pannes));
+        $pannes->user->notify(new Panneadmin($this->pannes));
 
         /*$pane = Panne::create([
             'description' =>$request->description,
