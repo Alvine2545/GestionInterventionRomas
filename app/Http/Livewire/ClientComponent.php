@@ -38,7 +38,7 @@ public $nameU;
     }
     public function render()
     {
-        
+
         // $users = User::all();
         $this->role = Roles::all();
         // $this->users = User::all();
@@ -48,7 +48,7 @@ public $nameU;
             ->select('users.*', 'roles.nom as role')
             ->get();
         return view('livewire.client-component', ['role' => $this->role, 'users' => $this->users])->layout('livewire.base');
-        
+
     }
     public function new()
     {
@@ -56,7 +56,7 @@ public $nameU;
     }
     public function validateData()
     {
-        if($this->currentSteep == 1){ 
+        if($this->currentSteep == 1){
             $this->validate(
                 ['roles' => 'required'],
                 [
@@ -78,7 +78,7 @@ public $nameU;
         if($this->currentSteep == 2){
 
             //Validation
-            
+
             $user = new User();
         $user->name = $this->name;
         $user->email = $this->email;
@@ -202,12 +202,20 @@ public $nameU;
     }
     public function destroy($id){
 
-        //$client = DB::table('users')-> 
+        //$client = DB::table('users')->
     }
     public function edit($id)
     {
-        $this->updateForm = true;
+
         $this->usersUpdate = User::find($id);
+        //$this->roles = $this->usersUpdate->roles();
+        $this->name = $this->usersUpdate->name;
+        $this->phone = $this->usersUpdate->tel;
+        $this->email = $this->usersUpdate->email;
+        $this->siege  = $this->usersUpdate->siege;
+        $this->identifiant = $this->usersUpdate->ifu;
+        $this->raisonsociale = $this->usersUpdate->raisonSocial;
+        $this->updateForm = true;
         // $this->role = Roles::all();
         // // $this->users = User::all();
         //  $this->users = DB::table('roles_users')
@@ -221,7 +229,7 @@ public $nameU;
         if($this->currentSteep == 2){
 
             //Validation
-            
+
             $user = new User();
         $user->name = $this->name;
         $user->email = $this->email;
