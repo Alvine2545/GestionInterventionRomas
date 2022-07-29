@@ -125,17 +125,21 @@
                 $('#planing').show()*/
                 //@this.eventRemove(info.event.id);
                 $('#exampleModal').modal('show');
+                $("#exempleModal").modal({ backdrop: 'static', keyboard: false });
+
                 // console.log(info.dateStr);
-                $("#date").val(info.dateStr);
+                let date = info.dateStr;
+                $("#date").val(date);
+            
                // console.log( $("#date").val());
 
                     // calendar.addEvent({
-                    //     id: id,
-                    //     title: "title",   
-                    //     start: arg.start,
-                    //     end: arg.end,
-                    //     allDay: arg.allDay
-                    // });
+                    //      id: id,
+                    //      title: "title",   
+                    //      start: arg.start,
+                    //      end: arg.end,
+                    //      allDay: arg.allDay
+                    //  });
                /*     @this.eventAdd(calendar.getEventById(id));
                 calendar.unselect();
                 alert('Date: ' + info.dateStr);
@@ -235,7 +239,7 @@
         </div>
     </div> --}}
     {{-- @endif --}}
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" wire:ignore.self >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -243,54 +247,54 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             
-            <form wire:model.prevent='eventAdd()'>
+            <form wire:submit.prevent='eventAdd'>
             <div class="modal-body" >
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Pannes </label>
-                    <select class="form-control col-sm-12" multiple >
-                        @foreach ($pannes as $panne)
-                        <option value="{{$panne->id}}">{{$panne->description}}</option>
+                    <select class="form-control col-sm-12" wire:model="panne" >
+                        @foreach ($pannes as $value)
+                        <option value="{{$value->id}}">{{$value->description}}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="appt-time">Date </label>
-                    <div class="col-sm-10 col-md-10">
-                        <input class="form-control" id="date" type="date" name="date" wire:model='date'>
+                <div class="form-group row" >
+                    <label class="col-sm-2 col-form-label" for="date">Date </label>
+                    <div class="col-sm-10 col-md-10" >
+                        <input class="form-control" id="date" type="date" wire:ignore name="date" wire:model='dateP' readonly wire:ignore.self>
                     <span class="validity"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Techniciens </label>
-                    <select class="form-control col-sm-12" multiple="multiple" wire:model='techniciens'>
-                        @foreach ($techniciens as $technicien)
-                            <option value="{{$technicien->id}}">{{$technicien->nom." ".$technicien->prenom}}</option>
+                    <select class="form-control col-sm-12" multiple="multiple" wire:model='technicien'>
+                        @foreach ($techniciens as $value)
+                            <option value="{{$value->id}}">{{$value->nom." ".$value->prenom}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group" >
                     <label class="control-label" for="appt-time">Type d'intervention </label>
-                    <select class=" form-control col-sm-12" multiple="multiple" wire:model='typeintervention'>
-                        @foreach ($typeinterventions as $typeintervention)
-                            <option value="{{$typeintervention->id}}">{{$typeintervention->nom}}</option>
+                    <select class=" form-control col-sm-12" wire:model='typeinterves'>
+                        @foreach ($typeinterventions as $value)
+                            <option value="{{$value->id}}">{{$value->nom}}</option>
                         @endforeach
                         
                     </select>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label class="control-label" for="appt-time">Heure de départ : </label>
                     <input class="form-control" id="appt-time" type="time" name="appt-time"
                            min="12:00" max="18:00" required
-                           pattern="[0-9]{2}:[0-9]{2}">
+                           pattern="[0-9]{2}:[0-9]{2}" wire:model="start">
                     <span class="validity"></span>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Heure de fin : </label>
-                    <input class="form-control" id="appt-time" type="time" name="appt-time"
+                    <input class="form-control" id="appt-time_second" type="time" name="appt-time"
                            min="12:00" max="18:00" required
-                           pattern="[0-9]{2}:[0-9]{2}">
+                           pattern="[0-9]{2}:[0-9]{2}" wire:model="end">
                     <span class="validity"></span>
-                </div>
+                </div> --}}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                     <button type="submit" class="btn btn-primary">Enregistrer</button>

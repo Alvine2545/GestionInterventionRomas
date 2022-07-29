@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('fin');
             $table->date('date');
             $table->foreignId('typeinterventions_id')->constrained('type_interventions');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('responsables_id')->constrained('users');
             $table->foreignId('pannes_id')->constrained('pannes');
             $table->timestamps();
         });

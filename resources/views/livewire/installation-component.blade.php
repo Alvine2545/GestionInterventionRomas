@@ -58,7 +58,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label"><h4 class="sub-title">Produits <p style="color: red">*</p></h4></label>
                         <div class="col-sm-10 col-md-10" style="width:75%;">
-                            <select name="produit" class="form-control js-example-tags js-example-responsive col-sm-10" wire:model="produit">
+                            <select class="form-control js-example-tags js-example-responsive col-sm-10" wire:model="produit">
                                 @foreach ($produits as $produit)
                                     <option value="{{$produit->id}}">{{$produit->nom}}</option>
                                 @endforeach

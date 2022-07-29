@@ -18,11 +18,13 @@ class PlanningComponent extends Component
     public $event;
     public $panne;
     public $technicien;
-    public $typeintervention;
+    public $typeinterves;
     public $start;
     public $end;
     public $date;
-
+    public $heureD;
+    public $heureF;
+public $essai;
     public function render()
     {
         $pannes = Panne::all();
@@ -40,20 +42,30 @@ class PlanningComponent extends Component
     }
     public function eventAdd()
     {
-
-        $planification = new Planning();
-        $planification->typeinterventions_id = $this->typeintervention;
-        $planification->responsables_id = Auth::user()->id;
-        $planification->pannes_id = $this->panne;
-        //$planification->start = $this->technicien;
-        /*$planification->start = $this->start;
-        $planification->end = $this->end;
-        $planification->date = $this->date;*/
-        $planification->save();
-        $planification->techniciens()->attach($this->technicien);
-        Alert::success('Congrats', 'You\'ve Successfully Registered');
-        dd($this->technicien);
-        // Planning::create($this->events);
+        // $data['typeintervention'] = $this->typeinterves;
+        // $data['responsable'] = Auth::user()->id;
+        // $data['panne'] = implode(",",$this->panne);
+        // dd($data);
+        //dd($this->typeinterves);
+         $planification = new Planning();
+         $planification->typeinterventions_id = $this->typeinterves;
+         $planification->responsables_id = Auth::user()->id;
+         $planification->pannes_id = $this->panne;
+          $planification->debut = $this->start;
+          $planification->fin = $this->end;
+          $planification->priorite = "eleve";
+         $planification->date = "$this->date";
+         $planification->save();
+         foreach($this->technicien as $value){
+            $planification->techniciens()->attach($value);
+         }
+        // $planification->end = $this->end;
+        // $planification->date = $this->date;*/
+        // $planification->save();
+        // $planification->techniciens()->attach($this->technicien);
+        // Alert::success('Congrats', 'You\'ve Successfully Registered');
+        // dd($this->technicien);
+        // // Planning::create($this->events);
     }
     public function eventRemove($id)
     {

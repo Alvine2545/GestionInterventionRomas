@@ -337,7 +337,7 @@
                                                             <label class="" for="">Choix du rôles de l'utilisateur <p style="color: red"> *</p></label>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <select name="" id="" style="width: 60%" wire:modele="roles">
+                                                            <select name="roles" id="" style="width: 60%" wire:modele="roles">
                                                                 @foreach ($role as $value)
                                                                 <option value="{{$value->id}}">{{$value->nom}}</option>
                                                                 @endforeach
@@ -345,6 +345,7 @@
                                                         </div>
                                                         <span class="text-danger">@error('roles'){{$message}}@enderror</span>
                                                     </div>
+                                                @if ($isClient == true)
                                                 <div class="form-group row">
                                                     <div class="j-unit col-md-4 col-md-offset-2">
                                                         <label class="" for="">Nom de l'entreprise <p style="color: red"> *</p></label>
@@ -381,6 +382,32 @@
                                                         <span class="text-danger">@error('raisonsociale'){{$message}}@enderror</span>
                                                     </div>
                                                 </div>
+                                                @else
+                                                <div class="form-group row">
+                                                    <div class="j-unit col-md-4 col-md-offset-2">
+                                                        <label class="" for="">Nom <p style="color: red"> *</p></label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="j-icon-right" for="name">
+                                                            <i class="icofont icofont-ui-user"></i>
+                                                        </label>
+                                                        <input type="text" wire:model="nom" style="width: 60%">
+                                                        <span class="text-danger">@error('name'){{$message}}@enderror</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-4 col-md-offset-2">
+                                                        <label class="" for="">Prénom <p style="color: red"> *</p></label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="j-icon-right" for="name">
+                                                            <i class="icofont icofont-envelope"></i>
+                                                        </label>
+                                                        <input type="text" id="identifiant" name="prenom" wire:model="identifiant" style="width: 60%">
+                                                        <span class="text-danger">@error('identifiant'){{$message}}@enderror</span>
+                                                    </div>
+                                                </div>
+                                                @endif
                                                 <div class="form-group row">
                                                     <div class="col-md-4 col-md-offset-2">
                                                         <label class="" for="">Adresse Email <p style="color: red"> *</p></label>
@@ -416,6 +443,10 @@
                                                             <input type="text" id="siege" name="siege" wire:model='siege' style="width: 60%">
                                                             <span class="text-danger">@error('siege'){{$message}}@enderror</span>
                                                         </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <button type="reset" class="btn btn-sm btn-secondary">Annuler</button>
+                                                    <button type="submit" class="btn btn-sm btn-primary" wire:click="update({{$this->idUsers}})">Enregistrer</button>
                                                 </div>
                                             </div>
                                             </form>
@@ -488,7 +519,7 @@
                                                 </td>
                                                 <td class="row">
                                                     <button wire:click="edit({{$value->id}})" class="btn btn-primary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
-                                                    <button wire:click="view({{$value->id}})" class="btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-eye-alt"></i></button>
+                                                    <button wire:click="view({{$value->id}})" data-toggle="modal" data-target="#modal" class="btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-eye-alt"></i></button>
                                                     <button wire:click="destroy({{$value->id}})" class="btn btn-danger col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
 
 
@@ -513,11 +544,11 @@
         </div>
         <!-- Page body end -->
     </div>
-    <div class="modal fade modal-icon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="modal" class="modal fade modal-icon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Icofonts</h4>
+                    <h4 class="modal-title" id="myModalLabel">Uilisateur</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

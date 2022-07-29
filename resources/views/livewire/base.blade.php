@@ -38,6 +38,8 @@
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\demo.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\font-awesome.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\j-pro-modern.css')}}">
+        {{-- Modal  --}}
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
        @stack('styles')
         @livewireStyles
     </head>
@@ -427,21 +429,21 @@
         <script type="text/javascript" src="{{asset('files\bower_components\multiselect\js\jquery.multi-select.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\assets\js\jquery.quicksearch.js')}}"></script>
         <!-- Custom js -->
-        <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script>
+        {{-- <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script> --}}
         <script type="text/javascript" src="{{asset('files\assets\pages\advance-elements\select2-custom.js')}}"></script>
         <!-- i18next.min.js -->
         <script type="text/javascript" src="{{asset('files\bower_components\i18next\js\i18next.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\i18next-xhr-backend\js\i18nextXHRBackend.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\i18next-browser-languagedetector\js\i18nextBrowserLanguageDetector.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\jquery-i18next\js\jquery-i18next.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking-multistep.js')}}"></script>
+        {{-- <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking-multistep.js')}}"></script> --}}
     
          <!-- modernizr js -->
          <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\css-scrollbars.js')}}"></script>
     
          <!-- Custom js -->
-         <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script> 
-    
+         {{-- <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script>  --}}
+         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <!--Forms - Wizard js-->
         <script src="{{asset('files\bower_components\jquery.cookie\js\jquery.cookie.js')}}"></script>
         <script src="{{asset('files\bower_components\jquery.steps\js\jquery.steps.js')}}"></script>
@@ -494,6 +496,7 @@
         
     </script-->
     @stack('scripts')
+    {{-- @livewire('livewire-ui-modal') --}}
         @livewireScripts
     </body>
 </html>

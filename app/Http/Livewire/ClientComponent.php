@@ -28,7 +28,8 @@ class ClientComponent extends Component
     public $users;
     public $updateForm;
     public $usersUpdate;
-public $nameU;
+    public $isClient;
+    public $idUsers;
 
     public $totalSteep = 2;
     public $currentSteep = 1;
@@ -206,15 +207,35 @@ public $nameU;
     }
     public function edit($id)
     {
-
         $this->usersUpdate = User::find($id);
+        foreach ($this->usersUpdate->roles as $value) {
+            if ($value->id == 1) {
+                # client
+                $this->isClient = true;
+                $this->usersUpdate = User::find($id);
+                $this->name = $this->usersUpdate->name;
+                $this->phone = $this->usersUpdate->tel;
+                $this->email = $this->usersUpdate->email;
+                $this->siege  = $this->usersUpdate->siege;
+                $this->identifiant = $this->usersUpdate->ifu;
+                $this->raisonsociale = $this->usersUpdate->raisonSocial;
+            }
+            if ($value->id == 2) {
+                # technicien
+                $this->isClient = false;
+                $this->usersUpdate = User::find($id);
+                $this->nom = $this->usersUpdate->nom;
+                $this->phone = $this->usersUpdate->tel;
+                $this->email = $this->usersUpdate->email;
+                $this->siege  = $this->usersUpdate->siege;
+                $this->prenom = $this->usersUpdate->prenom;
+                //$this->raisonsociale = $this->usersUpdate->raisonSocial;
+            }
+            $this->id = $id;
+        }
+        
         //$this->roles = $this->usersUpdate->roles();
-        $this->name = $this->usersUpdate->name;
-        $this->phone = $this->usersUpdate->tel;
-        $this->email = $this->usersUpdate->email;
-        $this->siege  = $this->usersUpdate->siege;
-        $this->identifiant = $this->usersUpdate->ifu;
-        $this->raisonsociale = $this->usersUpdate->raisonSocial;
+        
         $this->updateForm = true;
         // $this->role = Roles::all();
         // // $this->users = User::all();
@@ -225,8 +246,9 @@ public $nameU;
         //     ->get();
     }
     public function update($id)
-    {
-        if($this->currentSteep == 2){
+    {dd('rf');
+        $this->usersUpdate = User::find($id);
+        if($this->roles == 2){
 
             //Validation
 
@@ -329,5 +351,10 @@ public $nameU;
         $user->save();
         $user->roles()->attach($this->choix);
     }
+    $this->updateForm = false;
+    }
+    public function view($id)
+    {
+        
     }
 }

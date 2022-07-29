@@ -32,18 +32,32 @@ class InstallationComponent extends Component
         //$this->validate();
 
         // Execution doesn't reach here if validation fails.
+        //$installation = Installation::create(['description'=>$this->description, 'client_id'=>$this->client]);
+        dd($this->produit);
         $installation = new Installation();
         $produitinstalle = new Produitinstalle();
         $installation->description = $this->description;
         $installation->client_id = $this->client;
         $installation->save();
-        $produitinstalle = new Produitinstalle();
-        $produitinstalle->version = $this->version;
-        //$id = DB::table('Installations')->where();
-        $produitinstalle->installations_id = $installation->id;
-        $produitinstalle->produits_id = $this->produit;
-        $produitinstalle->save();
+        $produit = Produit::find($this->produit);
+        $produit->installations()->attach($this->produit, ['version'=>$this->version]);
         
+        // $produitinstalle = new Produitinstalle();
+        // $produitinstalle->version = $this->version;
+        // //$id = DB::table('Installations')->where();
+        // $produitinstalle->installations_id = $installation->id;
+        // $produitinstalle->produits_id = $this->produit;
+        // $produitinstalle->save();
+        
+        // $installation = new Installation();
+        // $produitinstalle = Produitinstalle::all();
+        // $installation->description = $request->description;
+        // $installation->client_id = $request->client;
+        // $installation->save();
+        // $installation->produits()->attach($request->produit);
+        // $produitinstalle->version = $request->version;
+        // $produitinstalle->save();
+
         $this->createMode = false;
         /*Installation::create([
             'description' => $this->description,
