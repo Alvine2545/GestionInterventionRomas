@@ -37,18 +37,18 @@ class InstallationComponent extends Component
         $installation = new Installation();
         $produitinstalle = new Produitinstalle();
         $installation->description = $this->description;
-        $installation->client_id = $this->client;
+        $installation->user_id = $this->client;
         $installation->save();
         $produit = Produit::find($this->produit);
         $produit->installations()->attach($this->produit, ['version'=>$this->version]);
-        
+
         // $produitinstalle = new Produitinstalle();
         // $produitinstalle->version = $this->version;
         // //$id = DB::table('Installations')->where();
         // $produitinstalle->installations_id = $installation->id;
         // $produitinstalle->produits_id = $this->produit;
         // $produitinstalle->save();
-        
+
         // $installation = new Installation();
         // $produitinstalle = Produitinstalle::all();
         // $installation->description = $request->description;
@@ -79,7 +79,7 @@ class InstallationComponent extends Component
        $this->installation = DB::table('Produitinstalles')
        ->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')
        ->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')
-       ->join('Users', 'Installations.client_id', '=', 'Users.id')
+       ->join('Users', 'Installations.user_id', '=', 'Users.id')
        ->select(['Produitinstalles.id As id', 'Installations.id As installation_id', 'Produits.nom As produits', 'Produits.type As type', 'Produitinstalles.version As version', 'Users.name As nom', 'Installations.description As description'])
        ->get();
        $this->updateMode = false;

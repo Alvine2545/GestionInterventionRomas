@@ -9,6 +9,7 @@ use App\Http\Livewire\PlanningComponent;
 use Livewire\Livewire;
 
 use App\Http\Livewire\Adminpanne;
+use App\Http\Livewire\Auth\Profil;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\Type_devisController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\TypeinverventionController;
 use App\Http\Livewire\ClientComponent;
 use App\Http\Livewire\DevisComponent;
 use App\Http\Middleware\ClientRoute;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,10 +79,11 @@ Route::prefix('admin')->middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    
+
     //Client avec livewire
     Route::get('/client', CreateClient::class);
     Route::get('/users', ClientComponent::class);
+    Route::get('/user_profil', Profil::class);
     //Route de client
     Route::get('client/liste', [App\Http\Controllers\ClientController::class, 'index']);
     Route::get('client/create', [App\Http\Controllers\ClientController::class, 'create']);
@@ -90,7 +93,7 @@ Route::prefix('admin')->middleware([
     Route::put('client/update/{id}', 'App\Http\Controllers\ClientController@update');
     Route::delete('client/destroy/{id}', 'App\Http\Controllers\ClientController@destroy');
 //Installation
-      Route::get('/insatallations', InstallationComponent::class);
+      Route::get('/installations', InstallationComponent::class);
       //Route de produit
       Route::get('produit/liste', [App\Http\Controllers\ProduitController::class, 'index']);
       Route::get('produit/create', [App\Http\Controllers\ProduitController::class, 'create']);
@@ -117,7 +120,7 @@ Route::prefix('admin')->middleware([
 
     //Route de l'admin pour gérer le devis
     Route::get('/devis', DevisComponent::class);
-    
+
     //Route de type intervention
     Route::get('typeintervention/liste', [App\Http\Controllers\TypeinverventionController::class, 'index']);
     Route::get('typeintervention/create', [App\Http\Controllers\TypeinverventionController::class, 'create']);
@@ -140,7 +143,9 @@ Route::prefix('admin')->middleware([
 Route::get('/plan', PlanningComponent::class);
 
 });
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),

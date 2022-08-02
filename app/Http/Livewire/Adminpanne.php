@@ -29,7 +29,7 @@ class Adminpanne extends Component
         $this->users = DB::table('users')->join('roles_users', 'roles_users.user_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'roles_users.roles_id')->where('roles.nom', 'Client')->select('users.name as nom', 'roles.nom as role' , 'users.id as id')->get();
         //$users= Roles::where('nom','client')->users()->get();
         //dd($this->users);
-        $this->produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')->where('Installations.client_id',$this->client_id)->select('Produits.*')->get();
+        $this->produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')->where('Installations.user_id',$this->client_id)->select('Produits.*')->get();
         //dd($this->produits );
         return view('livewire.adminpanne', [
         'users' => $this->users,
@@ -58,8 +58,8 @@ class Adminpanne extends Component
         $pane = new Panne();
         $pane->description= $this->description;
         $pane->produitinstalles_id= $this->produit_id;
-        $pane->client_id= $this->client_id;
-        $pane->nom = "PA"+$this->nom;
+        $pane->user_id= $this->client_id;
+        $pane->nom = "PA".$this->nom;
         $pane->save();
 
 
@@ -81,7 +81,7 @@ class Adminpanne extends Component
         $this->selected_id = $id;
         $this->description = $pane->description;
         $this->produit_id = $pane->produitinstalles_id;
-        $this->client_id = $pane->client_id;
+        $this->client_id = $pane->user_id;
         $this->updateMode = true;
 
     }
@@ -108,7 +108,7 @@ class Adminpanne extends Component
             //dd($pane);
             $pane->description=$this->description;
             $pane->produitinstalles_id=$this->produit_id;
-            $pane->client_id=$this->client_id;
+            $pane->user_id=$this->client_id;
            /* $pane->update([
                 'description' => $this->description,
                 'produit_id' => $this->produit_id,

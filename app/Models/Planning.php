@@ -19,7 +19,7 @@ class Planning extends Model
 
     public function panne()
     {
-        return $this->belongsTo(Panne::class);
+        return $this->belongsToMany(Panne::class);
     }
 
     public function interventions()
@@ -27,15 +27,15 @@ class Planning extends Model
         return $this->hasMany(Intervention::class);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    // public function user()
+    // {
+    //     return $this->belongsToMany(User::class);
 
-    }
+    // }
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->using(Equipe::class);
       // return $this->belongsToMany(User::class)->using(Equipe::class);
     }
 

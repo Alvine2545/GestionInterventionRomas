@@ -17,6 +17,8 @@ class PlanningComponent extends Component
     public $eventAdd;
     public $event;
     public $panne;
+    public $priorite;
+    public $editModal;
     public $technicien;
     public $typeinterves;
     public $start;
@@ -24,9 +26,13 @@ class PlanningComponent extends Component
     public $date;
     public $heureD;
     public $heureF;
+    public $d;
+    public $type;
+    public $title;
 public $essai;
     public function render()
     {
+        //$this->editModal = false;
         $pannes = Panne::all();
         $techniciens = DB::table('Users')
        ->join('Roles_users', 'Users.id', '=', 'Roles_users.user_id')
@@ -37,8 +43,11 @@ public $essai;
        $typeinterventions = TypeIntervention::all();
         $this->events = json_encode(Planning::all());
         return view('livewire.planification.planning-component',
-        ['pannes'=>$pannes, 'techniciens'=>$techniciens, 'typeinterventions'=>$typeinterventions]
+        ['pannes'=>$pannes, 'techniciens'=>$techniciens, 'typeinterventions'=>$typeinterventions, 'events'=>$this->events]
         )->layout('livewire.base');
+    }
+    public function recuperation($dateR){
+        $this->d = $dateR;
     }
     public function eventAdd()
     {
@@ -47,6 +56,7 @@ public $essai;
         // $data['panne'] = implode(",",$this->panne);
         // dd($data);
         //dd($this->typeinterves);
+        // dd($this->d);
          $planification = new Planning();
          $planification->typeinterventions_id = $this->typeinterves;
          $planification->responsables_id = Auth::user()->id;
@@ -54,11 +64,13 @@ public $essai;
           $planification->debut = $this->start;
           $planification->fin = $this->end;
           $planification->priorite = "eleve";
-         $planification->date = "$this->date";
+          $planification->title = "Planning".$this->typeinterves;
+         $planification->date = $this->d;
          $planification->save();
          foreach($this->technicien as $value){
-            $planification->techniciens()->attach($value);
+            $planification->user()->attach($value);
          }
+         $this->emit("refreshCalendar");
         // $planification->end = $this->end;
         // $planification->date = $this->date;*/
         // $planification->save();
@@ -67,9 +79,29 @@ public $essai;
         // dd($this->technicien);
         // // Planning::create($this->events);
     }
+    public function editId($id){
+        $this->editModal = true;
+        $this->eventId = $id;
+        $this->event = Planning::find($id);
+        $this->type = DB::table('type_interventions')->where('id', $this->event->typeinterventions_id)->select('nom')->get();
+    }
     public function eventRemove($id)
     {
         $this->events = Planning::find($id);
-        //Event::destroy($id);
+        $this->events->delete();
+
     }
+    public function updateEvent($id){
+        $this->event->priorite = $this->priorite;
+        $this->event->debut = $this->stat;
+        $this->event->fin = $this->end;
+        $this->event->title = $this->title;
+        $this->event->date = $this->date;
+        $this->event->typeinterventions_id = $this->typeinterves;
+        $this->event->responsables_id = Auth::user()->id;
+        $this->event->pannes_id = $this->panne;
+        $this->event->save();
+
+    }
+
 }

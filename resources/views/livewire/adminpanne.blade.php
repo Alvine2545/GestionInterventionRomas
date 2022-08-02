@@ -1,6 +1,6 @@
 <div>
       @if ($updateMode == false)
-          <form wire:submit.prevent="store()" novalidate="">
+          <form wire:submit.prevent="store" novalidate="">
               @csrf
               <div class="row" style="margin-left: 10%; margin-bottom:3%" >
                    <select class="form-control form-control-primary" name="client_id" wire:model="client_id" style="width: 50%" >
@@ -16,7 +16,7 @@
                       <select class="form-control form-control-primary" name="produit_id" wire:model="produit_id" style="width: 50%" >
                           <option value="">Sélectionnez un produit</option>
                          @foreach ($produits as $value)
-                            <input type="hidden" name="client" value="{{$value->nom}}">
+
                             <option value="{{$value->id}}">{{$value->nom}} </option>
                           @endforeach
                        </select>

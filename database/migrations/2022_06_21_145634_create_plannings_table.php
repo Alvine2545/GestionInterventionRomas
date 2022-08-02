@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('priorite');
             $table->string('debut');
+            $table->string('title');
             $table->string('fin');
             $table->date('date');
             $table->foreignId('typeinterventions_id')->constrained('type_interventions');

@@ -157,7 +157,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="user-profile.htm">
+                                        <a href="{{ url('admin/user_profil') }}">
                                             <i class="feather icon-user"></i> Profile
                                         </a>
                                     </li>
@@ -258,25 +258,10 @@
                                             <span class="pcoded-mtext">Ajouter</span>
                                         </a>
                                     </li>
-                                    <li class="">
-                                        <a href="{{url('client/create')}}">
-                                            <span class="pcoded-mtext">Les utilisateurs</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="{{url('client/create')}}">
-                                            <span class="pcoded-mtext">Les clients</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="{{url('client/create')}}">
-                                            <span class="pcoded-mtext">Les techniciens</span>
-                                        </a>
-                                    </li>
                                 </ul>
                             </li>
                         </ul>
-                        <div class="pcoded-navigatio-lavel">Nos installations</div>
+                        <div class="pcoded-navigatio-lavel">Installations</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)">
@@ -295,24 +280,14 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="{{url('admin/panne')}}">
-                                            <span class="pcoded-mtext">Enregistrer panne</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="form-elements-add-on.htm">
-                                            <span class="pcoded-mtext">Liste des pannes</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/installation/create')}}">
-                                            <span class="pcoded-mtext">Installations</span>
+                                        <a href="{{url('admin/installations')}}">
+                                            <span class="pcoded-mtext">Ajouter installation</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
-                        <div class="pcoded-navigatio-lavel">Plannification</div>
+                        <div class="pcoded-navigatio-lavel">Interventions</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)">
@@ -321,57 +296,18 @@
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
-                                        <a href="bs-basic-table.htm">
-                                            <span class="pcoded-mtext">Nos planning</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="bs-table-sizing.htm">
+                                        <a href="{{url('admin/planning')}} ">
                                             <span class="pcoded-mtext">Faire planning</span>
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="{{url('admin/typeintervention/liste')}}">
-                                            <span class="pcoded-mtext">Type interventions</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="bs-table-border.htm">
+                                        <a href="">
                                             <span class="pcoded-mtext">Interventions</span>
                                         </a>
                                     </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel">Interventions</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu ">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
-                                    <span class="pcoded-mtext">Reçu</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="auth-normal-sign-in.htm" target="_blank">
-                                            <span class="pcoded-mtext">Editer reçu</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="" target="_blank">
-                                            <span class="pcoded-mtext">Envoyer reçu</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="pcoded-hasmenu ">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-sliders"></i></span>
-                                    <span class="pcoded-mtext">Devis</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="error.htm">
-                                            <span class="pcoded-mtext">Editer devis</span>
+                                    <li class=" ">
+                                        <a href="{{ url('admin/typeintervention/liste') }}">
+                                            <span class="pcoded-mtext">Type interventions</span>
                                         </a>
                                     </li>
                                     <li class="">
@@ -381,20 +317,18 @@
                                     </li>
                                 </ul>
                             </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel">Gestion des pannes</div>
+                        <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu ">
                                 <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                                    <span class="pcoded-mtext">Rapport</span>
+                                    <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                    <span class="pcoded-mtext">Reçu</span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="timeline.htm">
-                                            <span class="pcoded-mtext">Créer un rapport</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="timeline-social.htm">
-                                            <span class="pcoded-mtext">Liste rapport</span>
+                                    <li class=" ">
+                                        <a href="{{url('admin/panne')}}">
+                                            <span class="pcoded-mtext">Enregistrer panne</span>
                                         </a>
                                     </li>
                                 </ul>

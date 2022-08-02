@@ -33,6 +33,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\jquery.steps\css\jquery.steps.css')}}">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\style.css')}}">
+    <link rel="stylesheet" type="text/css" href="..\files\bower_components\sweetalert\css\sweetalert.css">
+
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\jquery.mCustomScrollbar.css')}}">
         <!-- jpro forms css -->
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\demo.css')}}">
@@ -159,7 +161,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="user-profile.htm">
+                                        <a href="{{ url('admin/user_profil') }}">
                                             <i class="feather icon-user"></i> Profile
                                         </a>
                                     </li>
@@ -174,7 +176,7 @@
                                             <i class="feather icon-log-out"></i> <button type="submit" style="border: none"> Déconnecter</button>
 
                                         </form>
-                                        
+
                                     </li>
                                 </ul>
 
@@ -260,25 +262,10 @@
                                             <span class="pcoded-mtext">Ajouter</span>
                                         </a>
                                     </li>
-                                    <li class="">
-                                        <a href="{{url('client/create')}}">
-                                            <span class="pcoded-mtext">Les utilisateurs</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="{{url('client/create')}}">
-                                            <span class="pcoded-mtext">Les clients</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="{{url('client/create')}}">
-                                            <span class="pcoded-mtext">Les techniciens</span>
-                                        </a>
-                                    </li>
                                 </ul>
                             </li>
                         </ul>
-                        <div class="pcoded-navigatio-lavel">Nos installations</div>
+                        <div class="pcoded-navigatio-lavel">Installations</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)">
@@ -297,29 +284,30 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="{{url('admin/panne')}}">
-                                            <span class="pcoded-mtext">Enregistrer panne</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="form-elements-add-on.htm">
-                                            <span class="pcoded-mtext">Liste des pannes</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/installation/create')}}">
-                                            <span class="pcoded-mtext">Créer installation</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/installation/liste')}}">
-                                            <span class="pcoded-mtext">Installations</span>
+                                        <a href="{{url('admin/installations')}}">
+                                            <span class="pcoded-mtext">Ajouter installation</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
-                        <div class="pcoded-navigatio-lavel">Plannification</div>
+                        <div class="pcoded-navigatio-lavel">Gestion des pannes</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu ">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                    <span class="pcoded-mtext">Pannes</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="{{url('admin/panne')}}">
+                                            <span class="pcoded-mtext">Enregistrer panne</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel">Interventions</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)">
@@ -328,75 +316,23 @@
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
-                                        <a href="bs-basic-table.htm">
-                                            <span class="pcoded-mtext">Nos planning</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
                                         <a href="{{url('admin/planning')}} ">
                                             <span class="pcoded-mtext">Faire planning</span>
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="bs-table-border.htm">
+                                        <a href="">
                                             <span class="pcoded-mtext">Interventions</span>
                                         </a>
                                     </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel">Interventions</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu ">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
-                                    <span class="pcoded-mtext">Reçu</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="auth-normal-sign-in.htm" target="_blank">
-                                            <span class="pcoded-mtext">Editer reçu</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="" target="_blank">
-                                            <span class="pcoded-mtext">Envoyer reçu</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="pcoded-hasmenu ">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-sliders"></i></span>
-                                    <span class="pcoded-mtext">Devis</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="error.htm">
-                                            <span class="pcoded-mtext">Editer devis</span>
+                                    <li class=" ">
+                                        <a href="{{ url('admin/typeintervention/liste') }}">
+                                            <span class="pcoded-mtext">Type interventions</span>
                                         </a>
                                     </li>
                                     <li class="">
                                         <a href="{{url('admin/typedevis/liste')}}">
                                             <span class="pcoded-mtext">Type devis</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="pcoded-hasmenu ">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                                    <span class="pcoded-mtext">Rapport</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="timeline.htm">
-                                            <span class="pcoded-mtext">Créer un rapport</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="timeline-social.htm">
-                                            <span class="pcoded-mtext">Liste rapport</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -411,21 +347,21 @@
                             {{ $slot }}
                         </div>
                     </div>
-                </div>                            
+                </div>
 
         <script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
         <!-- jquery slimscroll js -->
         <script type="text/javascript" src="{{asset('files\bower_components\jquery-slimscroll\js\jquery.slimscroll.js')}}"></script>
-        
+
         <script type="text/javascript" src="{{asset('files\bower_components\popper.js\js\popper.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\bootstrap\js\bootstrap.min.js')}}"></script>
         <!-- modernizr js -->
         <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\modernizr.js')}}"></script>
-    
+
         <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\css-scrollbars.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\select2\js\select2.full.min.js')}}"></script>
-    
+
         <script type="text/javascript" src="{{asset('files\bower_components\multiselect\js\jquery.multi-select.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\assets\js\jquery.quicksearch.js')}}"></script>
         <!-- Custom js -->
@@ -437,10 +373,10 @@
         <script type="text/javascript" src="{{asset('files\bower_components\i18next-browser-languagedetector\js\i18nextBrowserLanguageDetector.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\jquery-i18next\js\jquery-i18next.min.js')}}"></script>
         {{-- <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking-multistep.js')}}"></script> --}}
-    
+
          <!-- modernizr js -->
          <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\css-scrollbars.js')}}"></script>
-    
+
          <!-- Custom js -->
          {{-- <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script>  --}}
          <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -462,18 +398,27 @@
         <script src="{{asset('files\assets\js\vartical-layout.min.js')}}"></script>
         <script src="{{asset('files\assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\assets\js\script.js')}}"></script>
+        <script type="text/javascript" src="..\files\bower_components\sweetalert\js\sweetalert.min.js"></script>
+
+        <script type="text/javascript" src="{{ asset('files\assets\js\modal.js') }}"></script>
+        <script src="{{ asset('files\assets\pages\user-profile.js') }}"></script>
+
+    <!-- sweet alert modal.js intialize js -->
+    <!-- modalEffects js nifty modal window effects -->
+    <script type="text/javascript" src="{{ asset('files\assets\js\modalEffects.js"') }}></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
+
       gtag('config', 'UA-23581568-13');
     </script>
     <!--script>
         $(document).ready(function() {
-            $('#next').click(function(){ 
+            $('#next').click(function(){
             var cases = document.getElementById("j-pro").role;
             for(var i=0; i<cases.length; i++){
                 if(cases[i].checked){
@@ -483,17 +428,17 @@
                     }else if(cases[i].value == 2){
                         console.log(cases[i].value);
                         $('#userrole').html('<div class="j-unit"><label class="j-label">Nom *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Prénom *</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Email *</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
-                     
+
                     }else if(cases[i].value == 1){
                         console.log(cases[i].value);
                         $('#userrole').html('<div class="j-unit"><label class="j-label">Nom *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Numero IFU</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Raison sociale</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
-                     
+
                     }
                 }
-            }        
-        });   
+            }
+        });
     });
-        
+
     </script-->
     @stack('scripts')
     {{-- @livewire('livewire-ui-modal') --}}

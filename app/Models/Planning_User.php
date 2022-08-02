@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Rapport;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Equipe extends Model
+class Planning_User extends Model
 {
     use HasFactory;
     protected $fillable = [

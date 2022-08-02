@@ -54,6 +54,7 @@ class ClientComponent extends Component
     public function new()
     {
         $this->nouveau = true;
+        $this->updateForm = false;
     }
     public function validateData()
     {
@@ -207,6 +208,7 @@ class ClientComponent extends Component
     }
     public function edit($id)
     {
+        $this->nouveau = false;
         $this->usersUpdate = User::find($id);
         foreach ($this->usersUpdate->roles as $value) {
             if ($value->id == 1) {
@@ -233,10 +235,11 @@ class ClientComponent extends Component
             }
             $this->id = $id;
         }
-        
+
         //$this->roles = $this->usersUpdate->roles();
-        
+
         $this->updateForm = true;
+
         // $this->role = Roles::all();
         // // $this->users = User::all();
         //  $this->users = DB::table('roles_users')
@@ -355,6 +358,6 @@ class ClientComponent extends Component
     }
     public function view($id)
     {
-        
+
     }
 }
