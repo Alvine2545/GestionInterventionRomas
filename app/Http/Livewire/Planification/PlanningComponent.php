@@ -28,6 +28,8 @@ class PlanningComponent extends Component
     public $heureF;
     public $d;
     public $type;
+    public $pan;
+    public $tech;
     public $title;
 public $essai;
     public function render()
@@ -68,7 +70,7 @@ public $essai;
          $planification->date = $this->d;
          $planification->save();
          foreach($this->technicien as $value){
-            $planification->user()->attach($value);
+            $planification->users()->attach($value);
          }
          $this->emit("refreshCalendar");
         // $planification->end = $this->end;
@@ -83,6 +85,13 @@ public $essai;
         $this->editModal = true;
         $this->eventId = $id;
         $this->event = Planning::find($id);
+        $this->pan = Panne::all();
+        $this->tech = DB::table('Users')
+       ->join('Roles_users', 'Users.id', '=', 'Roles_users.user_id')
+       ->join('Roles', 'Roles_users.roles_id', '=', 'Roles.id')
+       ->where('Roles.nom', 'Technicien')
+       ->select(['Users.id As id', 'Users.nom As nom', 'Users.prenom As prenom'])
+       ->get();
         $this->type = DB::table('type_interventions')->where('id', $this->event->typeinterventions_id)->select('nom')->get();
     }
     public function eventRemove($id)

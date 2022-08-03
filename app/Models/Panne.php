@@ -21,7 +21,7 @@ class Panne extends Model
 
     public function plannings()
     {
-        return $this->belongsTo(Planning::class);
+        return $this->hasMany(Planning::class);
     }
 
     public function produitinstalle()

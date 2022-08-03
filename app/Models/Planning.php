@@ -19,7 +19,7 @@ class Planning extends Model
 
     public function panne()
     {
-        return $this->belongsToMany(Panne::class);
+        return $this->belongsTo(Panne::class);
     }
 
     public function interventions()

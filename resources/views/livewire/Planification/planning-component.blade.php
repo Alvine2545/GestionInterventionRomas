@@ -164,9 +164,9 @@
             /*const calendar = new Calendar(calendarEl);*/
             calendar.render();
         });
-        @this.on(`refreshCalendar`, () => {
-    calendar.refetchEvents()
-});
+//         @this.on(`refreshCalendar`, () => {
+//     calendar.refetchEvents()
+// });
 
 
 
@@ -187,11 +187,11 @@
                     <div class="form-group row" wire:ignore>
                         <label class="col-sm-2 col-form-label" for="appt-time">Pannes </label>
                         <div class="col-sm-10 col-md-10">
-                        <select class="form-control js-example-placeholder-multiple col-sm-8" name="pannes" multiple wire:model='pannes'>
-                            @foreach ($pannes as $panne)
-                                <option value="{{$panne->id}}">{{$panne->description}}</option>
-                            @endforeach
-                        </select>
+                            <select class="form-control js-example-placeholder-multiple col-sm-8" name="pannes"  wire:model='pannes'>
+                                @foreach ($pannes as $panne)
+                                    <option value="{{$panne->id}}">{{$panne->description}}</option>
+                                @endforeach
+                            </select>
                     </div>
                     </div>
 
@@ -254,7 +254,7 @@
             <div class="modal-body" >
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Pannes </label>
-                    <select class="form-control col-sm-12" wire:model="panne" >
+                    <select class="col-sm-12 form-control js-example-placeholder-multiple" wire:model="panne" >
                         @foreach ($pannes as $value)
                         <option value="{{$value->id}}">{{$value->nom}}</option>
                         @endforeach
@@ -263,7 +263,7 @@
 
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Techniciens </label>
-                    <select class="form-control col-sm-12" multiple="multiple" wire:model='technicien'>
+                    <select class=" col-sm-12 js-example-placeholder-multiple" multiple="multiple" wire:model='technicien'>
                         @foreach ($techniciens as $value)
                             <option value="{{$value->id}}">{{$value->nom." ".$value->prenom}}</option>
                         @endforeach
@@ -281,24 +281,24 @@
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Heure de départ : </label>
                     <input class="form-control" id="appt-time" type="time" name="appt-time"
-                           min="12:00" max="18:00" required
+                           min="06:00" max="21:00" required
                            pattern="[0-9]{2}:[0-9]{2}" wire:model="start">
                     <span class="validity"></span>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Heure de fin : </label>
                     <input class="form-control" id="appt-time_second" type="time" name="appt-time"
-                           min="12:00" max="18:00" required
+                           min="06:00" max="21:00" required
                            pattern="[0-9]{2}:[0-9]{2}" wire:model="end">
                     <span class="validity"></span>
                 </div>
-                <div class="form-group row" >
+                {{-- <div class="form-group row" >
                     <label class="col-sm-2 col-form-label" for="date">Date </label>
                     <div class="col-sm-10 col-md-10" >
                         <input class="form-control" id="date" type="date" wire:ignore name="date" wire:model='dateP' readonly wire:ignore.self>
                     <span class="validity"></span>
                     </div>
-                </div>
+                </div> --}}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -321,20 +321,20 @@
                 <div class="container"></div>
                 <div class="modal-body">{{ $event->title }}
                     <div class="row">
-                        <div class="col-sm-6">
+                        {{-- <div class="col-sm-6">
 
                             <div class="input-group input-group-warning">
                                 <label for="">Type intervention :</label>
                                 <input type="text" class="form-control" style="border: none" value="{{ $type }}" placeholder="input-group-warning">
                             </div>
-                        </div>
-                        {{-- <div class="col-sm-6">
+                        </div> --}}
+                        <div class="col-sm-6">
 
                             <div class="input-group input-group-default">
                                 <label for="">Plannifier par: </label>
-                                <input type="text" class="form-control" placeholder="input-group-default" value="{{ $event-> }}">
+                                {{-- <input type="text" class="form-control" placeholder="input-group-default" value="{{ $event->users()->name }}"> --}}
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
@@ -355,20 +355,21 @@
                     <div class="row">
                             <div class="input-group input-group-warning">
                                 <label for="">Panne :</label>
-                                {{-- <input type="text" class="form-control" style="border: none" value="{{ $event->panne->description }}" placeholder="input-group-warning"> --}}
+                                {{dd($event->panne->nom)}}
+                                <input type="text" class="form-control" style="border: none" value="{{ $event->panne->description }}" placeholder="input-group-warning">
                             </div>
                     </div>
                     <div class="row">
                         <div class="input-group input-group-warning">
-                            <label for="">Techniciens :</label>
-                            {{-- @foreach ($event->users->id as $value)
+                            <label for="">Techniciens :</label>{{dd($event->users->id )}}
+                            @foreach ($event->users->id as $value)
                                 <input type="text" class="form-control" style="border: none" value="{{ $value->nom }}.' '.{{ $value->prenom }}" placeholder="input-group-warning">
-                            @endforeach --}}
+                            @endforeach
                         </div>
                 </div>
                 </div>
                 <div class="modal-footer ">
-                    <a href="#" class="btn btn-danger text-left" style="margin-right: 25%" wire:click='eventRemove({{ $eventId }})'>Supprimer</a>
+                    <a href="#" class="btn btn-danger text-left" style="margin-right: 20%" wire:click='eventRemove({{ $eventId }})'>Supprimer</a>
                     <a data-toggle="modal" href="#myModal2" class="btn btn-primary" style="margin-right: 25%">Modifier</a>
                     <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
 
@@ -390,11 +391,10 @@
                             <div class="form-group">
                                 <label class="control-label" for="appt-time">Pannes </label>
                                 <select class="form-control col-sm-12" wire:model="panne" >
-                                    <option value="{{$event->pannes_id}}" selected>{{$event->panne->nom}}</option>
-                                    @foreach ($pannes as $value)
-                                        @if ($value->nom != $event->panne->nom)
+                                    @foreach ($pan as $value)
+                                        {{-- @if ($value->nom != $event->panne->nom) --}}
                                             <option value="{{$value->id}}">{{$value->nom}}</option>
-                                        @endif
+                                        {{-- @endif --}}
                                     @endforeach
                                 </select>
                             </div>
@@ -402,7 +402,7 @@
                             <div class="form-group">
                                 <label class="control-label" for="appt-time">Techniciens </label>
                                 <select class="form-control col-sm-12" multiple="multiple" wire:model='technicien'>
-                                    @foreach ($techniciens as $value)
+                                    @foreach ($tech as $value)
                                         <option value="{{$value->id}}">{{$value->nom." ".$value->prenom}}</option>
                                     @endforeach
                                 </select>
@@ -410,7 +410,7 @@
                             <div class="form-group" >
                                 <label class="control-label" for="appt-time">Type d'intervention </label>
                                 <select class=" form-control col-sm-12" wire:model='typeinterves'>
-                                    <option value="{{$event->typeinterventions_id}}" selected>{{$type->nom}}</option>
+                                    {{-- <option value="{{$event->typeinterventions_id}}" selected>{{$type->nom}}</option> --}}
                                     @foreach ($typeinterventions as $value)
                                         <option value="{{$value->id}}">{{$value->nom}}</option>
                                     @endforeach

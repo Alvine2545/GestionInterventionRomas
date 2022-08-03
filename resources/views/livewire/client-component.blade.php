@@ -239,7 +239,7 @@
                                                                 </div>
                                                             </div>
                                                         @endif
-                                                        @if ($choix == 4)
+                                                        @if ($choix == 3)
                                                             {{-- Responsable form --}}
                                                             <div class="card-body">
                                                                 <div class="form-group row">
@@ -345,42 +345,82 @@
                                                         </div>
                                                         <span class="text-danger">@error('roles'){{$message}}@enderror</span>
                                                     </div>
-                                                <div class="form-group row">
-                                                    <div class="j-unit col-md-4 col-md-offset-2">
-                                                        <label class="" for="">Nom de l'entreprise <p style="color: red"> *</p></label>
+                                                    @if ($isClient == true)
+                                                    <div class="form-group row">
+                                                        <div class="j-unit col-md-4 col-md-offset-2">
+                                                            <label class="" for="">Nom de l'entreprise <p style="color: red"> *</p></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="j-icon-right" for="name">
+                                                                <i class="icofont icofont-ui-user"></i>
+                                                            </label>
+                                                            <input type="text" wire:model="name" style="width: 60%">
+                                                            <span class="text-danger">@error('name'){{$message}}@enderror</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <label class="j-icon-right" for="name">
-                                                            <i class="icofont icofont-ui-user"></i>
-                                                        </label>
-                                                        <input type="text" wire:model="name" style="width: 60%">
-                                                        <span class="text-danger">@error('name'){{$message}}@enderror</span>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4 col-md-offset-2">
+                                                            <label class="" for="">Numero IFU <p style="color: red"> *</p></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="j-icon-right" for="name">
+                                                                <i class="icofont icofont-envelope"></i>
+                                                            </label>
+                                                            <input type="text" id="identifiant" name="identifiant" wire:model="identifiant" style="width: 60%">
+                                                            <span class="text-danger">@error('identifiant'){{$message}}@enderror</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-md-4 col-md-offset-2">
-                                                        <label class="" for="">Numero IFU <p style="color: red"> *</p></label>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4 col-md-offset-2">
+                                                            <label class="" for="">Raison sociale <p style="color: red"> *</p></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="j-icon-right" for="name">
+                                                                <i class="icofont icofont-envelope"></i>
+                                                            </label>
+                                                            <input type="text" id="raisonsociale" name="raisonsociale" wire:model="raisonsociale" style="width: 60%">
+                                                            <span class="text-danger">@error('raisonsociale'){{$message}}@enderror</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <label class="j-icon-right" for="name">
-                                                            <i class="icofont icofont-envelope"></i>
-                                                        </label>
-                                                        <input type="text" id="identifiant" name="identifiant" wire:model="identifiant" style="width: 60%">
-                                                        <span class="text-danger">@error('identifiant'){{$message}}@enderror</span>
+                                                    @else
+                                                    <div class="form-group row">
+                                                        <div class="j-unit col-md-4 col-md-offset-2">
+                                                            <label class="" for="">Nom <p style="color: red"> *</p></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="j-icon-right" for="name">
+                                                                <i class="icofont icofont-ui-user"></i>
+                                                            </label>
+                                                            <input type="text" wire:model="nom" style="width: 60%">
+                                                            <span class="text-danger">@error('nom'){{$message}}@enderror</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-md-4 col-md-offset-2">
-                                                        <label class="" for="">Raison sociale <p style="color: red"> *</p></label>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4 col-md-offset-2">
+                                                            <label class="" for="">Prénom <p style="color: red"> *</p></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="j-icon-right" for="prenom">
+                                                                <i class="icofont icofont-envelope"></i>
+                                                            </label>
+                                                            <input type="text" id="prenom" name="prenom" wire:model="prenom" style="width: 60%">
+                                                            <span class="text-danger">@error('prenom'){{$message}}@enderror</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <label class="j-icon-right" for="name">
-                                                            <i class="icofont icofont-envelope"></i>
-                                                        </label>
-                                                        <input type="text" id="raisonsociale" name="raisonsociale" wire:model="raisonsociale" style="width: 60%">
-                                                        <span class="text-danger">@error('raisonsociale'){{$message}}@enderror</span>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4 col-md-offset-2">
+                                                            <label class="" for="">Poste <p style="color: red"> *</p></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="j-icon-right" for="name">
+                                                                <i class="icofont icofont-envelope"></i>
+                                                            </label>
+                                                            <input type="text" id="poste" name="poste" wire:model="poste" style="width: 60%">
+                                                            <span class="text-danger">@error('poste'){{$message}}@enderror</span>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                    @endif
+                                                
                                                 <div class="form-group row">
                                                     <div class="col-md-4 col-md-offset-2">
                                                         <label class="" for="">Adresse Email <p style="color: red"> *</p></label>
@@ -488,7 +528,7 @@
                                                 </td>
                                                 <td class="row">
                                                     <button wire:click="edit({{$value->id}})" class="btn btn-primary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
-                                                    <button wire:click="view({{$value->id}})" class="btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-eye-alt"></i></button>
+                                                    {{-- <button wire:click="view({{$value->id}})" class="btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-eye-alt"></i></button> --}}
                                                     <button wire:click="destroy({{$value->id}})" class="btn btn-danger col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
 
 

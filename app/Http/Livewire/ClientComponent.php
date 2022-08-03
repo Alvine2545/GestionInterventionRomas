@@ -153,8 +153,8 @@ class ClientComponent extends Component
                     'siege.required' => 'Champ requis.',
                 ]
             );
-            $user->password = $this->email;
-        }elseif ($this->choix == 4) {
+            $user->password = Hash::make($this->email);
+        }elseif ($this->choix == 3) {
             $this->validate(
                 ['email' => 'required|email'],
                 [
@@ -175,7 +175,7 @@ class ClientComponent extends Component
                     'surname.required' => 'Champ requis.',
                 ]
             );
-            $user->password = $this->email;
+            $user->password = Hash::make($this->email);
         }
         $user->save();
         $user->roles()->attach($this->choix);
@@ -203,8 +203,9 @@ class ClientComponent extends Component
         }
     }
     public function destroy($id){
-
-        //$client = DB::table('users')->
+        $client = User::find($id);
+        $client->roles()->detach();
+        $client->delete();
     }
     public function edit($id)
     {
@@ -231,6 +232,7 @@ class ClientComponent extends Component
                 $this->email = $this->usersUpdate->email;
                 $this->siege  = $this->usersUpdate->siege;
                 $this->prenom = $this->usersUpdate->prenom;
+                $this->poste = $this->usersUpdate->poste;
                 //$this->raisonsociale = $this->usersUpdate->raisonSocial;
             }
             $this->id = $id;
@@ -250,25 +252,8 @@ class ClientComponent extends Component
     }
     public function update($id)
     {dd('rf');
-        $this->usersUpdate = User::find($id);
-        if($this->roles == 2){
-
-            //Validation
-
-            $user = new User();
-        $user->name = $this->name;
-        $user->email = $this->email;
-        $user->tel = $this->phone;
-        $user->siege = $this->siege;
-        $user->raisonSocial = $this->raisonsociale;
-        $user->poste = $this->poste;
-        $user->nom = $this->nom;
-        $user->prenom = $this->prenom;
-        $user->ifu = $this->identifiant;
-        $user->disponibilite = true;
-        $user->status = 0;
-        $user->demande  = 0;
-        if($this->choix == 1){
+        $this->usersUpdate = User::find($id); 
+        if($this->roles == 1){
             $this->validate(
                 ['email' => 'required|email'],
                 [
@@ -297,7 +282,19 @@ class ClientComponent extends Component
                     'siege.required' => 'Champ requis.',
                 ]
             );
-            $user->password = Hash::make($this->identifiant);
+            $this->usersUpdate->name = $this->name;
+            $this->usersUpdate->email = $this->email;
+            $this->usersUpdate->tel = $this->phone;
+            $this->usersUpdate->siege = $this->siege;
+            $this->usersUpdate->raisonSocial = $this->raisonsociale;
+            $this->usersUpdate->poste = $this->poste;
+            $this->usersUpdate->nom = $this->nom;
+            $this->usersUpdate->prenom = $this->prenom;
+            $this->usersUpdate->ifu = $this->identifiant;
+            $this->usersUpdate->disponibilite = true;
+            $this->usersUpdate->status = 0;
+            $this->usersUpdate->demande  = 0;
+            $this->usersUpdate->password = Hash::make($this->identifiant);
         }elseif($this->choix == 2){
             $this->validate(
                 ['email' => 'required|email'],
@@ -327,8 +324,18 @@ class ClientComponent extends Component
                     'siege.required' => 'Champ requis.',
                 ]
             );
-            $user->password = $this->email;
-        }elseif ($this->choix == 4) {
+            $this->usersUpdate->nom = $this->nom;
+            $this->usersUpdate->prenom = $this->prenom;
+            $this->usersUpdate->tel = $this->phone;
+            $this->usersUpdate->siege = $this->siege;
+            $this->usersUpdate->poste = $this->poste;
+            $this->usersUpdate->email = $this->email;
+            $this->usersUpdate->prenom = $this->prenom;
+            $this->usersUpdate->disponibilite = true;
+            $this->usersUpdate->status = 0;
+            $this->usersUpdate->demande  = 0;
+            $this->usersUpdate->password = Hash::make($this->email);
+        }elseif ($this->choix == 3) {
             $this->validate(
                 ['email' => 'required|email'],
                 [
@@ -349,15 +356,18 @@ class ClientComponent extends Component
                     'surname.required' => 'Champ requis.',
                 ]
             );
-            $user->password = $this->email;
+            $this->usersUpdate->nom = $this->nom;
+            $this->usersUpdate->prenom = $this->prenom;
+            $this->usersUpdate->tel = $this->phone;
+            $this->usersUpdate->siege = $this->siege;
+            $this->usersUpdate->poste = $this->poste;
+            $this->usersUpdate->email = $this->email;
+            $this->usersUpdate->prenom = $this->prenom;
+            $this->usersUpdate->disponibilite = true;
+            $this->usersUpdate->password = Hash::make($this->email);
         }
-        $user->save();
-        $user->roles()->attach($this->choix);
-    }
-    $this->updateForm = false;
-    }
-    public function view($id)
-    {
-
+        $this->usersUpdate->save();
+        $this->usersUpdate->roles()->attach($this->choix);
+        $this->updateForm = false;
     }
 }

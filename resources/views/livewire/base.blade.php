@@ -15,7 +15,6 @@
     <meta name="description" content="#">
     <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
-    <link rel="stylesheet" href="{{asset('files\bower_components\select2\css\select2.min.css')}}">
 
     <!-- Favicon icon -->
     <link rel="icon" href="{{asset('files\assets\images\favicon.ico')}}" type="image/x-icon">
@@ -32,8 +31,11 @@
     <!--forms-wizard css-->
     <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\jquery.steps\css\jquery.steps.css')}}">
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\style.css')}}">
     <link rel="stylesheet" type="text/css" href="..\files\bower_components\sweetalert\css\sweetalert.css">
+    <link rel="stylesheet" href="{{asset('files\bower_components\select2\css\select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('files\bower_components\bootstrap-multiselect\css\bootstrap-multiselect.css')}}">
+    <link rel="stylesheet" href="{{asset('files\bower_components\multiselect\css\multi-select.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\style.css')}}">
 
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\jquery.mCustomScrollbar.css')}}">
         <!-- jpro forms css -->
@@ -360,9 +362,6 @@
         <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\modernizr.js')}}"></script>
 
         <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\css-scrollbars.js')}}"></script>
-        <script type="text/javascript" src="{{asset('files\bower_components\select2\js\select2.full.min.js')}}"></script>
-
-        <script type="text/javascript" src="{{asset('files\bower_components\multiselect\js\jquery.multi-select.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\assets\js\jquery.quicksearch.js')}}"></script>
         <!-- Custom js -->
         {{-- <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script> --}}
@@ -400,8 +399,12 @@
         <script type="text/javascript" src="{{asset('files\assets\js\script.js')}}"></script>
         <script type="text/javascript" src="..\files\bower_components\sweetalert\js\sweetalert.min.js"></script>
 
+        <script type="text/javascript" src="{{asset('files\bower_components\select2\js\select2.full.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('files\bower_components\bootstrap-multiselect\js\bootstrap-multiselect.js')}}"></script>
+        
+        <script type="text/javascript" src="{{asset('files\bower_components\multiselect\js\jquery.multi-select.js')}}"></script>
         <script type="text/javascript" src="{{ asset('files\assets\js\modal.js') }}"></script>
-        <script src="{{ asset('files\assets\pages\user-profile.js') }}"></script>
+        {{-- <script src="{{ asset('files\assets\pages\user-profile.js') }}"></script> --}}
 
     <!-- sweet alert modal.js intialize js -->
     <!-- modalEffects js nifty modal window effects -->

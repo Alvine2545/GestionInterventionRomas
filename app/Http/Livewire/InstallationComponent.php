@@ -33,7 +33,6 @@ class InstallationComponent extends Component
 
         // Execution doesn't reach here if validation fails.
         //$installation = Installation::create(['description'=>$this->description, 'client_id'=>$this->client]);
-        dd($this->produit);
         $installation = new Installation();
         $produitinstalle = new Produitinstalle();
         $installation->description = $this->description;
@@ -77,8 +76,8 @@ class InstallationComponent extends Component
        $this->data = User::all() ;
        $this->produits = Produit::all();
        $this->installation = DB::table('Produitinstalles')
-       ->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')
-       ->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')
+       ->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')
+       ->join('Installations', 'Produitinstalles.installation_id', '=', 'Installations.id')
        ->join('Users', 'Installations.user_id', '=', 'Users.id')
        ->select(['Produitinstalles.id As id', 'Installations.id As installation_id', 'Produits.nom As produits', 'Produits.type As type', 'Produitinstalles.version As version', 'Users.name As nom', 'Installations.description As description'])
        ->get();

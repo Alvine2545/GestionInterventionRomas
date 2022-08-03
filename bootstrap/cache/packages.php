@@ -82,6 +82,13 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'nunomaduro/termwind' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    ),
+  ),
   'realrashid/sweet-alert' => 
   array (
     'providers' => 
@@ -102,6 +109,13 @@
     'aliases' => 
     array (
       'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
+    ),
+  ),
+  'wire-elements/modal' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'LivewireUI\\Modal\\LivewireModalServiceProvider',
     ),
   ),
 );

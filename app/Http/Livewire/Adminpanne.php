@@ -29,7 +29,7 @@ class Adminpanne extends Component
         $this->users = DB::table('users')->join('roles_users', 'roles_users.user_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'roles_users.roles_id')->where('roles.nom', 'Client')->select('users.name as nom', 'roles.nom as role' , 'users.id as id')->get();
         //$users= Roles::where('nom','client')->users()->get();
         //dd($this->users);
-        $this->produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')->where('Installations.user_id',$this->client_id)->select('Produits.*')->get();
+        $this->produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installation_id', '=', 'Installations.id')->where('Installations.user_id',$this->client_id)->select('Produits.*')->get();
         //dd($this->produits );
         return view('livewire.adminpanne', [
         'users' => $this->users,
@@ -54,12 +54,12 @@ class Adminpanne extends Component
             'description' => 'required|max:255',
             'produit_id' => 'required',
             'client_id' => 'required',
-        ]);
+        ]); 
         $pane = new Panne();
         $pane->description= $this->description;
         $pane->produitinstalles_id= $this->produit_id;
         $pane->user_id= $this->client_id;
-        $pane->nom = "PA".$this->nom;
+        $pane->nom = "PA".$this->produit_id;
         $pane->save();
 
 
