@@ -1,4 +1,9 @@
 <div class="page-wrapper">
+    @push('styles')
+        <style>
+           
+        </style>
+    @endpush
     <!-- Page-header start -->
     <div class="page-header">
         <div class="row align-items-end">
@@ -43,7 +48,7 @@
                                 <h5>Book Now</h5>
                                 <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
                             </div-->
-                            <button wire:click="new" class="btn btn-primary" style="margin-left: 90%">Nouveau</button>
+                            <button wire:click="new" class="btn btn-primary" style="margin-left: 92%">Nouveau</button>
 
                             <div class="card-block">
                                 {{-- <div class="j-wrapper j-wrapper-640"> --}}
@@ -90,13 +95,13 @@
                                                         <div class="card-body">
                                                             <div class="form-group row">
                                                                 <div class="j-unit col-md-4 col-md-offset-2">
-                                                                    <label class="" for="">Nom de l'entreprise <p style="color: red"> *</p></label>
+                                                                    <label class="" for="">Nom de l'entreprise <p style="color: red;"> *</p></label>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label class="j-icon-right" for="name">
                                                                         <i class="icofont icofont-ui-user"></i>
                                                                     </label>
-                                                                    <input type="text" id="name" name="name" wire:model="name">
+                                                                    <input type="text" id="name" name="name" wire:model="name" style="border: solid black 1px; width: 95%;" >
                                                                     <span class="text-danger">@error('name'){{$message}}@enderror</span>
                                                                 </div>
                                                             </div>
@@ -108,19 +113,19 @@
                                                                     <label class="j-icon-right" for="name">
                                                                         <i class="icofont icofont-envelope"></i>
                                                                     </label>
-                                                                    <input type="text" id="identifiant" name="identifiant" wire:model="identifiant">
+                                                                    <input type="text" id="identifiant" name="identifiant" wire:model="identifiant" style="border: solid black 1px; width: 92%;">
                                                                     <span class="text-danger">@error('identifiant'){{$message}}@enderror</span>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="col-md-4 col-md-offset-2">
-                                                                    <label class="" for="">Raison sociale <p style="color: red"> *</p></label>
+                                                                    <label class="" for="">Raison sociale <p style="color: red;"> *</p></label>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label class="j-icon-right" for="name">
                                                                         <i class="icofont icofont-envelope"></i>
                                                                     </label>
-                                                                    <input type="text" id="raisonsociale" name="raisonsociale" wire:model="raisonsociale">
+                                                                    <input type="text" id="raisonsociale" name="raisonsociale" wire:model="raisonsociale" style="border: solid black 1px; width: 92%;">
                                                                     <span class="text-danger">@error('raisonsociale'){{$message}}@enderror</span>
                                                                 </div>
                                                             </div>
@@ -132,7 +137,7 @@
                                                                         <label class="j-icon-right" for="name">
                                                                             <i class="icofont icofont-envelope"></i>
                                                                         </label>
-                                                                        <input type="email" id="email"  name="email" wire:model='email'>
+                                                                        <input type="email" id="email"  name="email" wire:model='email' style="border: solid black 1px; width: 92%;">
                                                                         <span class="text-danger">@error('email'){{$message}}@enderror</span>
                                                                     </div>
                                                             </div>
@@ -144,7 +149,7 @@
                                                                     <label class="j-icon-right" for="phone">
                                                                         <i class="icofont icofont-phone"></i>
                                                                     </label>
-                                                                    <input type="text" id="phone" name="phone" wire:model='phone'>
+                                                                    <input type="text" id="phone" name="phone" wire:model='phone' style="border: solid black 1px; width: 95%;">
                                                                     <span class="text-danger">@error('phone'){{$message}}@enderror</span>
                                                                 </div>
                                                             </div>
@@ -156,7 +161,7 @@
                                                                         <label class="j-icon-right" for="">
                                                                             <i class="icofont icofont-ui-user"></i>
                                                                         </label>
-                                                                        <input type="text" id="siege" name="siege" wire:model='siege'>
+                                                                        <input type="text" id="siege" name="siege" wire:model='siege' style="border: solid black 1px; width: 95%;">
                                                                         <span class="text-danger">@error('siege'){{$message}}@enderror</span>
                                                                     </div>
                                                             </div>
@@ -173,7 +178,7 @@
                                                                         <label class="j-icon-right" for="nom">
                                                                             <i class="icofont icofont-ui-user"></i>
                                                                         </label>
-                                                                        <input type="text" id="name" wire:model="nom">
+                                                                        <input type="text" id="name" wire:model="nom" style="border: solid black 1px; width: 95%;">
                                                                         <span class="text-danger">@error('name'){{$message}}@enderror</span>
                                                                     </div>
                                                                 </div>
@@ -185,7 +190,7 @@
                                                                         <label class="j-icon-right" for="surname">
                                                                             <i class="icofont icofont-envelope"></i>
                                                                         </label>
-                                                                        <input type="text" name="surname" wire:model='prenom'>
+                                                                        <input type="text" name="surname" wire:model='prenom' style="border: solid black 1px; width: 95%;">
                                                                         <span class="text-danger">@error('surname'){{$message}}@enderror</span>
                                                                     </div>
                                                                 </div>
@@ -197,7 +202,7 @@
                                                                             <label class="j-icon-right" for="name">
                                                                                 <i class="icofont icofont-envelope"></i>
                                                                             </label>
-                                                                            <input type="email"  name="email" wire:model='email'>
+                                                                            <input type="email"  name="email" wire:model='email' style="border: solid black 1px; width: 92%;">
                                                                             <span class="text-danger">@error('email'){{$message}}@enderror</span>
                                                                         </div>
                                                                 </div>
@@ -209,7 +214,7 @@
                                                                         <label class="j-icon-right" for="phone">
                                                                             <i class="icofont icofont-phone"></i>
                                                                         </label>
-                                                                        <input type="text" name="phone" wire:model='phone'>
+                                                                        <input type="text" name="phone" wire:model='phone' style="border: solid black 1px; width: 95%;">
                                                                         <span class="text-danger">@error('phone'){{$message}}@enderror</span>
                                                                     </div>
                                                                 </div>
@@ -221,7 +226,7 @@
                                                                             <label class="j-icon-right" for="">
                                                                                 <i class="icofont icofont-ui-user"></i>
                                                                             </label>
-                                                                            <input type="text" id="" wire:model='siege' name="siege">
+                                                                            <input type="text" id="" wire:model='siege' name="siege" style="border: solid black 1px; width: 95%;">
                                                                             <span class="text-danger">@error('siege'){{$message}}@enderror</span>
                                                                         </div>
                                                                 </div>
@@ -233,7 +238,7 @@
                                                                         <label class="j-icon-right" for="poste">
                                                                             <i class="icofont icofont-ui-user"></i>
                                                                         </label>
-                                                                        <input type="text" id="poste" wire:model="poste" name="poste">
+                                                                        <input type="text" id="poste" wire:model="poste" name="poste" style="border: solid black 1px; width: 95%;">
                                                                         <span class="text-danger">@error('poste'){{$message}}@enderror</span>
                                                                     </div>
                                                                 </div>
@@ -250,7 +255,7 @@
                                                                         <label class="j-icon-right" for="nom">
                                                                             <i class="icofont icofont-ui-user"></i>
                                                                         </label>
-                                                                        <input type="text" id="name" wire:model="nom">
+                                                                        <input type="text" id="name" wire:model="nom" style="border: solid black 1px; width: 95%;">
                                                                         <span class="text-danger">@error('name'){{$message}}@enderror</span>
                                                                     </div>
                                                                 </div>
@@ -262,7 +267,7 @@
                                                                         <label class="j-icon-right" for="surname">
                                                                             <i class="icofont icofont-envelope"></i>
                                                                         </label>
-                                                                        <input type="text" name="surname" wire:model='prenom'>
+                                                                        <input type="text" name="surname" wire:model='prenom' style="border: solid black 1px; width: 95%;">
                                                                         <span class="text-danger">@error('surname'){{$message}}@enderror</span>
                                                                     </div>
                                                                 </div>
@@ -274,7 +279,7 @@
                                                                             <label class="j-icon-right" for="email">
                                                                                 <i class="icofont icofont-envelope"></i>
                                                                             </label>
-                                                                            <input type="email"  name="email" wire:model='email'>
+                                                                            <input type="email"  name="email" wire:model='email' style="border: solid black 1px; width: 95%;">
                                                                             <span class="text-danger">@error('email'){{$message}}@enderror</span>
                                                                         </div>
                                                                 </div>
@@ -286,7 +291,7 @@
                                                                         <label class="j-icon-right" for="phone">
                                                                             <i class="icofont icofont-phone"></i>
                                                                         </label>
-                                                                        <input type="text" name="phone" wire:model='phone'>
+                                                                        <input type="text" name="phone" wire:model='phone' style="border: solid black 1px; width: 95%;">
                                                                         <span class="text-danger">@error('phone'){{$message}}@enderror</span>
                                                                     </div>
                                                                 </div>
@@ -298,7 +303,7 @@
                                                                             <label class="j-icon-right" for="">
                                                                                 <i class="icofont icofont-ui-user"></i>
                                                                             </label>
-                                                                            <input type="text" id="" wire:model='siege'>
+                                                                            <input type="text" id="" wire:model='siege' style="border: solid black 1px; width: 95%;">
                                                                             <span class="text-danger">@error('siege'){{$message}}@enderror</span>
                                                                         </div>
                                                                 </div>
@@ -354,7 +359,7 @@
                                                             <label class="j-icon-right" for="name">
                                                                 <i class="icofont icofont-ui-user"></i>
                                                             </label>
-                                                            <input type="text" wire:model="name" style="width: 60%">
+                                                            <input type="text" wire:model="name" style="width: 60%" style="border: solid black 1px; width: 95%;">
                                                             <span class="text-danger">@error('name'){{$message}}@enderror</span>
                                                         </div>
                                                     </div>
@@ -366,7 +371,7 @@
                                                             <label class="j-icon-right" for="name">
                                                                 <i class="icofont icofont-envelope"></i>
                                                             </label>
-                                                            <input type="text" id="identifiant" name="identifiant" wire:model="identifiant" style="width: 60%">
+                                                            <input type="text" id="identifiant" name="identifiant" wire:model="identifiant" style="border: solid black 1px; width: 95%;">
                                                             <span class="text-danger">@error('identifiant'){{$message}}@enderror</span>
                                                         </div>
                                                     </div>
@@ -378,7 +383,7 @@
                                                             <label class="j-icon-right" for="name">
                                                                 <i class="icofont icofont-envelope"></i>
                                                             </label>
-                                                            <input type="text" id="raisonsociale" name="raisonsociale" wire:model="raisonsociale" style="width: 60%">
+                                                            <input type="text" id="raisonsociale" name="raisonsociale" wire:model="raisonsociale" style="border: solid black 1px; width: 95%;">
                                                             <span class="text-danger">@error('raisonsociale'){{$message}}@enderror</span>
                                                         </div>
                                                     </div>
@@ -456,6 +461,14 @@
                                                             <input type="text" id="siege" name="siege" wire:model='siege' style="width: 60%">
                                                             <span class="text-danger">@error('siege'){{$message}}@enderror</span>
                                                         </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4" style="margin-left: 10%">
+                                                         <button type="submit" class="btn btn-primary m-b-0">Modifier</button>
+                                                     </div>
+                                                     <div class="col-sm-4">
+                                                        <button type="reset" class="btn btn-danger m-b-0">Annuler</button>
+                                                     </div>
                                                 </div>
                                             </div>
                                             </form>

@@ -37,7 +37,7 @@
 </head>
 
 <body>
-
+    @include('sweetalert::alert')
     <!-- navbar -->
     <nav class="navbar navbar-expand navbar-light bg-white py-0 fixed-top">
         <div class="container row">

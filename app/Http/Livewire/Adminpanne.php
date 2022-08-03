@@ -95,8 +95,6 @@ class Adminpanne extends Component
      */
     public function update()
     {
-
-
           $this->validate([
             'selected_id' => 'required|numeric',
             'description' => 'required|max:255',
@@ -122,6 +120,9 @@ class Adminpanne extends Component
         }
 
 
+    }
+    public function new(){
+        $this->updateMode = false;
     }
 
     /**

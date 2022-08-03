@@ -35,7 +35,7 @@ class Planning extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->using(Equipe::class);
+        return $this->belongsToMany(User::class);
       // return $this->belongsToMany(User::class)->using(Equipe::class);
     }
 

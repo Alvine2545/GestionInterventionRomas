@@ -146,10 +146,17 @@
                 alert('Resource ID: ' + info.resource.id);*/
   },
             //Fonction gérant la suppression de l'évènement
-            eventClick: info => {
+//             eventClick: function(info) {
+//     alert('Event: ' + info.event.title);
+//     alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+//     alert('View: ' + info.view.type);
+
+//     // change the border color just for fun
+//     info.el.style.borderColor = 'red';
+//   }
+            eventClick: function(info) {
                 @this.editId(info.event.id);
                 $('#EventModal').modal('show');
-
                 // if (confirm("Voulez-vous vraiment supprimer cet événement ?")) {
                 //     info.event.remove();
                 //     @this.eventRemove(info.event.id);
@@ -309,9 +316,11 @@
         </div>
     </div>
 
+
+
     {{-- Event click modal --}}
     @if ($editModal)
-    <div class="modal md-modal fade" id="EventModal">
+    <div class="modal fade" id="EventModal" tabindex="-1" role="dialog" aria-labelledby="EventModal" wire:ignore.self>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -319,58 +328,57 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="container"></div>
-                <div class="modal-body">{{ $event->title }}
-                    <div class="row">
-                        {{-- <div class="col-sm-6">
-
-                            <div class="input-group input-group-warning">
-                                <label for="">Type intervention :</label>
-                                <input type="text" class="form-control" style="border: none" value="{{ $type }}" placeholder="input-group-warning">
-                            </div>
-                        </div> --}}
-                        <div class="col-sm-6">
-
-                            <div class="input-group input-group-default">
-                                <label for="">Plannifier par: </label>
-                                {{-- <input type="text" class="form-control" placeholder="input-group-default" value="{{ $event->users()->name }}"> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-
-                            <div class="input-group input-group-warning">
-                                <label for="">Date :</label>
-                                <input type="text" class="form-control" style="border: none" value="{{ $event->date }}" placeholder="input-group-warning">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-
-                            <div class="input-group input-group-default">
-                                <label for="">Heure: </label>
-                                <input style="border: none" type="text" class="form-control" placeholder="input-group-default" value="{{ $event->debut }} à {{ $event->fin }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                            <div class="input-group input-group-warning">
-                                <label for="">Panne :</label>
-                                {{dd($event->panne->nom)}}
-                                <input type="text" class="form-control" style="border: none" value="{{ $event->panne->description }}" placeholder="input-group-warning">
-                            </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group input-group-warning">
-                            <label for="">Techniciens :</label>{{dd($event->users->id )}}
-                            @foreach ($event->users->id as $value)
-                                <input type="text" class="form-control" style="border: none" value="{{ $value->nom }}.' '.{{ $value->prenom }}" placeholder="input-group-warning">
-                            @endforeach
-                        </div>
-                </div>
+                <div class="modal-body">
+                    <table id="demo-foo-filtering" class="table table-striped text-align-center">
+                        <thead>
+                            <tr class="text-align-center">
+                                <th>
+                                    {{ $event->title }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th data-breakpoints="xs">Date</th>
+                                
+                                <th data-breakpoints="xs"><span class="">{{ $event->date }}</span></th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Heure début</th>
+                                
+                                <th data-breakpoints="xs"><span class="">{{ $event->debut }}</span></th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Heure fin</th>
+                                
+                                <th data-breakpoints="xs"><span class="">{{ $event->fin }}</span></th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Panne</th>
+                                
+                                <th data-breakpoints="xs">
+                                    <span class="">
+                                        {{-- {{ $value->panne->description }} --}}
+                                    </span>    
+                                </th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Techniciens</th>
+                                
+                                <th data-breakpoints="xs">
+                                    <span class="">
+                                        @foreach ($event->users as $value)
+                                            {{ $value->nom." ".$value->prenom }}
+                                        @endforeach
+                                    </span>    
+                                </th>
+                            </tr>
+                        </tbody>                        
+                    </table>
                 </div>
                 <div class="modal-footer ">
-                    <a href="#" class="btn btn-danger text-left" style="margin-right: 20%" wire:click='eventRemove({{ $eventId }})'>Supprimer</a>
-                    <a data-toggle="modal" href="#myModal2" class="btn btn-primary" style="margin-right: 25%">Modifier</a>
+                    <a href="#" data-dismiss="modal" class="btn btn-danger text-left" style="margin-right: 11%" wire:click='eventRemove({{ $eventId }})'>Supprimer</a>
+                    <a data-toggle="modal" href="#myModal2" class="btn btn-primary" style="margin-right: 20%">Modifier</a>
                     <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
 
                 </div>
@@ -403,18 +411,11 @@
                                 <label class="control-label" for="appt-time">Techniciens </label>
                                 <select class="form-control col-sm-12" multiple="multiple" wire:model='technicien'>
                                     @foreach ($tech as $value)
+                                    @foreach ($event->users as $value)
+                                    <input type="text" class="form-control" style="border: none" value="{{ $value->nom }}.' '.{{ $value->prenom }}" placeholder="input-group-warning">
+                                @endforeach
                                         <option value="{{$value->id}}">{{$value->nom." ".$value->prenom}}</option>
                                     @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group" >
-                                <label class="control-label" for="appt-time">Type d'intervention </label>
-                                <select class=" form-control col-sm-12" wire:model='typeinterves'>
-                                    {{-- <option value="{{$event->typeinterventions_id}}" selected>{{$type->nom}}</option> --}}
-                                    @foreach ($typeinterventions as $value)
-                                        <option value="{{$value->id}}">{{$value->nom}}</option>
-                                    @endforeach
-
                                 </select>
                             </div>
                             <div class="form-group">

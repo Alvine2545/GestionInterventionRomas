@@ -10,6 +10,7 @@ use App\Models\Produitinstalle;
 use App\Models\Produit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 class PanneController extends Controller
 {
     //
@@ -44,9 +45,17 @@ dd($book);*/
         $install= Installation::where('client_id',$client_id)->get();
         $produits = Produit::where('')*/
         //$produits = Produit::where('Produits.id', 'Produitinstalle.produit_id')->where('Installation.id', 'Produitinstalle.installation_id')->where('Installation.client_id', 'Client.id')->where('Client.id', $client_id)->get();
-        $produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')->where('Installations.client_id',$client_id)->select('Produitinstalles.*', 'Produits.nom')->get();
+        $produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installation_id', '=', 'Installations.id')->where('Installations.user_id',$client_id)->select('Produitinstalles.*', 'Produits.nom')->get();
         //$users = DB::table('users')->select('name', 'email as user_email')->get();
-        return view('pannes.create',compact('produits'));
+        if (collect(['produits'])->isNotEmpty()) {
+            
+            Alert::info('Message', 'Vous n\'avez aucun produit chez ROMAS Technologie');
+            return redirect('client');
+        } else {
+            return view('pannes.create',compact('produits'));
+        }
+        
+        
     }
 
     /**
