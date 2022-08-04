@@ -368,7 +368,7 @@
                                 <th data-breakpoints="xs">
                                     <span class="">
                                         @foreach ($event->users as $value)
-                                            {{ $value->nom." ".$value->prenom }}
+                                            {{ $value->nom." ".$value->prenom }}<br>
                                         @endforeach
                                     </span>    
                                 </th>
@@ -411,9 +411,9 @@
                                 <label class="control-label" for="appt-time">Techniciens </label>
                                 <select class="form-control col-sm-12" multiple="multiple" wire:model='technicien'>
                                     @foreach ($tech as $value)
-                                    @foreach ($event->users as $value)
-                                    <input type="text" class="form-control" style="border: none" value="{{ $value->nom }}.' '.{{ $value->prenom }}" placeholder="input-group-warning">
-                                @endforeach
+                                    {{-- @foreach ($event->users as $value) --}}
+                                        
+                                        {{-- <option value="{{$value->id}}" selected>{{$value->nom." ".$value->prenom}}</option>                                @endforeach --}}
                                         <option value="{{$value->id}}">{{$value->nom." ".$value->prenom}}</option>
                                     @endforeach
                                 </select>

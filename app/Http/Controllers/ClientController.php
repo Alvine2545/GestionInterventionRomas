@@ -163,17 +163,17 @@ class ClientController extends Controller
     public function verifyclient(Request $request)
     {
         $user = User::where('ifu', '=', $request->identifiant)->get();
-        if(collect[''])
+        if(collect(['user'])->isNotEmpty())
         {
             $user->demande = 1;
             $user->password = $request->password;
             $user->save();
-            Alert::success('Success Title', 'Success Message');
+            Alert::success('Félicitation', 'La demande d\'activation de votre compte a été envoyé avec succés');
             return view('homeClient');
+        }else{
+            Alert::warning('Attention', 'Il semblerait que vous n\'avez de compte. Rapprochez-vous de nos locaux ou contactez-nous pour plus d\'informations');
+            return redirect('client');
         }
-        Alert::success('Success Title', 'Non');
-        dd('dfghj');
-
     }
     public function connexion(Request $request)
     {
@@ -183,12 +183,12 @@ class ClientController extends Controller
             if($user->ifu = $request->identifiant && Hash::check($request->password, $user->password))
             {
 
-                Alert::success('Success Title', 'Success Message');
+                Alert::success('Félicitation', 'Votre compte a été activé avec succés');
                 return view('client/dashboard');
             }
         }
-        Alert::success('Success Title', 'non');
-        return view('homeClient');
+        Alert::info('Information', 'Votre compte rencontre un problème ou n\'a pas encore été activé. Veuillez nous contacter pour plus d\'informations.');
+        return redirect('client');
 
     }
 }
