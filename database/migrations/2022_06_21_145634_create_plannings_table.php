@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('debut');
             $table->string('title');
             $table->string('fin');
+            $table->string('photo');
             $table->date('date');
             $table->foreignId('typeinterventions_id')->constrained('type_interventions');
             $table->foreignId('responsables_id')->constrained('users');

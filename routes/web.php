@@ -16,6 +16,7 @@ use App\Http\Controllers\Type_devisController;
 use App\Http\Controllers\TypeinverventionController;
 use App\Http\Livewire\ClientComponent;
 use App\Http\Livewire\DevisComponent;
+use App\Http\Livewire\UsersComponent;
 use App\Http\Middleware\ClientRoute;
 
 /*
@@ -84,6 +85,7 @@ Route::prefix('admin')->middleware([
     //Client avec livewire
     Route::get('/client', CreateClient::class);
     Route::get('/users', ClientComponent::class);
+    Route::get('/lesclients', UsersComponent::class);
     Route::get('/user_profil', Profil::class);
     //Route de client
     Route::get('client/liste', [App\Http\Controllers\ClientController::class, 'index']);

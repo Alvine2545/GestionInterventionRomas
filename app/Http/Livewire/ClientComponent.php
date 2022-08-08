@@ -33,6 +33,7 @@ class ClientComponent extends Component
     public $viewUser;
     public $unrole;
 public $monid;
+    public $vue;
     public $totalSteep = 2;
     public $currentSteep = 1;
     public function mount(){
@@ -96,7 +97,7 @@ public $monid;
         $this->resetErrorBag();
         if($this->currentSteep == 2){
 
-            //Validation
+            //Validation 
 
             $user = new User();
         $user->name = $this->name;
@@ -268,7 +269,9 @@ public $monid;
         //     ->get();
     }
     public function view($id){
-        $this->viewUser = "hgtrfvdcsx";
+        $this->viewUser = true;
+        $this->vue =User::find($id);
+        //$this->viewUser = true;
 
     }
     public function update()

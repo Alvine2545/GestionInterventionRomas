@@ -8,9 +8,12 @@ use App\Models\Roles;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use App\Notifications\Panneadmin;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use Livewire\WithFileUploads;
 class Adminpanne extends Component
 {
+    use WithFileUploads;
     public $users ;
     public $produits;
     public $client_id;
@@ -22,6 +25,8 @@ class Adminpanne extends Component
     public $nom;
     public $nouveau;
     public $liste = true;
+    public $photo;
+    public $voir;
     //public $produit_inst;
 
     public function render()
@@ -55,13 +60,16 @@ class Adminpanne extends Component
         $this->validate([
             'description' => 'required|max:255',
             'produit_id' => 'required',
+            'photo' => 'image|max:1024|mimes:jpg,png,jpeg,gif,svg',
             'client_id' => 'required',
-        ]); 
+        ]);
         $pane = new Panne();
         $pane->description= $this->description;
         $pane->produitinstalles_id= $this->produit_id;
         $pane->user_id= $this->client_id;
         $pane->nom = "PA".$this->produit_id;
+        $path = $this->photo->store('photosPanne','public');
+        $pane->photo = $path;
         $pane->save();
         Alert::success('Congrats', 'You\'ve Successfully Registered');
         $this->liste = true;
@@ -78,6 +86,7 @@ class Adminpanne extends Component
     {
 
         $pane = Panne::find($id);
+        $this->voir = $pane;
         /*$produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produits_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installations_id', '=', 'Installations.id')->where('Installations.client_id',$client_id)->select('Produitinstalles.*', 'Produits.nom')->get();
         $produits = Produit::where(id)*/
         //dd($pane);
@@ -152,6 +161,7 @@ class Adminpanne extends Component
         //$pane = Panne::find($id);
         if ($id) {
             $pane = Panne::where('id', $id);
+            Storage::delete($pane->photo);
             $pane->delete();
         }
     }

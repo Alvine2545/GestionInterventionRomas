@@ -656,61 +656,12 @@
                                                                 </td>
                                                                 <td class="row">
                                                                     <button style="margin-left: 4%" wire:click="edit({{$value->id}})" class="btn btn-primary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
-                                                                    {{-- <button wire:click="view({{$value->id}})" class="btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-eye-alt"></i></button> --}}
                                                                     <button wire:click="destroy({{$value->id}})" class="btn btn-danger col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
                                                                     <button wire:click="view({{$value->id}})" class="openmodal btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
 
                                                                 </td>
                                                             </tr>
-                                                            <div class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="EventModal">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h3 class="modal-title">Détails </h3>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                        </div>
-                                                                        <div class="container"></div>
-                                                                        <div class="modal-body">
-                                                                            {{-- @foreach ($this->usersUpdate as $value) --}}
-                                                                                <p>{{$viewUser}} rtg</p>
-                                                                            {{-- @endforeach --}}
-                                                                            {{-- <table class="table ">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th>#</th>
-                                                                                        <th>First Name</th>
-                                                                                        <th>Last Name</th>
-                                                                                        <th>Username</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <th scope="row">1</th>
-                                                                                        <td>Mark</td>
-                                                                                        <td>Otto</td>
-                                                                                        <td>@mdo</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">2</th>
-                                                                                        <td>Jacob</td>
-                                                                                        <td>Thornton</td>
-                                                                                        <td>@fat</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th scope="row">3</th>
-                                                                                        <td>Larry</td>
-                                                                                        <td>the Bird</td>
-                                                                                        <td>@twitter</td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table> --}}
-                                                                        </div>
-                                                                        <div class="modal-footer ">
-                                                                            <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            
                                                         @endforeach
                                                         
                                                             
@@ -821,7 +772,58 @@
             </div>
         </div>
         <!-- Page body end -->
-
+        @if ($viewUser)
+        {{dd($viewUser)}}
+            <div class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="VModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Détails </h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="container"></div>
+                    <div class="modal-body">
+                        {{-- @foreach ($this->usersUpdate as $value) --}}
+                            <p>{{$vue->nom}} </p>
+                        {{-- @endforeach --}}
+                        {{-- <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table> --}}
+                    </div>
+                    <div class="modal-footer ">
+                        <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
         
 
     </div>
@@ -830,7 +832,9 @@
         <script>
             $(document).ready(function () {
                 $(".openmodal").click(function(){
-                    $('#modal').modal('show');
+                    //alert("gfb");
+                    $('#Vmodal').modal('show');
+                    alert("gfb");
                 });
             });
         </script>

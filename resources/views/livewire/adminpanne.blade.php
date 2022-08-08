@@ -40,7 +40,7 @@
                             
                             @if ($nouveau == true)
                             <?php
-                                Alert::info('Message', 'Vous n\'avez aucun produit chez RoMAS Technologie');
+                                Alert::info('Message', 'Vous n\'avez aucun produit chez ROMAS Technologie');
                             ?>
                                 <div class="card" style="width: 60%; margin-left: 20%">
                                     <div class="col-lg-8">
@@ -55,7 +55,7 @@
                                             @csrf
                                             <div class="row" style="margin-bottom:3%" > 
                                                 <label for="" class="col-md-2">Cient</label>
-                                                <select class="form-control form-control-primary col-md-8" name="client_id" wire:model="client_id" style="width: 50%" >
+                                                <select class="form-control form-control-primary col-md-10" name="client_id" wire:model="client_id" style="width: 50%" >
                                                     <option value="">Sélectionnez le client</option>
                                                     @foreach ($users as $value)
                                                         <option value="{{$value->id}}">{{$value->nom}} </option>
@@ -65,7 +65,7 @@
                                             @if (count($produits)> 0)
                                                 <div class="row" style=" margin-bottom:3%" >
                                                     <label for="" class="col-md-2">Produits</label>
-                                                    <select class="form-control form-control-primary col-md-8" name="produit_id" wire:model="produit_id" style="width: 50%" >
+                                                    <select class="form-control form-control-primary col-md-10" name="produit_id" wire:model="produit_id" style="width: 50%" >
                                                         <option value="">Sélectionnez un produit</option>
                                                     @foreach ($produits as $value)
                                                         <option value="{{$value->id}}">{{$value->nom}} </option>
@@ -75,10 +75,15 @@
                                             @endif
                                             <div class=" row" style=" margin-bottom:5%">
                                                     <label for="" class="col-md-2">Panne</label>
-                                                    <textarea type="textarea"  wire:model="description" rows="5" class="form-control col-md-8" name="description" placeholder="Veuillez nous renseigner sur votre panne"></textarea>
+                                                    <textarea type="textarea"  wire:model="description" rows="5" class="form-control col-md-10" name="description" placeholder="Veuillez nous renseigner sur votre panne"></textarea>
                                                     <span class="messages popover-valid"></span>
                                             </div>
-    
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Photo</label>
+                                                <div class="col-sm-10">
+                                                    <input type="file" class="form-control" wire:model="photo">
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-sm-4" style="margin-left: 20%">
                                                     <button type="submit" class="btn btn-primary m-b-0">Enregistrer</button>
@@ -125,7 +130,7 @@
                                                             <td>{{$value->nom}}</td>
                                                             <td>
                                                                 <button wire:click="edit({{$value->id}})" class="btn btn-primary"><i class="icofont icofont-edit" color="red"></i></button> |
-                                                                <button class="btn btn-secondary details" data-toggle="modal" data-backdrop="false" data-target="#myModal2" ><i class="icofont icofont-eye" color="red"></i></button> |
+                                                                <button class="btn btn-secondary details" data-toggle="modal" data-backdrop="false" data-target="#myModal2" wire:click="edit({{$value->id}})" ><i class="icofont icofont-eye" color="red"></i></button> |
                                                                 <button wire:click="destroy({{$value->id}})" class="btn btn-danger"><i class="icofont icofont-trash" color="red"></i></button>
                                                             </td>
                                                         </tr>
@@ -136,11 +141,12 @@
                                                                         <h3 class="modal-title">Détails</h3>
                                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                     </div>
-                                                                    <div class="container">{{$value->description}}</div>
+                                                                    <div class="container">{{$value->nom}}</div>
                                                                     <div class="modal-body">
                                                                         <span>
                                                                             {{$value->description}}
                                                                         </span>
+                                                                        <img src="{{Storage::url($value->photo)}}" alt="">
                                                                     </div>
                                                                 </div>
                                                             </div>

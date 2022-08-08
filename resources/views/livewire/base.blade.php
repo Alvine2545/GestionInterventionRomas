@@ -54,6 +54,7 @@
         @livewireStyles
     </head>
     <body>
+        @include('sweetalert::alert')
         <!-- Pre-loader start -->
 <div class="theme-loader">
     <div class="ball-scale">
@@ -312,7 +313,7 @@
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
-                                        <a href="{{url('admin/produit/create')}}">
+                                        <a href="{{url('admin/lesclients')}}">
                                             <span class="pcoded-mtext">Ajouter client</span>
                                         </a>
                                     </li>

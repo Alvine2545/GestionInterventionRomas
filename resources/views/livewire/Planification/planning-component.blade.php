@@ -23,19 +23,20 @@
     {{-- @endif --}}
 
     @push('scripts')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script>
-    <script src='fullcalendar/lang-all.js'></script>
-    <script src='fullcalendar/fr.js'></script>
+    {{-- <script src='fullcalendar/lang-all.js'></script>
+    <script src='fullcalendar/fr.js'></script> --}}
     <script>
 
-        $(document).ready(function() {
-    
-            $('#calendar').fullCalendar({
-                lang: 'fr'
-            });
-    
-        });
-    
+        // $(document).ready(function() {
+
+        //     $('#calendar').fullCalendar({
+        //         lang: 'fr'
+        //     });
+
+        // });
+
     </script>
     <script>
        // $('#planing').hide()
@@ -60,9 +61,17 @@
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         },
-        locale: '{{ config('app.locale') }}',
+        locale: 'fr',
+        buttonText:{
+            today: 'Ajourd\'hui',
+            month: 'mois',
+            week: 'semaine',
+            day: 'jour',
+            list: 'Liste'
+        },
         //Récupération des évènements dans le composant
         events: JSON.parse(@this.events),
+        nowIndicator: true,
         //Modification du début et de la fin d'un évènement par resize
         eventResize: info => @this.eventChange(info.event),
         //Modification du début et de la fin d'un évènement par glisser-deposser
@@ -183,10 +192,11 @@
             //Création d'un calendrier basique
             /*const calendar = new Calendar(calendarEl);*/
             calendar.render();
+            // @this.on('refreshComponent', () => {
+            //     calendar.render();
+            // });
         });
-//         @this.on(`refreshCalendar`, () => {
-//     calendar.refetchEvents()
-// });
+
 
 
 
@@ -262,6 +272,8 @@
         </div>
     </div> --}}
     {{-- @endif --}}
+
+
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" wire:ignore.self >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -270,7 +282,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
 
-            <form wire:submit.prevent='eventAdd'>
+            <form wire:submit.prevent='eventAdd' id="pan-form">
             <div class="modal-body" >
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Pannes </label>
@@ -312,6 +324,9 @@
                            pattern="[0-9]{2}:[0-9]{2}" wire:model="end">
                     <span class="validity"></span>
                 </div>
+                @if ($start>$end)
+                    <span style="color: red;">L'heure de début doit être inférieure à l'heure de fin</span>
+                @endif
                 {{-- <div class="form-group row" >
                     <label class="col-sm-2 col-form-label" for="date">Date </label>
                     <div class="col-sm-10 col-md-10" >
@@ -321,14 +336,35 @@
                 </div> --}}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <button type="submit" class="btn btn-primary" id="save">Enregistrer</button>
                 </div>
             </div>
             </form>
           </div>
         </div>
     </div>
+    @if ($fini)
+        <script>
+            location.reload(true);
+            const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
 
+            Toast.fire({
+            icon: 'success',
+            title: 'Enregistrer avec succes'
+            })
+            
+        </script>
+    @endif
 
 
     {{-- Event click modal --}}
@@ -353,44 +389,44 @@
                         <tbody>
                             <tr>
                                 <th data-breakpoints="xs">Date</th>
-                                
+
                                 <th data-breakpoints="xs"><span class="">{{ $event->date }}</span></th>
                             </tr>
                             <tr>
                                 <th data-breakpoints="xs">Heure début</th>
-                                
+
                                 <th data-breakpoints="xs"><span class="">{{ $event->debut }}</span></th>
                             </tr>
                             <tr>
                                 <th data-breakpoints="xs">Heure fin</th>
-                                
+
                                 <th data-breakpoints="xs"><span class="">{{ $event->fin }}</span></th>
                             </tr>
                             <tr>
                                 <th data-breakpoints="xs">Panne</th>
-                                
+
                                 <th data-breakpoints="xs">
                                     <span class="">
-                                        {{-- {{ $value->panne->description }} --}}
-                                    </span>    
+                                        {{ $event->panne->nom }}
+                                    </span>
                                 </th>
                             </tr>
                             <tr>
                                 <th data-breakpoints="xs">Techniciens</th>
-                                
+
                                 <th data-breakpoints="xs">
                                     <span class="">
                                         @foreach ($event->users as $value)
                                             {{ $value->nom." ".$value->prenom }}<br>
                                         @endforeach
-                                    </span>    
+                                    </span>
                                 </th>
                             </tr>
-                        </tbody>                        
+                        </tbody>
                     </table>
                 </div>
                 <div class="modal-footer ">
-                    <a href="#" data-dismiss="modal" class="btn btn-danger text-left" style="margin-right: 11%" wire:click='eventRemove({{ $eventId }})'>Supprimer</a>
+                    <a href="#" data-dismiss="modal" class="btn btn-danger text-left" style="margin-right: 11%" onclick="removeClick({{$event->id}});">Supprimer</a>
                     <a data-toggle="modal" href="#myModal2" class="btn btn-primary" style="margin-right: 20%">Modifier</a>
                     <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
 
@@ -425,7 +461,7 @@
                                 <select class="form-control col-sm-12" multiple="multiple" wire:model='technicien'>
                                     @foreach ($tech as $value)
                                     {{-- @foreach ($event->users as $value) --}}
-                                        
+
                                         {{-- <option value="{{$value->id}}" selected>{{$value->nom." ".$value->prenom}}</option>                                @endforeach --}}
                                         <option value="{{$value->id}}">{{$value->nom." ".$value->prenom}}</option>
                                     @endforeach
@@ -463,4 +499,72 @@
         </div>
     </div>
     @endif
-    </div>
+    @push('scripts')
+        <script>
+            var startDate = new Date($('#app-time').val());
+            var endDate = new Date($('#appt-time_second').val());
+             $(document).ready(function() {
+                $("#pan-form").on("submit",function(event){
+
+                    if (startDate < endDate)
+                    {   
+                       // $("#calendar");
+                        $(form).submit();
+                    }else{
+                        event.preventDefault();
+                       
+                    }
+                    // if (checkEmptyInputs != fasle){
+                    // //alors $(form).submit();
+                    // } else{
+                    // event.preventDefault();
+                    // return false;
+                    // }
+
+                    });
+
+             });
+        </script>
+       
+        <script>
+            function removeClick(id){
+                const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+                })
+
+                swalWithBootstrapButtons.fire({
+                title: 'Est-vous sûr de supprimer?',
+                text: "Cette action est irréversible!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Oui, supprimer!',
+                cancelButtonText: 'Non, quitter!',
+                reverseButtons: true
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    @this.eventRemove(id);
+                    swalWithBootstrapButtons.fire(
+                    'Suppimer!',
+                    'Plannification supprimer avec succes.',
+                    'success'
+                    )
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                    'QUITTER',
+                    'rien n\'a été supprimer',
+                    'error'
+                    )
+                }
+                })
+            }
+            
+        </script>
+    @endpush
+</div>

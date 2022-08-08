@@ -31,7 +31,9 @@ class PlanningComponent extends Component
     public $pan;
     public $tech;
     public $title;
+    public $fini;
 public $essai;
+    protected $listeners = ['refreshComponent' => '$refresh'];
     public function render()
     {
         //$this->editModal = false;
@@ -47,6 +49,7 @@ public $essai;
         return view('livewire.planification.planning-component',
         ['pannes'=>$pannes, 'techniciens'=>$techniciens, 'typeinterventions'=>$typeinterventions, 'events'=>$this->events]
         )->layout('livewire.base');
+        $this->fini = false;
     }
     public function recuperation($dateR){
         $this->d = $dateR;
@@ -59,6 +62,7 @@ public $essai;
         // dd($data);
         //dd($this->typeinterves);
         // dd($this->d);
+        
          $planification = new Planning();
          $planification->typeinterventions_id = $this->typeinterves;
          $planification->responsables_id = Auth::user()->id;
@@ -72,7 +76,8 @@ public $essai;
          foreach($this->technicien as $value){
             $planification->users()->attach($value);
          }
-         $this->emit("refreshCalendar");
+         $this->emit('refreshComponent');
+         $this->fini = true;
         // $planification->end = $this->end;
         // $planification->date = $this->date;*/
         // $planification->save();
@@ -85,6 +90,7 @@ public $essai;
         $this->editModal = true;
         $this->eventId = $id;
         $this->event = Planning::find($id);
+        //dd($this->event);
         $this->pan = Panne::all();
         $this->tech = DB::table('Users')
        ->join('Roles_users', 'Users.id', '=', 'Roles_users.user_id')
@@ -98,7 +104,6 @@ public $essai;
     {
         $this->events = Planning::find($id);
         $this->events->delete();
-
     }
     public function updateEvent($id){
         $this->event->priorite = $this->priorite;
@@ -112,5 +117,10 @@ public $essai;
         $this->event->save();
 
     }
-
+    // private function resetInput()
+    // {
+    //     $this->description = null;
+    //     $this->produit_id = null;
+    //     $this->client_id = null;
+    // }
 }
