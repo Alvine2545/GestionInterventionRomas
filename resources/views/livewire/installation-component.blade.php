@@ -5,8 +5,8 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <!--h4>Ajouter une installation</h4>
-                        <span>Lorem ipsum dolor sit <code>amet</code>, consectetur adipisicing elit</span-->
+                        <h4>Ajouter une installation</h4>
+                        <span>Enregistrement d'une installationde produit chez un client</span>
                     </div>
                 </div>
             </div>
@@ -39,56 +39,58 @@
                     </div>
                 @endif
                 @if ($createMode)
-                    <div class="">
+                    <div class="card-header">
                         <div class="d-inline" >
                             <h4 style="margin-top: 3%" class="text-center">Créer une installation</h4>
                         </div>
                     </div>
-                <form wire:submit.prevent="store" style="margin-left: 5%">
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label"><h4 class="sub-title">Clients <p style="color: red">*</p></h4></label>
-                        <div class="col-sm-10 col-md-10" style="width:75%;">
-                            <select name="client" class="form-control js-example-tags js-example-responsive" wire:model="client">
-                                @foreach ($data as $user)
-                                    <option value="{{$user->id}}">{{$user->name}}</option>
-                                @endforeach
-                            </select>
+                    <div class="card-block">
+                        <form wire:submit.prevent="store" style="margin-left: 5%">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"><h4 class="sub-title">Clients <p style="color: red">*</p></h4></label>
+                                <div class="col-sm-10 col-md-10" style="width:75%;">
+                                    <select name="client" class="form-control js-example-tags js-example-responsive" wire:model="client">
+                                        @foreach ($data as $user)
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"><h4 class="sub-title">Produits <p style="color: red">*</p></h4></label>
+                                <div class="col-sm-10 col-md-10" style="width:75%;">
+                                    <select class="form-control js-example-tags js-example-responsive col-sm-10" wire:model="produit">
+                                        @foreach ($produits as $produit)
+                                            <option value="{{$produit->id}}">{{$produit->nom}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"><h4 class="sub-title">Version du produit <p style="color: red">*</p></h4></label>
+                                <div class="col-sm-10 col-md-10" style="width:75%;">
+                                    <input type="text" class="form-control" name="version" placeholder="Version" wire:model="version">
+                                <span class="messages popover-valid"></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label"><h4 class="sub-title">Produits <p style="color: red">*</p></h4></label>
-                        <div class="col-sm-10 col-md-10" style="width:75%;">
-                            <select class="form-control js-example-tags js-example-responsive col-sm-10" wire:model="produit">
-                                @foreach ($produits as $produit)
-                                    <option value="{{$produit->id}}">{{$produit->nom}}</option>
-                                @endforeach
-                            </select>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label"><h4 class="sub-title">Description de l'installation <p style="color: red">*</p></h4></label>
+                            <div class="col-sm-10" style="width:75%;">
+                                <input type="text" class="form-control" name="description" placeholder="Description" wire:model="description">
+                                <span class="messages popover-valid"></span>
+                            </div>
                         </div>
+                        <div class="row">
+                            <label class="col-sm-2"></label>
+                            <div class="col-sm-5">
+                                <button type="submit" class="btn btn-primary m-b-0">Enregistrer</button>
+                            </div>
+                            <div class="col-sm-5">
+                            <button type="reset" class="btn btn-danger m-b-0">Annuler</button>
+                        </div>
+                        </div>
+                        </form>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label"><h4 class="sub-title">Version du produit <p style="color: red">*</p></h4></label>
-                        <div class="col-sm-10 col-md-10" style="width:75%;">
-                            <input type="text" class="form-control" name="version" placeholder="Version" wire:model="version">
-                        <span class="messages popover-valid"></span>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"><h4 class="sub-title">Description de l'installation <p style="color: red">*</p></h4></label>
-                    <div class="col-sm-10" style="width:75%;">
-                        <input type="text" class="form-control" name="description" placeholder="Description" wire:model="description">
-                        <span class="messages popover-valid"></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <label class="col-sm-2"></label>
-                    <div class="col-sm-5">
-                        <button type="submit" class="btn btn-primary m-b-0">Enregistrer</button>
-                    </div>
-                    <div class="col-sm-5">
-                    <button type="reset" class="btn btn-danger m-b-0">Annuler</button>
-                </div>
-                </div>
-                </form>
                 @endif
         </div>
         <table id="demo-foo-filtering" class="table table-striped">

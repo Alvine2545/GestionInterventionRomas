@@ -42,6 +42,7 @@
         @livewireStyles
     </head>
     <body>
+        @include('sweetalert::alert')
         <!-- Pre-loader start -->
 <div class="theme-loader">
     <div class="ball-scale">
@@ -85,10 +86,10 @@
     <div class="pcoded-overlay-box"></div>
     <div class="pcoded-container navbar-wrapper">
 
-        <nav class="navbar header-navbar pcoded-header">
+        <nav class="navbar header-navbar pcoded-header" >
             <div class="navbar-wrapper">
 
-                <div class="navbar-logo">
+                <div class="navbar-logo" style="background-color: rgb(34, 34, 133);">
                     <a class="mobile-menu" id="mobile-collapse" href="#!">
                         <i class="feather icon-menu"></i>
                     </a>
@@ -242,9 +243,9 @@
         </div>
         <!-- Sidebar inner chat end-->
         <div class="pcoded-main-container">
-            <div class="pcoded-wrapper">
-                <nav class="pcoded-navbar">
-                    <div class="pcoded-inner-navbar main-menu">
+            <div class="pcoded-wrapper" >
+                <nav class="pcoded-navbar" style="background-color: rgb(34, 34, 133);">
+                    <div class="pcoded-inner-navbar main-menu" style="background-color: rgb(34, 34, 133);">
                         <div class="pcoded-navigatio-lavel"> Dashboard</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
@@ -255,7 +256,14 @@
                                 <ul class="pcoded-submenu">
                                     <li class="">
                                         <a href="{{url('admin/users')}}">
-                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="pcoded-submenu">
+                                    <li class="">
+                                        <a href="{{url('admin/users')}}">
+                                            <span class="pcoded-mtext">Techniciens</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -276,12 +284,46 @@
                                     </li>
                                     <li class=" ">
                                         <a href="{{url('admin/produit/liste')}}">
-                                            <span class="pcoded-mtext">Les produits</span>
+                                            <span class="pcoded-mtext">Liste des produits</span>
                                         </a>
                                     </li>
                                     <li class=" ">
                                         <a href="{{url('admin/installations')}}">
                                             <span class="pcoded-mtext">Ajouter installation</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                    <span class="pcoded-mtext">Gestion des clients</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="{{url('admin/produit/create')}}">
+                                            <span class="pcoded-mtext">Ajouter client</span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="{{url('admin/produit/liste')}}">
+                                            <span class="pcoded-mtext">Liste des clients</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel">Pannes</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu ">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                    <span class="pcoded-mtext">Gestion des pannes</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="{{url('admin/panne')}}">
+                                            <span class="pcoded-mtext">Enregistrer panne</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -301,34 +343,34 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="">
-                                            <span class="pcoded-mtext">Interventions</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
                                         <a href="{{ url('admin/typeintervention/liste') }}">
                                             <span class="pcoded-mtext">Type interventions</span>
                                         </a>
                                     </li>
-                                    <li class="">
-                                        <a href="{{url('admin/typedevis/liste')}}">
-                                            <span class="pcoded-mtext">Type devis</span>
+                                    <li class=" ">
+                                        <a href="">
+                                            <span class="pcoded-mtext">Ajouter une intervention</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
-                        <div class="pcoded-navigatio-lavel">Gestion des pannes</div>
+                        <div class="pcoded-navigatio-lavel">Devis</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu ">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
-                                    <span class="pcoded-mtext">Reçu</span>
+                                    <span class="pcoded-mtext">Gestion des devis</span>
                                 </a>
                                 <ul class="pcoded-submenu">
+                                    <li class="">
+                                        <a href="{{url('admin/typedevis/liste')}}">
+                                            <span class="pcoded-mtext">Type devis</span>
+                                        </a>
+                                    </li>
                                     <li class=" ">
-                                        <a href="{{url('admin/panne')}}">
-                                            <span class="pcoded-mtext">Enregistrer panne</span>
+                                        <a href="{{url('admin/devis')}}">
+                                            <span class="pcoded-mtext">Créer devis</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -344,7 +386,8 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
+        </div>
         <script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
         <!-- jquery slimscroll js -->

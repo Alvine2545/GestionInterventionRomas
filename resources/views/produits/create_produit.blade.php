@@ -9,8 +9,8 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <!--h4>Ajouter une installation</h4>
-                        <span>Lorem ipsum dolor sit <code>amet</code>, consectetur adipisicing elit</span-->
+                        <h4>Ajouter un produit</h4>
+                        <span>Les produits</span>
                     </div>
                 </div>
             </div>

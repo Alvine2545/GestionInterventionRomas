@@ -12,7 +12,7 @@
 {{-- @if ( collect(['produits'])->isNotEmpty())
     @include('homeClient')
     <?php
-        Alert::info('Message', 'Vous n\'avez aucun produit chez RoMAS Technologie');
+        Alert::info('Message', 'Vous n\'avez aucun produit chez ROMAS Technologie');
     ?>
 @else --}}
 <div class="pcoded-content">

@@ -30,7 +30,9 @@ class ClientComponent extends Component
     public $usersUpdate;
     public $isClient;
     public $idUsers;
-
+    public $viewUser;
+    public $unrole;
+public $monid;
     public $totalSteep = 2;
     public $currentSteep = 1;
     public function mount(){
@@ -51,8 +53,23 @@ class ClientComponent extends Component
         return view('livewire.client-component', ['role' => $this->role, 'users' => $this->users])->layout('livewire.base');
 
     }
+    private function resetInput()
+    {
+        $this->name = null;
+        $this->phone = null;
+        $this->nom = null;
+        $this->prenom = null;
+        $this->poste = null;
+        $this->email = null;
+        $this->siege  = null;
+        $this->identifiant = null;
+        $this->roles;
+        $this->raisonsociale = null;
+        
+    }
     public function new()
     {
+        $this->resetInput();
         $this->nouveau = true;
         $this->updateForm = false;
     }
@@ -208,7 +225,7 @@ class ClientComponent extends Component
         $client->delete();
     }
     public function edit($id)
-    {
+    {$this->monid = $id;
         $this->nouveau = false;
         $this->usersUpdate = User::find($id);
         foreach ($this->usersUpdate->roles as $value) {
@@ -235,7 +252,7 @@ class ClientComponent extends Component
                 $this->poste = $this->usersUpdate->poste;
                 //$this->raisonsociale = $this->usersUpdate->raisonSocial;
             }
-            $this->id = $id;
+            
         }
 
         //$this->roles = $this->usersUpdate->roles();
@@ -250,10 +267,15 @@ class ClientComponent extends Component
         //     ->select('users.*', 'roles.nom as role')
         //     ->get();
     }
-    public function update($id)
-    {dd('rf');
-        $this->usersUpdate = User::find($id); 
-        if($this->roles == 1){
+    public function view($id){
+        $this->viewUser = "hgtrfvdcsx";
+
+    }
+    public function update()
+    {
+        $this->usersUpdate = User::find($this->monid); 
+        dd($this->unrole);
+        if($this->unrole == 1){
             $this->validate(
                 ['email' => 'required|email'],
                 [
@@ -282,6 +304,8 @@ class ClientComponent extends Component
                     'siege.required' => 'Champ requis.',
                 ]
             );
+            $this->usersUpdate = User::find($this->id); 
+            
             $this->usersUpdate->name = $this->name;
             $this->usersUpdate->email = $this->email;
             $this->usersUpdate->tel = $this->phone;
@@ -295,7 +319,9 @@ class ClientComponent extends Component
             $this->usersUpdate->status = 0;
             $this->usersUpdate->demande  = 0;
             $this->usersUpdate->password = Hash::make($this->identifiant);
-        }elseif($this->choix == 2){
+            $this->usersUpdate->save();
+            $this->usersUpdate->roles()->attach($this->choix);
+        }elseif($this->roles == 2){
             $this->validate(
                 ['email' => 'required|email'],
                 [
@@ -324,6 +350,7 @@ class ClientComponent extends Component
                     'siege.required' => 'Champ requis.',
                 ]
             );
+            $this->usersUpdate = User::find($this->id); 
             $this->usersUpdate->nom = $this->nom;
             $this->usersUpdate->prenom = $this->prenom;
             $this->usersUpdate->tel = $this->phone;
@@ -335,7 +362,9 @@ class ClientComponent extends Component
             $this->usersUpdate->status = 0;
             $this->usersUpdate->demande  = 0;
             $this->usersUpdate->password = Hash::make($this->email);
-        }elseif ($this->choix == 3) {
+            $this->usersUpdate->save();
+            $this->usersUpdate->roles()->attach($this->choix);
+        }elseif ($this->roles == 3) {
             $this->validate(
                 ['email' => 'required|email'],
                 [
@@ -356,6 +385,7 @@ class ClientComponent extends Component
                     'surname.required' => 'Champ requis.',
                 ]
             );
+            $this->usersUpdate = User::find($this->id); 
             $this->usersUpdate->nom = $this->nom;
             $this->usersUpdate->prenom = $this->prenom;
             $this->usersUpdate->tel = $this->phone;
@@ -365,9 +395,10 @@ class ClientComponent extends Component
             $this->usersUpdate->prenom = $this->prenom;
             $this->usersUpdate->disponibilite = true;
             $this->usersUpdate->password = Hash::make($this->email);
+            $this->usersUpdate->save();
+            $this->usersUpdate->roles()->attach($this->choix);
         }
-        $this->usersUpdate->save();
-        $this->usersUpdate->roles()->attach($this->choix);
+        
         $this->updateForm = false;
     }
 }

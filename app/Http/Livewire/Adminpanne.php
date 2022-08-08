@@ -8,7 +8,7 @@ use App\Models\Roles;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use App\Notifications\Panneadmin;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class Adminpanne extends Component
 {
     public $users ;
@@ -16,15 +16,17 @@ class Adminpanne extends Component
     public $client_id;
     public $produit_id;
     public $description;
-    public $updateMode = false;
+    public $updateMode ;
     public $selected_id;
     public $pannes;
     public $nom;
-
+    public $nouveau;
+    public $liste = true;
     //public $produit_inst;
 
     public function render()
     {
+        
         $this->pannes = Panne::all();
         $this->users = DB::table('users')->join('roles_users', 'roles_users.user_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'roles_users.roles_id')->where('roles.nom', 'Client')->select('users.name as nom', 'roles.nom as role' , 'users.id as id')->get();
         //$users= Roles::where('nom','client')->users()->get();
@@ -61,8 +63,9 @@ class Adminpanne extends Component
         $pane->user_id= $this->client_id;
         $pane->nom = "PA".$this->produit_id;
         $pane->save();
-
-
+        Alert::success('Congrats', 'You\'ve Successfully Registered');
+        $this->liste = true;
+        $this->nouveau = false;
     }
 
     /**
@@ -83,7 +86,9 @@ class Adminpanne extends Component
         $this->produit_id = $pane->produitinstalles_id;
         $this->client_id = $pane->user_id;
         $this->updateMode = true;
-
+        $this->nouveau = false;
+        $this->liste = false;
+        
     }
 
     /**
@@ -95,6 +100,7 @@ class Adminpanne extends Component
      */
     public function update()
     {
+        $this->nouveau = false;
           $this->validate([
             'selected_id' => 'required|numeric',
             'description' => 'required|max:255',
@@ -117,12 +123,21 @@ class Adminpanne extends Component
            // Panne::whereId($this->selected_id)->update($this->validate);
            $this->resetInput();
            $this->updateMode = false;
+           $this->liste = true;
         }
 
 
     }
     public function new(){
+        $this->nouveau = true;
         $this->updateMode = false;
+        $this->liste = false;
+        $this->resetInput();
+    }
+    public function close(){
+        $this->nouveau = false;
+        $this->updateMode = false;
+        $this->liste = true;
     }
 
     /**

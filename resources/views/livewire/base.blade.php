@@ -31,11 +31,17 @@
     <!--forms-wizard css-->
     <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\jquery.steps\css\jquery.steps.css')}}">
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="..\files\bower_components\sweetalert\css\sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\sweetalert\css\sweetalert.css')}}">
     <link rel="stylesheet" href="{{asset('files\bower_components\select2\css\select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('files\bower_components\bootstrap-multiselect\css\bootstrap-multiselect.css')}}">
     <link rel="stylesheet" href="{{asset('files\bower_components\multiselect\css\multi-select.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\style.css')}}">
+
+     <!-- Data Table Css -->
+     <link rel="stylesheet" type="text/css" href="..\files\bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css">
+     <link rel="stylesheet" type="text/css" href="..\files\assets\pages\data-table\css\buttons.dataTables.min.css">
+     <link rel="stylesheet" type="text/css" href="..\files\bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css">
+     
 
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\jquery.mCustomScrollbar.css')}}">
         <!-- jpro forms css -->
@@ -249,8 +255,8 @@
         <!-- Sidebar inner chat end-->
         <div class="pcoded-main-container">
             <div class="pcoded-wrapper">
-                <nav class="pcoded-navbar">
-                    <div class="pcoded-inner-navbar main-menu">
+                <nav class="pcoded-navbar" style="background-color: rgb(34, 34, 133);">
+                    <div class="pcoded-inner-navbar main-menu" style="background-color: rgb(34, 34, 133);">
                         <div class="pcoded-navigatio-lavel"> Dashboard</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
@@ -261,7 +267,14 @@
                                 <ul class="pcoded-submenu">
                                     <li class="">
                                         <a href="{{url('admin/users')}}">
-                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="pcoded-submenu">
+                                    <li class="">
+                                        <a href="{{url('admin/users')}}">
+                                            <span class="pcoded-mtext">Techniciens</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -282,7 +295,7 @@
                                     </li>
                                     <li class=" ">
                                         <a href="{{url('admin/produit/liste')}}">
-                                            <span class="pcoded-mtext">Les produits</span>
+                                            <span class="pcoded-mtext">Liste des produits</span>
                                         </a>
                                     </li>
                                     <li class=" ">
@@ -292,13 +305,31 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                    <span class="pcoded-mtext">Gestion des clients</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="{{url('admin/produit/create')}}">
+                                            <span class="pcoded-mtext">Ajouter client</span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="{{url('admin/produit/liste')}}">
+                                            <span class="pcoded-mtext">Liste des clients</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
-                        <div class="pcoded-navigatio-lavel">Gestion des pannes</div>
+                        <div class="pcoded-navigatio-lavel">Pannes</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu ">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
-                                    <span class="pcoded-mtext">Pannes</span>
+                                    <span class="pcoded-mtext">Gestion des pannes</span>
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
@@ -323,18 +354,34 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="">
-                                            <span class="pcoded-mtext">Interventions</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
                                         <a href="{{ url('admin/typeintervention/liste') }}">
                                             <span class="pcoded-mtext">Type interventions</span>
                                         </a>
                                     </li>
+                                    <li class=" ">
+                                        <a href="">
+                                            <span class="pcoded-mtext">Ajouter une intervention</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel">Devis</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu ">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                    <span class="pcoded-mtext">Gestion des devis</span>
+                                </a>
+                                <ul class="pcoded-submenu">
                                     <li class="">
                                         <a href="{{url('admin/typedevis/liste')}}">
                                             <span class="pcoded-mtext">Type devis</span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="{{url('admin/devis')}}">
+                                            <span class="pcoded-mtext">Créer devis</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -397,18 +444,32 @@
         <script src="{{asset('files\assets\js\vartical-layout.min.js')}}"></script>
         <script src="{{asset('files\assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\assets\js\script.js')}}"></script>
-        <script type="text/javascript" src="..\files\bower_components\sweetalert\js\sweetalert.min.js"></script>
+        <script type="text/javascript" src="{{asset('files\bower_components\sweetalert\js\sweetalert.min.js')}}"></script>
+        <script src="{{asset('files\assets\pages\data-table\extensions\key-table\js\key-table-custom.js')}}"></script>
 
         <script type="text/javascript" src="{{asset('files\bower_components\select2\js\select2.full.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\bootstrap-multiselect\js\bootstrap-multiselect.js')}}"></script>
         
         <script type="text/javascript" src="{{asset('files\bower_components\multiselect\js\jquery.multi-select.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('files\assets\js\modal.js') }}"></script>
+        {{-- <script type="text/javascript" src="{{ asset('files\assets\js\modal.js') }}"></script> --}}
+         <!-- data-table js -->
+    <script src="{{asset('files\bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\js\jszip.min.js')}}"></script>
+    {{-- <script src="f{{asset('iles\assets\pages\data-table\js\pdfmake.min.js')}}"></script> --}}
+    <script src="{{asset('files\assets\pages\data-table\js\vfs_fonts.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\extensions\key-table\js\dataTables.keyTable.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.html5.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
+    
         {{-- <script src="{{ asset('files\assets\pages\user-profile.js') }}"></script> --}}
 
     <!-- sweet alert modal.js intialize js -->
     <!-- modalEffects js nifty modal window effects -->
-    <script type="text/javascript" src="{{ asset('files\assets\js\modalEffects.js"') }}></script>
+    {{-- <script type="text/javascript" src="{{ asset('files\assets\js\modalEffects.js"') }}></script> --}}
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>

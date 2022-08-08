@@ -24,6 +24,19 @@
 
     @push('scripts')
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script>
+    <script src='fullcalendar/lang-all.js'></script>
+    <script src='fullcalendar/fr.js'></script>
+    <script>
+
+        $(document).ready(function() {
+    
+            $('#calendar').fullCalendar({
+                lang: 'fr'
+            });
+    
+        });
+    
+    </script>
     <script>
        // $('#planing').hide()
         //Généralisation de l'id

@@ -10,8 +10,8 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <!--h4>Ajouter une installation</h4>
-                        <span>Lorem ipsum dolor sit <code>amet</code>, consectetur adipisicing elit</span-->
+                        <h4>Gestion des utilisateurs</h4>
+                        <span>Enregistrement et liste des utilisateurs</span>
                     </div>
                 </div>
             </div>
@@ -48,6 +48,9 @@
                                 <h5>Book Now</h5>
                                 <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
                             </div-->
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                            </div>
                             <button wire:click="new" class="btn btn-primary" style="margin-left: 92%">Nouveau</button>
 
                             <div class="card-block">
@@ -331,6 +334,104 @@
                                     @if ($updateForm)
                                     <div class="card">
                                         <div class="card-header">
+                                            <h5>Mise à jour des informations</h5>
+                                            <span>Modifier les informations des utilisateurs</span>
+
+                                        </div>
+                                        <div class="card-block">
+                                            <form id="main" action="" wire:submit.prevent="update" novalidate="">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Rôle de l'utilisateur <span style="color: red"> *</span></label>
+                                                    <div class="col-sm-10">
+                                                        <select id="hello-single" class="form-control" wire:modele="unrole">
+                                                            @foreach ($role as $value)
+                                                                <option value="{{$value->id}}">{{$value->nom}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <span class="text-danger">@error('roles'){{$message}}@enderror</span>
+                                                    </div>
+                                                </div>
+                                                @if ($isClient == true)
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label">Nom de l'entreprise <span style="color: red"> *</span></label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="name" wire:model="name">
+                                                            <span class="text-danger">@error('name'){{$message}}@enderror</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label">Numero IFU <span style="color: red"> *</span></label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" id="identifiant" name="identifiant" wire:model="identifiant" class="form-control">
+                                                            <span class="text-danger">@error('identifiant'){{$message}}@enderror</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label">Raison sociale <span style="color: red"> *</span></label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" id="raisonsociale" name="raisonsociale" wire:model="raisonsociale" class="form-control">
+                                                            <span class="text-danger">@error('raisonsociale'){{$message}}@enderror</span>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label">Nom <span style="color: red"> *</span></label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" id="nom" name="nom" wire:model="nom" class="form-control">
+                                                            <span class="text-danger">@error('nom'){{$message}}@enderror</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label">Prénom <span style="color: red"> *</span></label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" id="prenom" name="prenom" wire:model="prenom" class="form-control">
+                                                            <span class="text-danger">@error('prenom'){{$message}}@enderror</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label">Poste <span style="color: red"> *</span></label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" id="poste" name="poste" wire:model="poste" class="form-control">
+                                                            <span class="text-danger">@error('poste'){{$message}}@enderror</span>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Adresse email <span style="color: red"> *</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" id="email" name="email" wire:model="email" class="form-control">
+                                                        <span class="text-danger">@error('email'){{$message}}@enderror</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Adresse téléphonique <span style="color: red"> *</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" id="phone" name="phone" wire:model="phone" class="form-control">
+                                                        <span class="text-danger">@error('phone'){{$message}}@enderror</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Siège <span style="color: red"> *</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" id="siege" name="siege" wire:model="siege" class="form-control">
+                                                        <span class="text-danger">@error('siege'){{$message}}@enderror</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4"></label>
+                                                    <div class="col-sm-4">
+                                                        <button type="submit" class="btn btn-primary m-b-0">Modifier</button>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <button type="reset" class="btn btn-danger m-b-0">Annuler</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    {{-- <div class="card">
+                                        <div class="card-header">
                                             <h3>Mise à jour des informations</h3>
 
                                         </div>
@@ -473,9 +574,164 @@
                                             </div>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     @endif
-                                    <div class="table-responsive dt-responsive">
+                                    <!-- Key table events table start -->
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Liste des utilisateurs</h5>
+                                            <span>Récapitulatif des informations de clients et des techniciens. Cliquez sur voir pour plus de détails.</span>
+                                            <div class="card-header-right">
+                                                <ul class="list-unstyled card-option">
+                                                    <li><i class="feather icon-maximize full-card"></i></li>
+                                                    <li><i class="feather icon-minus minimize-card"></i></li>
+                                                    <li><i class="feather icon-trash-2 close-card"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="card-block">
+                                            <div class="dt-responsive table-responsive">
+                                                <table id="events-key-table" class="table table-striped table-bordered nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th >Nom</th>
+                                                            <th >Prénom</th>
+                                                            <th >Siège</th>
+                                                            <th >Email</th>
+                                                            <th >Telephone</th>
+
+                                                            <th >Entreprise</th>
+                                                            <th >Raison Sociale</th>
+                                                            <th >Numero Ifu</th>
+                                                            <th >Status</th>
+
+                                                            <th >Poste</th>
+                                                            <th >Disponibilité</th>
+
+                                                            <th >Role</th>
+                                                            <th >Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($users as $value)
+                                                            <tr class="text-center">
+
+                                                                <th scope="row">{{$value->id}}</th>
+                                                                <td class=""><span class="">{{$value->nom}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->prenom}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->siege}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->email}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->tel}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->name}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->raisonSocial}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->ifu}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->status}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->poste}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->disponibilite}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class=""><span class="">{{$value->role}}</span>
+                                                                    <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
+                                                                </td>
+                                                                <td class="row">
+                                                                    <button style="margin-left: 4%" wire:click="edit({{$value->id}})" class="btn btn-primary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
+                                                                    {{-- <button wire:click="view({{$value->id}})" class="btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-eye-alt"></i></button> --}}
+                                                                    <button wire:click="destroy({{$value->id}})" class="btn btn-danger col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
+                                                                    <button wire:click="view({{$value->id}})" class="openmodal btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
+
+                                                                </td>
+                                                            </tr>
+                                                            <div class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="EventModal">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h3 class="modal-title">Détails </h3>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                        </div>
+                                                                        <div class="container"></div>
+                                                                        <div class="modal-body">
+                                                                            {{-- @foreach ($this->usersUpdate as $value) --}}
+                                                                                <p>{{$viewUser}} rtg</p>
+                                                                            {{-- @endforeach --}}
+                                                                            {{-- <table class="table ">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>#</th>
+                                                                                        <th>First Name</th>
+                                                                                        <th>Last Name</th>
+                                                                                        <th>Username</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th scope="row">1</th>
+                                                                                        <td>Mark</td>
+                                                                                        <td>Otto</td>
+                                                                                        <td>@mdo</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row">2</th>
+                                                                                        <td>Jacob</td>
+                                                                                        <td>Thornton</td>
+                                                                                        <td>@fat</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row">3</th>
+                                                                                        <td>Larry</td>
+                                                                                        <td>the Bird</td>
+                                                                                        <td>@twitter</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table> --}}
+                                                                        </div>
+                                                                        <div class="modal-footer ">
+                                                                            <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                        
+                                                            
+                                                            
+                                                    </tbody>
+                                                    {{-- <tfoot>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Position</th>
+                                                            <th>Office</th>
+                                                            <th>Age</th>
+                                                            <th>Start date</th>
+                                                            <th>Salary</th>
+                                                        </tr>
+                                                    </tfoot> --}}
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Key table events table end -->
+                                    {{-- <div class="table-responsive dt-responsive">
                                     <table id="demo-foo-filtering" class="table table-striped" style="width: 100%">
                                         <thead>
                                             <tr>
@@ -541,7 +797,7 @@
                                                 </td>
                                                 <td class="row">
                                                     <button wire:click="edit({{$value->id}})" class="btn btn-primary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
-                                                    {{-- <button wire:click="view({{$value->id}})" class="btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-eye-alt"></i></button> --}}
+                                                    {{-- <button wire:click="view({{$value->id}})" class="btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-eye-alt"></i></button> -}}
                                                     <button wire:click="destroy({{$value->id}})" class="btn btn-danger col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
 
 
@@ -552,7 +808,7 @@
 
                                         </tbody>
                                     </table>
-                                    </div>
+                                    </div> --}}
                                     <div class="row">
                                         <div></div>
                                     </div>
@@ -565,40 +821,19 @@
             </div>
         </div>
         <!-- Page body end -->
+
+        
+
     </div>
-    <div class="modal fade modal-icon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Icofonts</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <div class="icon-list-demo">
-                                <i id="icon" class="fa fa-wpbeginner fa-lg"></i>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                Name
-                                <input class="form-control" type="text" id="name" value="fa fa-wpbeginner">
-                            </div>
-                            <div class="form-group">
-                                Code
-                                <input class="form-control" type="text" id="code" value='<i class="fa fa-wpbeginner"></i>'>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    @push('scripts')
+        <script>
+            $(document).ready(function () {
+                $(".openmodal").click(function(){
+                    $('#modal').modal('show');
+                });
+            });
+        </script>
+    @endpush
 </div>
 

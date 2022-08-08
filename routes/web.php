@@ -27,14 +27,15 @@ use App\Http\Middleware\ClientRoute;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/ 
 
 //Route cliente
 Route::get('client', function () {
     return view('homeClient');
 });
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect('login');
 });
 Route::get('in', function () {
     return view('Installation/create_installations');

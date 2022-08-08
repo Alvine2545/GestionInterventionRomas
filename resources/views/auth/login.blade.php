@@ -53,9 +53,10 @@
                     <button id="soumettre" type="submit" class="btn btn-primary">{{ __('Se connecter') }}</button>
 
                 </div>
+                
             </div>
         </form>
-    </div>
+    </div> 
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
