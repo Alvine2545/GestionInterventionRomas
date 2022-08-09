@@ -30,12 +30,14 @@ class ClientComponent extends Component
     public $usersUpdate;
     public $isClient;
     public $idUsers;
-    public $viewUser;
     public $unrole;
-public $monid;
+    public $monid;
     public $vue;
+    public $viewUser;
     public $totalSteep = 2;
     public $currentSteep = 1;
+    public $userid;
+    public $disponibilite;
     public function mount(){
         $this->currentSteep = 1;
 
@@ -269,10 +271,17 @@ public $monid;
         //     ->get();
     }
     public function view($id){
+        $vue =User::find($id);
+        $this->userid = $id;
+        $this->nom = $vue->nom;
+        $this->prenom = $vue->prenom;
+        $this->disponibilite = $vue->disponibilite;
+        $this->email = $vue->email;
+        $this->phone = $vue->tel;
+        $this->poste = $vue->poste;
+        $this->siege = $vue->siege;
         $this->viewUser = true;
-        $this->vue =User::find($id);
-        //$this->viewUser = true;
-
+        //dd($this->nom);
     }
     public function update()
     {

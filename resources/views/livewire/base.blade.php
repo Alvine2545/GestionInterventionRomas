@@ -256,8 +256,8 @@
         <!-- Sidebar inner chat end-->
         <div class="pcoded-main-container">
             <div class="pcoded-wrapper">
-                <nav class="pcoded-navbar" style="background-color: rgb(34, 34, 133);">
-                    <div class="pcoded-inner-navbar main-menu" style="background-color: rgb(34, 34, 133);">
+                <nav class="pcoded-navbar" style="">
+                    <div class="pcoded-inner-navbar main-menu" style="">
                         <div class="pcoded-navigatio-lavel"> Dashboard</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
@@ -360,7 +360,7 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="">
+                                        <a href="{{ url('admin/interventions') }}">
                                             <span class="pcoded-mtext">Ajouter une intervention</span>
                                         </a>
                                     </li>

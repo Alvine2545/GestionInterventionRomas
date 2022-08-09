@@ -34,9 +34,9 @@ class DevisComponent extends Component
     public function render()
     {
         
-        $this->devis = DB::table('devis')->join('users', 'users.id', '=', 'devis.client_id')->join('type_devis', 'type_devis.id', '=', 'devis.type_devis_id')->select('devis.*', 'users.name as client', 'type_devis.nom as type')->get();
+        $this->devis = DB::table('devis')->join('users', 'users.id', '=', 'devis.user_id')->join('type_devis', 'type_devis.id', '=', 'devis.type_devis_id')->select('devis.*', 'users.name as client', 'type_devis.nom as type')->get();
         $this->clients = DB::table('users')->join('roles_users', 'roles_users.user_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'roles_users.roles_id')->where('roles.nom', 'Client')->select('users.name as nom', 'roles.nom as role' , 'users.id as id')->get();
-        $this->pannes = DB::table('pannes')->where('client_id', '=', $this->client_id)->get();
+        $this->pannes = DB::table('pannes')->where('user_id', '=', $this->client_id)->get();
         
         $this->typedevis = TypeDevis::all(); 
         //$this->types = DB::table('Devis')->join('Type_devis', 'Devis.type_devis_id', '=', 'Type_devis.id')->where('Devis.type_devis_id',$this->type_devis_id)->select('Type_devis.*')->get();
@@ -56,7 +56,7 @@ class DevisComponent extends Component
     public function changeEvent($value)
     {
         if($value = 1){
-            $this->pannes = DB::table('Pannes')->where('client_id', '=', $value)->select('id', 'description')->get();
+            $this->pannes = DB::table('Pannes')->where('user_id', '=', $value)->select('id', 'description')->get();
         }else {
             $this->pannes = Installation::all();
         }
@@ -85,7 +85,7 @@ class DevisComponent extends Component
         $devi->prix= $this->prix;
         $devi->pannes_id= $this->pane_id;
         $devi->type_devis_id= $this->type_devis_id;
-        $devi->client_id= $this->client_id;
+        $devi->user_id= $this->client_id;
         $devi->payer = false;
         $devi->code = "D_".$this->client_id."_".$this->pane_id;
         $devi->save();

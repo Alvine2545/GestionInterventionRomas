@@ -657,15 +657,10 @@
                                                                 <td class="row">
                                                                     <button style="margin-left: 4%" wire:click="edit({{$value->id}})" class="btn btn-primary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
                                                                     <button wire:click="destroy({{$value->id}})" class="btn btn-danger col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
-                                                                    <button wire:click="view({{$value->id}})" class="openmodal btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
-
+                                                                    <button wire:click="view({{$value->id}})" data-toggle="modal" data-target="#Vmodal" class="openmodal btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
                                                                 </td>
                                                             </tr>
-                                                            
-                                                        @endforeach
-                                                        
-                                                            
-                                                            
+                                                        @endforeach       
                                                     </tbody>
                                                     {{-- <tfoot>
                                                         <tr>
@@ -772,71 +767,62 @@
             </div>
         </div>
         <!-- Page body end -->
-        @if ($viewUser)
-        {{dd($viewUser)}}
-            <div class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="VModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Détails </h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="container"></div>
-                    <div class="modal-body">
-                        {{-- @foreach ($this->usersUpdate as $value) --}}
-                            <p>{{$vue->nom}} </p>
-                        {{-- @endforeach --}}
-                        {{-- <table class="table ">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table> --}}
-                    </div>
-                    <div class="modal-footer ">
-                        <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
+        {{-- @if ($viewUser == true) --}}
+            <div class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Détails </h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="container"></div>
+                        <div class="modal-body">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Poste</th>
+                                        <th>Siège</th>
+                                        <th>Email</th>
+                                        <th>Téléphone</th>
+                                        {{-- <th>Rôle</th> --}}
+                                        <th>Disponibilité</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">{{$userid}}</th>
+                                        <td>{{$nom}}</td>
+                                        <td>{{$prenom}}</td>
+                                        <td>{{$poste}}</td>
+                                        <td>{{$siege}}</td>
+                                        <td>{{$email}}</td>
+                                        <td>{{$phone}}</td>
+                                        {{-- <td>{{$role}}</td> --}}
+                                        <td>{{$disponibilite}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer ">
+                            <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        @endif
+        {{-- @endif --}}
         
-
     </div>
     
     @push('scripts')
         <script>
-            $(document).ready(function () {
-                $(".openmodal").click(function(){
-                    //alert("gfb");
-                    $('#Vmodal').modal('show');
-                    alert("gfb");
-                });
-            });
+             $(document).ready(function () {
+                 $(".openmodal").click(function(){
+                     $('#Vmodal').modal('show');
+                 });
+             });
         </script>
     @endpush
 </div>

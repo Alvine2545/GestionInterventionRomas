@@ -89,7 +89,7 @@
         <nav class="navbar header-navbar pcoded-header" >
             <div class="navbar-wrapper">
 
-                <div class="navbar-logo" style="background-color: rgb(34, 34, 133);">
+                <div class="navbar-logo" style="">
                     <a class="mobile-menu" id="mobile-collapse" href="#!">
                         <i class="feather icon-menu"></i>
                     </a>
@@ -244,8 +244,8 @@
         <!-- Sidebar inner chat end-->
         <div class="pcoded-main-container">
             <div class="pcoded-wrapper" >
-                <nav class="pcoded-navbar" style="background-color: rgb(34, 34, 133);">
-                    <div class="pcoded-inner-navbar main-menu" style="background-color: rgb(34, 34, 133);">
+                <nav class="pcoded-navbar" style="">
+                    <div class="pcoded-inner-navbar main-menu" style="">
                         <div class="pcoded-navigatio-lavel"> Dashboard</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
@@ -274,6 +274,24 @@
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                    <span class="pcoded-mtext">Gestion des clients</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="{{url('admin/lesclients')}}">
+                                            <span class="pcoded-mtext">Ajouter client</span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="{{url('admin/produit/liste')}}">
+                                            <span class="pcoded-mtext">Liste des clients</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
                                     <span class="pcoded-mtext">Gestion produits</span>
                                 </a>
                                 <ul class="pcoded-submenu">
@@ -290,24 +308,6 @@
                                     <li class=" ">
                                         <a href="{{url('admin/installations')}}">
                                             <span class="pcoded-mtext">Ajouter installation</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
-                                    <span class="pcoded-mtext">Gestion des clients</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/produit/create')}}">
-                                            <span class="pcoded-mtext">Ajouter client</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/produit/liste')}}">
-                                            <span class="pcoded-mtext">Liste des clients</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -348,7 +348,7 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="">
+                                        <a href="{{ url('admin/interventions') }}">
                                             <span class="pcoded-mtext">Ajouter une intervention</span>
                                         </a>
                                     </li>

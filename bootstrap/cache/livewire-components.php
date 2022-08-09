@@ -6,6 +6,7 @@
   'create-devis-component' => 'App\\Http\\Livewire\\CreateDevisComponent',
   'devis-component' => 'App\\Http\\Livewire\\DevisComponent',
   'installation-component' => 'App\\Http\\Livewire\\InstallationComponent',
+  'interventions-component' => 'App\\Http\\Livewire\\InterventionsComponent',
   'planification.planning-component' => 'App\\Http\\Livewire\\Planification\\PlanningComponent',
   'planning-component' => 'App\\Http\\Livewire\\PlanningComponent',
   'typedevis-component' => 'App\\Http\\Livewire\\TypedevisComponent',

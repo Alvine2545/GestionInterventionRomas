@@ -16,6 +16,7 @@ use App\Http\Controllers\Type_devisController;
 use App\Http\Controllers\TypeinverventionController;
 use App\Http\Livewire\ClientComponent;
 use App\Http\Livewire\DevisComponent;
+use App\Http\Livewire\InterventionsComponent;
 use App\Http\Livewire\UsersComponent;
 use App\Http\Middleware\ClientRoute;
 
@@ -97,6 +98,7 @@ Route::prefix('admin')->middleware([
     Route::delete('client/destroy/{id}', 'App\Http\Controllers\ClientController@destroy');
 //Installation
       Route::get('/installations', InstallationComponent::class);
+      Route::get('/interventions', InterventionsComponent::class);
       //Route de produit
       Route::get('produit/liste', [App\Http\Controllers\ProduitController::class, 'index']);
       Route::get('produit/create', [App\Http\Controllers\ProduitController::class, 'create']);
