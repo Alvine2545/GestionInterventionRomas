@@ -20,7 +20,7 @@
 
 .btn-anim:hover{
     color: white;
-    background-color: #ECDB00;
+    background-color: #202a87;
 }
 
 .btn-2{
@@ -50,20 +50,20 @@
 
 .nav-link:hover{
 
-    border-bottom: 1px solid #ECDB00;
+    border-bottom: 1px solid white;
 }
 
 .nav-item a:active{
 
-    border-bottom: 1px solid #ECDB00;
+    border-bottom: 1px solid #202a87;
 
 }
 
 .connexion-anim:hover{
 
     border-radius: 30px;
-    color: white;
-    background-color: #ECDB00;
+    color: #202a87;
+    background-color: white;
 
 }
 

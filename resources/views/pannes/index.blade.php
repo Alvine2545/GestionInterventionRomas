@@ -37,14 +37,14 @@ footer {position: absolute; bottom: 0; left: 0; right: 0}
                             <td>{{$i++}}</td>
                             <td>{{$value->description}}</td>
                             <td>
-                              <form method="POST" action="{{url('pannes/edit',$value->id)}}">
+                              <form method="POST" action="{{url('client/pannes/edit',$value->id)}}">
                                 @csrf
                                 @method('GET')
                                 <button class="btn btn-primary" type="submit">Modifier<i class="icofont icofont-trash" color="red"></i></button>
                             </form>
                           </td>
                             <td>
-                                <form action="{{url('pannes/destroy',$value->id)}}" method="post">
+                                <form action="{{url('client/pannes/destroy',$value->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                   <button class="btn btn-danger" type="submit">Supprimer</button>

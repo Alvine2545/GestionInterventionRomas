@@ -165,10 +165,20 @@ class ClientController extends Controller
         $user = User::where('ifu', '=', $request->identifiant)->get();
         if(collect(['user'])->isNotEmpty())
         {
-            $user->demande = 1;
-            $user->password = $request->password;
-            $user->save();
-            Alert::success('Félicitation', 'La demande d\'activation de votre compte a été envoyé avec succés');
+            if ($user[0]->status == true) {
+                $leuser = User::find($user[0]->id);
+                $leuser->demande = 1;
+                $leuser->password = Hash::make($request->password);
+                $leuser->save();
+                Alert::success('Félicitation', 'Votre compte a été dejà activé. Vous pouvez à présent vous connectez.');
+            } else {
+                $leuser = User::find($user->id);
+                $leuser->demande = 1;
+                $leuser->password = Hash::make($request->password);
+                $leuser->save();
+                Alert::success('Félicitation', 'La demande d\'activation de votre compte a été envoyé avec succés');
+            }
+            
             return view('homeClient');
         }else{
             Alert::warning('Attention', 'Il semblerait que vous n\'avez de compte. Rapprochez-vous de nos locaux ou contactez-nous pour plus d\'informations');
@@ -182,9 +192,9 @@ class ClientController extends Controller
         {
             if($user->ifu = $request->identifiant && Hash::check($request->password, $user->password))
             {
-
-                Alert::success('Félicitation', 'Votre compte a été activé avec succés');
-                return view('client/dashboard');
+                $con = true;
+                //Alert::success('Félicitation', 'Votre compte a été activé avec succés');
+                return view('homeClient', compact('con'));
             }
         }
         Alert::info('Information', 'Votre compte rencontre un problème ou n\'a pas encore été activé. Veuillez nous contacter pour plus d\'informations.');

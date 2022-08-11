@@ -41,13 +41,13 @@ class PanneController extends Controller
         /*$book = DB::table('Produitinstalle')->join('Installation', 'Produitinstalle.installation_id', '=', 'Installation.id')->join('Installation', 'Produitinstalle.installation_id', '=', 'Installation.id')->first();
 dd($book);*/
 
-        /*$pinstall = Produitinstalle::where('')->where('client_id',$client_id);
+        /*$pinstall = Produitinstalle::where('')->where('client_id',$client_id); 
         $install= Installation::where('client_id',$client_id)->get();
         $produits = Produit::where('')*/
         //$produits = Produit::where('Produits.id', 'Produitinstalle.produit_id')->where('Installation.id', 'Produitinstalle.installation_id')->where('Installation.client_id', 'Client.id')->where('Client.id', $client_id)->get();
-        $produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installation_id', '=', 'Installations.id')->where('Installations.user_id',$client_id)->select('Produitinstalles.*', 'Produits.nom')->get();
+        $produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installation_id', '=', 'Installations.id')->where('Installations.user_id',2)->select('Produitinstalles.*', 'Produits.nom')->get();
         //$users = DB::table('users')->select('name', 'email as user_email')->get();
-        if (collect(['produits'])->isNotEmpty()) {
+        if (collect(['produits'])->isEmpty()) {
             
             Alert::info('Message', 'Vous n\'avez aucun produit chez ROMAS Technologie');
             return redirect('client');
@@ -68,17 +68,19 @@ dd($book);*/
     {
         //
         $client_id= Auth::user()->id;
-        $validatedData = $request->validate([
+        $request->validate([
             'description' => 'required|max:255',
             'produit' => 'required',
         ]);
         $pane = new Panne();
         $pane->description= $request->description;
+        $path = $request->file('photo')->store('photosPanne', 'public');
+        $pane->photo= $path;
         $pane->produitinstalles_id= $request->produit;
-        $pane->client_id= $client_id;
-        $pane->nom = "PA"+Auth::user()->name;
+        $pane->user_id= $client_id;
+        $pane->nom = "PA".Auth::user()->name;
         $pane->save();
-        $pannes->user->notify(new Panneadmin($this->pannes));
+        // $pannes->user->notify(new Panneadmin($this->pannes));
 
         /*$pane = Panne::create([
             'description' =>$request->description,
@@ -88,7 +90,7 @@ dd($book);*/
         //$pane = Panne::create($validatedData);
         //Notification::route('mail' , ['alladakaneunice@gmail.com'])->notify( new Panneadmin($signpan));
 
-        return redirect('pannes/liste')->with('Super', 'Votre panne créer avec succès');
+        return redirect('client/pannes/liste')->with('Super', 'Votre panne créer avec succès');
     }
 
     /**

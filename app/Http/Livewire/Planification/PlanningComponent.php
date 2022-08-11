@@ -87,6 +87,7 @@ public $essai;
         // // Planning::create($this->events);
     }
     public function editId($id){
+        //$this->resetInput();
         $this->editModal = true;
         $this->eventId = $id;
         $this->event = Planning::find($id);
@@ -117,10 +118,23 @@ public $essai;
         $this->event->save();
 
     }
-    // private function resetInput()
-    // {
-    //     $this->description = null;
-    //     $this->produit_id = null;
-    //     $this->client_id = null;
-    // }
+     private function resetInput()
+     {
+         $this->technicien = null;
+         $this->typeinterves = null;
+         $this->event = null;
+         $this->panne = null;
+         $this->priorite = null;
+         $this->end = null;
+         $this->start = null;
+         $this->date = null;
+         $this->heureD = null;
+         $this->heureF = null;
+         $this->d = null;
+         $this->type = null;
+         $this->pan = null;
+         $this->tech = null;
+         $this->title = null;
+
+     }
 }

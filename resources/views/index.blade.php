@@ -22,15 +22,16 @@
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\icon\icofont\css\icofont.css')}}">
     <!-- feather Awesome -->
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\icon\feather\css\feather.css')}}">
+     <!-- jpro forms css -->
+     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\demo.css')}}">
+     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\font-awesome.min.css')}}">
+     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\j-pro-modern.css')}}">
     <!--forms-wizard css-->
     <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\jquery.steps\css\jquery.steps.css')}}">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\jquery.mCustomScrollbar.css')}}">
-        <!-- jpro forms css -->
-        <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\demo.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\font-awesome.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\j-pro-modern.css')}}">
+       
 
 
     <title>Acceuil</title>
@@ -39,11 +40,11 @@
 <body>
     @include('sweetalert::alert')
     <!-- navbar -->
-    <nav class="navbar navbar-expand navbar-light bg-white py-0 fixed-top">
+    <nav class="navbar navbar-expand navbar-white py-0 fixed-top" style="background-color: #202a87">
         <div class="container row">
             <!--navbar brand-->
             <a href="#" class="navbar-brand d-flex  align-items-center col-md-2 col-md-offset-6">
-                <span class="" style="color: #ECBD00">ROMAS Interventions</span>
+                <span class="" style="color: white">ROMAS Interventions</span>
             </a>
             <!--navbar tooggler-->
             <!--button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -53,54 +54,46 @@
             <div class="collapse navbar-collapse col-md-4" id="navMenu" style="">
                 <ul class="navbar-nav mx-auto text-center">
                     <li class="nav-item px-3 py-3" style="margin-left: -5%">
-                        <a href="#" class="nav-link text-uppercase text-dark connexion-anim">
+                        <a href="#" class="nav-link  text-uppercase text-white ">
                             Acceuil
                         </a>
                     </li>
                     <li class="nav-item px-3 py-3" style="margin-left: -5%">
-                        <a href="#services" class="nav-link text-uppercase text-dark connexion-anim">
+                        <a href="#services" class="nav-link text-uppercase text-white">
                             Services
                         </a>
                     </li>
-                    <!--li class="nav-item px-3 py-3">
-                        <a href="model" class="nav-link text-uppercase text-dark connexion-anim">
-                            Signaler une panne
-                        </a>
-                    </li-->
-                    <!--li class="nav-item px-3 py-3">
-                        <a href="faq" class="nav-link text-uppercase text-dark connexion-anim">
-                            FAQ
-                        </a>
-                    </li-->
                     <li class="nav-item px-3 py-3" style="margin-left: -5%">
-                        <a href="#contact" class="nav-link text-uppercase text-dark connexion-anim">
-                            Contacts
+                        <a href="http://romastechnologie.com/" class="nav-link text-uppercase text-white ">
+                            Produits
                         </a>
                     </li>
-                            <!--li class="nav-item px-3 py-3">
-                                <a href="{{url('client/login')}}" class="nav-link text-uppercase text-dark connexion-anim">
-                                    Connexion
-                                </a>
-                            </li-->
-                        <li class="nav-item px-3 py-3" style="margin-left: -5%">
-                            @if (Auth::check())
-                                <a class="nav-link text-uppercase text-dark connexion-anim" href="{{url('client/pannes/create')}}">
-                                    Signaler une panne
-                                </a>
-                            @else
-                            <a  class="nav-link text-uppercase text-dark connexion-anim" data-toggle="modal" data-target="#tabbed-form">
-                                Authentification
+                    <li class="nav-item px-3 py-3" style="margin-left: -5%">
+                        @if ($con)
+                        
+                            <a class="nav-link text-uppercase text-white" href="#contact">
+                                Signaler une panne
                             </a>
-                            @endif
-                        </li>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#contacts"></a></li>
+                                <li><a class="dropdown-item" href="#">Mes pannes</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                              </ul>
+                        @else
+                        <a  class="nav-link text-uppercase text-white" data-toggle="modal" data-target="#tabbed-form">
+                            Authentification
+                        </a>
+                        @endif
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+    
     <!-- navbar -->
 
    @yield('contenu')
-
+   
 <!-- tabbed form modal start -->
 <div id="tabbed-form" class="modal fade mixed-form" role="dialog">
     <div class="modal-dialog">
@@ -223,36 +216,32 @@
 <!-- tabbed form modal end -->
     <!--footer-->
 
-    <footer class="bg-dark text-white p-4 po">
+    <footer class=" text-white p-4 po" style="background-color: #050d50">
         <div class="container">
             <div class="row text-center text-md-left">
 
                 <div class="col-md-12 col-lg-3 col-xl-3">
-                    <h4 class="text-uppercase" style="color: #ECBD00">Romas Interventions</h4>
-                    <p>Adipisci quasi modi tempore facere illum suscipit.</p>
-                </div>
-
-                <div class="col-md-12 col-lg-3 col-xl-3">
-                    <h4 class="text-uppercase" style="color: #ECBD00"> Developpeurs </h4>
+                    <img src="{{url('files/assets/images/logo_romas2.png')}}" alt="">
                     <p>
                         <a href="#" class="text-decoration-none text-white">
-                            Eunice ALLADAKAN
-                        </a>
-                    </p>
-                    <p>
-                        <a href="#" class="text-decoration-none text-white">
-                            Floriane ANATO
+                            ROYAL-MAGNIFICAT SERVICES Technologie
                         </a>
                     </p>
                 </div>
+                
+                <div class="col-md-12 col-lg-3 col-xl-3">
+                    <h4 class="text-uppercase" >Romas Interventions</h4>
+                    <p>La plateforme qui vous sauve la vie.</p>
+                </div>
+
 
                 <div class="col-md-12 col-lg-3 col-xl-3">
-                    <h4 class="text-uppercase" style="color: #ECBD00">
+                    <h4 class="text-uppercase">
                         Liens
                     </h4>
 
                     <p>
-                        <a href="#" class="text-decoration-none text-white">
+                        <a href="http://romastechnologie.com/" class="text-decoration-none text-white">
                             A propos
                         </a>
                     </p>
@@ -264,7 +253,7 @@
                     </p>
 
                     <p>
-                        <a href="#" class="text-decoration-none text-white">
+                        <a href="client/help" class="text-decoration-none text-white">
                             Aide
                         </a>
                     </p>
@@ -272,29 +261,51 @@
                 </div>
 
                 <div class="col-md-12 col-lg-3 col-xl-3">
-                    <h4 class="text-upeercase" style="color: #ECBD00">
+                    <h4 class="text-upeercase">
                         Contacts
                     </h4>
 
                     <p>
                         <i class="fas fa-home mr-3"></i>
-                        Cotonou, Benin
+                        Bénin, Cotonou, Ste Rita
                     </p>
 
                     <p>
                         <i class="fas fa-envelope mr-3"></i>
-                        <a href="#" class="text-decoration-none text-white">
-                            ecadmin@gmail.com
+                        <a href="mailto:contact@romas-benin.com" class="text-decoration-none text-white">
+                            contact@romas-benin.com
+                        </a>
+                    </p>
+
+                    <p>
+                        <i class="fas fa-globe mr-3"></i>
+                        <a href="http://romastechnologie.com/" class="text-decoration-none text-white">
+                            http://romastechnologie.com/
                         </a>
                     </p>
 
                     <p>
                         <i class="fas fa-phone mr-3"></i>
-                        +229 66534045
+                        <a href="tel:+22990621523" class="text-decoration-none text-white">(00229) 90 62 15 23</a>  -  <a href="tel:+22996110917" class="text-decoration-none text-white">96 11 09 17</a>
                     </p>
 
                 </div>
 
+            </div><hr style="border-color: white">
+            <div class="row footer-bottom mt-70 pt-3 pb-1">
+                <div class="col-lg-6 col-md-6">
+                    <div class="footer-bottom-content">
+                        <div class="footer-bottom-content-copy">
+                            <p>© 2022 Romas .Tous droits réservés. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="footer-bottom-right">
+                        <div class="footer-bottom-right-text">
+                                                </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
@@ -324,28 +335,28 @@
 
     <script type="text/javascript" src="{{asset('files\bower_components\multiselect\js\jquery.multi-select.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\assets\js\jquery.quicksearch.js')}}"></script>
+    <!-- j-pro js -->
+    <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.ui.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.maskedinput.min.js')}}"></script>
+    
     <!-- Custom js -->
-    <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script>
     <!-- i18next.min.js -->
     <script type="text/javascript" src="{{asset('files\bower_components\i18next\js\i18next.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\bower_components\i18next-xhr-backend\js\i18nextXHRBackend.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\bower_components\i18next-browser-languagedetector\js\i18nextBrowserLanguageDetector.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\bower_components\jquery-i18next\js\jquery-i18next.min.js')}}"></script>
-    <script type="text/javascript" src="..\files\assets\pages\j-pro\js\custom\booking-multistep.js"></script>
-
+    <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking-multistep.js')}}"></script>
+    
      <!-- modernizr js -->
      <script type="text/javascript" src="{{asset('files\bower_components\modernizr\js\css-scrollbars.js')}}"></script>
 
      <!-- Custom js -->
      <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script>
-
+     <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\suggestion-form.js')}}"></script>
     <!--Forms - Wizard js-->
     <script src="{{asset('files\bower_components\jquery.cookie\js\jquery.cookie.js')}}"></script>
     <script src="{{asset('files\bower_components\jquery.steps\js\jquery.steps.js')}}"></script>
     <script src="{{asset('files\bower_components\jquery-validation\js\jquery.validate.js')}}"></script>
-    <!-- j-pro js -->
-    <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.ui.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.maskedinput.min.js')}}"></script>
     <!-- Validation js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
@@ -356,6 +367,7 @@
     <script src="{{asset('files\assets\js\vartical-layout.min.js')}}"></script>
     <script src="{{asset('files\assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\assets\js\script.js')}}"></script>
+    
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>

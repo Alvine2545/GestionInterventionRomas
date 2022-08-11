@@ -32,9 +32,10 @@ use App\Http\Middleware\ClientRoute;
 */ 
 
 //Route cliente
-Route::get('client', function () {
-    return view('homeClient');
-});
+Route::get('client', [App\Http\Controllers\homeClientController::class, 'index']);
+// Route::get('client', function () {
+//     return view('homeClient');
+// });
 Route::get('/', function () {
     // return view('welcome');
     return redirect('login');
@@ -67,6 +68,9 @@ Route::prefix('client')->group(function () {
     Route::get('services', function () {
         // return view('connexion');
     });
+    Route::get('help', function () {
+         return view('help');
+    });
     //Connexion
     Route::get('login', [App\Http\Controllers\ClientController::class, 'connexion']);
 
@@ -79,9 +83,7 @@ Route::prefix('admin')->middleware([
     'verified'
 ])->group(function () {
     //Le dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     //Client avec livewire
     Route::get('/client', CreateClient::class);
@@ -148,9 +150,8 @@ Route::prefix('admin')->middleware([
 Route::get('/plan', PlanningComponent::class);
 
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),

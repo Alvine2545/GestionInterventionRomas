@@ -158,11 +158,6 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('admin/user_profil') }}">
-                                            <i class="feather icon-user"></i> Profile
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="email-inbox.htm">
                                             <i class="feather icon-mail"></i> Mes messages
                                         </a>
@@ -431,6 +426,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
         <script type="text/javascript" src="{{asset('files\assets\pages\form-validation\validate.js')}}"></script>
+        <!-- sweet alert js -->
+        <script type="text/javascript" src="{{url('files\bower_components\sweetalert\js\sweetalert.min.js')}}"></script>
+        <script type="text/javascript" src="{{url('files\assets\js\modal.js')}}"></script>
+        <!-- sweet alert modal.js intialize js -->
+        <!-- modalEffects js nifty modal window effects -->
+        <script type="text/javascript" src="{{asset('files\assets\js\modalEffects.js')}}"></script>
+        <script type="text/javascript" src="{{asset('files\assets\js\classie.js')}}"></script>
         <!-- Custom js -->
         <script src="{{asset('files\assets\pages\forms-wizard-validation\form-wizard.js')}}"></script>
         <script src="{{asset('files\assets\js\pcoded.min.js')}}"></script>

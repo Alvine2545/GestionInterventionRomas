@@ -9,12 +9,6 @@
 
 </style>
 @section('contenu')
-{{-- @if ( collect(['produits'])->isNotEmpty())
-    @include('homeClient')
-    <?php
-        Alert::info('Message', 'Vous n\'avez aucun produit chez ROMAS Technologie');
-    ?>
-@else --}}
 <div class="pcoded-content">
     <div class="pcoded-inner-content">
         <!-- Main-body start -->
@@ -67,7 +61,7 @@
                                         </ul>
                                       </div><br />
                                     @endif
-                                      <form id="second" method="post" action="{{ url('pannes/store') }}" novalidate="">
+                                      <form id="second" method="post" action="{{ url('client/pannes/store') }}" novalidate="">
                                           @csrf
                                           @method('POST')
                                           <div class="row" style="margin-left: 10%; margin-bottom:3%" >

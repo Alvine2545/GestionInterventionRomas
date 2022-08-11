@@ -170,11 +170,6 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('admin/user_profil') }}">
-                                            <i class="feather icon-user"></i> Profile
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="email-inbox.htm">
                                             <i class="feather icon-mail"></i> Mes messages
                                         </a>
