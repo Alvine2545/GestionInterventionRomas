@@ -38,7 +38,10 @@
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\demo.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\font-awesome.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\j-pro-modern.css')}}">
-
+    <!-- jquery file upload Frame work -->
+    <link href="{{asset('files\assets\pages\jquery.filer\css\jquery.filer.css')}}" type="text/css" rel="stylesheet">
+    <link href="{{asset('files\assets\pages\jquery.filer\css\themes\jquery.filer-dragdropbox-theme.css')}}" type="text/css" rel="stylesheet">
+   
         @livewireStyles
     </head>
     <body>
@@ -124,6 +127,7 @@
                             <div class="dropdown-primary dropdown">
                                 <div class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="feather icon-bell"></i>
+                                    {{-- <span class="badge bg-c-pink">{{auth()->user()->unreadNotifications->count()}}</span> --}}
                                     <span class="badge bg-c-pink">5</span>
                                 </div>
                                 <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
@@ -160,6 +164,11 @@
                                     <li>
                                         <a href="email-inbox.htm">
                                             <i class="feather icon-mail"></i> Mes messages
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('admin/user_profil')}}">
+                                            <i class="feather icon-settings"></i> Profile
                                         </a>
                                     </li>
                                     <li>
@@ -427,12 +436,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
         <script type="text/javascript" src="{{asset('files\assets\pages\form-validation\validate.js')}}"></script>
         <!-- sweet alert js -->
-        <script type="text/javascript" src="{{url('files\bower_components\sweetalert\js\sweetalert.min.js')}}"></script>
-        <script type="text/javascript" src="{{url('files\assets\js\modal.js')}}"></script>
+        <script type="text/javascript" src="{{asset('files\bower_components\sweetalert\js\sweetalert.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('files\assets\js\modal.js')}}"></script>
         <!-- sweet alert modal.js intialize js -->
         <!-- modalEffects js nifty modal window effects -->
         <script type="text/javascript" src="{{asset('files\assets\js\modalEffects.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\assets\js\classie.js')}}"></script>
+        <script src="{{asset('files\assets\pages\data-table\extensions\key-table\js\key-table-custom.js')}}"></script>
+
+           <!-- jquery file upload js -->
+        <script src="{{asset('files\assets\pages\jquery.filer\js\jquery.filer.min.js')}}"></script>
+        <script src="{{asset('files\assets\pages\filer\custom-filer.js')}}" type="text/javascript"></script>
+        <script src="{{asset('files\assets\pages\filer\jquery.fileuploads.init.js')}}" type="text/javascript"></script>
+        
         <!-- Custom js -->
         <script src="{{asset('files\assets\pages\forms-wizard-validation\form-wizard.js')}}"></script>
         <script src="{{asset('files\assets\js\pcoded.min.js')}}"></script>
@@ -441,6 +457,18 @@
         <script type="text/javascript" src="{{asset('files\assets\js\script.js')}}"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script src="{{asset('files\bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\js\jszip.min.js')}}"></script>
+    {{-- <script src="f{{asset('iles\assets\pages\data-table\js\pdfmake.min.js')}}"></script> --}}
+    <script src="{{asset('files\assets\pages\data-table\js\vfs_fonts.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\extensions\key-table\js\dataTables.keyTable.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.html5.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
+    
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

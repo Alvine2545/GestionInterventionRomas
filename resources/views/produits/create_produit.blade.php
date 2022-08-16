@@ -65,7 +65,14 @@
                                                         <input type="text" class="form-control" name="type" placeholder="Type">
                                                         <span class="messages popover-valid"></span>
                                                     </div>
-                                                </div>
+                                                  </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label">Photo du produit</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="file" class="form-control" name="photo" placeholder="Choisir une photo du produit">
+                                                            <span class="messages popover-valid"></span>
+                                                        </div>
+                                                    </div>
                                                   <div class="row">
                                                       <label class="col-sm-2"></label>
                                                       <div class="col-sm-5">

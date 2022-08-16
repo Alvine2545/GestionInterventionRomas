@@ -21,7 +21,6 @@ class homeClientController extends Controller
             $client_id= Auth::user()->id;
             $lesproduits = DB::table('produits')->take(4)->get();
             $produits = DB::table('Produitinstalles')->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')->join('Installations', 'Produitinstalles.installation_id', '=', 'Installations.id')->where('Installations.user_id',2)->select('Produitinstalles.*', 'Produits.nom')->get();
-            
             return view('homeClient',compact('produits', 'con', 'lesproduits'));
         }
         

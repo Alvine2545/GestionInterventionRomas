@@ -9,7 +9,7 @@ use App\Models\Installation;
 class Produit extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom', 'type'];
+    protected $fillable = ['nom', 'photo' ,'type'];
 
     public function installations()
     {

@@ -32,4 +32,11 @@ return new class extends Migration
     {
         Schema::dropIfExists('notifications');
     }
+    public function toArray($notifiable)
+{
+    return [
+        'invoice_id' => $this->invoice->id,
+        'amount' => $this->invoice->amount,
+    ];
+}
 };

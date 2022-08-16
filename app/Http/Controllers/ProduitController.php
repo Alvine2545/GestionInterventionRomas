@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Produit;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\New_;
 
 class ProduitController extends Controller
 {
@@ -43,9 +45,14 @@ class ProduitController extends Controller
         $validatedData = $request->validate([
             'nom' => 'required|max:255',
             'type' => 'required|max:255',
+            'photo' => 'required',
         ]);
-    
-        $produit = Produit::create($validatedData);
+        $produit = New Produit();
+        $produit->nom = $request->nom;
+        $produit->type = $request->type;
+        $path = $request->photo->store('Produits', 'public');
+        $produit->photo = $path;
+        $produit->save();
     
         return redirect('admin/produit/liste')->with('Super', 'Produit créer avec succès');
     }

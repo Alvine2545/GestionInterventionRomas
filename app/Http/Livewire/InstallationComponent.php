@@ -73,7 +73,12 @@ class InstallationComponent extends Component
     {
        // $this->data = DB::table('Produitinstalles')->join('Produits','Produitinstalles.produit_id','=','Produits.id')->join('Installations','Produitinstalles.installation_id','=','Installations.id')->join('Client','Installations.client_id','=','Client.id')->select('Client.*','Installations.*','Produits.*','Produitinstalles.version')->get();
        //Liste des installations
-       $this->data = User::all() ;
+       $this->data = $this->users = DB::table('roles_users')
+       ->join('users', 'roles_users.user_id', '=', 'users.id')
+       ->join('roles', 'roles_users.roles_id', '=', 'roles.id')
+       ->where('roles.nom', '=', 'Client')
+       ->select('users.*')
+       ->get();
        $this->produits = Produit::all();
        $this->installation = DB::table('Produitinstalles')
        ->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')

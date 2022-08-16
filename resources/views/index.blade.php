@@ -127,7 +127,7 @@
                                             </div>
                                             <hr>
                                             <p class="text-inverse m-t-25">C'est votre première fois ? <a href="#regi"> S'authentifier </a> ici </p>
-                                            <form method="post" action="{{url('client/login')}}" novalidate>
+                                            <form method="post" action="{{url('login')}}" novalidate>
                                                 @method('GET')
                                                 @csrf
                                             <div class="input-group row" style="margin-bottom: 8%">
@@ -172,7 +172,7 @@
                                                 </div>
                                             </div>
                                             <hr>
-                                            <form method="post" action="{{url('client/register')}}">
+                                            <form method="post" action="{{url('register')}}">
                                                 @csrf
                                                 @method('GET')
                                             <div class="input-group row" style="margin-bottom: 8%">
@@ -378,6 +378,7 @@
   gtag('config', 'UA-23581568-13');
 
 </script>
+<script src="js/app.js"></script>
 </body>
 
 </html>

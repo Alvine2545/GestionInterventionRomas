@@ -136,7 +136,7 @@
                             <div class="dropdown-primary dropdown">
                                 <div class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="feather icon-bell"></i>
-                                    <span class="badge bg-c-pink">5</span>
+                                    <span class="badge bg-c-pink">{{auth()->user()->unreadNotifications->count()}}</span>
                                 </div>
                                 <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                     <li>
@@ -172,6 +172,11 @@
                                     <li>
                                         <a href="email-inbox.htm">
                                             <i class="feather icon-mail"></i> Mes messages
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('admin/user_profil')}}">
+                                            <i class="feather icon-user"></i> Profile
                                         </a>
                                     </li>
                                     <li>
@@ -269,7 +274,7 @@
                                 </ul>
                                 <ul class="pcoded-submenu">
                                     <li class="">
-                                        <a href="{{url('admin/users')}}">
+                                        <a href="{{url('admin/lestechniciens')}}">
                                             <span class="pcoded-mtext">Techniciens</span>
                                         </a>
                                     </li>

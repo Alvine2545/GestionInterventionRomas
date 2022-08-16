@@ -20,6 +20,10 @@ use App\Http\Livewire\InterventionsComponent;
 use App\Http\Livewire\UsersComponent;
 use App\Http\Middleware\ClientRoute;
 
+use App\Http\Controllers\AuthenticateSessionController;
+use App\Http\Controllers\RegisteredAdminController;
+use App\Http\Livewire\TechniciensComponent;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,10 +36,16 @@ use App\Http\Middleware\ClientRoute;
 */ 
 
 //Route cliente
-Route::get('client', [App\Http\Controllers\homeClientController::class, 'index']);
+//Route::get('client', [App\Http\Controllers\homeClientController::class, 'index']);
+Route::get('client', [App\Http\Controllers\homeClientController::class, 'index'])->middleware("App\Http\Middleware\ClientRoute");
 // Route::get('client', function () {
 //     return view('homeClient');
-// });
+// // });
+// Route::get('admin/login', [AuthenticateSessionController::class, 'create']);
+// Route::post('admin/login', [AuthenticateSessionController::class, 'store']);
+// Route::get('admin/register', [RegisteredUserController::class, 'create']);
+// Route::post('admin/register', [RegisteredUserController::class, 'store']);
+
 Route::get('/', function () {
     // return view('welcome');
     return redirect('login');
@@ -89,6 +99,8 @@ Route::prefix('admin')->middleware([
     Route::get('/client', CreateClient::class);
     Route::get('/users', ClientComponent::class);
     Route::get('/lesclients', UsersComponent::class);
+    Route::get('/lestechniciens', TechniciensComponent::class);
+
     Route::get('/user_profil', Profil::class);
     //Route de client
     Route::get('client/liste', [App\Http\Controllers\ClientController::class, 'index']);
@@ -150,7 +162,7 @@ Route::prefix('admin')->middleware([
 Route::get('/plan', PlanningComponent::class);
 
 });
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+//Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
 // Route::middleware([
 //     'auth:sanctum',

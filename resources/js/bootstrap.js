@@ -23,12 +23,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // import Pusher from 'pusher-js';
 // window.Pusher = Pusher;
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: import.meta.env.VITE_PUSHER_APP_KEY,
-//     wsHost: import.meta.env.VITE_PUSHER_HOST ?? `ws-${import.meta.env.VITE_PUSHER_CLUSTER}.pusher.com`,
-//     wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
-//     wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
-//     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
-//     enabledTransports: ['ws', 'wss'],
-// });
+ window.Echo = new Echo({
+     broadcaster: 'pusher',
+     key: import.meta.env.VITE_PUSHER_APP_KEY,
+     wsHost: import.meta.env.VITE_PUSHER_HOST ?? `ws-${import.meta.env.VITE_PUSHER_CLUSTER}.pusher.com`,
+     wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
+     wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
+     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
+     enabledTransports: ['ws', 'wss'],
+ });
+ 
+ Echo.private('App.Models.User.' + userId)
+    .notification((notification) => {
+        console.log(notification.type);
+    });

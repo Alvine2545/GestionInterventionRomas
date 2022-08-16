@@ -27,7 +27,7 @@
     <div class="page-body">
         <div class="row">
             <!-- customar project  start -->
-            <div class="col-xl-3 col-md-6">
+            {{-- <div class="col-xl-3 col-md-6">
                 <div class="card">
                     <div class="card-block">
                         <div class="row align-items-center m-l-0">
@@ -86,11 +86,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- customar project  end -->
 
             <!-- user start -->
-            <div class="col-xl-6 col-md-12">
+            {{-- <div class="col-xl-6 col-md-12">
                 <div class="card user-card-full">
                     <div class="row m-l-0 m-r-0">
                         <div class="col-sm-4 bg-c-lite-green user-profile">
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-xl-6 col-md-12">
                 <div class="row">
                     <!-- order-visitor start -->
@@ -149,6 +149,18 @@
                     </div>
                     <div class="col-md-6">
                         <div class=" text-center text-white">
+                            <div class="card user-widget-card bg-c-pink">
+                                <div class="card-block">
+                                    <i class="feather icon-shopping-cart bg-simple-c-pink card1-icon"></i>
+                                    <h4>{{$produits}}</h4>
+                                    <p>Produits</p>
+                                    <a href="{{url('admin/produit/liste')}}" class="more-info">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" text-center text-white">
                             <div class="card user-widget-card bg-c-blue">
                                 <div class="card-block">
                                     <i class="feather icon-users bg-simple-c-blue card1-icon"></i>
@@ -159,6 +171,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-md-6">
                         <div class=" text-center text-white">
                             <div class="card user-widget-card bg-c-yellow">
@@ -171,6 +184,98 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-12">
+                <div class="row">
+                    <!-- order-visitor start -->
+                    <div class="col-md-6">
+                        <div class=" text-center text-white">
+                            <div class="card user-widget-card bg-c-blue">
+                                <div class="card-block">
+                                    <i class="feather icon-alert-triangle bg-simple-c-blue card1-icon"></i>
+                                    <h4>{{$pannes}}</h4>
+                                    <p>Pannes</p>
+                                    <a href="{{url('admin/lesclients')}}" class="more-info">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" text-center text-white">
+                            <div class="card user-widget-card bg-c-yellow">
+                                <div class="card-block">
+                                    <i class="feather icon-filter bg-simple-c-yellow card1-icon"></i>
+                                    <h4>{{$interventions}}</h4>
+                                    <p>Installations</p>
+                                    <a href="{{$installations}}" class="more-info">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" text-center text-white">
+                            <div class="card user-widget-card bg-c-green">
+                                <div class="card-block">
+                                    <i class="feather icon-briefcase bg-simple-c-green card1-icon"></i>
+                                    <h4>{{$clients}}</h4>
+                                    <p>Plannifications</p>
+                                    <a href="{{url('admin/planning')}}" class="more-info">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" text-center text-white">
+                            <div class="card user-widget-card bg-c-pink">
+                                <div class="card-block">
+                                    <i class="feather icon-shopping-cart bg-simple-c-pink card1-icon"></i>
+                                    <h4>{{$clients}}</h4>
+                                    <p>Devis</p>
+                                    <a href="{{url('admin/devis/liste')}}" class="more-info">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="row">
+                    <!-- order-visitor start -->
+                    <div class="col-md-6">
+                        <div class=" text-center text-white">
+                            <div class="card user-widget-card bg-c-green">
+                                <div class="card-block">
+                                    <i class="feather icon-user bg-simple-c-green card1-icon"></i>
+                                    <h4>{{$clients}}</h4>
+                                    <p>Pannes</p>
+                                    <a href="{{url('admin/lesclients')}}" class="more-info">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" text-center text-white">
+                            <div class="card user-widget-card bg-c-blue">
+                                <div class="card-block">
+                                    <i class="feather icon-users bg-simple-c-blue card1-icon"></i>
+                                    <h4>{{$techniciens}}</h4>
+                                    <p>Rapports</p>
+                                    <a href="{{url('admin/produit/liste')}}" class="more-info">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" text-center text-white">
+                            <div class="card user-widget-card bg-c-yellow">
+                                <div class="card-block">
+                                    <i class="feather icon-filter bg-simple-c-yellow card1-icon"></i>
+                                    <h4>{{$interventions}}</h4>
+                                    <p>Devis</p>
+                                    <a href="{{url('admin/interventions')}}" class="more-info">En savoir plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="col-md-6">
                         <div class=" text-center text-white">
@@ -178,13 +283,13 @@
                                 <div class="card-block">
                                     <i class="feather icon-shopping-cart bg-simple-c-pink card1-icon"></i>
                                     <h4>{{$produits}}</h4>
-                                    <p>Produits</p>
+                                    <p>Installations</p>
                                     <a href="{{url('admin/produit/liste')}}" class="more-info">En savoir plus</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- user end -->
         </div>

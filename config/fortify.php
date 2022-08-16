@@ -45,9 +45,8 @@ return [
     | another name for the field you may define it below as needed.
     |
     */
-
+    'identifiant' => 'identifiant',
     'username' => 'email',
-
     'email' => 'email',
 
     /*
@@ -62,7 +61,7 @@ return [
     */
 
     'home' => RouteServiceProvider::HOME,
-
+    'homeclient' => RouteServiceProvider::HOMECLIENT,
     /*
     |--------------------------------------------------------------------------
     | Fortify Routes Prefix / Subdomain

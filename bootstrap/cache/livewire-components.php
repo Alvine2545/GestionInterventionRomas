@@ -9,6 +9,7 @@
   'interventions-component' => 'App\\Http\\Livewire\\InterventionsComponent',
   'planification.planning-component' => 'App\\Http\\Livewire\\Planification\\PlanningComponent',
   'planning-component' => 'App\\Http\\Livewire\\PlanningComponent',
+  'techniciens-component' => 'App\\Http\\Livewire\\TechniciensComponent',
   'typedevis-component' => 'App\\Http\\Livewire\\TypedevisComponent',
   'users-component' => 'App\\Http\\Livewire\\UsersComponent',
 );

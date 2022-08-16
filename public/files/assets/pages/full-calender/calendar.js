@@ -1,6 +1,6 @@
 	"use strict";
-	$(document).ready(function() {
-        const calendarEl = document.getElementById('calendar');
+	document.addEventListener('livewire:load', function () {
+		const calendarEl = document.getElementById('calendar');
 	    $('#external-events .fc-event').each(function() {
 
 	        // store data so the calendar knows to render an event upon drop
@@ -28,15 +28,26 @@
 	            center: 'title',
 	            right: 'month,agendaWeek,agendaDay,listMonth'
 	        },
+			locale: 'fr',
+			buttonText:{
+				today: 'Ajourd\'hui',
+				month: 'Mois',
+				week: 'Semaine',
+				day: 'Jour',
+				list: 'Liste'
+			},
 
-	        defaultDate: '2022-07-22',
 	        navLinks: true, // can click day/week names to navigate views
 	        businessHours: true, // display business hours
 	        editable: true,
+			selectable: true,
 	        droppable: true, // this allows things to be dropped onto the calendar
 	        dateClick: function(info) {
     				alert('b');
   				},
+			select: arg =>{
+				alert('gf');
+			},
 	        drop: function() {
 
 	            // is the "remove after drop" checkbox checked?
@@ -48,4 +59,5 @@
 	        
 
 	    });
+
 	});

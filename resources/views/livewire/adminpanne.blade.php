@@ -105,7 +105,71 @@
 
 
                             @if ($liste == true)
-                                <div class="card" style="width: 60%; margin-left: 20%">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Liste des utilisateurs</h5>
+                                    <span>Récapitulatif des informations de clients et des techniciens. Cliquez sur voir pour plus de détails.</span>
+                                    <div class="card-header-right">
+                                        <ul class="list-unstyled card-option">
+                                            <li><i class="feather icon-maximize full-card"></i></li>
+                                            <li><i class="feather icon-minus minimize-card"></i></li>
+                                            <li><i class="feather icon-trash-2 close-card"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <div class="dt-responsive table-responsive">
+                                        <table id="events-key-table" class="table table-striped table-bordered nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th >Code</th>
+                                                    <th >Description</th>
+                                                    <th >Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $i = 1; ?>
+                                                @foreach ($pannes as $value)
+                                                    <tr class="text-center">
+
+                                                        <th scope="row">{{$i++}}</th>
+                                                        <td class=""><span class="">{{$value->nom}}</span>
+                                                            <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
+                                                        </td>
+                                                        <td class=""><span class="">{{$value->description}}</span>
+                                                            <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
+                                                        </td>
+                                                        <td class="row">
+                                                            <button wire:click="edit({{$value->id}})" class="btn btn-primary"><i class="icofont icofont-edit" color="red"></i></button> |
+                                                            <button class="btn btn-secondary details" data-toggle="modal" data-backdrop="false" data-target="#myModal2" wire:click="edit({{$value->id}})" ><i class="icofont icofont-eye" color="red"></i></button> |
+                                                            <button wire:click="destroy({{$value->id}})" class="btn btn-danger"><i class="icofont icofont-trash" color="red"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <div class="modal fade" id="myModal2">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h3 class="modal-title">Détails</h3>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                </div>
+                                                                <div class="container">{{$value->nom}}</div>
+                                                                <div class="modal-body">
+                                                                    <span>
+                                                                        {{$value->description}}
+                                                                    </span>
+                                                                    <img src="{{Storage::url($value->photo)}}" alt="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach       
+                                            </tbody>
+                                        </table> 
+                                    </div>
+                                </div>
+                            </div>
+                                {{-- <div class="card" style="width: 60%; margin-left: 20%">
                                     <div class="card-header">
                                         <h5>Liste des pannes</h5>
                                         <span></span>
@@ -114,13 +178,6 @@
                                     <div class="card-block table-border-style" style="margin-left: 5%">
                                         <div class="table-responsive" >
                                             <table class="table" >
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Code</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
                                                 <tbody>
                                                     <tr>
                                                         <?php $i = 1; ?>
@@ -134,30 +191,14 @@
                                                                 <button wire:click="destroy({{$value->id}})" class="btn btn-danger"><i class="icofont icofont-trash" color="red"></i></button>
                                                             </td>
                                                         </tr>
-                                                        <div class="modal fade" id="myModal2">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h3 class="modal-title">Détails</h3>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                    </div>
-                                                                    <div class="container">{{$value->nom}}</div>
-                                                                    <div class="modal-body">
-                                                                        <span>
-                                                                            {{$value->description}}
-                                                                        </span>
-                                                                        <img src="{{Storage::url($value->photo)}}" alt="">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        
                                                         @endforeach
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             @endif
 
                         {{-- </div> --}}

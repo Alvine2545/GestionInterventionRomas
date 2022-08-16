@@ -287,6 +287,7 @@
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Pannes </label>
                     <select class="col-sm-12 form-control js-example-placeholder-multiple" wire:model="panne" >
+                        <option value="">Sélectionnez les pannes</option>
                         @foreach ($pannes as $value)
                         <option value="{{$value->id}}">{{$value->nom}}</option>
                         @endforeach
@@ -296,18 +297,10 @@
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Techniciens </label>
                     <select class=" col-sm-12 js-example-placeholder-multiple" multiple="multiple" wire:model='technicien'>
+                        <option value="">Sélectionnez les techniciens</option>
                         @foreach ($techniciens as $value)
                             <option value="{{$value->id}}">{{$value->nom." ".$value->prenom}}</option>
                         @endforeach
-                    </select>
-                </div>
-                <div class="form-group" >
-                    <label class="control-label" for="appt-time">Type d'intervention </label>
-                    <select class=" form-control col-sm-12" wire:model='typeinterves'>
-                        @foreach ($typeinterventions as $value)
-                            <option value="{{$value->id}}">{{$value->nom}}</option>
-                        @endforeach
-
                     </select>
                 </div>
                 <div class="form-group">
@@ -335,7 +328,7 @@
                     </div>
                 </div> --}}
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                     <button type="submit" class="btn btn-primary" id="save">Enregistrer</button>
                 </div>
             </div>
@@ -447,7 +440,8 @@
                         <div class="modal-body" >
                             <div class="form-group">
                                 <label class="control-label" for="appt-time">Pannes </label>
-                                <select class="form-control col-sm-12" wire:model="panne" >
+                                <select class="form-control col-sm-12" wire:model="panne" multiple="multiple" >
+                                    <option value="">Sélectionnez les pannes</option>
                                     @foreach ($pan as $value)
                                         {{-- @if ($value->nom != $event->panne->nom) --}}
                                             <option value="{{$value->id}}">{{$value->nom}}</option>
@@ -458,6 +452,7 @@
 
                             <div class="form-group">
                                 <label class="control-label" for="appt-time">Techniciens </label>
+                                <option value="">Sélectionnez les techniciens</option>
                                 <select class="form-control col-sm-12" multiple="multiple" wire:model='technicien'>
                                     @foreach ($tech as $value)
                                     {{-- @foreach ($event->users as $value) --}}

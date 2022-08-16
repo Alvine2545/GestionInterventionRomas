@@ -38,6 +38,7 @@ class ClientComponent extends Component
     public $currentSteep = 1;
     public $userid;
     public $disponibilite;
+    public $stored;
     public function mount(){
         $this->currentSteep = 1;
 
@@ -68,6 +69,7 @@ class ClientComponent extends Component
         $this->identifiant = null;
         $this->roles;
         $this->raisonsociale = null;
+        $this->stored = false;
         
     }
     public function new()
@@ -86,120 +88,113 @@ class ClientComponent extends Component
                 ]
             );
         }
-        // }elseif($this->currentSteep == 2){
-        //     $this->validate([
-        //         'name'=>'required|string',
-        //         'identifiant'=>'required|unique:user'
-        //     ]);
-        // }
     }
     public function store()
     {
         $this->nouveau = false;
         $this->resetErrorBag();
         if($this->currentSteep == 2){
-
-            //Validation 
-
             $user = new User();
-        $user->name = $this->name;
-        $user->email = $this->email;
-        $user->tel = $this->phone;
-        $user->siege = $this->siege;
-        $user->raisonSocial = $this->raisonsociale;
-        $user->poste = $this->poste;
-        $user->nom = $this->nom;
-        $user->prenom = $this->prenom;
-        $user->ifu = $this->identifiant;
-        $user->disponibilite = true;
-        $user->status = 0;
-        $user->demande  = 0;
-        if($this->choix == 1){
-            $this->validate(
-                ['email' => 'required|email'],
-                [
-                    'email.required' => 'Champ requis.',
-                    'email.email' => 'Email non valide.',
-                ],
-                ['email' => 'Email Address'],
-                ['name' => 'required'],
-                [
-                    'name.required' => 'Champ requis.',
-                ],
-                ['raisonsociale' => 'required'],
-                [
-                    'raisonsociale.required' => 'Champ requis.',
-                ],
-                ['phone' => 'required|min:8'],
-                [
-                    'phone.required' => 'Champ requis.',
-                ],
-                ['identifiant' => 'required'],
-                [
-                    'identifiant.required' => 'Champ requis.',
-                ],
-                ['siege' => 'required'],
-                [
-                    'siege.required' => 'Champ requis.',
-                ]
-            );
-            $user->password = Hash::make($this->identifiant);
-        }elseif($this->choix == 2){
-            $this->validate(
-                ['email' => 'required|email'],
-                [
-                    'email.required' => 'Champ requis.',
-                    'email.email' => 'Email non valide.',
-                ],
-                ['email' => 'Email Address'],
-                ['name' => 'required'],
-                [
-                    'name.required' => 'Champ requis.',
-                ],
-                ['phone' => 'required|min:8'],
-                [
-                    'phone.required' => 'Champ requis.',
-                ],
-                ['surname' => 'required'],
-                [
-                    'surname.required' => 'Champ requis.',
-                ],
-                ['poste' => 'required'],
-                [
-                    'surname.required' => 'Champ requis.',
-                ],
-                ['siege' => 'required'],
-                [
-                    'siege.required' => 'Champ requis.',
-                ]
-            );
-            $user->password = Hash::make($this->email);
-        }elseif ($this->choix == 3) {
-            $this->validate(
-                ['email' => 'required|email'],
-                [
-                    'email.required' => 'Champ requis.',
-                    'email.email' => 'Email non valide.',
-                ],
-                ['email' => 'Email Address'],
-                ['name' => 'required'],
-                [
-                    'name.required' => 'Champ requis.',
-                ],
-                ['phone' => 'required|min:8'],
-                [
-                    'phone.required' => 'Champ requis.',
-                ],
-                ['surname' => 'required'],
-                [
-                    'surname.required' => 'Champ requis.',
-                ]
-            );
-            $user->password = Hash::make($this->email);
-        }
-        $user->save();
-        $user->roles()->attach($this->choix);
-        }
+            $user->name = $this->name;
+            $user->email = $this->email;
+            $user->tel = $this->phone;
+            $user->siege = $this->siege;
+            $user->raisonSocial = $this->raisonsociale;
+            $user->poste = $this->poste;
+            $user->nom = $this->nom;
+            $user->prenom = $this->prenom;
+            $user->ifu = $this->identifiant;
+            $user->disponibilite = true;
+            $user->status = 0;
+            $user->demande  = 0;
+            //Validation 
+            if($this->choix == 1){
+                $this->validate(
+                    ['email' => 'required|email'],
+                    [
+                        'email.required' => 'Champ requis.',
+                        'email.email' => 'Email non valide.',
+                    ],
+                    ['email' => 'Email Address'],
+                    ['name' => 'required'],
+                    [
+                        'name.required' => 'Champ requis.',
+                    ],
+                    ['raisonsociale' => 'required'],
+                    [
+                        'raisonsociale.required' => 'Champ requis.',
+                    ],
+                    ['phone' => 'required|min:8'],
+                    [
+                        'phone.required' => 'Champ requis.',
+                    ],
+                    ['identifiant' => 'required'],
+                    [
+                        'identifiant.required' => 'Champ requis.',
+                    ],
+                    ['siege' => 'required'],
+                    [
+                        'siege.required' => 'Champ requis.',
+                    ]
+                );
+                $user->password = Hash::make($this->identifiant);
+            }elseif($this->choix == 2){
+                $this->validate(
+                    ['email' => 'required|email'],
+                    [
+                        'email.required' => 'Champ requis.',
+                        'email.email' => 'Email non valide.',
+                    ],
+                    ['email' => 'Email Address'],
+                    ['name' => 'required'],
+                    [
+                        'name.required' => 'Champ requis.',
+                    ],
+                    ['phone' => 'required|min:8'],
+                    [
+                        'phone.required' => 'Champ requis.',
+                    ],
+                    ['surname' => 'required'],
+                    [
+                        'surname.required' => 'Champ requis.',
+                    ],
+                    ['poste' => 'required'],
+                    [
+                        'surname.required' => 'Champ requis.',
+                    ],
+                    ['siege' => 'required'],
+                    [
+                        'siege.required' => 'Champ requis.',
+                    ]
+                );
+                $user->password = Hash::make($this->email);
+            }elseif ($this->choix == 3) {
+                $this->validate(
+                    ['email' => 'required|email'],
+                    [
+                        'email.required' => 'Champ requis.',
+                        'email.email' => 'Email non valide.',
+                    ],
+                    ['email' => 'Email Address'],
+                    ['name' => 'required'],
+                    [
+                        'name.required' => 'Champ requis.',
+                    ],
+                    ['phone' => 'required|min:8'],
+                    [
+                        'phone.required' => 'Champ requis.',
+                    ],
+                    ['surname' => 'required'],
+                    [
+                        'surname.required' => 'Champ requis.',
+                    ]
+                );
+                $user->password = Hash::make($this->email);
+            }
+            $user->save();
+            $user->roles()->attach($this->choix);
+            $this->stored = true;
+            }
 
     }
     public function increaseSteep(){
@@ -211,9 +206,6 @@ class ClientComponent extends Component
             $this->currentSteep = $this->totalSteep;
         }
     }
-    // public function choice(){
-    //     $this->choix = $this->roles;
-    // }
     public function decreaseSteep(){
         $this->resetErrorBag();
         //$this->validateData();
@@ -228,12 +220,14 @@ class ClientComponent extends Component
         $client->delete();
     }
     public function edit($id)
-    {$this->monid = $id;
+    {
+        $this->monid = $id;
         $this->nouveau = false;
         $this->usersUpdate = User::find($id);
         foreach ($this->usersUpdate->roles as $value) {
             if ($value->id == 1) {
                 # client
+                $this->unrole = $value->id;
                 $this->isClient = true;
                 $this->usersUpdate = User::find($id);
                 $this->name = $this->usersUpdate->name;
@@ -245,6 +239,7 @@ class ClientComponent extends Component
             }
             if ($value->id == 2) {
                 # technicien
+                $this->unrole = $value->id;
                 $this->isClient = false;
                 $this->usersUpdate = User::find($id);
                 $this->nom = $this->usersUpdate->nom;
@@ -253,22 +248,11 @@ class ClientComponent extends Component
                 $this->siege  = $this->usersUpdate->siege;
                 $this->prenom = $this->usersUpdate->prenom;
                 $this->poste = $this->usersUpdate->poste;
-                //$this->raisonsociale = $this->usersUpdate->raisonSocial;
             }
             
         }
 
-        //$this->roles = $this->usersUpdate->roles();
-
         $this->updateForm = true;
-
-        // $this->role = Roles::all();
-        // // $this->users = User::all();
-        //  $this->users = DB::table('roles_users')
-        //     ->join('users', 'roles_users.user_id', '=', 'users.id')
-        //     ->join('roles', 'roles_users.roles_id', '=', 'roles.id')
-        //     ->select('users.*', 'roles.nom as role')
-        //     ->get();
     }
     public function view($id){
         $vue =User::find($id);
@@ -281,13 +265,12 @@ class ClientComponent extends Component
         $this->poste = $vue->poste;
         $this->siege = $vue->siege;
         $this->viewUser = true;
-        //dd($this->nom);
     }
     public function update()
     {
         $this->usersUpdate = User::find($this->monid); 
-        dd($this->unrole);
         if($this->unrole == 1){
+            
             $this->validate(
                 ['email' => 'required|email'],
                 [
@@ -316,7 +299,7 @@ class ClientComponent extends Component
                     'siege.required' => 'Champ requis.',
                 ]
             );
-            $this->usersUpdate = User::find($this->id); 
+            //$this->usersUpdate = User::find($this->id); 
             
             $this->usersUpdate->name = $this->name;
             $this->usersUpdate->email = $this->email;
@@ -333,7 +316,7 @@ class ClientComponent extends Component
             $this->usersUpdate->password = Hash::make($this->identifiant);
             $this->usersUpdate->save();
             $this->usersUpdate->roles()->attach($this->choix);
-        }elseif($this->roles == 2){
+        }elseif($this->unrole == 2){
             $this->validate(
                 ['email' => 'required|email'],
                 [
@@ -341,28 +324,27 @@ class ClientComponent extends Component
                     'email.email' => 'Email non valide.',
                 ],
                 ['email' => 'Email Address'],
-                ['name' => 'required'],
+                ['nom' => 'required'],
                 [
-                    'name.required' => 'Champ requis.',
+                    'nom.required' => 'Champ requis.',
                 ],
                 ['phone' => 'required|min:8'],
                 [
                     'phone.required' => 'Champ requis.',
                 ],
-                ['surname' => 'required'],
+                ['prenom' => 'required'],
                 [
-                    'surname.required' => 'Champ requis.',
+                    'prenom.required' => 'Champ requis.',
                 ],
                 ['poste' => 'required'],
                 [
-                    'surname.required' => 'Champ requis.',
+                    'poste.required' => 'Champ requis.',
                 ],
                 ['siege' => 'required'],
                 [
                     'siege.required' => 'Champ requis.',
                 ]
             );
-            $this->usersUpdate = User::find($this->id); 
             $this->usersUpdate->nom = $this->nom;
             $this->usersUpdate->prenom = $this->prenom;
             $this->usersUpdate->tel = $this->phone;
@@ -376,7 +358,7 @@ class ClientComponent extends Component
             $this->usersUpdate->password = Hash::make($this->email);
             $this->usersUpdate->save();
             $this->usersUpdate->roles()->attach($this->choix);
-        }elseif ($this->roles == 3) {
+        }elseif ($this->unrole == 3) {
             $this->validate(
                 ['email' => 'required|email'],
                 [
@@ -397,7 +379,6 @@ class ClientComponent extends Component
                     'surname.required' => 'Champ requis.',
                 ]
             );
-            $this->usersUpdate = User::find($this->id); 
             $this->usersUpdate->nom = $this->nom;
             $this->usersUpdate->prenom = $this->prenom;
             $this->usersUpdate->tel = $this->phone;

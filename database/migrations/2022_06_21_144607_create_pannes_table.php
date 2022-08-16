@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('traite')->nullable();
             $table->text('nom')->nullable();
+            $table->string('photo');
             $table->foreignId('produitinstalles_id')->constrained('produitinstalles');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();

@@ -8,11 +8,13 @@ use App\Models\Panne;
 use App\Models\User;
 use App\Models\Produitinstalle;
 use App\Models\Produit;
+use App\Notifications\Panneadmin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 class PanneController extends Controller
 {
+    public $user;
     //
 
 /**
@@ -67,20 +69,25 @@ dd($book);*/
     public function store(Request $request)
     {
         //
-        $client_id= Auth::user()->id;
+        $client_id= 2;
         $request->validate([
             'description' => 'required|max:255',
             'produit' => 'required',
         ]);
-        $pane = new Panne();
-        $pane->description= $request->description;
-        $path = $request->file('photo')->store('photosPanne', 'public');
-        $pane->photo= $path;
-        $pane->produitinstalles_id= $request->produit;
-        $pane->user_id= $client_id;
-        $pane->nom = "PA".Auth::user()->name;
-        $pane->save();
-        // $pannes->user->notify(new Panneadmin($this->pannes));
+         $pane = new Panne();
+         $pane->description= $request->description;
+         $path = $request->file('photo')->store('photosPanne', 'public');
+         $pane->photo= $path;
+         $pane->produitinstalles_id= $request->produit;
+         $pane->user_id= $client_id;
+         $pane->nom = "PA_".Auth::user()->id;
+         $pane->save();
+        
+        // $this->user = DB::table('users')->where('users.id', 1)->get();
+        // $this->user->notify(new Panneadmin($pane)); 
+        //$this->user = DB::table('users')->join('roles_users', 'roles_users.user_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'roles_users.roles_id')->where('roles.nom', 'Technicien')->select('users.name as nom', 'roles.nom as role' , 'users.id as id')->get();
+        //$pane = Panne::find(5);
+         //$pane->user->notify(new Panneadmin($pane, Auth::user()));
 
         /*$pane = Panne::create([
             'description' =>$request->description,

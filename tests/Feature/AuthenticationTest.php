@@ -26,9 +26,14 @@ class AuthenticationTest extends TestCase
             'email' => $user->email,
             'password' => 'password',
         ]);
+        $responseclient = $this->post('/client', [
+            'identifiant' => $user->ifu,
+            'password' => 'password',
+        ]);
 
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::HOME);
+        $responseclient->assertRedirect(RouteServiceProvider::HOMECLIENT);
     }
 
     public function test_users_can_not_authenticate_with_invalid_password()
@@ -37,6 +42,10 @@ class AuthenticationTest extends TestCase
 
         $this->post('/login', [
             'email' => $user->email,
+            'password' => 'wrong-password',
+        ]);
+        $this->post('/client', [
+            'identifiant' => $user->ifu,
             'password' => 'wrong-password',
         ]);
 

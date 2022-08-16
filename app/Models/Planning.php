@@ -14,7 +14,7 @@ class Planning extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'priorite', 'debut', 'fin','photo' ,'date', 'typeinterventions_id', 'responsables_id', 'pannes_id',
+        'priorite', 'start', 'end','photo' ,'date', 'typeinterventions_id', 'responsables_id', 'pannes_id',
     ];
 
     public function panne()

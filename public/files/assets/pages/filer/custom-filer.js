@@ -10,10 +10,10 @@ $(document).ready(function(){
 		theme: "dragdropbox",
 		templates: {
 			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
-			item: '<li class="jFiler-item">\
+			item: '<li class="jFiler-item" wire:model="photo">\
 						<div class="jFiler-item-container">\
 							<div class="jFiler-item-inner">\
-								<div class="jFiler-item-thumb">\
+								<div class="jFiler-item-thumb" >\
 									<div class="jFiler-item-status"></div>\
 									<div class="jFiler-item-thumb-overlay">\
 										<div class="jFiler-item-info">\
@@ -135,15 +135,15 @@ $(document).ready(function(){
 			}
 		},
 		captions: {
-			button: "Choose Files",
+			button: "Choisir",
 			feedback: "Choose files To Upload",
-			feedback2: "files were chosen",
+			feedback2: "Fichier choisi",
 			drop: "Drop file here to Upload",
-			removeConfirmation: "Are you sure you want to remove this file?",
+			removeConfirmation: "Ëtes ous sûr de vouloir supprimer cette image?",
 			errors: {
 				filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
-				filesType: "Only Images are allowed to be uploaded.",
-				filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
+				filesType: "Seules les images peuvent être choisir.",
+				filesSize: "{{fi-name}} pèse trop! Choisissez un fichier de moins de {{fi-maxSize}} MB.",
 				filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
 			}
 		}

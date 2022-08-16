@@ -44,7 +44,7 @@
         <div class="modelList mt-2 row">
 
             <!--models list-->
-            <div class="col-xl-4 col-md-6 col-sm-6 col-xs-12">
+            {{-- <div class="col-xl-4 col-md-6 col-sm-6 col-xs-12">
                 <div class="card prod-view">
                     <div class="prod-item text-center">
                         @foreach ($lesproduits as $produit)
@@ -61,7 +61,7 @@
                         
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--models lists-->
 
         </div>

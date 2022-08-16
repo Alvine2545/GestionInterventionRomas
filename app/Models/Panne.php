@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Produitinstalle;
 use App\Models\Planning;
 use App\Models\User;
+use Illuminate\Notifications\Notifiable;
 
 class Panne extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
     protected $fillable = [
-        'description', 'traite', 'nom', 'produitinstalles_id', 'user_id' ];
+        'description', 'photo', 'traite', 'nom', 'produitinstalles_id', 'user_id' ];
 
     public function user()
     {

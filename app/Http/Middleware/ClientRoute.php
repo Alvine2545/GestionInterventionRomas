@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientRoute
 {
@@ -17,7 +18,7 @@ class ClientRoute
     public function handle(Request $request, Closure $next)
     {
 
-        if ( Auth::check() && $request->user()->roles->nom == 'Client') {
+        if (Auth::check() && $request->user()->roles->nom == 'Client') {
             return redirect('client');
         }
 

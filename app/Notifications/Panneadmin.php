@@ -7,19 +7,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Models\Panne;
+use App\Models\User;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 
 class Panneadmin extends Notification
 {
     use Queueable;
     public $pannes;
+    public $user;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Panne $pannes)
+    public function __construct(Panne $pannes, User $user)
     {
-
+        $this->user = $user;
         $this->pannes = $pannes;
     }
 
@@ -31,7 +34,7 @@ class Panneadmin extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'broadcast'];
     }
 
     /**
@@ -60,6 +63,15 @@ class Panneadmin extends Notification
     {
         return [
             'pannes_id'  => $this->pannes->id,
+            'user_id' => $this->user->id,
         ];
+    }
+    public function toBroadcast($notifiable){
+        return new BroadcastMessage([
+            [
+                'pannes_id'  => $this->pannes->id,
+                'user_id' => $this->user->id,
+            ]
+        ]);
     }
 }
