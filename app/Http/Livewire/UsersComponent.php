@@ -98,9 +98,9 @@ class UsersComponent extends Component
         $user->email = $this->email;
         $user->tel = $this->phone;
         $user->siege = $this->siege;
-        $user->raisonsociale = $this->raisonsociale;
+        $user->raisonSocial = $this->raisonsociale;
         $user->name = $this->name;
-        $user->identifiant = $this->identifiant;
+        $user->ifu = $this->identifiant;
         $user->status = false;            
         $user->password = Hash::make($this->identifiant);
         $user->save();
