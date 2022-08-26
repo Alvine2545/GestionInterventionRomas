@@ -20,6 +20,8 @@ class UsersComponent extends Component
     public $email;
     public $identifiant;
     public $liste = true;
+    public $viewUser;
+    public $status;
     public $usersUpdate;
     public function render()
     {
@@ -132,8 +134,14 @@ class UsersComponent extends Component
         $this->raisonsociale = $vue->raisonsociale;
         $this->email = $vue->email;
         $this->phone = $vue->tel;
-        $this->identifiant = $vue->identifiant;
+        $this->identifiant = $vue->ifu;
         $this->siege = $vue->siege;
+        if ($vue->status == false) {
+            $this->status = "Non activé";
+        } else {
+            $this->status = "Actif";
+        }
+        
         $this->viewUser = true;
     }
     public function update()

@@ -426,7 +426,6 @@
 
          <!-- Custom js -->
          {{-- <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\custom\booking.js')}}"></script>  --}}
-         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <!--Forms - Wizard js-->
         <script src="{{asset('files\bower_components\jquery.cookie\js\jquery.cookie.js')}}"></script>
         <script src="{{asset('files\bower_components\jquery.steps\js\jquery.steps.js')}}"></script>
@@ -444,7 +443,7 @@
         <script src="{{asset('files\assets\js\pcoded.min.js')}}"></script>
         <script src="{{asset('files\assets\js\vartical-layout.min.js')}}"></script>
         <script src="{{asset('files\assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('files\assets\js\script.js')}}"></script>
+        <script type="text/javascript" src="{{asset('files\assets\js\script.js')}}"></script> 
         <script type="text/javascript" src="{{asset('files\bower_components\sweetalert\js\sweetalert.min.js')}}"></script>
         <script src="{{asset('files\assets\pages\data-table\extensions\key-table\js\key-table-custom.js')}}"></script>
 
@@ -465,9 +464,8 @@
     <script src="{{asset('files\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('files\bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('files\bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
-    
         {{-- <script src="{{ asset('files\assets\pages\user-profile.js') }}"></script> --}}
-
+        {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
     <!-- sweet alert modal.js intialize js -->
     <!-- modalEffects js nifty modal window effects -->
     {{-- <script type="text/javascript" src="{{ asset('files\assets\js\modalEffects.js"') }}></script> --}}
@@ -505,6 +503,7 @@
     });
 
     </script-->
+    @livewire('livewire-ui-modal')
     @stack('scripts')
     {{-- @livewire('livewire-ui-modal') --}}
         @livewireScripts

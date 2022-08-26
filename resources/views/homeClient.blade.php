@@ -35,7 +35,7 @@
         <div class="title text-center">
             <h2 class="position-relative d-inline-block">A propos</h2>
         </div>
-        <div class="card">
+        <div class="">
             Le cabinet ROYAL-MAGNIFICAT SERVICE SARL (ROMAS) est une entreprise de gestion informatique qui assure la formation, la conception de site web et logiciels, la vente de matériels informatique et bureautique. Elle a vu le jour le 1er juillet 2015 sous l’initiative de Monsieur Gabin ANADJEME qui est son Directeur général. ROMAS est une entreprise privée de droit béninois qui essaye d’offrir le meilleur de la technologie informatique à sa clientèle en réalisant pour le compte des prestations avec l’obsession de la qualité et la recherche de valeur ajoutée certaine.
             Cette entreprise naissante s’est très vite formalisée en fonction des devoirs en vigueur. Son siège social est situé à Cotonou, quartier Sainte-Rita au carré No1538d.
             Proposant diverses solutions informatiques, elle offre et mets en vente des matériels informatiques: ordinateurs portables ou bureautiques, 
@@ -134,7 +134,6 @@
                 @csrf
                 @method('POST')
                 <div class="j-content">
-                    <!-- start email -->
                     <div class="j-unit">
                         <div class="j-input">
                             <label class="j-icon-left" for="email">
@@ -143,7 +142,6 @@
                             <input type="email" readonly placeholder="Email ou Numero IFU" id="email" name="email" value="{{Auth::user()->email}}">
                         </div>
                     </div>
-                    <!-- end email -->
                         <div class="j-unit">
                             <label class="j-input j-select">
                                 <select name="produit">
@@ -160,7 +158,6 @@
                                 <i></i>
                             </label>
                         </div>
-                        <!-- start file -->
                         <div class="j-unit">
                             <div class="j-input j-append-big-btn">
                                 <label class="j-icon-left" for="file_input">
@@ -174,8 +171,6 @@
                                 <span class="j-hint">Image: jpg / png / doc, d'au plus 1Mb</span>
                             </div>
                         </div>
-                        <!-- end file -->
-                        <!-- start message -->
                         <div class="j-unit">
                             <div class="j-input">
                                 <label class="j-icon-left" for="message">
@@ -185,10 +180,7 @@
                                 <span class="j-tooltip j-tooltip-right-top">Décrivez au mieux possible votre message</span>
                             </div>
                         </div>
-                        <!-- end message -->
-                    <!-- start response from server -->
                     <div class="j-response"></div>
-                    <!-- end response from server -->
                 </div>
                 <!-- end /.content -->
                 <div class="j-footer">
@@ -206,7 +198,11 @@
             </form>
         </div>
         @else
-            <span class="text-center"><h3>Vous n'êtes pas connectez!</h3></span>
+            <div class="text-center">
+                
+                <h4>Vous n'êtes pas connectez!</h4>
+            
+            </div>
         @endif
         
         <!--contact form-->

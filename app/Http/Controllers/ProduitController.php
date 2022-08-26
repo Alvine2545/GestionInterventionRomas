@@ -7,6 +7,7 @@ use App\Models\Produit;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\New_;
 
+
 class ProduitController extends Controller
 {
     /**
@@ -46,11 +47,11 @@ class ProduitController extends Controller
             'nom' => 'required|max:255',
             'type' => 'required|max:255',
             'photo' => 'required',
-        ]);
+        ]); 
         $produit = New Produit();
         $produit->nom = $request->nom;
         $produit->type = $request->type;
-        $path = $request->photo->store('Produits', 'public');
+        $path = $request->file('photo')->store('Produits', 'public');
         $produit->photo = $path;
         $produit->save();
     
@@ -118,7 +119,10 @@ class ProduitController extends Controller
         //
         /*$type_inter = Produit::find($id);
         $type_inter->truncate();*/
-        Produit::destroy($id);
+        $produit = Produit::find($id);
+        Storage::delete($produit->photo);
+        $produit->truncate();
+        //Produit::destroy($id);
     
         return redirect('admin/produit/liste')->with('Super', 'Produit supprimer avec succès');
     }

@@ -37,17 +37,46 @@
         </div>
     </div>
     <div class="card-block">
-        <div class="dt-responsive table-responsive">
-            <table id="events-key-table" class="table table-striped table-bordered nowrap">
+        <div class="dt-responsive table-responsive" class="align-content-center">
+            <table id="events-key-table" class="table table-striped table-bordered nowrap align-content-center">
                 <thead>
-                    <tr>
+                    <tr class="align-content-center">
                         <th>#</th>
                         <th >Nom</th>
                         <th >Type</th>
                         <th >Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
+                    <div class="row">
+                        @foreach ($produits as $value)
+                        <div class="col-xl-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="card prod-view">
+                                <div class="prod-item text-center">
+                                    <div class="prod-img">
+                                        <div class="option-hover">
+                                            <button type="button" class="btn btn-primary btn-icon waves-effect waves-light m-r-15 hvr-bounce-in option-icon">
+                                                <i class="icofont icofont-edit-alt f-20"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-icon waves-effect waves-light hvr-bounce-in option-icon">
+                                                <i class="icofont icofont-trash f-20"></i>
+                                            </button>
+                                        </div>
+                                        <a href="#!" class="hvr-shrink">
+                                            <img src="{{asset('storage/'.$value->photo)}}" class="img-fluid o-hidden">
+                                        </a>
+                                    </div>
+                                    <div class="prod-info">
+                                        <a href="#" class="txt-muted"><h4>{{$value->nom}}</h4></a>
+                                        <div class="m-b-10">
+                                            <label class="label label-success"></label><a class="text-muted f-w-600">{{$value->type}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                     @foreach ($produits as $value)
                         <tr class="text-center">
     
@@ -72,7 +101,7 @@
                                     </span>
                                 </form>
                                 <div>
-                                    <button data-toggle="modal" data-target="#Modal-lightbox"><i class="icofont icofont-eye" color="red"></i>Voire</button>
+                                <button data-toggle="modal" data-target="#Modal-lightbox" class="btn btn-secondary"><i class="icofont icofont-eye" color="red"></i>Voire</button>
                                     <div class="modal fade" id="Modal-lightbox" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -80,7 +109,7 @@
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
-                                                    <img src="..\files\assets\images\modal\overflow.jpg" alt="" class="img img-fluid">
+                                                    {{-- <img src="{{Storage::url($model->photo)}}" alt=""> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -93,7 +122,7 @@
             </table> 
         </div>
     </div>
-    <div class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="modal">
+    {{-- <div class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -109,6 +138,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
  @endsection

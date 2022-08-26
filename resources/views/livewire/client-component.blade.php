@@ -677,11 +677,12 @@
                                                                 <td class="row">
                                                                     <button wire:click="edit({{$value->id}})" class="btn btn-primary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
                                                                     <button wire:click="destroy({{$value->id}})" class="btn btn-danger col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
-                                                                    <button wire:click="view({{$value->id}})" data-toggle="modal" data-target="#Vmodal" class="openmodal btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
+                                                                    <button wire:click="view({{$value->id}})" data-toggle="modal" data-target="#Vmodal" class=" btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
                                                                 </td>
                                                             </tr>
                                                         @endforeach       
                                                     </tbody>
+                                                    
                                                     {{-- <tfoot>
                                                         <tr>
                                                             <th>Name</th>
@@ -693,6 +694,61 @@
                                                         </tr>
                                                     </tfoot> --}}
                                                 </table> 
+                                                @if ($viewUser == true)
+                                                        <div wire:ignore.self class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="modal">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h3 class="modal-title">Détails </h3>
+                                                                        <button required type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                    </div>
+                                                                    <div class="container"></div>
+                                                                    <div class="modal-body">
+                                                                        <table id="demo-foo-filtering" class="table table-striped text-align-center">
+                                                                          
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Nom</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $nom }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Prénom</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $prenom }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Poste</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $poste }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Siège</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $siege }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Email</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $email }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Téléphone</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $phone }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Disponibilité</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $disponibilite }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Rôle</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $role[0]->nom }}</span></th>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="modal-footer ">
+                                                                        <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -778,6 +834,7 @@
                                     <div class="row">
                                         <div></div>
                                     </div>
+                                    {{-- <button onclick="Livewire.emit('openModal', 'hello-world')">Open Modal</button> --}}
 
                                 {{-- </div> --}}
                             </div>
@@ -787,62 +844,39 @@
             </div>
         </div>
         <!-- Page body end -->
-        {{-- @if ($viewUser == true) --}}
-            <div class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="modal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title">Détails </h3>
-                            <button required type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        </div>
-                        <div class="container"></div>
-                        <div class="modal-body">
-                            <table class="table ">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nom</th>
-                                        <th>Prénom</th>
-                                        <th>Poste</th>
-                                        <th>Siège</th>
-                                        <th>Email</th>
-                                        <th>Téléphone</th>
-                                        {{-- <th>Rôle</th> --}}
-                                        <th>Disponibilité</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">{{$userid}}</th>
-                                        <td>{{$nom}}</td>
-                                        <td>{{$prenom}}</td>
-                                        <td>{{$poste}}</td>
-                                        <td>{{$siege}}</td>
-                                        <td>{{$email}}</td>
-                                        <td>{{$phone}}</td>
-                                        {{-- <td>{{$role}}</td> --}}
-                                        <td>{{$disponibilite}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer ">
-                            <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {{-- @endif --}}
+        
         
     </div>
     
     @push('scripts')
+        {{-- <script>
+            require('./vendor/livewire-ui/modal');
+            require('../../vendor/livewire-ui/modal/resources/js/modal');
+        </script> --}}
         <script>
-             $(document).ready(function () {
-                 $(".openmodal").click(function(){
-                     $('#Vmodal').modal('show');
-                 });
-             });
+            //  $(() => {
+            //     $('a').click(e => {
+            //     let that = e.currentTarget;
+            //     e.preventDefault();
+            //     $.ajax({
+            //         method: $(that).attr('method'),
+            //         url: $(that).attr('href'),
+            //         data: $(that).serialize()
+            //     })
+            //     .done((data) => {
+            //         $('#detail').html(data);
+            //         $('.modal').modal('show');
+            //     })
+            //     .fail((data) => {
+            //         console.log(data);
+            //     });
+            //     });
+            // });
+            //  $(document).ready(function () {
+            //      $(".openmodal").click(function(){
+            //          $('#Vmodal').modal('show');
+            //      });
+            //  });
         </script>
     @endpush
 </div>

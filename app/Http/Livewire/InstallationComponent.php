@@ -19,12 +19,16 @@ class InstallationComponent extends Component
     public $produit;
     public $produits;
     public $data;
+    public $date;
     public $updateMode;
     public $createMode;
     public $installation;
     public $nouveau;
+    public $client_id;
     protected $rules = [
         'version' => 'required',
+        'date' => 'required',
+        'description' => 'required',
 
     ];
     public function store()
@@ -33,13 +37,13 @@ class InstallationComponent extends Component
 
         // Execution doesn't reach here if validation fails.
         //$installation = Installation::create(['description'=>$this->description, 'client_id'=>$this->client]);
-        $installation = new Installation();
-        $produitinstalle = new Produitinstalle();
-        $installation->description = $this->description;
-        $installation->user_id = $this->client;
-        $installation->save();
+        // $installation = new Installation();
+        // $produitinstalle = new Produitinstalle();
+        // $installation->description = $this->description;
+        // $installation->user_id = $this->client;
+        // $installation->save();
         $produit = Produit::find($this->produit);
-        $produit->installations()->attach($this->produit, ['version'=>$this->version]);
+        $produit->user()->attach($this->client, ['version'=>$this->version, 'description'=>$this->description, 'dateInstallation'=>$this->date]);
 
         // $produitinstalle = new Produitinstalle();
         // $produitinstalle->version = $this->version;
@@ -82,43 +86,44 @@ class InstallationComponent extends Component
        $this->produits = Produit::all();
        $this->installation = DB::table('Produitinstalles')
        ->join('Produits', 'Produitinstalles.produit_id', '=', 'Produits.id')
-       ->join('Installations', 'Produitinstalles.installation_id', '=', 'Installations.id')
-       ->join('Users', 'Installations.user_id', '=', 'Users.id')
-       ->select(['Produitinstalles.id As id', 'Installations.id As installation_id', 'Produits.nom As produits', 'Produits.type As type', 'Produitinstalles.version As version', 'Users.name As nom', 'Installations.description As description'])
+       ->join('Users', 'Produitinstalles.user_id', '=', 'Users.id')
+       ->select(['Produitinstalles.id As id', 'Produitinstalles.dateInstallation As dateI', 'Produits.nom As produits', 'Produits.type As type', 'Produitinstalles.version As version', 'Users.name As nom', 'Produitinstalles.description As description'])
        ->get();
-       $this->updateMode = false;
+      // $this->updateMode = false;
        return view('livewire.installation-component')->layout('livewire.base');
     }
     public function nouveau()
     {
         $this->createMode = true;
-
-
-      // return view('livewire.create_Installation')->layout('livewire.installation');
-
     }
-    public function destroy($first, $second)
+    public function destroy($first)
     {
-        if ($first && $second)
-        {
+        // if ($first)
+        // {
 
-            $idInstallation = Produitinstalle::where('id', $second);
-            dd($idInstallation);
-            $idInstallation->delete();
-            $idProduitinstalle = Produitinstalle::where('id', $first);
+            // $idInstallation = Produitinstalle::where('id', $second);
+            // dd($idInstallation);
+            // $idInstallation->delete();
+            $idProduitinstalle = Produitinstalle::where('id', $first)->first();
             $idProduitinstalle->delete();
-        }
+        //}
     }
-    public function edit($first, $second)
+    public function edit($first)
     {
         $this->updateMode = true;
-        $idProduitinstalle = Produitinstalle::findOrFail($first)->join('Installations','Produitinstalle.installation_id', '=', 'Installations.id');
-        dd($idProduitinstalle);
-        /*$this->selected_id = $id;
-        $this->produits = $record->name;
-        $this->nom = $record->phone;
-        $this->version = $record->version;
-        $this->client = $record->phone;
-        $this->updateMode = true;*/
+        $this->client_id = $first;
+        
+    }
+    public function update()
+    {
+        $idProduitinstalle = Produitinstalle::findOrFail($this->client_id)->join('Produits','Produitinstalle.produit_id', '=', 'Produits.id')->join('Users','Produitinstalle.user_id', '=', 'Users.id');
+        $idProduitinstalle->version = $this->version;
+        $idProduitinstalle->description = $this->description;
+        $idProduitinstalle->dateInstallation = $this->date;
+        $idProduitinstalle->produit_id = $this->produit;
+        $idProduitinstalle->user_id = $this->client;
+        $this->updateMode = false;
+        $this->createMode = false;
+
     }
 }

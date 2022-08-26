@@ -71,7 +71,14 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label"><h4 class="sub-title">Version <span style="color: red">*</span></h4></label>
                                 <div class="col-sm-10 col-md-10" style="width:75%;">
-                                    <input type="text" class="form-control" name="version" placeholder="Version" wire:model="Entrez la version du produit">
+                                    <input type="text" class="form-control" name="version" placeholder="Entrez la version du produit" wire:model="version">
+                                    <span class="messages popover-valid"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"><h4 class="sub-title">Date installation <span style="color: red">*</span></h4></label>
+                                <div class="col-sm-10 col-md-10" style="width:75%;">
+                                    <input type="date" class="form-control" name="date" placeholder="Entrez la date d'installation" wire:model="date">
                                     <span class="messages popover-valid"></span>
                                 </div>
                             </div>
@@ -141,15 +148,10 @@
                                         <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
                                     </td>
                                     <td class="row">
-                                        <form class="col-md-4 col-md-offset-4">
-                                            @csrf
-                                            <span class=" outer-ellipsis"><button wire:click="destroy($value->id,$value->installation_id)" class="btn btn-danger"><i class="icofont icofont-trash"></i></button>
-                                            </span>
-                                        </form>
-                                        <form class="col-md-4">
-                                            <span class= "outer-ellipsis"><button wire:click="edit($value->id, $value->installation_id)" class="btn btn-secondary"><i class="feather icon-edit-1"></i></button>
-                                            </span>
-                                        </form>
+                                        <div class="col-md-4 col-md-offset-4 outer-ellipsis"><button wire:click="destroy({{$value->id}})" class="btn btn-danger"><i class="icofont icofont-trash"></i></button>
+                                        </div>                                        
+                                        <div class= "col-md-4 outer-ellipsis"><button wire:click="edit({{$value->id}})" class="btn btn-secondary"><i class="feather icon-edit-1"></i></button>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach       

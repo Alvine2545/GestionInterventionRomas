@@ -12,8 +12,8 @@ class TypeIntervention extends Model
 
     protected $fillable = ['id', 'nom'];
 
-    public function interventions()
-    {
-        return $this->hasMany(Intervention::class);
-    }
+    // public function interventions()
+    // {
+    //     return $this->hasMany(Intervention::class);
+    // }
 }

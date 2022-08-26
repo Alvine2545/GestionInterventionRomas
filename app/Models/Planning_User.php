@@ -15,8 +15,8 @@ class Planning_User extends Model
     ];
 
 
-    public function rapports()
+    public function interventions()
     {
-        return $this->hasMany(Rapport::class);
+        return $this->hasMany(Intervention::class);
     }
 }

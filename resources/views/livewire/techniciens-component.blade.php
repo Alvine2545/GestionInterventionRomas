@@ -351,7 +351,7 @@
         
     </div>
     @if ($viewUser == true)
-    <div class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="modal">
+    <div wire:ignore.self class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -360,31 +360,40 @@
                 </div>
                 <div class="container"></div>
                 <div class="modal-body">
-                    <table class="table ">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Poste</th>
-                                <th>Siège</th>
-                                <th>Email</th>
-                                <th>Téléphone</th>
-                                {{-- <th>Rôle</th> --}}
-                                <th>Disponibilité</th>
-                            </tr>
-                        </thead>
+                    <table id="demo-foo-filtering" class="table table-striped text-align-center">
+                    
                         <tbody>
                             <tr>
-                                <th scope="row">4</th>
-                                <td>{{$nom}}</td>
-                                <td>{{$prenom}}</td>
-                                <td>{{$poste}}</td>
-                                <td>{{$siege}}</td>
-                                <td>{{$email}}</td>
-                                <td>{{$phone}}</td>
-                                {{-- <td>{{$role}}</td> --}}
-                                <td>4</td>
+                                <th data-breakpoints="xs">Nom</th>
+                                <th data-breakpoints="xs"><span class="">{{ $nom }}</span></th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Prénom</th>
+                                <th data-breakpoints="xs"><span class="">{{ $prenom }}</span></th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Siège</th>
+                                <th data-breakpoints="xs"><span class="">{{ $siege }}</span></th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Email</th>
+                                <th data-breakpoints="xs"><span class="">{{ $email }}</span></th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Téléphone</th>
+                                <th data-breakpoints="xs"><span class="">{{ $phone }}</span></th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Poste</th>
+                                <th data-breakpoints="xs"><span class="">{{ $poste }}</span></th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Rôle</th>
+                                <th data-breakpoints="xs"><span class="">{{ $role[0]->nom }}</span></th>
+                            </tr>
+                            <tr>
+                                <th data-breakpoints="xs">Disponibilité</th>
+                                <th data-breakpoints="xs"><span class="">{{ $disponibilité}}</span></th>
                             </tr>
                         </tbody>
                     </table>

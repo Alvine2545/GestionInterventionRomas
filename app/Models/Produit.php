@@ -11,9 +11,9 @@ class Produit extends Model
     use HasFactory;
     protected $fillable = ['nom', 'photo' ,'type'];
 
-    public function installations()
+    public function user()
     {
-        return $this->belongsToMany(Installation::class, 'produitinstalles')->withPivot('version');
+        return $this->belongsToMany(User::class, 'produitinstalles')->withPivot('version');
     }
 
 }

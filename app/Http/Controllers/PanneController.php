@@ -82,7 +82,7 @@ dd($book);*/
          $pane->user_id= $client_id;
          $pane->nom = "PA_".Auth::user()->id;
          $pane->save();
-        
+         
         // $this->user = DB::table('users')->where('users.id', 1)->get();
         // $this->user->notify(new Panneadmin($pane)); 
         //$this->user = DB::table('users')->join('roles_users', 'roles_users.user_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'roles_users.roles_id')->where('roles.nom', 'Technicien')->select('users.name as nom', 'roles.nom as role' , 'users.id as id')->get();

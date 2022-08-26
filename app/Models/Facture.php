@@ -9,12 +9,12 @@ use App\Models\TypeDevis;
 use App\Models\Panne;
 use App\Models\Paiement;
 
-class Devis extends Model
+class Facture extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'prix', 'payer', 'user_id', 'type_devis_id', 'pannes_id',
+        'prix', 'payer', 'user_id', 'type', 'interventions_id',
     ];
 
     public function user()
@@ -22,19 +22,19 @@ class Devis extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function type_devis()
-    {
-        return $this->belongsTo(TypeDevis::class);
-    }
+    // public function type_devis()
+    // {
+    //     return $this->belongsTo(TypeDevis::class);
+    // }
 
     public function paiements()
     {
         return $this->belongsTo(Paiement::class);
     }
 
-    public function panne()
+    public function intervention()
     {
-        return $this->belongsTo(Panne::class);
+        return $this->belongsTo(Intervention::class);
     }
 
 }

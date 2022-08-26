@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('interventions', function (Blueprint $table) {
+        Schema::create('factures', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('details');
-            $table->string('lieu');
-            $table->string('code');
-            $table->foreignId('plannings_id')->constrained('plannings');
-            $table->foreignId('rapports_id')->constrained('rapports');
+            $table->bigInteger('prix');
+            $table->text('code');
+            $table->boolean('payer');
+            $table->enum('type', ["Proformat", "Facture_vente", "Facture_annulation"]);
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('interventions_id')->constrained('interventions');
+
+            $table->timestamps();
         });
     }
 
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('interventions');
+        Schema::dropIfExists('factures');
     }
 };

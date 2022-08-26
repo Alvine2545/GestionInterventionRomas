@@ -404,40 +404,32 @@
                                                 </div>
                                             </div>
                                             <div class="card-block">
-                                                <div class="dt-responsive table-responsive">
+                                                <div class="">
                                                     <table id="events-key-table" class="table table-striped table-bordered nowrap">
                                                         <thead>
                                                             <tr>
                                                                 <th >Entreprise</th>
                                                                 <th >Raison Sociale</th>
-                                                                <th >Numero Ifu</th>
                                                                 <th >Siège</th>
-                                                                <th >Email</th>
                                                                 <th >Telephone</th>
                                                                 <th >Status</th>
-                                                                <th >Role</th>
+                                                                <th >Rôle</th>
                                                                 <th >Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($users as $value)
                                                                 <tr class="text-center">
-                                                                    <td class=""><span class="">{{$value->tel}}</span>
-                                                                        <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
-                                                                    </td>
                                                                     <td class=""><span class="">{{$value->name}}</span>
                                                                         <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                                     </td>
                                                                     <td class=""><span class="">{{$value->raisonSocial}}</span>
                                                                         <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                                     </td>
-                                                                    <td class=""><span class="">{{$value->ifu}}</span>
-                                                                        <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
-                                                                    </td>
                                                                     <td class=""><span class="">{{$value->siege}}</span>
                                                                         <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                                     </td>
-                                                                    <td class=""><span class="">{{$value->email}}</span>
+                                                                    <td class=""><span class="">{{$value->tel}}</span>
                                                                         <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                                     </td>
                                                                     @if ($value->status == true)
@@ -461,12 +453,64 @@
                                                                     </td>
                                                                 </tr>
                                                                 
-                                                            @endforeach
-                                                            
-                                                                
-                                                                
+                                                            @endforeach  
                                                         </tbody>
                                                     </table>
+                                                    @if ($viewUser == true)
+                                                        <div wire:ignore.self class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="modal">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h3 class="modal-title">Détails </h3>
+                                                                        <button required type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                    </div>
+                                                                    <div class="container"></div>
+                                                                    <div class="modal-body">
+                                                                        <table id="demo-foo-filtering" class="table table-striped text-align-center">
+                                                                        
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Entreprise</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $name }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Raison Sociale</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $raisonsociale }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Numero IFU</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $identifiant }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Siège</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $siege }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Email</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $email }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Téléphone</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $phone }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Status</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $status }}</span></th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th data-breakpoints="xs">Rôle</th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $role[0]->nom }}</span></th>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="modal-footer ">
+                                                                        <a href="#" data-dismiss="modal" class="btn btn-secondary">Fermer</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         @endif

@@ -37,7 +37,7 @@
                         <input type="hidden" wire:model="selected_id">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Panne</label>
-                            <textarea  wire:model="description" value="description" type="textarea" rows="4" class="form-control col-sm-8" name="description" placeholder="Veuillez nous renseigner sur votre panne">{{$this->description}}</textarea>
+                            <textarea  wire:model="description" value="description" type="textarea" rows="5" class="form-control col-sm-10" name="description" placeholder="Veuillez nous renseigner sur votre panne">{{$this->description}}</textarea>
                             <span class="messages popover-valid"></span>
                         </div>
                         <div class="row">

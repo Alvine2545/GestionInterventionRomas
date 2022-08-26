@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="card-block">
-    <form wire:submit.prevent="store">
+    <form wire:submit.prevent="update">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label"><h4 class="sub-title">Clients <p style="color: red">*</p></h4></label>
             <div class="col-sm-10 col-md-10">
@@ -44,7 +44,7 @@
     <div class="row">
         <label class="col-sm-2"></label>
         <div class="col-sm-5">
-            <button type="submit" class="btn btn-primary m-b-0">Enregistrer</button>
+            <button type="submit" class="btn btn-primary m-b-0">Modifier</button>
         </div>
         <div class="col-sm-5">
           <button type="reset" class="btn btn-danger m-b-0">Annuler</button>

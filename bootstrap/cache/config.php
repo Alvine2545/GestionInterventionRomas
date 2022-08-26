@@ -429,7 +429,7 @@
     'username' => 'email',
     'email' => 'email',
     'views' => true,
-    'home' => 'admin/dashboard',
+    'home' => 'redirectes',
     'prefix' => '',
     'domain' => NULL,
     'limiters' => 
@@ -455,7 +455,6 @@
       4 => 'two-factor-authentication',
     ),
     'identifiant' => 'identifiant',
-    'homeclient' => 'client',
   ),
   'hashing' => 
   array (

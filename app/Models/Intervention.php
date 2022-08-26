@@ -11,7 +11,7 @@ class Intervention extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'details', 'lieu', 'code', 'plannings_id', 'rapports_id', 'user_id',
+        'details', 'lieu', 'code', 'plannings_id', 'rapports_id','type_id', 'user_id',
     ];
 
 
@@ -20,14 +20,18 @@ class Intervention extends Model
         return $this->belongsTo(Planning::class);
     }
 
-    public function rapport()
+    public function user()
     {
-        return $this->belongsTo(Rapport::class);
+        return $this->belongsTo(Planning_User::class);
     }
 
     public function typeintervention()
     {
         return $this->belongsTo(TypeIntervention::class);
+    }
+    public function facture()
+    {
+        return $this->hasMany(Facture::class);
     }
 
 

@@ -22,7 +22,7 @@ class Panne extends Model
 
     public function plannings()
     {
-        return $this->hasMany(Planning::class);
+        return $this->belongsToMany(Planning::class, 'pannes_plannings')->withPivot('estTraiter');
     }
 
     public function produitinstalle()

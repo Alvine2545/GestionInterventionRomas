@@ -37,7 +37,7 @@ use App\Http\Livewire\TechniciensComponent;
 
 //Route cliente
 //Route::get('client', [App\Http\Controllers\homeClientController::class, 'index']);
-Route::get('client', [App\Http\Controllers\homeClientController::class, 'index'])->middleware("App\Http\Middleware\ClientRoute");
+Route::get('client', [App\Http\Controllers\homeClientController::class, 'index']);
 // Route::get('client', function () {
 //     return view('homeClient');
 // // });
@@ -85,7 +85,7 @@ Route::prefix('client')->group(function () {
     Route::get('login', [App\Http\Controllers\ClientController::class, 'connexion']);
 
 });
-
+Route::get('redirectes', [App\Http\Controllers\homeClientController::class, 'controle']);
 //Administrateur
 Route::prefix('admin')->middleware([
     'auth:sanctum',

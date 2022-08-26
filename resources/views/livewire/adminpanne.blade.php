@@ -75,7 +75,7 @@
                                             @endif
                                             <div class=" row" style=" margin-bottom:5%">
                                                     <label for="" class="col-md-2">Panne</label>
-                                                    <textarea type="textarea"  wire:model="description" rows="5" class="form-control col-md-10" name="description" placeholder="Veuillez nous renseigner sur votre panne"></textarea>
+                                                    <textarea type="textarea"  wire:model="description" rows="5" class="form-control form-control-primary col-md-10" name="description" placeholder="Veuillez nous renseigner sur votre panne"></textarea>
                                                     <span class="messages popover-valid"></span>
                                             </div>
                                             <div class="form-group row">

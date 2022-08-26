@@ -16,6 +16,7 @@ class PlanningComponent extends Component
     public $eventId;
     public $eventAdd;
     public $event;
+    public $events;
     public $panne;
     public $priorite;
     public $editModal;
@@ -46,6 +47,7 @@ public $essai;
        ->get();
        $typeinterventions = TypeIntervention::all();
         $this->events = json_encode(Planning::all());
+        //dd($this->events);
         return view('livewire.planification.planning-component',
         ['pannes'=>$pannes, 'techniciens'=>$techniciens, 'typeinterventions'=>$typeinterventions, 'events'=>$this->events]
         )->layout('livewire.base');
@@ -64,15 +66,20 @@ public $essai;
         // dd($this->d);
         
          $planification = new Planning();
-         $planification->typeinterventions_id = $this->typeinterves;
+         //$planification->typeinterventions_id = $this->typeinterves;
          $planification->responsables_id = Auth::user()->id;
-         $planification->pannes_id = $this->panne;
-          $planification->debut = $this->start;
-          $planification->fin = $this->end;
+        
+          $planification->start = $this->start;
+          $planification->end = $this->end;
           $planification->priorite = "eleve";
+          $planification->photo = "eleve";
           $planification->title = "Planning".$this->typeinterves;
          $planification->date = $this->d;
          $planification->save();
+         //$planification->pannes_id = $this->panne;
+         foreach($this->panne as $value){
+            $planification->pannes()->attach($value);
+         }
          foreach($this->technicien as $value){
             $planification->users()->attach($value);
          }

@@ -64,9 +64,9 @@
         locale: 'fr',
         buttonText:{
             today: 'Ajourd\'hui',
-            month: 'mois',
-            week: 'semaine',
-            day: 'jour',
+            month: 'Mois',
+            week: 'Semaine',
+            day: 'Jour',
             list: 'Liste'
         },
         //Récupération des évènements dans le composant
@@ -286,7 +286,7 @@
             <div class="modal-body" >
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Pannes </label>
-                    <select class="col-sm-12 form-control js-example-placeholder-multiple" wire:model="panne" >
+                    <select class="col-sm-12 form-control js-example-placeholder-multiple" multiple="multiple" wire:model="panne" >
                         <option value="">Sélectionnez les pannes</option>
                         @foreach ($pannes as $value)
                         <option value="{{$value->id}}">{{$value->nom}}</option>
@@ -296,7 +296,7 @@
 
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Techniciens </label>
-                    <select class=" col-sm-12 js-example-placeholder-multiple" multiple="multiple" wire:model='technicien'>
+                    <select class=" col-sm-12 form-control js-example-placeholder-multiple" multiple="multiple" wire:model='technicien'>
                         <option value="">Sélectionnez les techniciens</option>
                         @foreach ($techniciens as $value)
                             <option value="{{$value->id}}">{{$value->nom." ".$value->prenom}}</option>
@@ -358,7 +358,6 @@
             
         </script>
     @endif
-
 
     {{-- Event click modal --}}
     @if ($editModal)

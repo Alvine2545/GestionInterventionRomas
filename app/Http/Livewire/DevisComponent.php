@@ -34,7 +34,7 @@ class DevisComponent extends Component
     public function render()
     {
         
-        $this->devis = DB::table('devis')->join('users', 'users.id', '=', 'devis.user_id')->join('type_devis', 'type_devis.id', '=', 'devis.type_devis_id')->select('devis.*', 'users.name as client', 'type_devis.nom as type')->get();
+        $this->devis = DB::table('devis')->join('users', 'users.id', '=', 'devis.user_id')->select('devis.*', 'users.name as client')->get();
         $this->clients = DB::table('users')->join('roles_users', 'roles_users.user_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'roles_users.roles_id')->where('roles.nom', 'Client')->select('users.name as nom', 'roles.nom as role' , 'users.id as id')->get();
         $this->pannes = DB::table('pannes')->where('user_id', '=', $this->client_id)->get();
         

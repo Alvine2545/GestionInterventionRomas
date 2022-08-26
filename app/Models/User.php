@@ -92,12 +92,21 @@ class User extends Authenticatable
         return $this->belongsToMany(Roles::class,'roles_users', 'user_id','roles_id');
     }
 
-    public function installations()
+    // public function installations()
+    // {
+    //     return $this->hasMany(Installation::class);
+    // }
+    public function produits()
     {
-        return $this->hasMany(Installation::class);
+        return $this->belongsToMany(Produit::class, 'produitinstalles')->withPivot('version');
     }
-    public function devis()
+    public function facture()
     {
-        return $this->hasMany(Devis::class);
+        return $this->hasMany(Facture::class);
+    }
+    public function planing()
+    {
+        return $this->belongsToMany(Planning::class);
+      // return $this->belongsToMany(User::class)->using(Equipe::class);
     }
 }

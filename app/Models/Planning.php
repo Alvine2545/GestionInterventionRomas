@@ -14,12 +14,12 @@ class Planning extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'priorite', 'start', 'end','photo' ,'date', 'typeinterventions_id', 'responsables_id', 'pannes_id',
+        'priorite', 'title', 'start', 'end','photo' ,'date', 'responsables_id', 'pannes_id'
     ];
 
-    public function panne()
+    public function pannes()
     {
-        return $this->belongsTo(Panne::class,'pannes_id');
+        return $this->belongsToMany(Panne::class,'pannes_plannings')->withPivot('estTraiter');
     }
 
     public function interventions()

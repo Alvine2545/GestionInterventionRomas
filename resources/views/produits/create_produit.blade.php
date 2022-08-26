@@ -48,7 +48,7 @@
                                 <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
                             </div-->
                             <div class="card-block">
-                                    <form method="post" action="{{ url('admin/produit/store') }}">
+                                    <form method="post" action="{{ url('admin/produit/store') }}" enctype="multipart/form-data">
                                         @csrf
                                         @method('POST')
                                           <div class="card-block">
@@ -69,7 +69,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-sm-2 col-form-label">Photo du produit</label>
                                                         <div class="col-sm-8">
-                                                            <input type="file" class="form-control" name="photo" placeholder="Choisir une photo du produit">
+                                                            <input type="file" class="form-control" name="photo" placeholder="Choisir une photo du produit" >
                                                             <span class="messages popover-valid"></span>
                                                         </div>
                                                     </div>

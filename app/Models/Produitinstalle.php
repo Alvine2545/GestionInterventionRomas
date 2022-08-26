@@ -8,7 +8,7 @@ use App\Models\Panne;
 
 class Produitinstalle extends Model
 {
-    protected $fillable = ['version', 'produits_id', 'installations_id', ];
+    protected $fillable = ['version', 'produits_id', 'dateInstallation', 'description'];
     use HasFactory;
 
     public function pannes()

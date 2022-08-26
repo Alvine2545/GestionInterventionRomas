@@ -27,4 +27,16 @@ class homeClientController extends Controller
        //$users = DB::table('users')->select('name', 'email as user_email')->get();
         
     }
+    public function controle(){
+        if (Auth::user()->roles[0]->id == 3) {
+            return redirect('admin/dashboard');
+        }
+        if(Auth::user()->roles[0]->id == 2){
+            return redirect('admin/dashboard');
+        }
+        if(Auth::user()->roles[0]->id == 1){
+            return redirect('client');
+        }
+        
+    }
 }
