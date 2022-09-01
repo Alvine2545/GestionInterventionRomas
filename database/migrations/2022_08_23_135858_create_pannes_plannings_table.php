@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('pannes_plannings', function (Blueprint $table) {
             $table->id();
-            $table->string('estTraiter');
+            $table->boolean('estTraiter');
             $table->foreignId('panne_id')->constrained('pannes')->nullable();
             $table->foreignId('planning_id')->constrained('plannings');
             $table->timestamps();

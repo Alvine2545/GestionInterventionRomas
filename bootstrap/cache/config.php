@@ -90,6 +90,7 @@
       'URL' => 'Illuminate\\Support\\Facades\\URL',
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
+      'Vite' => 'Illuminate\\Support\\Facades\\Vite',
       'PDF' => 'Barryvdh\\DomPDF\\Facade',
     ),
     'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
@@ -990,7 +991,7 @@
     'ignored_solution_providers' => 
     array (
     ),
-    'enable_runnable_solutions' => true,
+    'enable_runnable_solutions' => NULL,
     'remote_sites_path' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',

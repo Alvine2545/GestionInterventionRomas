@@ -15,7 +15,6 @@
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\bootstrap\css\bootstrap.min.css')}}">
     <!-- themify-icons line icon -->
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\icon\themify-icons\themify-icons.css')}}">
@@ -32,8 +31,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\jquery.mCustomScrollbar.css')}}">
-    <link rel="stylesheet" type="text/css" 
-     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+       
 
 
     <title>Acceuil</title>
@@ -45,11 +43,15 @@
     <nav class="navbar navbar-expand navbar-white py-0 fixed-top" style="background-color: #202a87">
         <div class="container row">
             <!--navbar brand-->
-            <a href="#" class="navbar-brand d-flex  align-items-center col-md-2 col-md-offset-8">
-                <img src="{{asset('files/assets/images/logo_romas2.png')}}" alt="">
+            <a href="#" class="navbar-brand d-flex  align-items-center col-md-2 col-md-offset-6">
                 <span class="" style="color: white">ROMAS Interventions</span>
             </a>
-            <div class="collapse navbar-collapse col-md-2" id="navMenu">
+            <!--navbar tooggler-->
+            <!--button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggle-icon"></span>
+            </button-->
+            <!--navbar menu-->
+            <div class="collapse navbar-collapse col-md-4" id="navMenu" style="">
                 <ul class="navbar-nav mx-auto text-center">
                     <li class="nav-item px-3 py-3" style="margin-left: -5%">
                         <a href="#" class="nav-link  text-uppercase text-white ">
@@ -66,25 +68,22 @@
                             Produits
                         </a>
                     </li>
-                    
-                    <li class="nav-item px-3 py-3 dropdown" style="margin-left: -5%">
-                        {{-- <div class="dropdown"> --}}
-                            @if (Auth::check())
-                                <a class="nav-link text-uppercase text-white dropdown-toggle" href="#contact" data-bs-toggle="dropdown">
-                                    Pannes
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#contact">Signaler une panne</a></li>
-                                    {{-- @if () --}}
-                                        <li><a class="dropdown-item" href="#">Apprécier panne</a></li>    
-                                    {{-- @endif --}}
-                                </ul>
-                            @else
-                                <a  class="nav-link text-uppercase text-white" href="{{url('login')}}" data-toggle="modal" data-target="#tabbed-form">
-                                    Authentification
-                                </a>
-                            @endif
-                        {{-- </div> --}}
+                    <li class="nav-item px-3 py-3" style="margin-left: -5%">
+                        @if ($con)
+                        
+                            <a class="nav-link text-uppercase text-white" href="#contact">
+                                Signaler une panne
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#contacts"></a></li>
+                                <li><a class="dropdown-item" href="#">Mes pannes</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                              </ul>
+                        @else
+                        <a  class="nav-link text-uppercase text-white" data-toggle="modal" data-target="#tabbed-form">
+                            Authentification
+                        </a>
+                        @endif
                     </li>
                 </ul>
             </div>
@@ -128,13 +127,12 @@
                                             </div>
                                             <hr>
                                             <p class="text-inverse m-t-25">C'est votre première fois ? <a href="#regi"> S'authentifier </a> ici </p>
-                                            <form method="post" action="{{route('login')}}" novalidate>
-                                                @method('POST')
+                                            <form method="post" action="{{url('client/login')}}" novalidate>
+                                                @method('GET')
                                                 @csrf
                                             <div class="input-group row" style="margin-bottom: 8%">
-                                                <input type="hidden" name="rol" value="client">
-                                                <label for="number" class="col-md-4 col-md-offset-2">Email</label>
-                                                <input id = "identifiant" type="email" required name="email" class="form-control col-md-6" placeholder="IFU" required autofocus>
+                                                <label for="number" class="col-md-4 col-md-offset-2">Numero IFU</label>
+                                                <input id = "identifiant" type="number" required name="identifiant" class="form-control col-md-6" placeholder="IFU" required autofocus>
                                                 <span class="md-line"></span>
                                             </div>
                                             <div class="input-group row" style="margin-bottom: 8%">
@@ -233,7 +231,7 @@
                 
                 <div class="col-md-12 col-lg-3 col-xl-3">
                     <h4 class="text-uppercase" >Romas Interventions</h4>
-                    <p>La plateforme qui vous sauve la vie.</p>
+                    <p>La technologie et l'innovation au réveil.</p>
                 </div>
 
 
@@ -313,7 +311,7 @@
     </footer>
 
     <!--footer-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- js bootstrap -->
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -369,7 +367,7 @@
     <script src="{{asset('files\assets\js\vartical-layout.min.js')}}"></script>
     <script src="{{asset('files\assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\assets\js\script.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
@@ -379,44 +377,6 @@
 
   gtag('config', 'UA-23581568-13');
 
-</script>
-<script src="js/app.js"></script>
-<script>
-    @if(Session::has('message'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.success("{{ session('message') }}");
-    @endif
-
-    @if(Session::has('error'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.error("{{ session('error') }}");
-    @endif
-
-    @if(Session::has('info'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.info("{{ session('info') }}");
-    @endif
-
-    @if(Session::has('warning'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.warning("{{ session('warning') }}");
-    @endif
 </script>
 </body>
 

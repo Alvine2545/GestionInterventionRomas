@@ -55,21 +55,21 @@
                                                   <div class="form-group row">
                                                       <label class="col-sm-2 col-form-label">Entrer le nom produit</label>
                                                       <div class="col-sm-8">
-                                                          <input type="text" class="form-control" name="nom" placeholder="Produit">
+                                                          <input type="text" class="form-control" name="nom" placeholder="Produit" required>
                                                           <span class="messages popover-valid"></span>
-                                                      </div>
+                                                      </div> 
                                                   </div>
                                                   <div class="form-group row">
                                                     <label class="col-sm-2 col-form-label">Entrer le type produit</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="type" placeholder="Type">
+                                                        <input type="text" class="form-control" name="type" placeholder="Type" required>
                                                         <span class="messages popover-valid"></span>
                                                     </div>
                                                   </div>
                                                     <div class="form-group row">
                                                         <label class="col-sm-2 col-form-label">Photo du produit</label>
                                                         <div class="col-sm-8">
-                                                            <input type="file" class="form-control" name="photo" placeholder="Choisir une photo du produit" >
+                                                            <input type="file" class="form-control" name="photo" placeholder="Choisir une photo du produit" required>
                                                             <span class="messages popover-valid"></span>
                                                         </div>
                                                     </div>

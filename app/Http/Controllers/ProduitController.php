@@ -121,7 +121,7 @@ class ProduitController extends Controller
         $type_inter->truncate();*/
         $produit = Produit::find($id);
         Storage::delete($produit->photo);
-        $produit->truncate();
+        $produit->delete(); 
         //Produit::destroy($id);
     
         return redirect('admin/produit/liste')->with('Super', 'Produit supprimer avec succès');

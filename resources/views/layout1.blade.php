@@ -127,8 +127,7 @@
                             <div class="dropdown-primary dropdown">
                                 <div class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="feather icon-bell"></i>
-                                    {{-- <span class="badge bg-c-pink">{{auth()->user()->unreadNotifications->count()}}</span> --}}
-                                    <span class="badge bg-c-pink">5</span>
+                                    <span class="badge bg-c-pink">{{auth()->user()->unreadNotifications->count()}}</span>
                                 </div>
                                 <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                     <li>
@@ -448,7 +447,9 @@
         <script src="{{asset('files\assets\pages\jquery.filer\js\jquery.filer.min.js')}}"></script>
         <script src="{{asset('files\assets\pages\filer\custom-filer.js')}}" type="text/javascript"></script>
         <script src="{{asset('files\assets\pages\filer\jquery.fileuploads.init.js')}}" type="text/javascript"></script>
-        
+            <!-- product list js -->
+    <script type="text/javascript" src="{{asset('files\assets\pages\product-list\product-list.js')}}"></script>
+
         <!-- Custom js -->
         <script src="{{asset('files\assets\pages\forms-wizard-validation\form-wizard.js')}}"></script>
         <script src="{{asset('files\assets\js\pcoded.min.js')}}"></script>

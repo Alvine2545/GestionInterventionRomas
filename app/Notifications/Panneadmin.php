@@ -51,7 +51,7 @@ class Panneadmin extends Notification
                     ->line($this->signpan->description)
                     ->action('Retourner sur notre application', url('/'))
                     ->line('Veuillez planifier une intervention pour cette panne!');
-    }
+    } 
 
     /**
      * Get the array representation of the notification.

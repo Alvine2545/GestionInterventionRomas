@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Devis;
+use App\Models\Facture;
 
 class DevisController extends Controller
 {
@@ -15,14 +16,14 @@ class DevisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*
+    
     public function index()
     {
         //
-        $devis = Devis::all();
+        $devis = Facture::all();
 
         return view('devis.index', compact('devis'));
-    }
+    }/*
 
     /**
      * Show the form for creating a new resource.

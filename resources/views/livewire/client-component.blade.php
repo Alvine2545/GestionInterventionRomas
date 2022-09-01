@@ -737,7 +737,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th data-breakpoints="xs">Rôle</th>
-                                                                                    <th data-breakpoints="xs"><span class="">{{ $role[0]->nom }}</span></th>
+                                                                                    <th data-breakpoints="xs"><span class="">{{ $role[2]->nom }}</span></th>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>

@@ -193,7 +193,6 @@ class ClientController extends Controller
             if($user->ifu = $request->identifiant && Hash::check($request->password, $user->password))
             {
                 $con = true;
-                //Alert::success('Félicitation', 'Votre compte a été activé avec succés');
                 return view('homeClient', compact('con'));
             }
         }

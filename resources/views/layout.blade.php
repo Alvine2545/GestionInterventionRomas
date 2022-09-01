@@ -42,7 +42,7 @@
             }
         </style>
     <!-- Favicon icon -->
-    <link rel="icon" href="..\files\assets\images\favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{asset('files\assets\images\favicon.ico')}}" type="image/x-icon">
     <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\bootstrap\css\bootstrap.min.css')}}">
@@ -54,7 +54,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\style.css')}}">
 </head>
-<body class="fix-menu antialiased">
+<body class="fix-menu antialiased" >
     <!-- Pre-loader start -->
     <div class="theme-loader">
         <div class="ball-scale">
@@ -73,16 +73,31 @@
         </div>
     </div>
     <!-- Pre-loader end -->
+    <!-- Header start -->
+    <div id="pcoded" class="pcoded load-height">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            <nav class="navbar header-navbar pcoded-header auth-header"  header-theme="theme1">
+                <div class="navbar-wrapper">
 
-    <section class="login-block">
-        
-            <h3 class="fixed-top" style="color: #fff">ROMAS Interventions</h3>
-       
-        <!-- Container-fluid starts -->
-        @yield('content')
-        <!-- end of container-fluid -->
-    </section>
-
+                    <div class="navbar-logo" >
+                        <a href="#">
+                            <img class="img-fluid" style="height: 100%" src="{{url('files/assets/images/logo_romas2.png')}}" alt="Theme-Logo">
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <section class="login-block">
+            <!-- Container-fluid starts -->
+            @yield('content')
+            <!-- end of container-fluid -->
+        </section>
+    </div>
+    
+    <div class="footer bg-inverse">
+        <p class="text-center">Copyright &copy; 2022 INTERVENTIONS CONNEXION , Droits réservés.</p>
+    </div>
     <!-- Required Jquery -->
     <script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>

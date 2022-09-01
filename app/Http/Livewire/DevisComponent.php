@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Roles;
 use App\Models\User;
 use App\Models\Devis;
+use App\Models\Facture;
 use App\Models\Installation;
 use App\Models\Panne;
 use App\Models\TypeDevis;
@@ -34,7 +35,7 @@ class DevisComponent extends Component
     public function render()
     {
         
-        $this->devis = DB::table('devis')->join('users', 'users.id', '=', 'devis.user_id')->select('devis.*', 'users.name as client')->get();
+        $this->devis = DB::table('factures')->join('users', 'users.id', '=', 'factures.user_id')->select('factures.*', 'users.name as client')->get();
         $this->clients = DB::table('users')->join('roles_users', 'roles_users.user_id', '=', 'users.id')->join('roles', 'roles.id', '=', 'roles_users.roles_id')->where('roles.nom', 'Client')->select('users.name as nom', 'roles.nom as role' , 'users.id as id')->get();
         $this->pannes = DB::table('pannes')->where('user_id', '=', $this->client_id)->get();
         
@@ -73,18 +74,17 @@ class DevisComponent extends Component
     {
         //dd("salut");
         //
-        //$client_id= Auth::user()->id;
-        
-        $this->validate([
-            'prix' => 'required|max:20',
-            'pane_id' => 'required',
-            'type_devis_id' => 'required',
-            'client_id' => 'required',
-        ]);
-        $devi = new Devis();
+        $this->client_id= Auth::user()->id;
+        // $this->validate([
+        //     'prix' => 'required|max:20',
+        //     'pane_id' => 'required',
+        //     'type_devis_id' => 'required',
+        //     'client_id' => 'required',
+        // ]);
+        $devi = new Facture();
         $devi->prix= $this->prix;
-        $devi->pannes_id= $this->pane_id;
-        $devi->type_devis_id= $this->type_devis_id;
+        $devi->interventions_id= $this->client_id;
+        $devi->type= 1;
         $devi->user_id= $this->client_id;
         $devi->payer = false;
         $devi->code = "D_".$this->client_id."_".$this->pane_id;

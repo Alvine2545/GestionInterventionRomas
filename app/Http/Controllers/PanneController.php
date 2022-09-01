@@ -69,19 +69,23 @@ dd($book);*/
     public function store(Request $request)
     {
         //
-        $client_id= 2;
+        $client_id= Auth::user()->id;
         $request->validate([
             'description' => 'required|max:255',
             'produit' => 'required',
         ]);
-         $pane = new Panne();
-         $pane->description= $request->description;
-         $path = $request->file('photo')->store('photosPanne', 'public');
-         $pane->photo= $path;
-         $pane->produitinstalles_id= $request->produit;
-         $pane->user_id= $client_id;
-         $pane->nom = "PA_".Auth::user()->id;
-         $pane->save();
+        $path = $request->file('photo')->store('photosPanne', 'public');
+         $pane = Panne::create([
+            'description' => $request->description, 
+            'photo' => $path, 
+            'produitinstalles_id' => $request->produit,
+            'user_id' => $client_id,  
+            'nom' => "Panne_".date('d-m-y h:i:s')."_".Auth::user()->name, 
+
+         ]); 
+         //dd($pane->user);
+         $pane->user->notify(new Panneadmin($pane, Auth::user()));
+         return redirect('client')->with('info', 'Votre panne créer avec succès');
          
         // $this->user = DB::table('users')->where('users.id', 1)->get();
         // $this->user->notify(new Panneadmin($pane)); 
@@ -89,15 +93,9 @@ dd($book);*/
         //$pane = Panne::find(5);
          //$pane->user->notify(new Panneadmin($pane, Auth::user()));
 
-        /*$pane = Panne::create([
-            'description' =>$request->description,
-            'produitinstalles_id'=>$request->produit,
-            'client_id' => $request->client,
-        ]); */
         //$pane = Panne::create($validatedData);
         //Notification::route('mail' , ['alladakaneunice@gmail.com'])->notify( new Panneadmin($signpan));
 
-        return redirect('client/pannes/liste')->with('Super', 'Votre panne créer avec succès');
     }
 
     /**
@@ -145,7 +143,7 @@ dd($book);*/
           Panne::whereId($id)->update($validatedData);
 
 
-        return redirect('pannes/liste')->with('Super', 'Panne mise à jour avec succès');
+        return redirect('pannes/liste')->with('message', 'Panne mise à jour avec succès');
     }
 
     /**
@@ -160,7 +158,11 @@ dd($book);*/
         $pane = Panne::find($id);
         $pane->delete();
 
-        return redirect('pannes/liste')->with('Super', 'Panne supprimer avec succès');
+        return redirect('pannes/liste')->with('info', 'Panne supprimer avec succès');
+    }
+    public function avis()
+    {
+        return redirect('client')->with('message', 'Votre avis à été envoyer avec succés.');
     }
 }
 

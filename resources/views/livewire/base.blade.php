@@ -182,10 +182,9 @@
                                     <li>
                                         <form action="{{route('logout')}}" method="post">
                                             @csrf
-                                            <i class="feather icon-log-out"></i> <button type="submit" style="border: none"> Déconnecter</button>
+                                            <i class="feather icon-log-out"></i> <button class="btn" type="submit" style="border: none"> Déconnecter</button>
 
                                         </form>
-
                                     </li>
                                 </ul>
 
@@ -286,6 +285,19 @@
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                    <span class="pcoded-mtext">Gestion des clients</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="{{url('admin/lesclients')}}">
+                                            <span class="pcoded-mtext">Liste des clients</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
                                     <span class="pcoded-mtext">Gestion produits</span>
                                 </a>
                                 <ul class="pcoded-submenu">
@@ -302,24 +314,6 @@
                                     <li class=" ">
                                         <a href="{{url('admin/installations')}}">
                                             <span class="pcoded-mtext">Ajouter installation</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
-                                    <span class="pcoded-mtext">Gestion des clients</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/lesclients')}}">
-                                            <span class="pcoded-mtext">Ajouter client</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/produit/liste')}}">
-                                            <span class="pcoded-mtext">Liste des clients</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -375,11 +369,6 @@
                                     <span class="pcoded-mtext">Gestion des devis</span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="{{url('admin/typedevis/liste')}}">
-                                            <span class="pcoded-mtext">Type devis</span>
-                                        </a>
-                                    </li>
                                     <li class=" ">
                                         <a href="{{url('admin/devis')}}">
                                             <span class="pcoded-mtext">Créer devis</span>

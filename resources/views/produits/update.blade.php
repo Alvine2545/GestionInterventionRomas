@@ -33,7 +33,7 @@
 </style>
 
 
-  <div class="card-body">
+  <div class="card">
     @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Photo du produit</label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-10">
                             <input type="file" class="form-control" name="photo" placeholder="Choisir une photo du produit">
                             <span class="messages popover-valid"></span>
                         </div>

@@ -41,7 +41,8 @@
             </div-->
             @if ($nouveau)
             @if ($updateMode == false)
-            <form wire:submit.prevent="store()" novalidate="">
+            
+            <form wire:submit.prevent="store" novalidate="">
                 @csrf
                 <div class="row" style="margin-left: 10%; margin-bottom:3%" >
                     <label for="client_id" class="col-md-4">Client</label>
@@ -125,9 +126,9 @@
                                   <tr>
                                       <td>{{$i++}}</td>
                                       <td>{{$value->prix}}</td>
-                                      <td>{{$value->client_id}}</td>
-                                      <td>{{$value->type_devis_id}}</td>
-                                      <td>{{$value->pannes_id}}</td>
+                                      <td>{{$value->user_id}}</td>
+                                      <td>{{$value->type}}</td>
+                                      <td>{{$value->interventions_id}}</td>
                                       <td>
                                           <button wire:click="edit({{$value->id}})" class="btn btn-primary">Modifier<i class="icofont icofont-trash" color="red"></i></button> |
                                           <button wire:click="view({{$value->id}})" class="btn btn-secondary">Détails</button>
