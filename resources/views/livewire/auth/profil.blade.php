@@ -24,7 +24,7 @@
                             <h6 class="text-muted f-w-400">{{Auth::user()->tel}}</h6>
                         </div>
                     </div>
-                    <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                    {{-- <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
                     <div class="row">
                         <div class="col-sm-6">
                             <p class="m-b-10 f-w-600">Recent</p>
@@ -34,7 +34,7 @@
                             <p class="m-b-10 f-w-600">Most Viewed</p>
                             <h6 class="text-muted f-w-400">Able Pro Admin</h6>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

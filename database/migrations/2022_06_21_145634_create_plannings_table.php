@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('plannings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('priorite');
-            $table->string('start');
             $table->string('title');
-            $table->string('end');
+            $table->dateTime('start');
+            $table->dateTime('end');
+            $table->string('priorite');
             $table->string('photo');
             $table->date('date');
             $table->foreignId('responsables_id')->constrained('users');

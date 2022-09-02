@@ -209,9 +209,9 @@
                                                                             <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                                         </td>
                                                                     @endif
-                                                                    <td class="row">
-                                                                        <button style="margin-left: 2%" wire:click="edit({{$value->id}})" class="btn btn-primary outer-ellipsis col-md-2"><i class="feather icon-edit-1"></i></button>
-                                                                        <button onclick="delet({{$value->id}})" class="btn btn-danger outer-ellipsis col-md-2"><i class="icofont icofont-trash" color="red"></i></button>
+                                                                    <td class="row" style="margin-left: 2%;">
+                                                                        <button wire:click="edit({{$value->id}})" style="margin-right: 2%;" class="btn btn-primary outer-ellipsis col-md-2 col-md-offset-2"><i class="feather icon-edit-1"></i></button>
+                                                                        <button onclick="delet({{$value->id}})" style="margin-right: 2%;" class="btn btn-danger outer-ellipsis col-md-2 col-md-offset-2"><i class="icofont icofont-trash" color="red"></i></button>
                                                                         <button onclick="vue({{$value->id}})" class="openmodal btn btn-secondary outer-ellipsis col-md-2" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
 
                                                                     </td>

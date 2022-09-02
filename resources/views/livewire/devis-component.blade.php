@@ -74,9 +74,9 @@
                     </select>
                 </div>
                 @endif
-                <div class="form-group row">
+                <div class="form-group row" style="margin-left: 10%; margin-bottom:3%">
                     {{-- <div class="col-sm-6" style="margin-left: 9%"> --}}
-                        <label class="col-sm-4 col-form-label">Montant à payer</label>
+                        <label class="col-sm-4">Montant à payer</label>
                         <input type="text" wire:model="prix" class="form-control col-sm-6" name="prix" placeholder="Veuillez entrer le montant">
                         <span class="messages popover-valid"></span>
                     {{-- </div> --}}

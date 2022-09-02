@@ -446,9 +446,9 @@
                                                                         <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                                     </td>
                                                                     <td class="row">
-                                                                        <button style="margin-left: 4%" wire:click="edit({{$value->id}})" class="btn btn-primary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
-                                                                        <button wire:click="destroy({{$value->id}})" class="btn btn-danger col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
-                                                                        <button wire:click="view({{$value->id}})" class="openmodal btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 col-md-offset-4 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
+                                                                        <button style="margin-left: 4%" wire:click="edit({{$value->id}})" class="btn btn-primary col-md-2 col-sm-4 col-xl-3 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
+                                                                        <button wire:click="destroy({{$value->id}})" style="margin-left: 2%" class="btn btn-danger col-md-2 col-sm-4 col-xl-3 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
+                                                                        <button wire:click="view({{$value->id}})" style="margin-left: 2%" class="openmodal btn btn-secondary col-md-2 col-sm-4 col-xl-3 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
 
                                                                     </td>
                                                                 </tr>

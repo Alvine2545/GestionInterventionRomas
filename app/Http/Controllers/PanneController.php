@@ -84,7 +84,7 @@ dd($book);*/
 
          ]); 
          //dd($pane->user);
-         $pane->user->notify(new Panneadmin($pane, Auth::user()));
+         //$pane->user->notify(new Panneadmin($pane, Auth::user()));
          return redirect('client')->with('info', 'Votre panne créer avec succès');
          
         // $this->user = DB::table('users')->where('users.id', 1)->get();

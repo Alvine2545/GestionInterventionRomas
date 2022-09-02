@@ -56,28 +56,28 @@
                             <div class="card-block">
                                 {{-- <div class="j-wrapper j-wrapper-640"> --}}
                                     {{-- Boutton déroulant --}}
-
-
                                     @if ($nouveau)
-                                        <form wire:submit.prevent='store' class="card" id="form" style=" width: 80%; margin-left: 10%;">
+                                        <form wire:submit.prevent='store' class="card" id="form" style=" width: 100%; ">
                                             {{-- step 1 --}}
                                             @if ($currentSteep == 1)
 
                                             <div class="setp-one">
                                                 <div class="">
                                                     <div class="card-header text-white" style="background-color: #202a87"> <h4 class="text-center"> Step 1/2 - Type d'utilisateur</h4></div>
-                                                    <div class="card-body">
+                                                    <div class="card-body" style="align-content: center;">
                                                         <div class="frameworks d-flex flex-column align-items-left mt-2">
                                                                 <div class="form-group">
-                                                                    <label class="" for="" style="text-align: center">Choix du rôles de l'utilisateur</label>
+                                                                    <h5><label class="" for="">Choix du rôles de l'utilisateur</label></h5>
                                                                     @foreach ($role as $value)
-                                                                    <div class="">
+                                                                    <div class="checkbox-zoom zoom-info">
                                                                         <label>
                                                                             <input required type="checkbox" id="" value="{{$value->id}}" wire:model="roles" class="" name="roles">
-
-                                                                            <span class="col-md-6">{{$value->nom}}</span>
+                                                                            <span class="cr">
+                                                                                <i class="cr-icon icofont icofont-ui-check txt-info"></i>
+                                                                            </span>
+                                                                            <span class="col-md-6 bold">{{$value->nom}}</span>
                                                                         </label>
-                                                                    </div>
+                                                                    </div><br>
                                                                     @endforeach
                                                                     <span class="text-danger">@error('roles'){{$message}}@enderror</span>
                                                                 </div>
@@ -104,7 +104,7 @@
                                                                     <label class="j-icon-right" for="name">
                                                                         <i class="icofont icofont-ui-user"></i>
                                                                     </label>
-                                                                    <input required type="text" id="name" name="name" wire:model="name" style="border: solid black 1px; width: 95%;" >
+                                                                    <input class="" required type="text" id="name" name="name" wire:model="name" style="border: solid black 1px; width: 95%;" >
                                                                     <span class="text-danger">@error('name'){{$message}}@enderror</span>
                                                                 </div>
                                                             </div>
@@ -317,13 +317,13 @@
 
                                             </div>
                                             @endif
-                                            <div class="action-button d-flex justify-content-between bg-white pt-2 pb-2" style="margin: 2%">
+                                            <div class="action-button d-flex justify-content-between bg-white pt-2 pb-2" style="margin-right: 2%; margin-top: -2%">
                                                 @if ($currentSteep == 1)
                                                 <div></div>
                                                 <button required type="button" class="btn btn-sm btn-success" wire:click="increaseSteep()">Suivant</button>
                                                 @endif
                                                 @if ($currentSteep == 2)
-                                                <button required type="button" class="btn btn-sm btn-secondary" wire:click="decreaseSteep()">Précédent</button>
+                                                <button required type="button" style="margin-right: 2%; margin-top: -2%" class="btn btn-sm btn-secondary" wire:click="decreaseSteep()">Précédent</button>
                                                 <button required type="submit" class="btn btn-sm btn-primary">Enregistrer</button>
                                                 @endif
                                                 @if ($stored)
@@ -601,34 +601,23 @@
                                         <div class="card-header">
                                             <h5>Liste des utilisateurs</h5>
                                             <span>Récapitulatif des informations de clients et des techniciens. Cliquez sur voir pour plus de détails.</span>
-                                            <div class="card-header-right">
+                                            {{-- <div class="card-header-right">
                                                 <ul class="list-unstyled card-option">
                                                     <li><i class="feather icon-maximize full-card"></i></li>
                                                     <li><i class="feather icon-minus minimize-card"></i></li>
                                                     <li><i class="feather icon-trash-2 close-card"></i></li>
                                                 </ul>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="card-block">
-                                            <div class="dt-responsive table-responsive">
+                                            <div class="dt-responsive">
                                                 <table id="events-key-table" class="table table-striped table-bordered nowrap">
                                                     <thead>
                                                         <tr>
-                                                            <th>#</th>
-                                                            {{-- <th >Nom</th>
-                                                            <th >Prénom</th> --}}
+                                                            <th>id</th>
                                                             <th >Siège</th>
                                                             <th >Email</th>
                                                             <th >Telephone</th>
-
-                                                            {{-- <th >Entreprise</th>
-                                                            <th >Raison Sociale</th>
-                                                            <th >Numero Ifu</th>
-                                                            <th >Status</th> --}}
-
-                                                            <th >Poste</th>
-                                                            {{-- <th >Disponibilité</th> --}}
-
                                                             <th >Role</th>
                                                             <th >Action</th>
                                                         </tr>
@@ -638,61 +627,22 @@
                                                             <tr class="text-center">
 
                                                                 <th scope="row">{{$value->id}}</th>
-                                                                {{-- <td class=""><span class="">{{$value->nom}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
-                                                                </td>
-                                                                <td class=""><span class="">{{$value->prenom}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
-                                                                </td> --}}
                                                                 <td class=""><span class="">{{$value->siege}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
                                                                 </td>
                                                                 <td class=""><span class="">{{$value->email}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
                                                                 </td>
                                                                 <td class=""><span class="">{{$value->tel}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
                                                                 </td>
-                                                                {{-- <td class=""><span class="">{{$value->name}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
-                                                                </td>
-                                                                <td class=""><span class="">{{$value->raisonSocial}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
-                                                                </td>
-                                                                <td class=""><span class="">{{$value->ifu}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
-                                                                </td>
-                                                                <td class=""><span class="">{{$value->status}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
-                                                                </td> --}}
-                                                                <td class=""><span class="">{{$value->poste}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
-                                                                </td>
-                                                                {{-- <td class=""><span class="">{{$value->disponibilite}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
-                                                                </td> --}}
                                                                 <td class=""><span class="">{{$value->role}}</span>
-                                                                    <!--input class="tabledit-input form-control input-sm" required type="text" name="First" value="Mark"-->
                                                                 </td>
-                                                                <td class="row">
-                                                                    <button wire:click="edit({{$value->id}})" class="btn btn-primary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
-                                                                    <button wire:click="destroy({{$value->id}})" class="btn btn-danger col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
-                                                                    <button wire:click="view({{$value->id}})" data-toggle="modal" data-target="#Vmodal" class=" btn btn-secondary col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xs-12 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
+                                                                <td class="row" style="margin-left: 2%;">
+                                                                    <button wire:click="edit({{$value->id}})" style="margin-right: 2%;" class="btn btn-primary col-md-2 col-md-offset-2 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
+                                                                    <button wire:click="destroy({{$value->id}})" style="margin-right: 2%;" class="btn btn-danger col-md-2 col-md-offset-2 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
+                                                                    <button wire:click="view({{$value->id}})" data-toggle="modal" data-target="#Vmodal" class=" btn btn-secondary col-md-2 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
                                                                 </td>
                                                             </tr>
                                                         @endforeach       
                                                     </tbody>
-                                                    
-                                                    {{-- <tfoot>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
-                                                            <th>Age</th>
-                                                            <th>Start date</th>
-                                                            <th>Salary</th>
-                                                        </tr>
-                                                    </tfoot> --}}
                                                 </table> 
                                                 @if ($viewUser == true)
                                                         <div wire:ignore.self class="modal fade" id="Vmodal" tabindex="-1" role="dialog" aria-labelledby="modal">

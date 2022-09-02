@@ -26,6 +26,7 @@ return new class extends Migration
             $table->foreignId('plannings_id')->constrained('plannings');
             $table->foreignId('plannings_users_id')->constrained('plannings_users');
             $table->foreignId('type_id')->constrained('type_interventions');
+            $table->timestamps();
         });
     }
 

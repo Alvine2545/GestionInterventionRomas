@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('prenom')->nullable();
             $table->string('ifu')->nullable();
             $table->boolean('disponibilite')->nullable();
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(false);
             $table->boolean('demande')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();

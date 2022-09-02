@@ -161,7 +161,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="email-inbox.htm">
+                                        <a href="">
                                             <i class="feather icon-mail"></i> Mes messages
                                         </a>
                                     </li>
@@ -173,7 +173,7 @@
                                     <li>
                                         <form action="{{route('logout')}}" method="post">
                                             @csrf
-                                            <i class="feather icon-log-out"></i> <button type="submit" style="border: none"> Déconnecter</button>
+                                            <i class="feather icon-log-out"></i> <button type="submit" style="border: none;" class="btn"> Déconnecter</button>
 
                                         </form>
 

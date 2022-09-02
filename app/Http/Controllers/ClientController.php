@@ -172,7 +172,8 @@ class ClientController extends Controller
                 $leuser->save();
                 Alert::success('Félicitation', 'Votre compte a été dejà activé. Vous pouvez à présent vous connectez.');
             } else {
-                $leuser = User::find($user->id);
+                
+                $leuser = User::find($user[0]->id);
                 $leuser->demande = 1;
                 $leuser->password = Hash::make($request->password);
                 $leuser->save();
