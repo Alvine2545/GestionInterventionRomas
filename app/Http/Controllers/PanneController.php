@@ -77,10 +77,11 @@ dd($book);*/
         $path = $request->file('photo')->store('photosPanne', 'public');
          $pane = Panne::create([
             'description' => $request->description, 
+            'nom' => "Panne_".date('d-m-y h:i:s')."_".Auth::user()->name, 
             'photo' => $path, 
             'produitinstalles_id' => $request->produit,
             'user_id' => $client_id,  
-            'nom' => "Panne_".date('d-m-y h:i:s')."_".Auth::user()->name, 
+            
 
          ]); 
          //dd($pane->user);

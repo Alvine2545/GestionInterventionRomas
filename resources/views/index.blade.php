@@ -76,7 +76,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#contact">Signaler une panne</a></li>
                                     {{-- @if () --}}
-                                        <li><a class="dropdown-item" href="#">Apprécier panne</a></li>    
+                                        <li><a class="dropdown-item" href="{{url('client/details')}}"> Ma page</a></li>    
                                     {{-- @endif --}}
                                 </ul>
                             @else

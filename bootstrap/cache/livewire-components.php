@@ -2,6 +2,7 @@
   'adminpanne' => 'App\\Http\\Livewire\\Adminpanne',
   'auth.profil' => 'App\\Http\\Livewire\\Auth\\Profil',
   'client-component' => 'App\\Http\\Livewire\\ClientComponent',
+  'client-space-component' => 'App\\Http\\Livewire\\ClientSpaceComponent',
   'create-client' => 'App\\Http\\Livewire\\CreateClient',
   'create-devis-component' => 'App\\Http\\Livewire\\CreateDevisComponent',
   'devis-component' => 'App\\Http\\Livewire\\DevisComponent',

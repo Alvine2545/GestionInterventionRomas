@@ -17,21 +17,21 @@ class Intervention extends Model
 
     public function planning()
     {
-        return $this->belongsTo(Planning::class);
+        return $this->belongsTo(Planning::class, 'plannings_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(Planning_User::class);
+        return $this->belongsTo(Planning_User::class, 'user_id');
     }
 
     public function typeintervention()
     {
-        return $this->belongsTo(TypeIntervention::class);
+        return $this->belongsTo(TypeIntervention::class, 'type_id');
     }
     public function facture()
     {
-        return $this->hasMany(Facture::class);
+        return $this->hasMany(Facture::class, 'rapports_id');
     }
 
 

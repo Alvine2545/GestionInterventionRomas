@@ -645,8 +645,8 @@
       'smtp' => 
       array (
         'transport' => 'smtp',
-        'host' => 'mailhog',
-        'port' => '1025',
+        'host' => 'smtp.gmail.com',
+        'port' => '587',
         'encryption' => NULL,
         'username' => NULL,
         'password' => NULL,

@@ -22,107 +22,112 @@
             </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header">
-            <h5>Ajouter une intervention</h5>
-            <span></span>
-            <span class="align-right"><button class="btn btn-primary" wire:click="view">Voire  la liste</button></span>
-        </div>
-        <div class="card-block">
-            <form action="" wire:submit.prevent="store" class="">
-                <div class="row">
-                    <div class="col-sm-12 col-xl-4 m-b-30" wire:ignore>
-                        <h4 class="sub-title">Planning</h4>
-                        {{-- <p>Choisissez un planning
-                        </p> --}}
-                        <select class=" col-sm-12" style="width:70%;" wire:model="plannification" wire:change="click">
-                            <option value="">Choisissez une plannification</option>
-                            @foreach ($plannifications as $planing)
-                                <option value="{{$planing->id}}">{{$planing->title}}</option>
-                            @endforeach
-                        </select>
-                        <span class="text-danger">@error('plannifications'){{$message}}@enderror</span>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-xl-4 m-b-30">
-                        <h4 class="sub-title">Type de l'intervention</h4>
-                        <div class="form-radio">
-                            @if (count($typeIntervention)>0)
-                                @foreach ($typeIntervention as $value)
+    @if ($nouveau)
+        <div class="card">
+            <div class="card-header">
+                <h5>Ajouter une intervention</h5>
+                <span></span>
+                <span style="margin-left: 85%;"><button class="btn btn-primary btn-anim " wire:click="view">Voire  la liste</button></span>
+            </div>
+            <div class="card-block">
+                <form action="" wire:submit.prevent="store" class="">
+                    <div class="row">
+                        <div class="col-sm-12 col-xl-4 m-b-30" wire:ignore>
+                            <h4 class="sub-title">Planning</h4>
+                            {{-- <p>Choisissez un planning
+                            </p> --}}
+                            <select class=" col-sm-12" style="width:70%;" wire:model="plannification" wire:change="click">
+                                <option value="">Choisissez une plannification</option>
+                                @foreach ($plannifications as $planing)
+                                    <option value="{{$planing->id}}">{{$planing->title}}</option>
+                                @endforeach
+                            </select>
+                            <span class="text-danger">@error('plannifications'){{$message}}@enderror</span>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-4 m-b-30">
+                            <h4 class="sub-title">Type de l'intervention</h4>
+                            <div class="form-radio">
+                                @if (count($typeIntervention)>0)
+                                    @foreach ($typeIntervention as $value)
+                                    <div class="radio radiofill radio-inverse radio-inline">
+                                        <label>
+                                            <input type="radio" name="radio" value="{{$value->id}}" wire:model="type">
+                                            <i class="helper"></i>{{$value->nom}}
+                                        </label>
+                                    </div>
+                                    @endforeach    
+                                @else
                                 <div class="radio radiofill radio-inverse radio-inline">
                                     <label>
-                                        <input type="radio" name="radio" value="{{$value->id}}" wire:model="type">
-                                        <i class="helper"></i>{{$value->nom}}
+                                        Aucun type disponible. <a href="{{url('admin/typeintervention/create')}}">Ajouter un!</a>
                                     </label>
                                 </div>
-                                @endforeach    
-                            @else
-                            <div class="radio radiofill radio-inverse radio-inline">
-                                <label>
-                                    Aucun type disponible. <a href="{{url('admin/typeintervention/create')}}">Ajouter un!</a>
-                                </label>
+                                @endif
+                                <span class="text-danger">@error('typeIntervention'){{$message}}@enderror</span>
                             </div>
-                            @endif
-                            <span class="text-danger">@error('typeIntervention'){{$message}}@enderror</span>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-4 m-b-30">
+                            <h4 class="sub-title">Date intervention</h4>
+                            <div class="form">
+                                <input class="form-control" type="date" wire:model="dateI">
+                            </div>
+                            <span class="text-danger">@error('date'){{$message}}@enderror</span>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 m-b-30">
+                            <h4 class="sub-title">Déroulement</h4>
+                            <div class="form">
+                                <textarea class="form-control " wire:model="detail" rows="6" placeholder="Détail de l'intervention"></textarea>
+                            </div>
+                            <span class="text-danger">@error('detail'){{$message}}@enderror</span>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 m-b-30">
+                            <h4 class="sub-title">Solutions</h4>
+                            <div class="form">
+                                <textarea class="form-control " wire:model="solution" rows="6" placeholder="Solution pour régler la panne"></textarea>
+                            </div>
+                            <span class="text-danger">@error('solution'){{$message}}@enderror</span>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-4 m-b-30">
-                        <h4 class="sub-title">Date intervention</h4>
+                        <h4 class="sub-title">Lieu intervention</h4>
                         <div class="form">
-                            <input class="form-control" type="date" wire:model="dateI">
+                            <input class="form-control" type="text" wire:model="lieu">
                         </div>
-                        <span class="text-danger">@error('date'){{$message}}@enderror</span>
+                        <span class="text-danger">@error('lieu'){{$message}}@enderror</span>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-xl-6 m-b-30">
-                        <h4 class="sub-title">Déroulement</h4>
-                        <div class="form">
-                            <textarea class="form-control " wire:model="detail" rows="6" placeholder="Détail de l'intervention"></textarea>
-                        </div>
-                        <span class="text-danger">@error('detail'){{$message}}@enderror</span>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-xl-6 m-b-30">
-                        <h4 class="sub-title">Solutions</h4>
-                        <div class="form">
-                            <textarea class="form-control " wire:model="solution" rows="6" placeholder="Solution pour régler la panne"></textarea>
-                        </div>
-                        <span class="text-danger">@error('solution'){{$message}}@enderror</span>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-xl-4 m-b-30">
-                    <h4 class="sub-title">Lieu intervention</h4>
-                    <div class="form">
-                        <input class="form-control" type="text" wire:model="lieu">
-                    </div>
-                    <span class="text-danger">@error('lieu'){{$message}}@enderror</span>
-                </div>
-                @if ($plannification != null)
-                    <h4 class="sub-title">Pannes résolues</h4>
-                    @foreach ($planings->pannes as $pan)
-                        <div class="form-radio m-b-30">
-                            <div class="checkbox-fade fade-in-info">
-                                <label>
-                                    <input type="checkbox" value="{{$pan->id}}" wire:model="pannes" wire:ignores>
-                                    <span class="cr">
-                                        <i class="cr-icon icofont icofont-ui-check txt-info"></i>
-                                    </span>
-                                    <span> {{$pan->nom}}</span>
-                                </label>
-                                <span class="text-danger">@error('pannes'){{$message}}@enderror</span>
+                    @if ($plannification != null)
+                        <h4 class="sub-title">Pannes résolues</h4>
+                        @foreach ($planings->pannes as $pan)
+                            <div class="form-radio m-b-30">
+                                <div class="checkbox-fade fade-in-info">
+                                    <label>
+                                        <input type="checkbox" value="{{$pan->id}}" wire:model="pannes" wire:ignores>
+                                        <span class="cr">
+                                            <i class="cr-icon icofont icofont-ui-check txt-info"></i>
+                                        </span>
+                                        <span> {{$pan->nom}}</span>
+                                    </label>
+                                    <span class="text-danger">@error('pannes'){{$message}}@enderror</span>
+                                </div>
                             </div>
+                        @endforeach
+                    @endif
+                    <div class="row align-content-center">
+                        <div class="col-md-6 col-sm-2 col-md-offset-2">
+                            <button class="btn btn-primary" type="submit">Enregistrer</button>
                         </div>
-                    @endforeach
-                @endif
-                <div class="row align-content-center">
-                    <div class="col-md-6 col-sm-2 col-md-offset-2">
-                        <button class="btn btn-primary" type="submit">Enregistrer</button>
+                        <div class="col-md-6 col-sm-2">
+                            <button class="btn btn-danger" type="reset">Annuler</button>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-sm-2">
-                        <button class="btn btn-danger" type="reset">Annuler</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
+    @endif
     @if ($liste)
+        <div class="card-header-right">
+            <span style="margin-left: 90%;"><button class="btn btn-primary" style="margin-bottom: 2%;" wire:click="new">Ajouter</button></span>
+        </div>
         <div class="card">
             <div class="card-header">
                 <h5>Liste des interventions</h5>

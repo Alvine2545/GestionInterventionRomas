@@ -17,11 +17,11 @@ class ClientRoute
      */
     public function handle(Request $request, Closure $next)
     {
-
         if (Auth::check() && $request->user()->roles->nom == 'Client') {
-            return redirect('client');
+           //return $next($request);
+           return redirect('client');
         }
-
-        return $next($request);
+//        return $next($request);
+        return redirect('client')->with('error', 'Vous n\'êtes pas connecté(e)');
     }
 }

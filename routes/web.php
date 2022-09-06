@@ -22,6 +22,7 @@ use App\Http\Middleware\ClientRoute;
 
 use App\Http\Controllers\AuthenticateSessionController;
 use App\Http\Controllers\RegisteredAdminController;
+use App\Http\Livewire\ClientSpaceComponent;
 use App\Http\Livewire\TechniciensComponent;
 
 /*
@@ -59,8 +60,11 @@ Route::get('client/register', [App\Http\Controllers\ClientController::class, 've
 
 //     // });
 
-Route::prefix('client')->group(function () {
-//Signaler une panne
+Route::get('/details', ClientSpaceComponent::class);
+Route::prefix('client')->middleware(['client'])->group(function () {
+    //Ma page client
+    Route::get('/details', ClientSpaceComponent::class);
+    //Signaler une panne
     Route::get('pannes/avis', [App\Http\Controllers\PanneController::class, 'avis']);
     Route::get('pannes/liste', [App\Http\Controllers\PanneController::class, 'index']);
     Route::get('pannes/create', [App\Http\Controllers\PanneController::class, 'create']);

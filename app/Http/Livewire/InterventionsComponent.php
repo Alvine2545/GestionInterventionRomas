@@ -26,11 +26,11 @@ class InterventionsComponent extends Component
     public $lieu;
     public $liste;
     public $details;
-    public $nouveau;
+    public $nouveau = true;
     public $info;
     public function render()
     {
-        $this->nouveau = true;
+        
         $this->plannifications = Planning::all();
         $this->typeIntervention = TypeIntervention::all();
         $this->planings = Planning::find($this->plannification);
@@ -80,6 +80,7 @@ class InterventionsComponent extends Component
         $intervention->reference = "N°00".$this->plannification;
         $intervention->plannings_id = $this->plannification;
         $intervention->plannings_users_id = Auth::user()->id;
+        $intervention->appreciation = "";
         $intervention->type_id = $this->type;
         //Toutes les pannes de la plannification
         for ($i=0; $i < count($this->planings->pannes); $i++) { 
@@ -104,6 +105,7 @@ class InterventionsComponent extends Component
         
     }
     public function view(){
+        $this->nouveau = false;
         $this->interventions = Intervention::all();
         $this->liste = true;
     }
@@ -117,9 +119,14 @@ class InterventionsComponent extends Component
         $this->info = Intervention::find($id);
     }
     public function update(){
-        
+        $this->nouveau = false;
     }
     public function destroy(){
         
+    }
+    public function new(){
+        $this->nouveau = true;
+        $this->liste = false;
+        $this->details = false;
     }
 }
