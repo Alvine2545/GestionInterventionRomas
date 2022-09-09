@@ -3,9 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\Intervention;
+use App\Models\Panne;
 use App\Models\pannes_plannings;
 use App\Models\Planning;
 use App\Models\TypeIntervention;
+use App\Models\User;
+use Barryvdh\DomPDF\PDF as PDF;
+//use Barryvdh\DomPDF\Facade as PDF ;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -28,6 +32,8 @@ class InterventionsComponent extends Component
     public $details;
     public $nouveau = true;
     public $info;
+    public $panne;
+    public $client;
     public function render()
     {
         
@@ -117,6 +123,14 @@ class InterventionsComponent extends Component
         $this->nouveau =false;
         $this->details = true;
         $this->info = Intervention::find($id);
+        $this->panne = DB::table('pannes_plannings')->join('pannes', 'pannes_plannings.panne_id', '=', 'pannes.id')->join('plannings', 'pannes_plannings.planning_id', '=', 'plannings.id')->where('plannings.id', '=', $this->info->planning->id)->select('pannes.id')->get();
+        $this->client = Panne::find($this->panne[0]->id);
+        //dd($this->client->user->name);
+    }
+    public function exporte(){
+        //$pdf = new PDF()
+        $pdf = PDF::loadView('livewire.interventionDetail', $this->info);
+        return $pdf->download('admin.interventions.pdf');
     }
     public function update(){
         $this->nouveau = false;

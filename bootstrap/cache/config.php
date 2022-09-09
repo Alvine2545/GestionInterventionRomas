@@ -373,6 +373,53 @@
       ),
     ),
   ),
+  'dompdf' => 
+  array (
+    'show_warnings' => false,
+    'public_path' => NULL,
+    'convert_entities' => true,
+    'options' => 
+    array (
+      'font_dir' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\fonts',
+      'font_cache' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\fonts',
+      'temp_dir' => 'C:\\Users\\ROMAS\\AppData\\Local\\Temp',
+      'chroot' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas',
+      'allowed_protocols' => 
+      array (
+        'file://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+        'http://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+        'https://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'log_output_file' => NULL,
+      'enable_font_subsetting' => false,
+      'pdf_backend' => 'CPDF',
+      'default_media_type' => 'screen',
+      'default_paper_size' => 'a4',
+      'default_paper_orientation' => 'portrait',
+      'default_font' => 'serif',
+      'dpi' => 96,
+      'enable_php' => false,
+      'enable_javascript' => true,
+      'enable_remote' => true,
+      'font_height_ratio' => 1.1,
+      'enable_html5_parser' => true,
+    ),
+  ),
   'filesystems' => 
   array (
     'default' => 'local',
@@ -871,53 +918,6 @@
       0 => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\resources\\views',
     ),
     'compiled' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\framework\\views',
-  ),
-  'dompdf' => 
-  array (
-    'show_warnings' => false,
-    'public_path' => NULL,
-    'convert_entities' => true,
-    'options' => 
-    array (
-      'font_dir' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\fonts',
-      'font_cache' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas\\storage\\fonts',
-      'temp_dir' => 'C:\\Users\\ROMAS\\AppData\\Local\\Temp',
-      'chroot' => 'C:\\Users\\ROMAS\\Desktop\\Eunice\\GestionInterventionRomas',
-      'allowed_protocols' => 
-      array (
-        'file://' => 
-        array (
-          'rules' => 
-          array (
-          ),
-        ),
-        'http://' => 
-        array (
-          'rules' => 
-          array (
-          ),
-        ),
-        'https://' => 
-        array (
-          'rules' => 
-          array (
-          ),
-        ),
-      ),
-      'log_output_file' => NULL,
-      'enable_font_subsetting' => false,
-      'pdf_backend' => 'CPDF',
-      'default_media_type' => 'screen',
-      'default_paper_size' => 'a4',
-      'default_paper_orientation' => 'portrait',
-      'default_font' => 'serif',
-      'dpi' => 96,
-      'enable_php' => false,
-      'enable_javascript' => true,
-      'enable_remote' => true,
-      'font_height_ratio' => 1.1,
-      'enable_html5_parser' => true,
-    ),
   ),
   'flare' => 
   array (

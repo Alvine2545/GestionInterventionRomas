@@ -1,3 +1,6 @@
+@push('scripts')
+
+@endpush
 <div class="page-wrapper">
     <div class="page-header">
         <div class="row align-items-end">

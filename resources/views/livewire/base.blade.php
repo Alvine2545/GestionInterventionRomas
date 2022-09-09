@@ -38,11 +38,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\style.css')}}">
 
      <!-- Data Table Css -->
-     <link rel="stylesheet" type="text/css" href="..\files\bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css">
-     <link rel="stylesheet" type="text/css" href="..\files\assets\pages\data-table\css\buttons.dataTables.min.css">
-     <link rel="stylesheet" type="text/css" href="..\files\bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css">
+     <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css')}}">
+     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\data-table\css\buttons.dataTables.min.css')}}">
+     <link rel="stylesheet" type="text/css" href="{{asset('files\bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css')}}">
      
-
+     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\data-table\extensions\buttons\css\buttons.dataTables.min.css')}}">
+     
     <link rel="stylesheet" type="text/css" href="{{asset('files\assets\css\jquery.mCustomScrollbar.css')}}">
         <!-- jpro forms css -->
         <link rel="stylesheet" type="text/css" href="{{asset('files\assets\pages\j-pro\css\demo.css')}}">
@@ -420,9 +421,9 @@
         <script src="{{asset('files\bower_components\jquery.steps\js\jquery.steps.js')}}"></script>
         <script src="{{asset('files\bower_components\jquery-validation\js\jquery.validate.js')}}"></script>
         <!-- j-pro js -->
-        <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.ui.min.js')}}"></script>
+        {{-- <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.ui.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.maskedinput.min.js')}}"></script>
-            {{-- <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.j-pro.js')}}"></script> --}}
+            <script type="text/javascript" src="{{asset('files\assets\pages\j-pro\js\jquery.j-pro.js')}}"></script> --}}
         <!-- Validation js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
@@ -446,6 +447,23 @@
     <script src="{{asset('files\bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
     <script src="{{asset('files\assets\pages\data-table\js\jszip.min.js')}}"></script>
     {{-- <script src="f{{asset('iles\assets\pages\data-table\js\pdfmake.min.js')}}"></script> --}}
+    
+    <script src="{{asset('files\bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\js\jszip.min.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\js\pdfmake.min.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\js\vfs_fonts.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\extensions\buttons\js\dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\extensions\buttons\js\buttons.flash.min.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\extensions\buttons\js\jszip.min.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\extensions\buttons\js\vfs_fonts.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\extensions\buttons\js\buttons.colVis.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.html5.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('files\bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
+
     <script src="{{asset('files\assets\pages\data-table\js\vfs_fonts.js')}}"></script>
     <script src="{{asset('files\assets\pages\data-table\extensions\key-table\js\dataTables.keyTable.min.js')}}"></script>
     <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
@@ -453,6 +471,8 @@
     <script src="{{asset('files\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('files\bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('files\bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('files\assets\pages\data-table\extensions\buttons\js\extension-btns-custom.js')}}"></script>
+
         {{-- <script src="{{ asset('files\assets\pages\user-profile.js') }}"></script> --}}
         {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
     <!-- sweet alert modal.js intialize js -->

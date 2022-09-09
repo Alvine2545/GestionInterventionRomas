@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\Roles;
 use App\Models\User;
 use App\Models\Utilisateur;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
