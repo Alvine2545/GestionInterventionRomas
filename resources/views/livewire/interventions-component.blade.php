@@ -35,11 +35,9 @@
             <div class="card-block">
                 <form action="" wire:submit.prevent="store" class="">
                     <div class="row">
-                        <div class="col-sm-12 col-xl-4 m-b-30" wire:ignore>
+                        <div class="col-sm-12 col-xl-4 m-b-30">
                             <h4 class="sub-title">Planning</h4>
-                            {{-- <p>Choisissez un planning
-                            </p> --}}
-                            <select class=" col-sm-12" style="width:70%;" wire:model="plannification" wire:change="click">
+                            <select class="js-example-basic-single col-sm-12" style="width:70%;" id="selecte" wire:model="plannification" wire:ignore>
                                 <option value="">Choisissez une plannification</option>
                                 @foreach ($plannifications as $planing)
                                     <option value="{{$planing->id}}">{{$planing->title}}</option>
@@ -58,7 +56,12 @@
                                             <i class="helper"></i>{{$value->nom}}
                                         </label>
                                     </div>
-                                    @endforeach    
+                                    @endforeach   
+                                    <div class="radio radiofill radio-inverse radio-inline">
+                                        <label>
+                                            <a href="{{url('admin/typeintervention/liste')}}">Ajouter un nouveau?</a>
+                                        </label>
+                                    </div> 
                                 @else
                                 <div class="radio radiofill radio-inverse radio-inline">
                                     <label>
@@ -98,13 +101,13 @@
                         </div>
                         <span class="text-danger">@error('lieu'){{$message}}@enderror</span>
                     </div>
-                    @if ($plannification != null)
+                    @if ($d != null)
                         <h4 class="sub-title">Pannes résolues</h4>
-                        @foreach ($planings->pannes as $pan)
-                            <div class="form-radio m-b-30">
+                        @foreach ($a->pannes as $pan)
+                            <div class="form-radio m-b-30" wire:ignore>
                                 <div class="checkbox-fade fade-in-info">
                                     <label>
-                                        <input type="checkbox" value="{{$pan->id}}" wire:model="pannes" wire:ignores>
+                                        <input type="checkbox" value="{{$pan->id}}" wire:model="pannes" wire:ignore>
                                         <span class="cr">
                                             <i class="cr-icon icofont icofont-ui-check txt-info"></i>
                                         </span>
@@ -192,3 +195,16 @@
         @include('livewire.interventionDetail');
     @endif
 </div>
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        //$('#select2-dropdown').select2();
+        $('#selecte').on('change', function (e) {
+            var data = $('#selecte').select2("val");
+            @this.click(data);
+            
+            //@this.set('ottPlatform', data);
+        });
+    });
+</script>
+@endpush

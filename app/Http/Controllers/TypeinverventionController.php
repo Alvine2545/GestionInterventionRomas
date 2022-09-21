@@ -19,8 +19,8 @@ class TypeinverventionController extends Controller
     {
         //
         $types = TypeIntervention::all();
-
-        return view('type_intervention.index_typeintervention', compact('types'));
+        $edit = false;
+        return view('type_intervention.index_typeintervention', compact('types', 'edit'));
     }
 
     /**
@@ -49,7 +49,7 @@ class TypeinverventionController extends Controller
     
         $type_inter = TypeIntervention::create($validatedData);
     
-        return redirect('admin/typeintervention/liste')->with('Super', 'Votre type intervention créer avec succès');
+        return redirect('admin/typeintervention/liste')->with('success', 'Votre type intervention créer avec succès');
     }
 
     /**
@@ -71,10 +71,12 @@ class TypeinverventionController extends Controller
      */
     public function edit($id)
     {
+        $edit = true;
         $type_inter = TypeIntervention::find($id);
+        $types = TypeIntervention::all();
         //dd( $type_inter );
 
-    return view('type_intervention.edit_typeintervention', compact('type_inter'));
+    return view('type_intervention.index_typeintervention', compact('type_inter', 'edit', 'types'));
     }
 
     /**
@@ -97,7 +99,7 @@ class TypeinverventionController extends Controller
         TypeIntervention::whereId($id)->update($validatedData);
         //$type_inter->update($request->all());*/
     
-        return redirect('admin/typeintervention/liste')->with('Super', 'Type intervention mise à jour avec succès');
+        return redirect('admin/typeintervention/liste')->with('success', 'Type intervention mise à jour avec succès');
     }
 
     /**
@@ -109,9 +111,7 @@ class TypeinverventionController extends Controller
     public function destroy($id)
     {
         //
-        $type_inter = TypeIntervention::find($id);
-        $type_inter->truncate();
-    
-        return redirect('admin/typeintervention/liste')->with('Super', 'Type intervention supprimer avec succès');
+        TypeIntervention::destroy($id);
+        return redirect('admin/typeintervention/liste')->with('success', 'Type intervention supprimer avec succès');
     }
 }

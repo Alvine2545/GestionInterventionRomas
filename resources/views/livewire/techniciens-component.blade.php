@@ -393,7 +393,7 @@
                             </tr>
                             <tr>
                                 <th data-breakpoints="xs">Disponibilité</th>
-                                <th data-breakpoints="xs"><span class="">{{ $disponibilité}}</span></th>
+                                <th data-breakpoints="xs"><span class="">{{ $disponibilite}}</span></th>
                             </tr>
                         </tbody>
                     </table>

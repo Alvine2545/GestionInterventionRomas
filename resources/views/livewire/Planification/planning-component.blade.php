@@ -189,6 +189,9 @@
                     // });
                 });
     </script>
+    <script type="text/javascript" src="{{asset('files\bower_components\select2\js\select2.full.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('files\assets\pages\advance-elements\select2-custom.js')}}"></script>
+
     @endpush
     @push('styles')
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
@@ -198,6 +201,8 @@
             
         }
     </style>
+        <link rel="stylesheet" href="{{asset('files\bower_components\select2\css\select2.min.css')}}">
+
     @endpush
     {{-- @if ($date) --}}
 
@@ -269,29 +274,29 @@
     </div> --}}
     {{-- @endif --}}
 
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" wire:ignore.self >
+<div>
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Planning</h4>
+                <h4 class="modal-title" id="">Planning</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <form wire:submit.prevent='eventAdd' id="pan-form">
+                
             <div class="modal-body" >
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Pannes </label>
-                    <select class="col-sm-12 form-control js-example-placeholder-multiple" multiple="multiple" wire:model="panne" >
+                    <select class="col-sm-12 form-control " multiple="multiple" wire:model="panne" >
                         <option value="">Sélectionnez les pannes</option>
                         @foreach ($pannes as $value)
                         <option value="{{$value->id}}">{{$value->nom}}</option>
                         @endforeach
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Techniciens </label>
-                    <select class=" col-sm-12 form-control js-example-placeholder-multiple" multiple="multiple" wire:model='technicien'>
+                    <select class=" col-sm-12 form-control " multiple="multiple" wire:model='technicien'>
                         <option value="">Sélectionnez les techniciens</option>
                         @foreach ($techniciens as $value)
                             <option value="{{$value->id}}">{{$value->nom." ".$value->prenom}}</option>
@@ -331,6 +336,7 @@
           </div>
         </div>
     </div>
+</div>
     @if ($fini)
         <script>
             location.reload(true);

@@ -615,6 +615,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th>id</th>
+                                                            {{-- <th >Nom</th> --}}
                                                             <th >Siège</th>
                                                             <th >Email</th>
                                                             <th >Telephone</th>
@@ -627,6 +628,7 @@
                                                             <tr class="text-center">
 
                                                                 <th scope="row">{{$value->id}}</th>
+                                                                {{-- <td class=""><span class="">{{$value->name}}</span> --}}
                                                                 <td class=""><span class="">{{$value->siege}}</span>
                                                                 </td>
                                                                 <td class=""><span class="">{{$value->email}}</span>
@@ -635,10 +637,10 @@
                                                                 </td>
                                                                 <td class=""><span class="">{{$value->role}}</span>
                                                                 </td>
-                                                                <td class="row" style="margin-left: 2%;">
-                                                                    <button wire:click="edit({{$value->id}})" style="margin-right: 2%;" class="btn btn-primary col-md-2 col-md-offset-2 outer-ellipsis"><i class="feather icon-edit-1"></i></button>
-                                                                    <button wire:click="destroy({{$value->id}})" style="margin-right: 2%;" class="btn btn-danger col-md-2 col-md-offset-2 outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
-                                                                    <button wire:click="view({{$value->id}})" data-toggle="modal" data-target="#Vmodal" class=" btn btn-secondary col-md-2 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
+                                                                <td class="row" style="margin-left: 1%;">
+                                                                    <button wire:click="edit({{$value->id}})" style="" class="btn btn-primary col-md-4  outer-ellipsis"><i class="feather icon-edit-1"></i></button>
+                                                                    <button wire:click="destroy({{$value->id}})" style="" class="btn btn-danger col-md-4  outer-ellipsis"><i class="icofont icofont-trash" color="red"></i></button>
+                                                                    <button wire:click="view({{$value->id}})" data-toggle="modal" data-target="#Vmodal" class=" btn btn-secondary col-md-4 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
                                                                 </td>
                                                             </tr>
                                                         @endforeach       

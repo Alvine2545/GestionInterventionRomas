@@ -161,4 +161,3 @@ Route::prefix('admin')->middleware([
 Route::get('/plan', PlanningComponent::class);
 
 });
-//Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

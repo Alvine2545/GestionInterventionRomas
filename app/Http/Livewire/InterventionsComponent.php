@@ -34,6 +34,8 @@ class InterventionsComponent extends Component
     public $info;
     public $panne;
     public $client;
+    public $d;
+    public $a;
     public function render()
     {
         
@@ -42,8 +44,9 @@ class InterventionsComponent extends Component
         $this->planings = Planning::find($this->plannification);
         return view('livewire.interventions-component')->layout('livewire.base');
     }
-    public function click(){
-        $this->planings = Planning::find($this->plannification);
+    public function click($data){
+        $this->d = $data;
+        $this->a = Planning::find($data);
         
     }
     public function store(){

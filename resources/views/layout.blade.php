@@ -76,10 +76,9 @@
     <!-- Header start -->
     <div id="pcoded" class="pcoded load-height">
         <div class="pcoded-overlay-box"></div>
-        <div class="pcoded-container navbar-wrapper">
+        <div class="pcoded-container navbar-wrapper" style="position: fixed; width: 100%;">
             <nav class="navbar header-navbar pcoded-header auth-header"  header-theme="theme1">
                 <div class="navbar-wrapper">
-
                     <div class="navbar-logo" >
                         <a href="#">
                             <img class="img-fluid" style="height: 100%" src="{{url('files/assets/images/logo_romas2.png')}}" alt="Theme-Logo">

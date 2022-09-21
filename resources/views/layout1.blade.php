@@ -310,7 +310,7 @@
                                     </li>
                                     <li class=" ">
                                         <a href="{{url('admin/installations')}}">
-                                            <span class="pcoded-mtext">Ajouter installation</span>
+                                            <span class="pcoded-mtext">Les installations</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -326,7 +326,7 @@
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
                                         <a href="{{url('admin/panne')}}">
-                                            <span class="pcoded-mtext">Enregistrer panne</span>
+                                            <span class="pcoded-mtext">Les pannes</span>
                                         </a>
                                     </li>
                                 </ul>
