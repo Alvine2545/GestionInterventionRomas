@@ -46,19 +46,19 @@
                     const calendarEl = document.getElementById('calendar');
                     //Création du calendrier avec les bouttons
                     const calendar = new Calendar(calendarEl, {
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                },
-                locale: 'fr',
-                buttonText:{
-                    today: 'Ajourd\'hui',
-                    month: 'Mois',
-                    week: 'Semaine',
-                    day: 'Jour',
-                    list: 'Liste'
-                },
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                    },
+                    locale: 'fr',
+                    buttonText:{
+                        today: 'Ajourd\'hui',
+                        month: 'Mois',
+                        week: 'Semaine',
+                        day: 'Jour',
+                        list: 'Liste'
+                    },
                 //Récupération des évènements dans le composant
                 events: JSON.parse(@this.events),
                 nowIndicator: true,
@@ -275,19 +275,19 @@
     {{-- @endif --}}
 
 <div>
-    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore >
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="">Planning</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <form wire:submit.prevent='eventAdd' id="pan-form">
+            <form wire:submit.prevent='eventAdd' id="pan-form" method="post">
                 
             <div class="modal-body" >
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Pannes </label>
-                    <select class="col-sm-12 form-control " multiple="multiple" wire:model="panne" >
+                    <select id="mySelect2" class="col-sm-12 form-control js-example-placeholder-multiple select2-hidden-accessible" multiple="multiple" wire:model="panne" >
                         <option value="">Sélectionnez les pannes</option>
                         @foreach ($pannes as $value)
                         <option value="{{$value->id}}">{{$value->nom}}</option>
@@ -296,7 +296,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="appt-time">Techniciens </label>
-                    <select class=" col-sm-12 form-control " multiple="multiple" wire:model='technicien'>
+                    <select id="select1" class=" col-sm-12 form-control js-example-diacritics" multiple="multiple" wire:model='technicien'>
                         <option value="">Sélectionnez les techniciens</option>
                         @foreach ($techniciens as $value)
                             <option value="{{$value->id}}">{{$value->nom." ".$value->prenom}}</option>
@@ -320,6 +320,32 @@
                 @if ($start>$end)
                     <span style="color: red;">L'heure de début doit être inférieure à l'heure de fin</span>
                 @endif
+                <div class="form-group row">
+                    <label class="col-sm-2">Prorité: </label>
+                    <div class="col-sm-10">
+                        <div class="form-radio">
+                            <div class="radio radiofill radio-primary radio-inline">
+                                <label>
+                                    <input type="radio" name="member" value="free" data-bv-field="member" wire:model="priorite">
+                                    <i class="helper"></i>Faible
+                                </label>
+                            </div>
+                            <div class="radio radiofill radio-primary radio-inline">
+                                <label>
+                                    <input type="radio" name="member" value="personal" data-bv-field="member" wire:model="priorite">
+                                    <i class="helper"></i>Moyen
+                                </label>
+                            </div>
+                            <div class="radio radiofill radio-primary radio-inline">
+                                <label>
+                                    <input type="radio" name="member" value="personal" data-bv-field="member" wire:model="priorite">
+                                    <i class="helper"></i>Elevé
+                                </label>
+                            </div>
+                        </div>
+                        <span class="messages"></span>
+                    </div>
+                </div>
                 {{-- <div class="form-group row" >
                     <label class="col-sm-2 col-form-label" for="date">Date </label>
                     <div class="col-sm-10 col-md-10" >
@@ -329,7 +355,7 @@
                 </div> --}}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-primary" id="save">Enregistrer</button>
+                    <button type="submit" id="bt" class="btn btn-primary" id="save">Enregistrer</button>
                 </div>
             </div>
             </form>
@@ -522,6 +548,7 @@
         </script>
        
         <script>
+            
             function removeClick(id){
                 const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
@@ -560,6 +587,28 @@
                 })
             }
             
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#mySelect2').select2({
+                dropdownParent: $('#exampleModal')
+                });
+                $('#select1').select2({
+                dropdownParent: $('#exampleModal')
+                });
+            });
+            // $('#bt').on('submit', function(e) {
+            //     e.preventDefault(); 
+            //     var name = $('#mySelect2').val();
+            //     $.ajax({
+            //         type: "GET",
+            //         url: host+'/comment/add',
+            //         data: {name:name}
+            //         success: function(  ) {
+            //             alert( 'msg' );
+            //         }
+            //     });
+            // });
         </script>
     @endpush
 </div>

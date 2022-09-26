@@ -39,6 +39,7 @@ class ClientComponent extends Component
     public $userid;
     public $disponibilite;
     public $stored;
+    public $liste = true;
     public function mount(){
         $this->currentSteep = 1;
 
@@ -72,10 +73,17 @@ class ClientComponent extends Component
         $this->stored = false;
         
     }
+    public function annuler(){
+        $this->resetInput();
+        $this->updateForm = false;
+        $this->liste = true;
+        $this->nouveau = false;
+    }
     public function new()
     {
         $this->resetInput();
         $this->nouveau = true;
+        $this->liste = false;
         $this->updateForm = false;
     }
     public function validateData()
@@ -194,6 +202,7 @@ class ClientComponent extends Component
             $user->save();
             $user->roles()->attach($this->choix);
             $this->stored = true;
+            $this->liste = true;
             }
 
     }
@@ -217,6 +226,7 @@ class ClientComponent extends Component
     public function destroy($id){
         $client = User::find($id);
         $client->roles()->detach();
+        $this->liste = true;
         $client->delete();
     }
     public function edit($id)
@@ -249,6 +259,7 @@ class ClientComponent extends Component
                 $this->prenom = $this->usersUpdate->prenom;
                 $this->poste = $this->usersUpdate->poste;
             }
+            $this->liste = false;
             
         }
 
@@ -391,7 +402,7 @@ class ClientComponent extends Component
             $this->usersUpdate->save();
             $this->usersUpdate->roles()->attach($this->choix);
         }
-        
+        $this->liste = true;
         $this->updateForm = false;
     }
 }

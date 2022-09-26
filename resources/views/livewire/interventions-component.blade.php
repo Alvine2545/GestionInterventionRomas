@@ -35,9 +35,9 @@
             <div class="card-block">
                 <form action="" wire:submit.prevent="store" class="">
                     <div class="row">
-                        <div class="col-sm-12 col-xl-4 m-b-30">
+                        <div class="col-sm-12 col-xl-4 m-b-30" wire:ignore>
                             <h4 class="sub-title">Planning</h4>
-                            <select class="js-example-basic-single col-sm-12" style="width:70%;" id="selecte" wire:model="plannification" wire:ignore>
+                            <select class="js-example-basic-single col-sm-12" style="width:70%;" id="selecte" wire:model="plannification">
                                 <option value="">Choisissez une plannification</option>
                                 @foreach ($plannifications as $planing)
                                     <option value="{{$planing->id}}">{{$planing->title}}</option>

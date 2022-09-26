@@ -168,14 +168,13 @@
                                                 </div>
                                             </div>
                                             <div class="card-block">
-                                                <div class="dt-responsive table-responsive">
-                                                    <table id="events-key-table" class="table table-striped table-bordered nowrap" wire:ignore>
+                                                <div class="dt-responsive">
+                                                    <table style="width: 100%;" id="events-key-table" class="table table-striped table-bordered nowrap" wire:ignore>
                                                         <thead>
                                                             <tr>
                                                                 <th >Nom Prénoms</th>
                                                                 <th >Poste</th>
                                                                 <th >Telephone</th>
-                                                                <th >Siège</th>
                                                                 <th >Email</th>
                                                                 <th >Disponibilité</th>
                                                                 <th >Action</th>
@@ -193,9 +192,6 @@
                                                                     <td class=""><span class="">{{$value->tel}}</span>
                                                                         <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                                     </td>
-                                                                    <td class=""><span class="">{{$value->siege}}</span>
-                                                                        <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
-                                                                    </td>
                                                                     <td class=""><span class="">{{$value->email}}</span>
                                                                         <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                                     </td>
@@ -209,18 +205,13 @@
                                                                             <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                                         </td>
                                                                     @endif
-                                                                    <td class="row" style="margin-left: 2%;">
+                                                                    <td class="row" style="">
                                                                         <button wire:click="edit({{$value->id}})" style="margin-right: 2%;" class="btn btn-primary outer-ellipsis col-md-2 col-md-offset-2"><i class="feather icon-edit-1"></i></button>
                                                                         <button onclick="delet({{$value->id}})" style="margin-right: 2%;" class="btn btn-danger outer-ellipsis col-md-2 col-md-offset-2"><i class="icofont icofont-trash" color="red"></i></button>
                                                                         <button onclick="vue({{$value->id}})" class="openmodal btn btn-secondary outer-ellipsis col-md-2" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
-
                                                                     </td>
                                                                 </tr>
-                                                                
                                                             @endforeach
-                                                            
-                                                                
-                                                                
                                                         </tbody>
                                                     </table>
                                                 </div>

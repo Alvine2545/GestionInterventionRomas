@@ -8,11 +8,12 @@ use App\Models\pannes_plannings;
 use App\Models\Planning;
 use App\Models\TypeIntervention;
 use App\Models\User;
-use Barryvdh\DomPDF\PDF as PDF;
+use PDF;
 //use Barryvdh\DomPDF\Facade as PDF ;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\LifecycleManager;
 
 class InterventionsComponent extends Component
 {
@@ -117,6 +118,53 @@ class InterventionsComponent extends Component
         $this->nouveau = false;
         $this->interventions = Intervention::all();
         $this->liste = true;
+    }
+    public function convert(){
+        // $this->nouveau = false;
+        // $interventions = $this->interventions = Intervention::all();
+        // $this->liste = true;
+        // $pdf_view = PDF::loadView('livewire.vvv');
+        // return $pdf_view->download('myPDF.pdf');
+        // $pdf_view = PDF::loadView('livewire.vvv')->output();
+        // return reponse()->streamDownload(
+        //     fn()=>print($pdf_view),
+        //     'my.pdf'
+        // );
+    //    $order = Intervention::all();
+    //    $view = view('livewire.vvv')->with(compact('order'));
+    //    $html = $view->render();
+    //    $pdf = PDF::loadHTML($html)->save(public_path().'/oo.pdf');
+    //    $this->redirect('/oo.pdf'); 
+    $pdfComponent = clone $this;
+    $pdfComponent->isPdf = true;
+
+    $manager = LifecycleManager::fromInitialInstance($pdfComponent)->renderToView();
+
+    $pdfComponent->ensureViewHasValidLivewireLayout($pdfComponent->preRenderedView);
+
+    $layout = $pdfComponent->preRenderedView->livewireLayout;
+
+    $html = app('view')->file(base_path('vendor/livewire/livewire/src') . "/Macros/livewire-view-{$layout['vvv']}.blade.php", [
+        'view' => $layout['view'],
+        'params' => $layout['params'],
+        'slotOrSection' => $layout['slotOrSection'],
+        'manager' => $manager,
+    ])->render();
+
+    $pdf = Browsershot::html($html)
+        ->noSandbox()
+        ->waitUntilNetworkIdle()
+        ->pdf();
+
+    $headers = [
+        'Content-type' => 'application/pdf',
+        'Content-Disposition' => 'attachment',
+    ];
+
+    $this->skipRender();
+
+    return response()->streamDownload(fn () => print($pdf), 'export.pdf', $headers);
+
     }
     public function edit(){
         

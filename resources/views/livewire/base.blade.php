@@ -479,8 +479,8 @@
     <!-- modalEffects js nifty modal window effects -->
     {{-- <script type="text/javascript" src="{{ asset('files\assets\js\modalEffects.js"') }}></script> --}}
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    {{-- <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script> --}}
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

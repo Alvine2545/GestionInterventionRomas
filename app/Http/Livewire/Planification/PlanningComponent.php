@@ -33,6 +33,7 @@ class PlanningComponent extends Component
     public $tech;
     public $title; 
     public $fini;
+    public $color;
 public $essai;
     protected $listeners = ['refreshComponent' => '$refresh'];
     public function render()
@@ -64,14 +65,14 @@ public $essai;
         // dd($data);
         //dd($this->typeinterves);
         // dd($this->d);
-        
+        dd($this->panne);
          $planification = new Planning();
          //$planification->typeinterventions_id = $this->typeinterves;
          $planification->responsables_id = Auth::user()->id;
         
           $planification->start = $this->d." ".$this->start;
           $planification->end = $this->d." ".$this->end;
-          $planification->priorite = "eleve";
+          $planification->priorite = $this->priorite;
           $planification->photo = "eleve";
           $planification->title = "Planning".$this->d;
          $planification->date = $this->d;
@@ -83,6 +84,7 @@ public $essai;
          foreach($this->technicien as $value){
             $planification->users()->attach($value);
          }
+         @$this->resetInput();
          $this->emit('refreshComponent');
          $this->fini = true;
         // $planification->end = $this->end;
@@ -123,6 +125,7 @@ public $essai;
         $this->event->responsables_id = Auth::user()->id;
         $this->event->pannes_id = $this->panne;
         $this->event->save();
+        @$this->resetInput();
 
     }
      private function resetInput()
