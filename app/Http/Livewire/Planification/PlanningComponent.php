@@ -39,7 +39,12 @@ public $essai;
     public function render()
     {
         //$this->editModal = false;
-        $pannes = Panne::all();
+        $pannes = DB::table('pannes')
+        ->join('pannes_plannings', 'pannes.id', '=', 'pannes_plannings.panne_id')
+        ->join('plannings', 'pannes_plannings.planning_id', '=', 'plannings.id')
+        ->where('pannes_plannings.estTraiter', false)
+        ->select('pannes.*')
+        ->get();
         $techniciens = DB::table('Users')
        ->join('Roles_users', 'Users.id', '=', 'Roles_users.user_id')
        ->join('Roles', 'Roles_users.roles_id', '=', 'Roles.id')
@@ -57,6 +62,13 @@ public $essai;
     public function recuperation($dateR){
         $this->d = $dateR;
     }
+    public function vue($a){
+        $this->panne = $a;
+        //dd($this->panne);
+    }
+    public function vuee($a){
+        $this->technicien = $a;
+    }
     public function eventAdd()
     {
         // $data['typeintervention'] = $this->typeinterves;
@@ -65,7 +77,8 @@ public $essai;
         // dd($data);
         //dd($this->typeinterves);
         // dd($this->d);
-        dd($this->panne);
+        //dd($this->panne);
+        
          $planification = new Planning();
          //$planification->typeinterventions_id = $this->typeinterves;
          $planification->responsables_id = Auth::user()->id;
@@ -76,6 +89,13 @@ public $essai;
           $planification->photo = "eleve";
           $planification->title = "Planning".$this->d;
          $planification->date = $this->d;
+         if($planification->priorite == "eleve"){
+            $planification->color == "#ff0000";
+         }elseif ($planification->priorite == "faible") {
+            $planification->color == "#008000";
+         }elseif ($planification->priorite == "moyen") {
+            $planification->color == "#adff2f";
+         }
          $planification->save();
          //$planification->pannes_id = $this->panne;
          foreach($this->panne as $value){

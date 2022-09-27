@@ -13,7 +13,6 @@ use PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-use Livewire\LifecycleManager;
 
 class InterventionsComponent extends Component
 {
@@ -133,38 +132,18 @@ class InterventionsComponent extends Component
     //    $order = Intervention::all();
     //    $view = view('livewire.vvv')->with(compact('order'));
     //    $html = $view->render();
-    //    $pdf = PDF::loadHTML($html)->save(public_path().'/oo.pdf');
-    //    $this->redirect('/oo.pdf'); 
-    $pdfComponent = clone $this;
-    $pdfComponent->isPdf = true;
+    //    $pdf = PDF::loadHTML($html);
+    //    return $pdf->stream();
+    // retreive all records from db
+    $data = Intervention::all();
+    // share data to view
+    view()->share('employee',$data);
+    $pdf = PDF::loadView('livewire.vvv');
+    // download PDF file with download method
+    return $pdf->download('pdf_file.pdf');
+       //$this->redirect();
 
-    $manager = LifecycleManager::fromInitialInstance($pdfComponent)->renderToView();
-
-    $pdfComponent->ensureViewHasValidLivewireLayout($pdfComponent->preRenderedView);
-
-    $layout = $pdfComponent->preRenderedView->livewireLayout;
-
-    $html = app('view')->file(base_path('vendor/livewire/livewire/src') . "/Macros/livewire-view-{$layout['vvv']}.blade.php", [
-        'view' => $layout['view'],
-        'params' => $layout['params'],
-        'slotOrSection' => $layout['slotOrSection'],
-        'manager' => $manager,
-    ])->render();
-
-    $pdf = Browsershot::html($html)
-        ->noSandbox()
-        ->waitUntilNetworkIdle()
-        ->pdf();
-
-    $headers = [
-        'Content-type' => 'application/pdf',
-        'Content-Disposition' => 'attachment',
-    ];
-
-    $this->skipRender();
-
-    return response()->streamDownload(fn () => print($pdf), 'export.pdf', $headers);
-
+       
     }
     public function edit(){
         

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->dateTime('start');
             $table->dateTime('end');
             $table->string('priorite');
+            $table->string('color');
             $table->string('photo');
             $table->date('date');
             $table->foreignId('responsables_id')->constrained('users');
