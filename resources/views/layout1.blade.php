@@ -47,348 +47,428 @@
     <body>
         @include('sweetalert::alert')
         <!-- Pre-loader start -->
-<div class="theme-loader">
-    <div class="ball-scale">
-        <div class='contain'>
-            <div class="ring">
-                <div class="frame"></div>
-            </div>
-            <div class="ring">
-                <div class="frame"></div>
-            </div>
-            <div class="ring">
-                <div class="frame"></div>
-            </div>
-            <div class="ring">
-                <div class="frame"></div>
-            </div>
-            <div class="ring">
-                <div class="frame"></div>
-            </div>
-            <div class="ring">
-                <div class="frame"></div>
-            </div>
-            <div class="ring">
-                <div class="frame"></div>
-            </div>
-            <div class="ring">
-                <div class="frame"></div>
-            </div>
-            <div class="ring">
-                <div class="frame"></div>
-            </div>
-            <div class="ring">
-                <div class="frame"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Pre-loader end -->
-
-<div id="pcoded" class="pcoded">
-    <div class="pcoded-overlay-box"></div>
-    <div class="pcoded-container navbar-wrapper">
-
-        <nav class="navbar header-navbar pcoded-header" >
-            <div class="navbar-wrapper">
-
-                <div class="navbar-logo" style="">
-                    <a class="mobile-menu" id="mobile-collapse" href="#!">
-                        <i class="feather icon-menu"></i>
-                    </a>
-                    <a href="{{url('admin/dashboard')}}">
-                        <span>Romas Intervention</span>
-                        <!--img class="img-fluid" src="{{asset('files\assets\images\logo1.png')}}" alt="Theme-Logo"-->
-                    </a>
-                    <a class="mobile-options">
-                        <i class="feather icon-more-horizontal"></i>
-                    </a>
+            <div class="theme-loader">
+                <div class="ball-scale">
+                    <div class='contain'>
+                        <div class="ring">
+                            <div class="frame"></div>
+                        </div>
+                        <div class="ring">
+                            <div class="frame"></div>
+                        </div>
+                        <div class="ring">
+                            <div class="frame"></div>
+                        </div>
+                        <div class="ring">
+                            <div class="frame"></div>
+                        </div>
+                        <div class="ring">
+                            <div class="frame"></div>
+                        </div>
+                        <div class="ring">
+                            <div class="frame"></div>
+                        </div>
+                        <div class="ring">
+                            <div class="frame"></div>
+                        </div>
+                        <div class="ring">
+                            <div class="frame"></div>
+                        </div>
+                        <div class="ring">
+                            <div class="frame"></div>
+                        </div>
+                        <div class="ring">
+                            <div class="frame"></div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        <!-- Pre-loader end -->
 
-                <div class="navbar-container container-fluid">
-                    <ul class="nav-left">
-                        <li class="header-search">
-                            <div class="main-search morphsearch-search">
-                                <div class="input-group">
-                                    <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
-                                    <input type="text" class="form-control">
-                                    <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#!" onclick="javascript:toggleFullScreen()">
-                                <i class="feather icon-maximize full-screen"></i>
+        <div id="pcoded" class="pcoded">
+            <div class="pcoded-overlay-box"></div>
+            <div class="pcoded-container navbar-wrapper">
+                <nav class="navbar header-navbar pcoded-header" >
+                    <div class="navbar-wrapper">
+                        <div class="navbar-logo" style="">
+                            <a class="mobile-menu" id="mobile-collapse" href="#!">
+                                <i class="feather icon-menu"></i>
                             </a>
-                        </li>
-                    </ul>
-                    <ul class="nav-right">
-                        <li class="header-notification">
-                            <div class="dropdown-primary dropdown">
-                                <div class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="feather icon-bell"></i>
-                                    <span class="badge bg-c-pink">{{auth()->user()->unreadNotifications->count()}}</span>
-                                </div>
-                                <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                    <li>
-                                        <h6>Notifications</h6>
-                                        <label class="label label-danger">Nouvelle</label>
-                                    </li>
-                                    <li>
-                                        <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="{{asset('files\assets\images\avatar-4.jpg')}}" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <h5 class="notification-user">{{Auth::user()->name}}</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                <span class="notification-time">30 minutes ago</span>
+                            <a href="{{url('admin/dashboard')}}">
+                                <span>Romas Intervention</span>
+                                <!--img class="img-fluid" src="{{asset('files\assets\images\logo1.png')}}" alt="Theme-Logo"-->
+                            </a>
+                            <a class="mobile-options">
+                                <i class="feather icon-more-horizontal"></i>
+                            </a>
+                        </div>
+
+                        <div class="navbar-container container-fluid">
+                            <ul class="nav-left">
+                                <li class="header-search">
+                                    <div class="main-search morphsearch-search">
+                                        <div class="input-group">
+                                            <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
+                                            <input type="text" class="form-control">
+                                            <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#!" onclick="javascript:toggleFullScreen()">
+                                        <i class="feather icon-maximize full-screen"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav-right">
+                                <li class="header-notification">
+                                    <div class="dropdown-primary dropdown">
+                                        <div class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="feather icon-bell"></i>
+                                            <span class="badge bg-c-pink">{{auth()->user()->unreadNotifications->count()}}</span>
+                                        </div>
+                                        <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                            <li>
+                                                <h6>Notifications</h6>
+                                                <label class="label label-danger">Nouvelle</label>
+                                            </li>
+                                            <li>
+                                                <div class="media">
+                                                    <img class="d-flex align-self-center img-radius" src="{{asset('files\assets\images\avatar-4.jpg')}}" alt="Generic placeholder image">
+                                                    <div class="media-body">
+                                                        <h5 class="notification-user">{{Auth::user()->name}}</h5>
+                                                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                        <span class="notification-time">30 minutes ago</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="user-profile header-notification">
+                                    <div class="dropdown-primary dropdown">
+                                        <div class="dropdown-toggle" data-toggle="dropdown">
+                                            <img src="{{asset('files\assets\images\avatar-4.jpg')}}" class="img-radius" alt="User-Profile-Image">
+                                            <span>{{Auth::user()->name}}</span>
+                                            <i class="feather icon-chevron-down"></i>
+                                        </div>
+                                        <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                            <li>
+                                                <a href="#!">
+                                                    <i class="feather icon-settings"></i> Paramètres
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <i class="feather icon-mail"></i> Mes messages
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('admin/user_profil')}}">
+                                                    <i class="feather icon-settings"></i> Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <form action="{{route('logout')}}" method="post">
+                                                    @csrf
+                                                    <i class="feather icon-log-out"></i> <button type="submit" style="border: none;" class="btn"> Déconnecter</button>
+
+                                                </form>
+
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Sidebar chat start -->
+                <div id="sidebar" class="users p-chat-user showChat">
+                    <div class="had-container">
+                        <div class="card card_main p-fixed users-main">
+                            <div class="user-box">
+                                <div class="chat-inner-header">
+                                    <div class="back_chatBox">
+                                        <div class="right-icon-control">
+                                            <input type="text" class="form-control  search-text" placeholder="Search Friend" id="search-friends">
+                                            <div class="form-icon">
+                                                <i class="icofont icofont-search"></i>
                                             </div>
                                         </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="user-profile header-notification">
-                            <div class="dropdown-primary dropdown">
-                                <div class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{{asset('files\assets\images\avatar-4.jpg')}}" class="img-radius" alt="User-Profile-Image">
-                                    <span>{{Auth::user()->name}}</span>
-                                    <i class="feather icon-chevron-down"></i>
+                                    </div>
                                 </div>
-                                <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                    <li>
-                                        <a href="#!">
-                                            <i class="feather icon-settings"></i> Paramètres
+                                <div class="main-friend-list">
+                                    <div class="media userlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
+                                        <a class="media-left" href="#!">
+                                            <img class="media-object img-radius img-radius" src="{{asset('files\assets\images\avatar-3.jpg')}}" alt="Generic placeholder image ">
+                                            <div class="live-status bg-success"></div>
                                         </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <i class="feather icon-mail"></i> Mes messages
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{url('admin/user_profil')}}">
-                                            <i class="feather icon-settings"></i> Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <form action="{{route('logout')}}" method="post">
-                                            @csrf
-                                            <i class="feather icon-log-out"></i> <button type="submit" style="border: none;" class="btn"> Déconnecter</button>
-
-                                        </form>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Sidebar chat start -->
-        <div id="sidebar" class="users p-chat-user showChat">
-            <div class="had-container">
-                <div class="card card_main p-fixed users-main">
-                    <div class="user-box">
-                        <div class="chat-inner-header">
-                            <div class="back_chatBox">
-                                <div class="right-icon-control">
-                                    <input type="text" class="form-control  search-text" placeholder="Search Friend" id="search-friends">
-                                    <div class="form-icon">
-                                        <i class="icofont icofont-search"></i>
+                                        <div class="media-body">
+                                            <div class="f-13 chat-header">Josephin Doe</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="main-friend-list">
-                            <div class="media userlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
-                                <a class="media-left" href="#!">
-                                    <img class="media-object img-radius img-radius" src="{{asset('files\assets\images\avatar-3.jpg')}}" alt="Generic placeholder image ">
-                                    <div class="live-status bg-success"></div>
-                                </a>
-                                <div class="media-body">
-                                    <div class="f-13 chat-header">Josephin Doe</div>
-                                </div>
+                    </div>
+                </div>
+                <!-- Sidebar inner chat start-->
+                <div class="showChat_inner">
+                    <div class="media chat-inner-header">
+                        <a class="back_chatBox">
+                            <i class="feather icon-chevron-left"></i> Josephin Doe
+                        </a>
+                    </div>
+                    <div class="media chat-messages">
+                        <a class="media-left photo-table" href="#!">
+                            <img class="media-object img-radius img-radius m-t-5" src="{{asset('files\assets\images\avatar-3.jpg')}}" alt="Generic placeholder image">
+                        </a>
+                        <div class="media-body chat-menu-content">
+                            <div class="">
+                                <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                                <p class="chat-time">8:20 a.m.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-reply-box p-b-20">
+                        <div class="right-icon-control">
+                            <input type="text" class="form-control search-text" placeholder="Share Your Thoughts">
+                            <div class="form-icon">
+                                <i class="feather icon-navigation"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Sidebar inner chat start-->
-        <div class="showChat_inner">
-            <div class="media chat-inner-header">
-                <a class="back_chatBox">
-                    <i class="feather icon-chevron-left"></i> Josephin Doe
-                </a>
-            </div>
-            <div class="media chat-messages">
-                <a class="media-left photo-table" href="#!">
-                    <img class="media-object img-radius img-radius m-t-5" src="{{asset('files\assets\images\avatar-3.jpg')}}" alt="Generic placeholder image">
-                </a>
-                <div class="media-body chat-menu-content">
-                    <div class="">
-                        <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
-                        <p class="chat-time">8:20 a.m.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="chat-reply-box p-b-20">
-                <div class="right-icon-control">
-                    <input type="text" class="form-control search-text" placeholder="Share Your Thoughts">
-                    <div class="form-icon">
-                        <i class="feather icon-navigation"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Sidebar inner chat end-->
-        <div class="pcoded-main-container">
-            <div class="pcoded-wrapper" >
-                <nav class="pcoded-navbar" style="">
-                    <div class="pcoded-inner-navbar main-menu" style="">
-                        <div class="pcoded-navigatio-lavel"> Dashboard</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                                    <span class="pcoded-mtext">Utilisateurs</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="{{url('admin/users')}}">
-                                            <span class="pcoded-mtext">Liste</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="{{url('admin/users')}}">
-                                            <span class="pcoded-mtext">Techniciens</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel">Installations</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
-                                    <span class="pcoded-mtext">Gestion des clients</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/lesclients')}}">
-                                            <span class="pcoded-mtext">Ajouter client</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/produit/liste')}}">
-                                            <span class="pcoded-mtext">Liste des clients</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
-                                    <span class="pcoded-mtext">Gestion produits</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/produit/create')}}">
-                                            <span class="pcoded-mtext">Créer produit</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/produit/liste')}}">
-                                            <span class="pcoded-mtext">Liste des produits</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/installations')}}">
-                                            <span class="pcoded-mtext">Les installations</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel">Pannes</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu ">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
-                                    <span class="pcoded-mtext">Gestion des pannes</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/panne')}}">
-                                            <span class="pcoded-mtext">Les pannes</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel">Interventions</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                    <span class="pcoded-mtext">Plannification</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/planning')}} ">
-                                            <span class="pcoded-mtext">Faire planning</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{ url('admin/typeintervention/liste') }}">
-                                            <span class="pcoded-mtext">Type interventions</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{ url('admin/interventions') }}">
-                                            <span class="pcoded-mtext">Ajouter une intervention</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel">Devis</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu ">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
-                                    <span class="pcoded-mtext">Gestion des devis</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="{{url('admin/typedevis/liste')}}">
-                                            <span class="pcoded-mtext">Type devis</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/devis')}}">
-                                            <span class="pcoded-mtext">Créer devis</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="pcoded-content">
-                    <div class="pcoded-inner-content">
-                        <!-- Main-body start -->
-                        <div class="main-body">
-                            @yield('content')
+                <!-- Sidebar inner chat end-->
+                @if (Auth::user()->roles[0]->id == 2)
+                    <div class="pcoded-main-container">
+                        <div class="pcoded-wrapper" >
+                            <nav class="pcoded-navbar" style="">
+                                <div class="pcoded-inner-navbar main-menu" style="">
+                                    <div class="pcoded-navigatio-lavel">Dashboard</div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                                <span class="pcoded-mtext">Clients</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class="">
+                                                    <a href="{{url('admin/lesclients')}}">
+                                                        <span class="pcoded-mtext">Liste</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu ">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                                <span class="pcoded-mtext">Pannes</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class=" ">
+                                                    <a href="{{url('admin/panne')}}">
+                                                        <span class="pcoded-mtext">Les pannes</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                                <span class="pcoded-mtext">Interventions</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class=" ">
+                                                    <a href="{{url('admin/planning')}} ">
+                                                        <span class="pcoded-mtext">Les plannings</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="{{ url('admin/typeintervention/liste') }}">
+                                                        <span class="pcoded-mtext">Type interventions</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="{{ url('admin/interventions') }}">
+                                                        <span class="pcoded-mtext">Ajouter une intervention</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="">
+                                            <a href="sample-page.htm">
+                                                <span class="pcoded-micon"><i class="feather icon-watch"></i></span>
+                                                <span class="pcoded-mtext">Ma disponibilité</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="pcoded-content">
+                                <div class="pcoded-inner-content">
+                                    <!-- Main-body start -->
+                                    <div class="main-body">
+                                        @yield('content')
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                @elseif(Auth::user()->roles[0]->id == 3)
+                    <div class="pcoded-main-container">
+                        <div class="pcoded-wrapper" >
+                            <nav class="pcoded-navbar" style="">
+                                <div class="pcoded-inner-navbar main-menu" style="">
+                                    <div class="pcoded-navigatio-lavel"> Dashboard</div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                                <span class="pcoded-mtext">Utilisateurs</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class="">
+                                                    <a href="{{url('admin/users')}}">
+                                                        <span class="pcoded-mtext">Liste</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <ul class="pcoded-submenu">
+                                                <li class="">
+                                                    <a href="{{url('admin/users')}}">
+                                                        <span class="pcoded-mtext">Techniciens</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <div class="pcoded-navigatio-lavel">Installations</div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                                <span class="pcoded-mtext">Gestion des clients</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class=" ">
+                                                    <a href="{{url('admin/lesclients')}}">
+                                                        <span class="pcoded-mtext">Ajouter client</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="{{url('admin/produit/liste')}}">
+                                                        <span class="pcoded-mtext">Liste des clients</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                                <span class="pcoded-mtext">Gestion produits</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class=" ">
+                                                    <a href="{{url('admin/produit/create')}}">
+                                                        <span class="pcoded-mtext">Créer produit</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="{{url('admin/produit/liste')}}">
+                                                        <span class="pcoded-mtext">Liste des produits</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="{{url('admin/installations')}}">
+                                                        <span class="pcoded-mtext">Les installations</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <div class="pcoded-navigatio-lavel">Pannes</div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu ">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                                <span class="pcoded-mtext">Gestion des pannes</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class=" ">
+                                                    <a href="{{url('admin/panne')}}">
+                                                        <span class="pcoded-mtext">Les pannes</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <div class="pcoded-navigatio-lavel">Interventions</div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                                <span class="pcoded-mtext">Plannification</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class=" ">
+                                                    <a href="{{url('admin/planning')}} ">
+                                                        <span class="pcoded-mtext">Faire planning</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="{{ url('admin/typeintervention/liste') }}">
+                                                        <span class="pcoded-mtext">Type interventions</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="{{ url('admin/interventions') }}">
+                                                        <span class="pcoded-mtext">Ajouter une intervention</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <div class="pcoded-navigatio-lavel">Devis</div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu ">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                                <span class="pcoded-mtext">Gestion des devis</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class="">
+                                                    <a href="{{url('admin/typedevis/liste')}}">
+                                                        <span class="pcoded-mtext">Type devis</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="{{url('admin/devis')}}">
+                                                        <span class="pcoded-mtext">Créer devis</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="pcoded-content">
+                                <div class="pcoded-inner-content">
+                                    <!-- Main-body start -->
+                                    <div class="main-body">
+                                        @yield('content')
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
         <script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
@@ -448,7 +528,7 @@
         <script src="{{asset('files\assets\pages\filer\custom-filer.js')}}" type="text/javascript"></script>
         <script src="{{asset('files\assets\pages\filer\jquery.fileuploads.init.js')}}" type="text/javascript"></script>
             <!-- product list js -->
-    <script type="text/javascript" src="{{asset('files\assets\pages\product-list\product-list.js')}}"></script>
+        <script type="text/javascript" src="{{asset('files\assets\pages\product-list\product-list.js')}}"></script>
 
         <!-- Custom js -->
         <script src="{{asset('files\assets\pages\forms-wizard-validation\form-wizard.js')}}"></script>
@@ -456,51 +536,51 @@
         <script src="{{asset('files\assets\js\vartical-layout.min.js')}}"></script>
         <script src="{{asset('files\assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\assets\js\script.js')}}"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script src="{{asset('files\bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('files\bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('files\assets\pages\data-table\js\jszip.min.js')}}"></script>
-    {{-- <script src="f{{asset('iles\assets\pages\data-table\js\pdfmake.min.js')}}"></script> --}}
-    <script src="{{asset('files\assets\pages\data-table\js\vfs_fonts.js')}}"></script>
-    <script src="{{asset('files\assets\pages\data-table\extensions\key-table\js\dataTables.keyTable.min.js')}}"></script>
-    <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
-    <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.html5.min.js')}}"></script>
-    <script src="{{asset('files\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('files\bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('files\bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
-    
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+        <script src="{{asset('files\bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('files\bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('files\assets\pages\data-table\js\jszip.min.js')}}"></script>
+        {{-- <script src="f{{asset('iles\assets\pages\data-table\js\pdfmake.min.js')}}"></script> --}}
+        <script src="{{asset('files\assets\pages\data-table\js\vfs_fonts.js')}}"></script>
+        <script src="{{asset('files\assets\pages\data-table\extensions\key-table\js\dataTables.keyTable.min.js')}}"></script>
+        <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
+        <script src="{{asset('files\bower_components\datatables.net-buttons\js\buttons.html5.min.js')}}"></script>
+        <script src="{{asset('files\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
+        <script src="{{asset('files\bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
+        <script src="{{asset('files\bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
+        
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'UA-23581568-13');
-    </script>
-    <!--script>
-        $(document).ready(function() {
-            $('#next').click(function(){
-            var cases = document.getElementById("j-pro").role;
-            for(var i=0; i<cases.length; i++){
-                if(cases[i].checked){
-                    if(cases[i].value == 3){
-                        console.log(cases[i].value);
-                        $('#userrole').html('<div class="j-unit"><label class="j-label">Nom de l\'entreprise *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Numero IFU *</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Raison sociale</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsociale"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
-                    }else if(cases[i].value == 2){
-                        console.log(cases[i].value);
-                        $('#userrole').html('<div class="j-unit"><label class="j-label">Nom *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Prénom *</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Email *</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
+        gtag('config', 'UA-23581568-13');
+        </script>
+        <!--script>
+            $(document).ready(function() {
+                $('#next').click(function(){
+                var cases = document.getElementById("j-pro").role;
+                for(var i=0; i<cases.length; i++){
+                    if(cases[i].checked){
+                        if(cases[i].value == 3){
+                            console.log(cases[i].value);
+                            $('#userrole').html('<div class="j-unit"><label class="j-label">Nom de l\'entreprise *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Numero IFU *</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Raison sociale</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsociale"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
+                        }else if(cases[i].value == 2){
+                            console.log(cases[i].value);
+                            $('#userrole').html('<div class="j-unit"><label class="j-label">Nom *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Prénom *</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Email *</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
 
-                    }else if(cases[i].value == 1){
-                        console.log(cases[i].value);
-                        $('#userrole').html('<div class="j-unit"><label class="j-label">Nom *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Numero IFU</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Raison sociale</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
+                        }else if(cases[i].value == 1){
+                            console.log(cases[i].value);
+                            $('#userrole').html('<div class="j-unit"><label class="j-label">Nom *</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="name" name="name"></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Numero IFU</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="text" id="identifiant" name="identifiant"></div></div><div class="j-span6 j-unit"><label class="j-label">Raison sociale</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="raisonsociale" name="raisonsocialr"></div></div></div><div class="j-row"><div class="j-span6 j-unit"><label class="j-label">Adresse Email</label><div class="j-input"><label class="j-icon-right" for="email"><i class="icofont icofont-envelope"></i></label><input type="email" id="email" name="email"></div></div><div class="j-span6 j-unit"><label class="j-label">Adresse téléphonique</label><div class="j-input"><label class="j-icon-right" for="phone"><i class="icofont icofont-phone"></i></label><input type="text" id="phone" name="phone"></div></div></div><div class="j-unit"><label class="j-label">Siège</label><div class="j-input"><label class="j-icon-right" for="name"><i class="icofont icofont-ui-user"></i></label><input type="text" id="siege" name="siege"></div></div>');
 
+                        }
                     }
                 }
-            }
+            });
         });
-    });
 
-    </script-->
+        </script-->
         @livewireScripts
     </body>
 </html>

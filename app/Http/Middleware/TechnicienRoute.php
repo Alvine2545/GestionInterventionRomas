@@ -17,7 +17,7 @@ class TechnicienRoute
     public function handle(Request $request, Closure $next)
     {
         if ($request->user()->roles->nom == 'Technicien') {
-            return redirect('technicien');
+            return redirect('admin');
         }
         return $next($request);
     }

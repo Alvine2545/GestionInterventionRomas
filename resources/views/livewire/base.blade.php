@@ -254,141 +254,223 @@
             </div>
         </div>
         <!-- Sidebar inner chat end-->
-        <div class="pcoded-main-container">
-            <div class="pcoded-wrapper">
-                <nav class="pcoded-navbar" style="">
-                    <div class="pcoded-inner-navbar main-menu" style="">
-                        <div class="pcoded-navigatio-lavel"> Dashboard</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                                    <span class="pcoded-mtext">Utilisateurs</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="{{url('admin/users')}}">
-                                            <span class="pcoded-mtext">Liste</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="{{url('admin/lestechniciens')}}">
-                                            <span class="pcoded-mtext">Techniciens</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel">Installations</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
-                                    <span class="pcoded-mtext">Gestion des clients</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/lesclients')}}">
-                                            <span class="pcoded-mtext">Liste des clients</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-box"></i></span>
-                                    <span class="pcoded-mtext">Gestion produits</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/produit/create')}}">
-                                            <span class="pcoded-mtext">Créer produit</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/produit/liste')}}">
-                                            <span class="pcoded-mtext">Liste des produits</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{url('admin/installations')}}">
-                                            <span class="pcoded-mtext">Ajouter installation</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel">Pannes</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu ">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
-                                    <span class="pcoded-mtext">Gestion des pannes</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/panne')}}">
-                                            <span class="pcoded-mtext">Enregistrer panne</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel">Interventions</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                                    <span class="pcoded-mtext">Plannification</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/planning')}} ">
-                                            <span class="pcoded-mtext">Faire planning</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{ url('admin/typeintervention/liste') }}">
-                                            <span class="pcoded-mtext">Type interventions</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="{{ url('admin/interventions') }}">
-                                            <span class="pcoded-mtext">Ajouter une intervention</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel">Devis</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu ">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
-                                    <span class="pcoded-mtext">Gestion des devis</span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="{{url('admin/devis')}}">
-                                            <span class="pcoded-mtext">Créer devis</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="pcoded-content">
-                    <div class="pcoded-inner-content">
-                        <!-- Main-body start -->
-                        <div class="main-body">
-                            {{ $slot }}
+        @if (Auth::user()->roles[0]->id == 2)
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper" >
+                    <nav class="pcoded-navbar" style="">
+                        <div class="pcoded-inner-navbar main-menu" style="">
+                            <div class="pcoded-navigatio-lavel">Dashboard</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Clients</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="{{url('admin/lesclients')}}">
+                                                <span class="pcoded-mtext">Liste</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                        <span class="pcoded-mtext">Pannes</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{{url('admin/panne')}}">
+                                                <span class="pcoded-mtext">Les pannes</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                        <span class="pcoded-mtext">Interventions</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{{url('admin/planning')}} ">
+                                                <span class="pcoded-mtext">Les plannings</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{{ url('admin/typeintervention/liste') }}">
+                                                <span class="pcoded-mtext">Type interventions</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{{ url('admin/interventions') }}">
+                                                <span class="pcoded-mtext">Ajouter une intervention</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a href="sample-page.htm">
+                                        <span class="pcoded-micon"><i class="feather icon-watch"></i></span>
+                                        <span class="pcoded-mtext">Ma disponibilité</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                @yield('content')
+                            </div>
                         </div>
                     </div>
                 </div>
-
+            </div>   
+        @elseif(Auth::user()->roles[0]->id == 3)
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <nav class="pcoded-navbar" style="">
+                        <div class="pcoded-inner-navbar main-menu" style="">
+                            <div class="pcoded-navigatio-lavel"> Dashboard</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Utilisateurs</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="{{url('admin/users')}}">
+                                                <span class="pcoded-mtext">Liste</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="{{url('admin/lestechniciens')}}">
+                                                <span class="pcoded-mtext">Techniciens</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigatio-lavel">Installations</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                        <span class="pcoded-mtext">Gestion des clients</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{{url('admin/lesclients')}}">
+                                                <span class="pcoded-mtext">Liste des clients</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                        <span class="pcoded-mtext">Gestion produits</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{{url('admin/produit/create')}}">
+                                                <span class="pcoded-mtext">Créer produit</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{{url('admin/produit/liste')}}">
+                                                <span class="pcoded-mtext">Liste des produits</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{{url('admin/installations')}}">
+                                                <span class="pcoded-mtext">Ajouter installation</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigatio-lavel">Pannes</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                        <span class="pcoded-mtext">Gestion des pannes</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{{url('admin/panne')}}">
+                                                <span class="pcoded-mtext">Enregistrer panne</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigatio-lavel">Interventions</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                        <span class="pcoded-mtext">Plannification</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{{url('admin/planning')}} ">
+                                                <span class="pcoded-mtext">Faire planning</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{{ url('admin/typeintervention/liste') }}">
+                                                <span class="pcoded-mtext">Type interventions</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{{ url('admin/interventions') }}">
+                                                <span class="pcoded-mtext">Ajouter une intervention</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigatio-lavel">Devis</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                        <span class="pcoded-mtext">Gestion des devis</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{{url('admin/devis')}}">
+                                                <span class="pcoded-mtext">Créer devis</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                {{ $slot }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
         <script type="text/javascript" src="{{asset('files\bower_components\jquery\js\jquery.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('files\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
         <!-- jquery slimscroll js -->

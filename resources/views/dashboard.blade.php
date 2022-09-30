@@ -1,6 +1,9 @@
 @extends('layout1')
 @section('content')
 <div class="page-wrapper">
+    @if (Auth::user()->roles[0]->id == 2)
+        
+    @endif
     <!-- Page-header start -->
     <div class="page-header">
         <div class="row align-items-end">
@@ -142,7 +145,7 @@
                                     <i class="feather icon-user bg-simple-c-green card1-icon"></i>
                                     <h4>{{$clients}}</h4>
                                     <p>Clients</p>
-                                    <a href="{{url('admin/lesclients')}}" class="more-info">En savoir plus</a>
+                                    <a href="{{url('admin/lesclients')}}" class="more-info">Consulter</a>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +157,7 @@
                                     <i class="feather icon-shopping-cart bg-simple-c-pink card1-icon"></i>
                                     <h4>{{$produits}}</h4>
                                     <p>Produits</p>
-                                    <a href="{{url('admin/produit/liste')}}" class="more-info">En savoir plus</a>
+                                    <a href="{{url('admin/produit/liste')}}" class="more-info">Consulter</a>
                                 </div>
                             </div>
                         </div>
@@ -166,7 +169,7 @@
                                     <i class="feather icon-users bg-simple-c-blue card1-icon"></i>
                                     <h4>{{$techniciens}}</h4>
                                     <p>Techniciens</p>
-                                    <a href="{{url('admin/produit/liste')}}" class="more-info">En savoir plus</a>
+                                    <a href="{{url('admin/produit/liste')}}" class="more-info">Consulter</a>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +182,7 @@
                                     <i class="feather icon-filter bg-simple-c-yellow card1-icon"></i>
                                     <h4>{{$interventions}}</h4>
                                     <p>Interventions</p>
-                                    <a href="{{url('admin/interventions')}}" class="more-info">En savoir plus</a>
+                                    <a href="{{url('admin/interventions')}}" class="more-info">Consulter</a>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +199,7 @@
                                     <i class="feather icon-alert-triangle bg-simple-c-blue card1-icon"></i>
                                     <h4>{{$pannes}}</h4>
                                     <p>Pannes</p>
-                                    <a href="{{url('admin/lesclients')}}" class="more-info">En savoir plus</a>
+                                    <a href="{{url('admin/lesclients')}}" class="more-info">Consulter</a>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +211,7 @@
                                     <i class="feather icon-filter bg-simple-c-yellow card1-icon"></i>
                                     <h4>{{$interventions}}</h4>
                                     <p>Installations</p>
-                                    <a href="{{$installations}}" class="more-info">En savoir plus</a>
+                                    <a href="{{$installations}}" class="more-info">Consulter</a>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +223,7 @@
                                     <i class="feather icon-briefcase bg-simple-c-green card1-icon"></i>
                                     <h4>{{$clients}}</h4>
                                     <p>Plannifications</p>
-                                    <a href="{{url('admin/planning')}}" class="more-info">En savoir plus</a>
+                                    <a href="{{url('admin/planning')}}" class="more-info">Consulter</a>
                                 </div>
                             </div>
                         </div>
@@ -232,7 +235,7 @@
                                     <i class="feather icon-shopping-cart bg-simple-c-pink card1-icon"></i>
                                     <h4>{{$clients}}</h4>
                                     <p>Devis</p>
-                                    <a href="{{url('admin/devis/liste')}}" class="more-info">En savoir plus</a>
+                                    <a href="{{url('admin/devis/liste')}}" class="more-info">Consulter</a>
                                 </div>
                             </div>
                         </div>

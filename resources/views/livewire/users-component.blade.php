@@ -51,8 +51,9 @@
                             <div class="row">
                                 <div class="col-md-4"></div>
                             </div>
-                            <button wire:click="new" class="btn btn-primary" style="margin-left: 92%">Nouveau</button>
-
+                            @if (Auth::user()->roles[0]->id == 3)
+                                <button wire:click="new" class="btn btn-primary" style="margin-left: 92%">Nouveau</button>
+                            @endif
                             <div class="card-block">
                                 {{-- <div class="j-wrapper j-wrapper-640"> --}}
                                     {{-- Boutton déroulant --}}
@@ -208,103 +209,103 @@
                                     <div class="card">
                                         
                                         @if ($nouveau)
-                                        <form wire:submit.prevent='store' id="form" style="width: 80%; margin-left: 10%">
-                                            <div class="">
-                                                <div class="card-header text-uppercase text-facebook text-center text-underline">
-                                                    <h4>Ajouter un nouveau client</h4>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="form-group row">
-                                                        <div class="col-md-4 col-md-offset-2">
-                                                            <label class="" for="">Nom de l'entreprise <span style="color: red"> *</span></label>
+                                            <form wire:submit.prevent='store' id="form" style="width: 80%; margin-left: 10%">
+                                                <div class="">
+                                                    <div class="card-header text-uppercase text-facebook text-center text-underline">
+                                                        <h4>Ajouter un nouveau client</h4>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4 col-md-offset-2">
+                                                                <label class="" for="">Nom de l'entreprise <span style="color: red"> *</span></label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="input-group input-group-primary">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="icofont icofont-user"></i>
+                                                                    </span>
+                                                                    <input required type="text" class="form-control" id="name" wire:model="name" style="border: solid black 1px; width: 95%;">
+                                                                    <span class="text-danger">@error('name'){{$message}}@enderror</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group input-group-primary">
-                                                                <span class="input-group-addon">
-                                                                    <i class="icofont icofont-user"></i>
-                                                                </span>
-                                                                <input required type="text" class="form-control" id="name" wire:model="name" style="border: solid black 1px; width: 95%;">
-                                                                <span class="text-danger">@error('name'){{$message}}@enderror</span>
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4 col-md-offset-2">
+                                                                <label class="" for="">Numero IFU <span style="color: red"> *</span></label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="input-group input-group-primary">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="icofont icofont-user"></i>
+                                                                    </span>
+                                                                    <input class="form-control" required type="text" name="identifiant" wire:model='identifiant' style="border: solid black 1px; width: 92%;">
+                                                                    <span class="text-danger">@error('identifiant'){{$message}}@enderror</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4 col-md-offset-2">
+                                                                <label class="" for="">Adresse Email <span style="color: red"> *</span></label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="input-group input-group-primary">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="icofont icofont-email"></i>
+                                                                    </span>
+                                                                    <input required type="email" class="form-control" name="email" wire:model='email' style="border: solid black 1px; width: 92%;">
+                                                                    <span class="text-danger">@error('email'){{$message}}@enderror</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4 col-md-offset-2">
+                                                                <label class="" for="">Adresse téléphonique <span style="color: red"> *</span></label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="input-group input-group-primary">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="icofont icofont-phone"></i>
+                                                                    </span>
+                                                                    <input required type="" class="form-control" name="phone" wire:model='phone' style="border: solid black 1px; width: 92%;">
+                                                                    <span class="text-danger">@error('phone'){{$message}}@enderror</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4 col-md-offset-2">
+                                                                <label class="" for="">Raison Sociale <span style="color: red"> *</span></label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="input-group input-group-primary">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="icofont icofont-phone"></i>
+                                                                    </span>
+                                                                    <input required type="" class="form-control" name="raisonsociale" wire:model='raisonsociale' style="border: solid black 1px; width: 92%;">
+                                                                    <span class="text-danger">@error('raisonsociale'){{$message}}@enderror</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4 col-md-offset-2">
+                                                                <label class="" for="">Siège <span style="color: red"> *</span></label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="input-group input-group-primary">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="icofont icofont-location-arrow"></i>
+                                                                    </span>
+                                                                    <input required type="" class="form-control" name="siege" wire:model='siege' style="border: solid black 1px; width: 92%;">
+                                                                    <span class="text-danger">@error('siege'){{$message}}@enderror</span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-md-4 col-md-offset-2">
-                                                            <label class="" for="">Numero IFU <span style="color: red"> *</span></label>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group input-group-primary">
-                                                                <span class="input-group-addon">
-                                                                    <i class="icofont icofont-user"></i>
-                                                                </span>
-                                                                <input class="form-control" required type="text" name="identifiant" wire:model='identifiant' style="border: solid black 1px; width: 92%;">
-                                                                <span class="text-danger">@error('identifiant'){{$message}}@enderror</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-md-4 col-md-offset-2">
-                                                            <label class="" for="">Adresse Email <span style="color: red"> *</span></label>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group input-group-primary">
-                                                                <span class="input-group-addon">
-                                                                    <i class="icofont icofont-email"></i>
-                                                                </span>
-                                                                <input required type="email" class="form-control" name="email" wire:model='email' style="border: solid black 1px; width: 92%;">
-                                                                <span class="text-danger">@error('email'){{$message}}@enderror</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-md-4 col-md-offset-2">
-                                                            <label class="" for="">Adresse téléphonique <span style="color: red"> *</span></label>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group input-group-primary">
-                                                                <span class="input-group-addon">
-                                                                    <i class="icofont icofont-phone"></i>
-                                                                </span>
-                                                                <input required type="" class="form-control" name="phone" wire:model='phone' style="border: solid black 1px; width: 92%;">
-                                                                <span class="text-danger">@error('phone'){{$message}}@enderror</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-md-4 col-md-offset-2">
-                                                            <label class="" for="">Raison Sociale <span style="color: red"> *</span></label>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group input-group-primary">
-                                                                <span class="input-group-addon">
-                                                                    <i class="icofont icofont-phone"></i>
-                                                                </span>
-                                                                <input required type="" class="form-control" name="raisonsociale" wire:model='raisonsociale' style="border: solid black 1px; width: 92%;">
-                                                                <span class="text-danger">@error('raisonsociale'){{$message}}@enderror</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-md-4 col-md-offset-2">
-                                                            <label class="" for="">Siège <span style="color: red"> *</span></label>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group input-group-primary">
-                                                                <span class="input-group-addon">
-                                                                    <i class="icofont icofont-location-arrow"></i>
-                                                                </span>
-                                                                <input required type="" class="form-control" name="siege" wire:model='siege' style="border: solid black 1px; width: 92%;">
-                                                                <span class="text-danger">@error('siege'){{$message}}@enderror</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <button type="reset" class="btn btn-danger col-md-2" style="margin-right: 60%" wire:click="annuler">Annuler</button>
-                                                    <button type="submit" class="btn btn-primary col-md-2">Enregistrer</button>
-                                                </div> 
-                                            </div>                                               
-                                        </form><br>
+                                                    <div class="row">
+                                                        <button type="reset" class="btn btn-danger col-md-2" style="margin-right: 60%" wire:click="annuler">Annuler</button>
+                                                        <button type="submit" class="btn btn-primary col-md-2">Enregistrer</button>
+                                                    </div> 
+                                                </div>                                               
+                                            </form><br>
 
                                             {{-- <form wire:submit.prevent='store' id="form">
                                                 <div class="">
@@ -446,13 +447,13 @@
                                                                         <!--input class="tabledit-input form-control input-sm" type="text" name="First" value="Mark"-->
                                                                     </td>
                                                                     <td class="row"style="margin-left: 2%;" > 
-                                                                        <button style="margin-right: 2%" wire:click="edit({{$value->id}})" class="btn btn-primary col-md-2 outer-ellipsis col-md-offset-2"><i class="feather icon-edit-1"></i></button>
+                                                                        @if (Auth::user()->roles[0]->id == 3)
+                                                                            <button style="margin-right: 2%" wire:click="edit({{$value->id}})" class="btn btn-primary col-md-2 outer-ellipsis col-md-offset-2"><i class="feather icon-edit-1"></i></button>                                                                            
+                                                                        @endif
                                                                         <button wire:click="destroy({{$value->id}})" style="margin-right: 2%" class="btn btn-danger col-md-2 outer-ellipsis col-md-offset-2"><i class="icofont icofont-trash" color="red"></i></button>
                                                                         <button wire:click="view({{$value->id}})" style="margin-left: 2%" class="openmodal btn btn-secondary col-md-2 outer-ellipsis" data-toggle="modal" data-backdrop="false" data-target="#Vmodal"><i class="icofont icofont-eye-alt" color="red"></i></button>
-
                                                                     </td>
                                                                 </tr>
-                                                                
                                                             @endforeach  
                                                         </tbody>
                                                     </table>
@@ -467,7 +468,6 @@
                                                                     <div class="container"></div>
                                                                     <div class="modal-body">
                                                                         <table id="demo-foo-filtering" class="table table-striped text-align-center">
-                                                                        
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <th data-breakpoints="xs">Entreprise</th>
@@ -519,11 +519,9 @@
                                                 <div class="card-header">
                                                     <h5>Mise à jour des informations</h5>
                                                     <span>Modifier les informations du client</span>
-
                                                 </div>
                                                 <div class="card-block">
                                                     <form id="main" action="" wire:submit.prevent="update" novalidate="">
-                                                        
                                                         <div class="card-body">
                                                             <div class="form-group row">
                                                                 <div class="col-md-4 col-md-offset-2">

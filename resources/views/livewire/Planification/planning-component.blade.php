@@ -59,6 +59,12 @@
                             day: 'Jour',
                             list: 'Liste'
                         },
+                        // dayRender: function(){
+                        //     var currentDate = new Date();
+                        //     if (currentDate.getDate() > maxDate){
+                        //         $('.fc-daygrid-day-frame').prop('disabled', true);
+                        //     }
+                        // },
                         //Récupération des évènements dans le composant
                         events: JSON.parse(@this.events),
                         nowIndicator: true,
@@ -138,13 +144,25 @@
                         /* $('#calendar').hide()
                             $('#planing').show()*/
                             //@this.eventRemove(info.event.id);
-                            $('#exampleModal').modal('show');
-                            $("#exempleModal").modal({ backdrop: 'static', keyboard: false });
+                            var d = new Date();
+                            var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+                            var type = typeof(date);
+                            // console.log(date);
+                            // var currentDate = calendar.getDate().toISOString();
+                            // var s = calendar.formatIso( currentDate, [ omitTime = false ] );
+                            alert(date + " gf "+ info.dateStr);
+                            if ( new Date(info.dateStr) < new Date(date)){
+                                alert('gfd');
+                                //$('.fc-daygrid-day-frame').prop('disabled', true);
+                            }else{
+                                $('#exampleModal').modal('show');
+                                $("#exempleModal").modal({ backdrop: 'static', keyboard: false });
 
-                            // console.log(info.dateStr);
-                            let date = info.dateStr;
-                            $("#date").val(date);
-                            @this.recuperation(date);
+                                // console.log(info.dateStr);
+                                let date = info.dateStr;
+                                $("#date").val(date);
+                                @this.recuperation(date);
+                            }
                         // console.log( $("#date").val());
 
                                 // calendar.addEvent({
@@ -158,7 +176,7 @@
                             calendar.unselect();
                             alert('Date: ' + info.dateStr);
                             alert('Resource ID: ' + info.resource.id);*/
-            },
+                        },
                         //Fonction gérant la suppression de l'évènement
             //             eventClick: function(info) {
             //     alert('Event: ' + info.event.title);
@@ -550,7 +568,7 @@
         </script>
        
         <script>
-            
+
             function removeClick(id){
                 const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
