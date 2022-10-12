@@ -88,23 +88,24 @@
                     min: 9
                 }
             },
-     messages : {
-       name: {
-         minlength: "Minimum 3 caractères",
-         required: "Veuillez renseignez votre nom",
-       },
-       password: {
-         required: "Veuillez entrer un mot de passe",
-         min: "Minimum 9 caractères",
-       },
-       email: {
-         email: "Veuillez renseigner un mot de passe valide",
-       },
-       password_confirmation: {
-         required: "Veuillez comfirmer le mot de passe",
-         equalTo: "Le mot de passe doit être conforme"
-       }
-     }
+            messages : {
+                name: {
+                    minlength: "Minimum 3 caractères",
+                    required: "Veuillez renseignez votre nom",
+                },
+                password: {
+                    required: "Veuillez entrer un mot de passe",
+                    min: "Minimum 9 caractères",
+                },
+                email: {
+                    email: "Veuillez renseigner un mot de passe valide",
+                },
+                password_confirmation: {
+                    required: "Veuillez comfirmer le mot de passe",
+                    equalTo: "Le mot de passe doit être conforme",
+                    min: "Minimum 9 caractères",
+                }
+            }
    });
 });
 </script>
