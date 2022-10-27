@@ -1,8 +1,11 @@
 @extends('layout')
+<style>
+    .messages{
+        color: red;
+    }
+</style>
 @section('content')
-
     <div class="j-wrapper j-wrapper-450" style="width: 40%">
-
         <form method="POST" action="{{ route('register') }}" class="j-pro" id="j-pro" novalidate="">
             <h4 class="text-center" style="margin-top: 5%">Inscription</h4>
             @csrf
